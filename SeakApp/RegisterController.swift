@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class RegisterController: UIViewController {
+class RegisterController: UIViewController {//here
     
     @IBOutlet var FirstNameTF: UITextField!
     @IBOutlet var LastNameTF: UITextField!
