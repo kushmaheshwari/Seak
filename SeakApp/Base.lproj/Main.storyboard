@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tET-wW-OE3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tET-wW-OE3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -79,7 +79,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.098039215690000001" green="0.50980392159999999" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.16862745098039217" green="0.51372549019607838" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="i82-55-r9e" firstAttribute="centerX" secondItem="oQm-fD-OpK" secondAttribute="centerX" id="1iT-Cr-utL"/>
                             <constraint firstItem="WDc-zJ-eKJ" firstAttribute="top" secondItem="ept-oj-Tjk" secondAttribute="bottom" constant="30" id="4Yi-g2-HyC"/>
@@ -173,10 +173,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGi-sp-Ifq">
-                                <rect key="frame" x="45" y="126" width="46" height="30"/>
-                                <state key="normal" title="Back"/>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kTu-9v-71G">
                                 <rect key="frame" x="120" y="255" width="374" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -198,7 +194,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.074509803920000006" green="0.58823529409999997" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.16862745100000001" green="0.51372549020000002" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="D92-0S-3II" firstAttribute="leading" secondItem="8GQ-su-48V" secondAttribute="leadingMargin" constant="10" id="1Af-Fs-cCm"/>
                             <constraint firstItem="cHg-Rk-HkE" firstAttribute="top" secondItem="kTu-9v-71G" secondAttribute="bottom" constant="15" id="5Av-Xn-jHR"/>
@@ -220,7 +216,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="uaa-5s-bJA" secondAttribute="trailing" constant="10" id="w1t-cc-smo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Bmt-4a-vbE"/>
+                    <navigationItem key="navigationItem" title="back" id="Bmt-4a-vbE">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="uxu-RW-8d2"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="EmailTF" destination="cHg-Rk-HkE" id="b8A-YD-qBd"/>
                         <outlet property="FirstNameTF" destination="uaa-5s-bJA" id="NUj-Th-D4Z"/>
@@ -307,14 +305,14 @@
                                                     <exclude reference="hlG-Hm-fzS"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="G2U-vm-KCw"/>
-                                                    <exclude reference="LI9-XJ-GBO"/>
                                                     <exclude reference="Cbo-Ay-ozB"/>
                                                     <exclude reference="nmi-MV-VpQ"/>
-                                                    <exclude reference="h8K-UU-XRW"/>
-                                                    <exclude reference="UKT-V6-hA1"/>
-                                                    <exclude reference="vXr-UJ-JI8"/>
+                                                    <exclude reference="G2U-vm-KCw"/>
+                                                    <exclude reference="LI9-XJ-GBO"/>
                                                     <exclude reference="Obs-5q-d95"/>
+                                                    <exclude reference="UKT-V6-hA1"/>
+                                                    <exclude reference="h8K-UU-XRW"/>
+                                                    <exclude reference="vXr-UJ-JI8"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -324,14 +322,14 @@
                                                     <include reference="hlG-Hm-fzS"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="G2U-vm-KCw"/>
-                                                    <include reference="LI9-XJ-GBO"/>
                                                     <include reference="Cbo-Ay-ozB"/>
                                                     <include reference="nmi-MV-VpQ"/>
-                                                    <include reference="h8K-UU-XRW"/>
-                                                    <exclude reference="UKT-V6-hA1"/>
-                                                    <include reference="vXr-UJ-JI8"/>
+                                                    <include reference="G2U-vm-KCw"/>
+                                                    <include reference="LI9-XJ-GBO"/>
                                                     <exclude reference="Obs-5q-d95"/>
+                                                    <exclude reference="UKT-V6-hA1"/>
+                                                    <include reference="h8K-UU-XRW"/>
+                                                    <include reference="vXr-UJ-JI8"/>
                                                 </mask>
                                             </variation>
                                         </view>
@@ -359,14 +357,14 @@
                                                     <state key="normal" image="favorite.png"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="AJ3-YZ-bx4"/>
                                                             <exclude reference="6i3-Yr-ewM"/>
+                                                            <exclude reference="AJ3-YZ-bx4"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
-                                                            <include reference="AJ3-YZ-bx4"/>
                                                             <include reference="6i3-Yr-ewM"/>
+                                                            <include reference="AJ3-YZ-bx4"/>
                                                         </mask>
                                                     </variation>
                                                 </button>
@@ -443,19 +441,19 @@
                                         <exclude reference="al3-AJ-nOy"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="af6-vM-sVT"/>
                                         <exclude reference="11o-Zc-uu8"/>
+                                        <exclude reference="af6-vM-sVT"/>
                                         <exclude reference="jPk-8Y-cnl"/>
-                                        <exclude reference="ATz-NC-tMb"/>
-                                        <exclude reference="FcI-j7-eQ1"/>
-                                        <exclude reference="Wwx-fV-ow0"/>
-                                        <exclude reference="CO8-Jh-cnp"/>
-                                        <exclude reference="Iw1-cd-Un8"/>
-                                        <exclude reference="ZuW-wd-hh6"/>
-                                        <exclude reference="I38-Jf-j5Z"/>
                                         <exclude reference="3sf-Xq-czl"/>
-                                        <exclude reference="ooG-Du-sMO"/>
+                                        <exclude reference="I38-Jf-j5Z"/>
                                         <exclude reference="hqE-t0-8ve"/>
+                                        <exclude reference="ooG-Du-sMO"/>
+                                        <exclude reference="ATz-NC-tMb"/>
+                                        <exclude reference="CO8-Jh-cnp"/>
+                                        <exclude reference="FcI-j7-eQ1"/>
+                                        <exclude reference="Iw1-cd-Un8"/>
+                                        <exclude reference="Wwx-fV-ow0"/>
+                                        <exclude reference="ZuW-wd-hh6"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -465,19 +463,19 @@
                                         <include reference="al3-AJ-nOy"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="af6-vM-sVT"/>
                                         <include reference="11o-Zc-uu8"/>
+                                        <include reference="af6-vM-sVT"/>
                                         <include reference="jPk-8Y-cnl"/>
-                                        <include reference="ATz-NC-tMb"/>
-                                        <include reference="FcI-j7-eQ1"/>
-                                        <include reference="Wwx-fV-ow0"/>
-                                        <include reference="CO8-Jh-cnp"/>
-                                        <exclude reference="Iw1-cd-Un8"/>
-                                        <include reference="ZuW-wd-hh6"/>
-                                        <include reference="I38-Jf-j5Z"/>
                                         <include reference="3sf-Xq-czl"/>
-                                        <include reference="ooG-Du-sMO"/>
+                                        <include reference="I38-Jf-j5Z"/>
                                         <include reference="hqE-t0-8ve"/>
+                                        <include reference="ooG-Du-sMO"/>
+                                        <include reference="ATz-NC-tMb"/>
+                                        <include reference="CO8-Jh-cnp"/>
+                                        <include reference="FcI-j7-eQ1"/>
+                                        <exclude reference="Iw1-cd-Un8"/>
+                                        <include reference="Wwx-fV-ow0"/>
+                                        <include reference="ZuW-wd-hh6"/>
                                     </mask>
                                 </variation>
                                 <connections>
