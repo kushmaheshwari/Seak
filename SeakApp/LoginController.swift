@@ -38,10 +38,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 		FBLoginButton.delegate = self
 		FBLoginButton.readPermissions = ["public_profile", "email", "user_friends"] // FBLogin button
-
-		self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
-
-		self.hideKeyboardWhenTappedAround()
+		
+        self.hideKeyboardWhenTappedAround()
 
 	}
 

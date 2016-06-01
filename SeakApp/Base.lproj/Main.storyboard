@@ -16,11 +16,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wVX-YD-DXR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oQm-fD-OpK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDc-zJ-eKJ">
-                                <rect key="frame" x="70" y="374" width="460" height="30"/>
+                                <rect key="frame" x="70" y="342" width="460" height="30"/>
                                 <color key="backgroundColor" red="0.043137254899999998" green="0.35686274509999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Log In">
@@ -32,20 +32,20 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="OR" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tWX-m2-5c9">
-                                <rect key="frame" x="290" y="412" width="20" height="14"/>
+                                <rect key="frame" x="290" y="380" width="20" height="14"/>
                                 <color key="textColor" red="0.99638384579999995" green="0.98038965460000005" blue="0.98008841280000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i82-55-r9e" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="70" y="434" width="460" height="30"/>
+                                <rect key="frame" x="70" y="402" width="460" height="30"/>
                                 <color key="backgroundColor" red="0.24198545969999999" green="0.31304295090000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="FBLogin:" destination="jmN-ql-6GA" eventType="valueChanged" id="ACp-V8-ct4"/>
                                 </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uWR-bQ-CQ9">
-                                <rect key="frame" x="70" y="271" width="460" height="58"/>
+                                <rect key="frame" x="70" y="239" width="460" height="58"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="seV-b1-kpZ">
                                         <rect key="frame" x="0.0" y="0.0" width="460" height="21"/>
@@ -60,7 +60,7 @@
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g5v-9M-ggQ">
-                                <rect key="frame" x="162" y="62" width="277" height="139"/>
+                                <rect key="frame" x="162" y="30" width="277" height="139"/>
                                 <color key="backgroundColor" red="0.96798621220000003" green="0.95697723059999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="277" id="K3r-Wh-18m"/>
@@ -68,7 +68,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOx-Cr-6No">
-                                <rect key="frame" x="190" y="550" width="220" height="30"/>
+                                <rect key="frame" x="190" y="486" width="220" height="30"/>
                                 <state key="normal" title="Dont have an account? Sign Up!">
                                     <color key="titleColor" red="0.99638384579999995" green="0.98038965460000005" blue="0.98008841280000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -116,9 +116,10 @@
             <objects>
                 <navigationController storyboardIdentifier="LoginNav" automaticallyAdjustsScrollViewInsets="NO" id="tET-wW-OE3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yXs-oZ-uXf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="yXs-oZ-uXf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.16862745100000001" green="0.51372549020000002" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -138,7 +139,7 @@
                         <viewControllerLayoutGuide type="bottom" id="LaV-rE-OoG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8GQ-su-48V">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="SEAK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYd-lM-0fC">
@@ -211,9 +212,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="uaa-5s-bJA" secondAttribute="trailing" constant="10" id="w1t-cc-smo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="back" id="Bmt-4a-vbE">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="uxu-RW-8d2"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Bmt-4a-vbE"/>
                     <connections>
                         <outlet property="EmailTF" destination="cHg-Rk-HkE" id="b8A-YD-qBd"/>
                         <outlet property="FirstNameTF" destination="uaa-5s-bJA" id="NUj-Th-D4Z"/>
