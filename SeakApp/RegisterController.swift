@@ -40,6 +40,7 @@ class RegisterController: UIViewController { // here
 
 		self.hideKeyboardWhenTappedAround()
 		self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 		// Do any additional setup after loading the view.
 	}
 
