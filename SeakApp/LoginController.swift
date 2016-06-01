@@ -38,9 +38,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 		FBLoginButton.delegate = self
 		FBLoginButton.readPermissions = ["public_profile", "email", "user_friends"] // FBLogin button
-
-		self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
-
 		self.hideKeyboardWhenTappedAround()
 
 	}
@@ -103,8 +100,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 			return
 		}
 
-		if let usertoken = result.token {
-			let token: FBSDKAccessToken = result.token
+		if result.token != nil {
 			let homeview = self.storyboard?.instantiateViewControllerWithIdentifier("HomeView")
 			let homeViewNav = UINavigationController (rootViewController: homeview!)
 			let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -154,7 +150,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 extension UIViewController {
 	func hideKeyboardWhenTappedAround() {
-		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
 		view.addGestureRecognizer(tap)
 	}
 
