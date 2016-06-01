@@ -1,0 +1,9 @@
+version: "Apple Swift version 2.2 (swiftlang-703.0.18.8 clang-703.0.31)"
+options: "5f6aa8b04fb52d456887dda111afa4c5"
+build_time: [518109154, 553985000]
+inputs:
+  "/Users/romanvolkov/Coding/Seak/SeakApp/HomegridViewController.swift": [518086979, 0]
+  "/Users/romanvolkov/Coding/Seak/SeakApp/RegisterController.swift": [518086979, 0]
+  "/Users/romanvolkov/Coding/Seak/SeakApp/GridViewCell.swift": [518086979, 0]
+  "/Users/romanvolkov/Coding/Seak/SeakApp/AppDelegate.swift": [518086979, 0]
+  "/Users/romanvolkov/Coding/Seak/SeakApp/LoginController.swift": [518086979, 0]
