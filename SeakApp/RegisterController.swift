@@ -16,7 +16,7 @@ class RegisterController: UIViewController {//here
     @IBOutlet var EmailTF: UITextField!
     @IBOutlet var PasswordTF: UITextField!
     
-    override func viewDidLoad() {
+    override func viewDidLoad() { //again spacing and textfields
         super.viewDidLoad()
         let imageView: UIView = UIView()
         imageView.frame = CGRectMake(20,0,7,26)
@@ -42,7 +42,7 @@ class RegisterController: UIViewController {//here
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewDidLayoutSubviews() {// this code deals with all the newly formatted text fields
         super.viewDidLayoutSubviews()
         
         let border = CALayer()
@@ -84,7 +84,7 @@ class RegisterController: UIViewController {//here
     }
     
     
-    @IBAction func RegisterBtnAction(sender: AnyObject) {
+    @IBAction func RegisterBtnAction(sender: AnyObject) {//signs up user with Parse
         SignUp()
     }
     

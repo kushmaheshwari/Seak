@@ -74,6 +74,9 @@
                                 <state key="normal" title="Dont have an account? Sign Up!">
                                     <color key="titleColor" red="0.99638384579999995" green="0.98038965460000005" blue="0.98008841280000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="ibU-0N-1R1" kind="show" id="IYX-ws-MxB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.098039215690000001" green="0.50980392159999999" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
@@ -134,7 +137,7 @@
         <!--Register-->
         <scene sceneID="SOm-yi-gJu">
             <objects>
-                <viewController storyboardIdentifier="Register" title="Register" id="ibU-0N-1R1" customClass="RegisterView" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Register" title="Register" id="ibU-0N-1R1" customClass="RegisterController" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W6W-7O-WJt"/>
                         <viewControllerLayoutGuide type="bottom" id="LaV-rE-OoG"/>

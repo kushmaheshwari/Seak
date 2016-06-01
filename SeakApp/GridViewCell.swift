@@ -9,7 +9,7 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
-    @IBOutlet var productImageView: UIImageView!
+    @IBOutlet var productImageView: UIImageView!//all of the cell attributed(you can take out the ones that arent used anymore)
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var usedLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -18,7 +18,7 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     
     
-    override func awakeFromNib() {
+    override func awakeFromNib() {//cell stuff, change to new front end
         super.awakeFromNib()
         //    self.itemNameLabel.text = "hello"
         self.layer.cornerRadius = 3.0
@@ -26,29 +26,11 @@ class CollectionViewCell: UICollectionViewCell {
         self.layer.borderWidth = 1.0
         self.productImageView.layer.borderWidth = 1.0
         self.productImageView.layer.borderColor = UIColor(red: 196/255.0, green: 203/255.0, blue: 220/255.0, alpha: 1).CGColor
-        favoriteButton.addTarget(self, action: "addToFavorites:", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        /*    let singleTap = UITapGestureRecognizer(target: self, action:"tapDetected:")
-         singleTap.numberOfTapsRequired = 1
-         sellerImageView.userInteractionEnabled = true
-         sellerImageView.addGestureRecognizer(singleTap)*/
         
         
-        
-        /*   let image = UIImage(named: "favorite.png")
-         favoriteButton.setImage(image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: .Normal)
-         favoriteButton.tintColor = UIColor.blackColor()*/
     }
     
-    func addToFavorites(sender:UIButton!)
-    {
-        print("Button Clicked")
-        sender.setImage(UIImage(named: "heart2.png"), forState: UIControlState.Normal)
-    }
-    /*  func tapDetected(){
-     let Storyboard = UIStoryboard(name: "Main",bundle: nil)
-     let MainVC : UIViewController = Storyboard.instantiateViewControllerWithIdentifier("Profile")
-     self.performSegueWithIdentifier("someID", sender: nil)
-     }*/
+    
+    
 }
 

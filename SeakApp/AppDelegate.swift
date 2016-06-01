@@ -19,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        UINavigationBar.appearance().barTintColor = UIColor(red: 20, green: 230, blue: 17, alpha: 1)
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSKernAttributeName: 0.9]
+//        UINavigationBar.appearance().barTintColor = UIColor(red: 20, green: 230, blue: 17, alpha: 1)// possibly needed for header in HomeView. I dont know
+//        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSKernAttributeName: 0.9]
         Parse.setApplicationId("8tHn7AQGhVswN2FeRewJZcXY0YjIK3Ly7IaEvvZx", clientKey: "o7SW3QAsw3IVXKd5UdGBn7bNRyOILskA6NwGRhQy")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)

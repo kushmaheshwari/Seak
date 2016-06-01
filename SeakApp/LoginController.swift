@@ -16,11 +16,10 @@ import QuartzCore
 class ViewController: UIViewController, FBSDKLoginButtonDelegate{
     
     
-    @IBOutlet weak var Titlelbl: UILabel!
-    @IBOutlet var UsernameTF: UITextField!
-    @IBOutlet var PasswordTF: UITextField!
-    @IBOutlet weak var loginBtn: UIButton!
-    @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet var UsernameTF: UITextField!// Email
+    @IBOutlet var PasswordTF: UITextField!//Password
+    @IBOutlet weak var loginBtn: UIButton!//Normal login
+    @IBOutlet weak var registerBtn: UIButton!//FB Login
     
     
     @IBOutlet weak var FBLoginButton: FBSDKLoginButton!
@@ -28,14 +27,14 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         let imageView: UIView = UIView()
-        imageView.frame = CGRectMake(100,20,7,26)
+        imageView.frame = CGRectMake(100,20,7,26)// adds spacing on text  field
         UsernameTF.leftView = imageView
         UsernameTF.leftViewMode = UITextFieldViewMode.Always
         
         
         
         let imageView2: UIView = UIView()
-        imageView2.frame = CGRectMake(20,0,7,26)
+        imageView2.frame = CGRectMake(20,0,7,26)// adds spacing on text  field
         PasswordTF.leftView = imageView2
         PasswordTF.leftViewMode = UITextFieldViewMode.Always
         
@@ -69,7 +68,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate{
         UsernameTF.layer.addSublayer(border)
         UsernameTF.layer.masksToBounds = true
         UsernameTF.attributedPlaceholder = NSAttributedString(string:"Email",attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        UsernameTF.textColor = UIColor.whiteColor()
+        UsernameTF.textColor = UIColor.whiteColor() //these 2 blocks of code change textfield to format I want in design
         
         
         let Pborder = CALayer()
@@ -87,7 +86,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate{
         self.navigationController?.navigationBarHidden = true
         
         
-        if(FBSDKAccessToken.currentAccessToken() != nil || PFUser.currentUser() != nil){
+        if(FBSDKAccessToken.currentAccessToken() != nil || PFUser.currentUser() != nil){// this code is for if user is already signed in and can bypass this screen
             if(FBSDKAccessToken.currentAccessToken() != nil){
                 let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken()
                 PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken, block: {(user: PFUser?, error: NSError?) -> Void in
@@ -140,7 +139,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate{
         LogIn()
     }
     
-    func LogIn(){
+    func LogIn(){// logs in normally without facebook login
         let user = PFUser()
         user.username=UsernameTF.text
         user.password=PasswordTF.text
