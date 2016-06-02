@@ -70,16 +70,17 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 		if (FBSDKAccessToken.currentAccessToken() != nil || PFUser.currentUser() != nil) { // this code is for if user is already signed in and can bypass this screen
 			if (FBSDKAccessToken.currentAccessToken() != nil) {
 				let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken()
-				PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken, block: { (user: PFUser?, error: NSError?) -> Void in
-					if user != nil {
-						print("User logged in through Facebook!")
-					} else {
-						print("Uh oh. There was an error logging in.")
-					}
 
+				PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken,
+					block: { (user: PFUser?, error: NSError?) -> Void in
+						if user != nil {
+							print("User logged in through Facebook!")
+						} else {
+							print("Uh oh. There was an error logging in.")
+						}
 				})
-
 			}
+
 			let homeview = self.storyboard?.instantiateViewControllerWithIdentifier("HomeView")
 			let homeViewNav = UINavigationController (rootViewController: homeview!)
 			let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

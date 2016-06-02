@@ -40,7 +40,7 @@ class RegisterController: UIViewController { // here
 
 		self.hideKeyboardWhenTappedAround()
 		self.navigationController?.navigationBarHidden = false
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+		self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 		// Do any additional setup after loading the view.
 	}
 
@@ -104,9 +104,7 @@ class RegisterController: UIViewController { // here
 				let MainVC: UIViewController = Storyboard.instantiateViewControllerWithIdentifier("Login")
 				self.presentViewController(MainVC, animated: true, completion: nil)
 			} else {
-
 				print(error?.userInfo["error"]!)
-
 			}
 		}
 
