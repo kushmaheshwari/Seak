@@ -94,19 +94,20 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 		FBLoginButton.delegate = nil
 	}
 
-	internal func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-		print("Here1")
-		if (error != nil) {
-			print(error.localizedDescription)
-			return
-		}
+	internal func loginButton(loginButton: FBSDKLoginButton!,
+		didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+			print("Here1")
+			if (error != nil) {
+				print(error.localizedDescription)
+				return
+			}
 
-		if result.token != nil {
-			let homeview = self.storyboard?.instantiateViewControllerWithIdentifier("HomeView")
-			let homeViewNav = UINavigationController (rootViewController: homeview!)
-			let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-			appDelegate.window?.rootViewController = homeViewNav
-		}
+			if result.token != nil {
+				let homeview = self.storyboard?.instantiateViewControllerWithIdentifier("HomeView")
+				let homeViewNav = UINavigationController (rootViewController: homeview!)
+				let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+				appDelegate.window?.rootViewController = homeViewNav
+			}
 	}
 
 	internal func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {

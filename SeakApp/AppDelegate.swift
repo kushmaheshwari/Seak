@@ -26,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
 		PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
 		FBSDKButton.classForCoder()
-		return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+		return FBSDKApplicationDelegate.sharedInstance()
+			.application(application, didFinishLaunchingWithOptions: launchOptions)
 
 	}
 
