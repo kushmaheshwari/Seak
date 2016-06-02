@@ -1,4 +1,5 @@
 # Xcode
+SeakApp.xcodeproj/project.xcworkspace/xcuserdata/*
 .DS_Store
 .Trashes
 build/
@@ -16,3 +17,4 @@ DerivedData
 Pods/
 *.xcuserstate
 Build/*
+*.xcuserdatad

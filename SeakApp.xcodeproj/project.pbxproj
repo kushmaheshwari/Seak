@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E9346291D00282100CF4DC6 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9346281D00282100CF4DC6 /* ItemEntity.swift */; };
+		5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */; };
+		5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93462F1D002C2F00CF4DC6 /* Enums.swift */; };
 		C9B9EFCF1CFBDDEA002EA9BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9EFCE1CFBDDEA002EA9BA /* AppDelegate.swift */; };
 		C9B9EFD41CFBDDEA002EA9BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9EFD21CFBDDEA002EA9BA /* Main.storyboard */; };
 		C9B9EFD61CFBDDEA002EA9BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B9EFD51CFBDDEA002EA9BA /* Assets.xcassets */; };
@@ -56,6 +59,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E9346281D00282100CF4DC6 /* ItemEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
+		5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
+		5E93462F1D002C2F00CF4DC6 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C9B9EFCB1CFBDDEA002EA9BA /* SeakApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeakApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B9EFCE1CFBDDEA002EA9BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9B9EFD31CFBDDEA002EA9BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -158,6 +164,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E9346271D00280E00CF4DC6 /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				5E9346281D00282100CF4DC6 /* ItemEntity.swift */,
+				5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */,
+			);
+			name = DataLayer;
+			sourceTree = "<group>";
+		};
+		5E93462C1D002A5100CF4DC6 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				5E93462F1D002C2F00CF4DC6 /* Enums.swift */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
 		C9B9EFC21CFBDDE9002EA9BA = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +200,8 @@
 		C9B9EFCD1CFBDDEA002EA9BA /* SeakApp */ = {
 			isa = PBXGroup;
 			children = (
+				5E93462C1D002A5100CF4DC6 /* Enums */,
+				5E9346271D00280E00CF4DC6 /* DataLayer */,
 				C9B9F03B1CFBEFD2002EA9BA /* Fonts */,
 				C9B9F0261CFBEF7F002EA9BA /* Images */,
 				C9B9EFE11CFBE375002EA9BA /* Frameworks */,
@@ -353,10 +378,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9B9F0231CFBE75A002EA9BA /* HomegridViewController.swift in Sources */,
+				5E9346291D00282100CF4DC6 /* ItemEntity.swift in Sources */,
 				C9B9F01F1CFBE5E8002EA9BA /* RegisterController.swift in Sources */,
 				C9B9F0251CFBE793002EA9BA /* GridViewCell.swift in Sources */,
 				C9B9EFCF1CFBDDEA002EA9BA /* AppDelegate.swift in Sources */,
 				C9B9F01D1CFBE58C002EA9BA /* LoginController.swift in Sources */,
+				5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */,
+				5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */,
 				C9B9F0001CFBE406002EA9BA /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
