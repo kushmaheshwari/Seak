@@ -16,4 +16,5 @@ class ItemEntity {
 	var price: Double?
 	var status: String? = "Brand new"
 	var picture: PFFile?
+	var description: String?
 }

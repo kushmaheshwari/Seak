@@ -114,6 +114,8 @@ class HomeViewController: UICollectionViewController {
 		if let price = item.price {
 			cell.priceLabel.text = String(format: "%.1f", price)
 		}
+		cell.productImageView.file = item.picture
+		cell.productImageView.loadInBackground()
 
 		return cell
 	}
