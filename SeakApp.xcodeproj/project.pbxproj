@@ -46,7 +46,6 @@
 		C9B9F01F1CFBE5E8002EA9BA /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F01E1CFBE5E8002EA9BA /* RegisterController.swift */; };
 		C9B9F0231CFBE75A002EA9BA /* HomegridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F0221CFBE75A002EA9BA /* HomegridViewController.swift */; };
 		C9B9F0251CFBE793002EA9BA /* GridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F0241CFBE793002EA9BA /* GridViewCell.swift */; };
-		C9B9F0311CFBEFA7002EA9BA /* seaklogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0271CFBEFA7002EA9BA /* seaklogo.png */; };
 		C9B9F0321CFBEFA7002EA9BA /* hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0281CFBEFA7002EA9BA /* hamburger@2x.png */; };
 		C9B9F0331CFBEFA7002EA9BA /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0291CFBEFA7002EA9BA /* favorite.png */; };
 		C9B9F0341CFBEFA7002EA9BA /* heart2.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F02A1CFBEFA7002EA9BA /* heart2.png */; };
@@ -102,7 +101,6 @@
 		C9B9F01E1CFBE5E8002EA9BA /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		C9B9F0221CFBE75A002EA9BA /* HomegridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomegridViewController.swift; sourceTree = "<group>"; };
 		C9B9F0241CFBE793002EA9BA /* GridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
-		C9B9F0271CFBEFA7002EA9BA /* seaklogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seaklogo.png; sourceTree = "<group>"; };
 		C9B9F0281CFBEFA7002EA9BA /* hamburger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburger@2x.png"; sourceTree = "<group>"; };
 		C9B9F0291CFBEFA7002EA9BA /* favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite.png; sourceTree = "<group>"; };
 		C9B9F02A1CFBEFA7002EA9BA /* heart2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart2.png; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 		C9B9F0261CFBEF7F002EA9BA /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				C9B9F0271CFBEFA7002EA9BA /* seaklogo.png */,
 				C9B9F0281CFBEFA7002EA9BA /* hamburger@2x.png */,
 				C9B9F0291CFBEFA7002EA9BA /* favorite.png */,
 				C9B9F02A1CFBEFA7002EA9BA /* heart2.png */,
@@ -359,7 +356,6 @@
 				C9B9F0381CFBEFA7002EA9BA /* Image.png in Resources */,
 				C9B9F0361CFBEFA7002EA9BA /* heart.png in Resources */,
 				C9B9EFD91CFBDDEA002EA9BA /* LaunchScreen.storyboard in Resources */,
-				C9B9F0311CFBEFA7002EA9BA /* seaklogo.png in Resources */,
 				C9B9F0391CFBEFA7002EA9BA /* product.png in Resources */,
 				C9B9F0341CFBEFA7002EA9BA /* heart2.png in Resources */,
 				C9B9F0331CFBEFA7002EA9BA /* favorite.png in Resources */,
