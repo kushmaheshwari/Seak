@@ -67,7 +67,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 		super.viewWillAppear(animated)
 		self.navigationController?.navigationBarHidden = true
 
-		if (FBSDKAccessToken.currentAccessToken() != nil || PFUser.currentUser() != nil) { // this code is for if user is already signed in and can bypass this screen
+		if (FBSDKAccessToken.currentAccessToken() != nil || PFUser.currentUser() != nil) {
+			// this code is for if user is already signed in and can bypass this screen
 			if (FBSDKAccessToken.currentAccessToken() != nil) {
 				let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken()
 
@@ -75,16 +76,15 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 					block: { (user: PFUser?, error: NSError?) -> Void in
 						if user != nil {
 							print("User logged in through Facebook!")
+							let homeview = self.storyboard?.instantiateViewControllerWithIdentifier("HomeView")
+							let homeViewNav = UINavigationController (rootViewController: homeview!)
+							let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+							appDelegate.window?.rootViewController = homeViewNav
 						} else {
 							print("Uh oh. There was an error logging in.")
 						}
 				})
 			}
-
-			let homeview = self.storyboard?.instantiateViewControllerWithIdentifier("HomeView")
-			let homeViewNav = UINavigationController (rootViewController: homeview!)
-			let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-			appDelegate.window?.rootViewController = homeViewNav
 
 		}
 	}
@@ -119,28 +119,9 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 	}
 
 	func LogIn() { // logs in normally without facebook login
-		let user = PFUser()
-		user.username = UsernameTF.text
-		user.password = PasswordTF.text
-
-		PFUser.logInWithUsernameInBackground(UsernameTF.text!, password: PasswordTF.text!, block: {
-			(User: PFUser?, Error: NSError?) -> Void in
-
-			if Error == nil {
-				dispatch_async(dispatch_get_main_queue()) {
-					// chnage intent: youtube.com/watch?v=XIJLIywoSoA
-
-					let Storyboard = UIStoryboard(name: "Main", bundle: nil)
-					let MainVC: UIViewController = Storyboard.instantiateViewControllerWithIdentifier("navigation")
-					self.presentViewController(MainVC, animated: true, completion: nil)
-
-				}
-			} else {
-				// problem
-			}
-
-		})
-
+		if let username = UsernameTF.text, password = PasswordTF.text {
+			UserLogin.logIn(username, password: password, view: self)
+		}
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -148,16 +129,5 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 		// Dispose of any resources that can be recreated.
 	}
 
-}
-
-extension UIViewController {
-	func hideKeyboardWhenTappedAround() {
-		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-		view.addGestureRecognizer(tap)
-	}
-
-	func dismissKeyboard() {
-		view.endEditing(true)
-	}
 }
 

@@ -41,8 +41,6 @@ class HomeViewController: UICollectionViewController {
 		self.refreshControl.attributedTitle = NSAttributedString(string: "")
 		self.refreshControl.addTarget(self, action: #selector(HomeViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 		self.collectionVieww.addSubview(refreshControl)
-
-		// Do any additional setup after loading the view.
 	}
 
 	override func viewWillAppear(animated: Bool) {

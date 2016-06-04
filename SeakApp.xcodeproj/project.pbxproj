@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */; };
+		5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A451D02CE3200BCD0B6 /* Extensions.swift */; };
 		5E9346291D00282100CF4DC6 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9346281D00282100CF4DC6 /* ItemEntity.swift */; };
 		5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */; };
 		5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93462F1D002C2F00CF4DC6 /* Enums.swift */; };
@@ -58,6 +60,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
+		5E507A451D02CE3200BCD0B6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5E9346281D00282100CF4DC6 /* ItemEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
 		5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		5E93462F1D002C2F00CF4DC6 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -162,6 +166,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E507A421D02CC7000BCD0B6 /* ViewConvtrollers */ = {
+			isa = PBXGroup;
+			children = (
+				C9B9F01C1CFBE58C002EA9BA /* LoginController.swift */,
+				C9B9F01E1CFBE5E8002EA9BA /* RegisterController.swift */,
+				C9B9F0221CFBE75A002EA9BA /* HomegridViewController.swift */,
+				C9B9F0241CFBE793002EA9BA /* GridViewCell.swift */,
+			);
+			name = ViewConvtrollers;
+			sourceTree = "<group>";
+		};
 		5E9346271D00280E00CF4DC6 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,20 +213,19 @@
 		C9B9EFCD1CFBDDEA002EA9BA /* SeakApp */ = {
 			isa = PBXGroup;
 			children = (
+				5E507A421D02CC7000BCD0B6 /* ViewConvtrollers */,
 				5E93462C1D002A5100CF4DC6 /* Enums */,
 				5E9346271D00280E00CF4DC6 /* DataLayer */,
 				C9B9F03B1CFBEFD2002EA9BA /* Fonts */,
 				C9B9F0261CFBEF7F002EA9BA /* Images */,
 				C9B9EFE11CFBE375002EA9BA /* Frameworks */,
 				C9B9EFCE1CFBDDEA002EA9BA /* AppDelegate.swift */,
-				C9B9F01C1CFBE58C002EA9BA /* LoginController.swift */,
-				C9B9F01E1CFBE5E8002EA9BA /* RegisterController.swift */,
-				C9B9F0221CFBE75A002EA9BA /* HomegridViewController.swift */,
-				C9B9F0241CFBE793002EA9BA /* GridViewCell.swift */,
 				C9B9EFD21CFBDDEA002EA9BA /* Main.storyboard */,
 				C9B9EFD51CFBDDEA002EA9BA /* Assets.xcassets */,
 				C9B9EFD71CFBDDEA002EA9BA /* LaunchScreen.storyboard */,
 				C9B9EFDA1CFBDDEA002EA9BA /* Info.plist */,
+				5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */,
+				5E507A451D02CE3200BCD0B6 /* Extensions.swift */,
 			);
 			path = SeakApp;
 			sourceTree = "<group>";
@@ -323,7 +337,7 @@
 				TargetAttributes = {
 					C9B9EFCA1CFBDDEA002EA9BA = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = A56L2334RX;
+						DevelopmentTeam = 978L98WATL;
 					};
 				};
 			};
@@ -379,8 +393,10 @@
 				C9B9F0251CFBE793002EA9BA /* GridViewCell.swift in Sources */,
 				C9B9EFCF1CFBDDEA002EA9BA /* AppDelegate.swift in Sources */,
 				C9B9F01D1CFBE58C002EA9BA /* LoginController.swift in Sources */,
+				5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */,
 				5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */,
 				5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */,
+				5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */,
 				C9B9F0001CFBE406002EA9BA /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,6 +511,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -507,6 +525,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kushmaheshwari.SeakApp.xxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SeakApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -518,6 +537,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -530,6 +551,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kushmaheshwari.SeakApp.xxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SeakApp-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

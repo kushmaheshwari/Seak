@@ -86,26 +86,9 @@ class RegisterController: UIViewController { // here
 	}
 
 	@IBAction func RegisterBtnAction(sender: AnyObject) { // signs up user with Parse
-		SignUp()
-	}
-
-	func SignUp() {
-		let user = PFUser()
-		user.username = EmailTF.text
-		user.email = EmailTF.text
-		user.password = PasswordTF.text
-
-		user["firstName"] = FirstNameTF.text
-		user["lastName"] = LastNameTF.text
-
-		user.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-			if error == nil {
-				let Storyboard = UIStoryboard(name: "Main", bundle: nil)
-				let MainVC: UIViewController = Storyboard.instantiateViewControllerWithIdentifier("Login")
-				self.presentViewController(MainVC, animated: true, completion: nil)
-			} else {
-				print(error?.userInfo["error"]!)
-			}
+		if let username = EmailTF.text, password = PasswordTF.text,
+			firstname = FirstNameTF.text, lastname = LastNameTF.text {
+				UserLogin.signUp(username, email: username, password: password, firsname: firstname, lastname: lastname, view: self)
 		}
 
 	}
