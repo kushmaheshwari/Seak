@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */; };
 		5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A451D02CE3200BCD0B6 /* Extensions.swift */; };
+		5E507A481D02DB7400BCD0B6 /* ScrollableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */; };
 		5E9346291D00282100CF4DC6 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9346281D00282100CF4DC6 /* ItemEntity.swift */; };
 		5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */; };
 		5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93462F1D002C2F00CF4DC6 /* Enums.swift */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		5E507A451D02CE3200BCD0B6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableMenu.swift; sourceTree = "<group>"; };
 		5E9346281D00282100CF4DC6 /* ItemEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
 		5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		5E93462F1D002C2F00CF4DC6 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				C9B9EFDA1CFBDDEA002EA9BA /* Info.plist */,
 				5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */,
 				5E507A451D02CE3200BCD0B6 /* Extensions.swift */,
+				5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */,
 			);
 			path = SeakApp;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				C9B9EFCF1CFBDDEA002EA9BA /* AppDelegate.swift in Sources */,
 				C9B9F01D1CFBE58C002EA9BA /* LoginController.swift in Sources */,
 				5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */,
+				5E507A481D02DB7400BCD0B6 /* ScrollableMenu.swift in Sources */,
 				5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */,
 				5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */,
 				5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */,

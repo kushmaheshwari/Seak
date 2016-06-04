@@ -75,11 +75,9 @@ class HomeViewController: UICollectionViewController {
 		print("Left button tapped!")
 
 		if (PFUser.currentUser() != nil) {
-
 			PFUser.logOut()
 		} else {
-			let LoginManager = FBSDKLoginManager()
-			LoginManager.logOut()
+			FBSDKLoginManager().logOut()
 		}
 
 		let loginview = self.storyboard?.instantiateViewControllerWithIdentifier("Login")
