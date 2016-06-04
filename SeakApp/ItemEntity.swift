@@ -17,4 +17,6 @@ class ItemEntity {
 	var status: String? = "Brand new"
 	var picture: PFFile?
 	var description: String?
+	var store: String?
+
 }

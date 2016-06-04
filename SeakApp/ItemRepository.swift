@@ -19,6 +19,7 @@ class ItemRepository {
 	func processItems(data: [PFObject]?) -> [ItemEntity]? {
 		if let data = data as [PFObject]! {
 			let result = Array(data.generate()).map() { (iter) -> ItemEntity in
+
 				let item = ItemEntity()
 				if let name = iter["name"] {
 					item.name = name as? String
@@ -33,6 +34,9 @@ class ItemRepository {
 				if let picture = iter.objectForKey("picture") {
 					item.picture = picture as? PFFile
 
+				}
+				if let store = iter.objectForKey("Store") {
+					item.store = store as? String
 				}
 				item.description = iter.description
 
