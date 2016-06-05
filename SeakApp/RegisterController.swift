@@ -15,7 +15,19 @@ class RegisterController: UIViewController { // here
 	@IBOutlet var LastNameTF: UITextField!
 	@IBOutlet var EmailTF: UITextField!
 	@IBOutlet var PasswordTF: UITextField!
+    @IBOutlet weak var termsOfUseBtn: UIButton!
+    @IBOutlet weak var ppBtn: UIButton!
 
+    var attrs = [
+        NSFontAttributeName : UIFont.systemFontOfSize(8.0),
+        NSForegroundColorAttributeName : UIColor.whiteColor(),
+        NSUnderlineStyleAttributeName : 1
+        
+    ]
+    
+    var termsOfUseAttrString = NSMutableAttributedString(string:"")
+    var ppAttrString = NSMutableAttributedString(string:"")
+    
 	override func viewDidLoad() { // again spacing and textfields
 		super.viewDidLoad()
 		let imageView: UIView = UIView()
@@ -43,13 +55,21 @@ class RegisterController: UIViewController { // here
 		self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 		self.navigationController?.navigationBar.shadowImage = UIImage()
 		// Do any additional setup after loading the view.
+        
+        let termsOfUseTitleStr = NSMutableAttributedString(string: "TERMS OF USE", attributes: attrs)
+        termsOfUseAttrString.appendAttributedString(termsOfUseTitleStr)
+        termsOfUseBtn.setAttributedTitle(termsOfUseAttrString, forState: .Normal)
+        
+        let ppTitleString = NSMutableAttributedString(string: "PRIVACY POLICY", attributes: attrs)
+        ppAttrString.appendAttributedString(ppTitleString)
+        ppBtn.setAttributedTitle(ppTitleString, forState: .Normal)
 	}
 
 	override func viewDidLayoutSubviews() { // this code deals with all the newly formatted text fields
 		super.viewDidLayoutSubviews()
 
 		let border = CALayer()
-		let width = CGFloat(2.0)
+		let width = CGFloat(1.0)
 		border.borderWidth = width
 		border.borderColor = UIColor.whiteColor().CGColor
 		border.frame = CGRect(x: 0, y: FirstNameTF.frame.size.height - width, width: FirstNameTF.frame.size.width, height: FirstNameTF.frame.size.height)

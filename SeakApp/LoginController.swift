@@ -22,6 +22,15 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 	@IBOutlet weak var FBLoginButton: FBSDKLoginButton!
 
+    var attrs = [
+        NSFontAttributeName : UIFont.boldSystemFontOfSize(13.0),
+        NSForegroundColorAttributeName : UIColor.whiteColor(),
+        NSUnderlineStyleAttributeName : 1
+        
+    ]
+    
+    var attributedString = NSMutableAttributedString(string:"")
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		let imageView: UIView = UIView()
@@ -38,7 +47,11 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 		FBLoginButton.delegate = self
 		FBLoginButton.readPermissions = ["public_profile", "email", "user_friends"] // FBLogin button
-
+        
+        let buttonTitleStr = NSMutableAttributedString(string:"Sign Up!", attributes:attrs)
+        attributedString.appendAttributedString(buttonTitleStr)
+        registerBtn.setAttributedTitle(attributedString, forState: .Normal)
+            
 		self.hideKeyboardWhenTappedAround()
 	}
 
