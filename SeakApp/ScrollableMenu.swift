@@ -25,6 +25,11 @@ class ScrollableMenu: UIScrollView {
 			self.addSubview(button)
 			buttonX = buttonX + button.frame.size.width
 			button.addTarget(self, action: #selector(itemClick(_:)), forControlEvents: .TouchUpInside)
+
+			let label = UILabel()
+			label.text = "|"
+			self.addSubview(label)
+			buttonX = buttonX + label.frame.size.width
 		}
 	}
 

@@ -17,7 +17,6 @@
 		C9B9EFD41CFBDDEA002EA9BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9EFD21CFBDDEA002EA9BA /* Main.storyboard */; };
 		C9B9EFD61CFBDDEA002EA9BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B9EFD51CFBDDEA002EA9BA /* Assets.xcassets */; };
 		C9B9EFD91CFBDDEA002EA9BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9EFD71CFBDDEA002EA9BA /* LaunchScreen.storyboard */; };
-		C9B9F0001CFBE406002EA9BA /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B9EFE41CFBE406002EA9BA /* SWRevealViewController.m */; };
 		C9B9F0011CFBE406002EA9BA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFE51CFBE406002EA9BA /* MapKit.framework */; };
 		C9B9F0021CFBE406002EA9BA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFE61CFBE406002EA9BA /* Bolts.framework */; };
 		C9B9F0031CFBE406002EA9BA /* FacebookSDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9B9EFE71CFBE406002EA9BA /* FacebookSDKStrings.bundle */; };
@@ -74,8 +73,6 @@
 		C9B9EFD81CFBDDEA002EA9BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9B9EFDA1CFBDDEA002EA9BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9B9EFE21CFBE405002EA9BA /* SeakApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SeakApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		C9B9EFE31CFBE406002EA9BA /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		C9B9EFE41CFBE406002EA9BA /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		C9B9EFE51CFBE406002EA9BA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapKit.framework; sourceTree = "<group>"; };
 		C9B9EFE61CFBE406002EA9BA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		C9B9EFE71CFBE406002EA9BA /* FacebookSDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKStrings.bundle; sourceTree = "<group>"; };
@@ -236,8 +233,6 @@
 		C9B9EFE11CFBE375002EA9BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C9B9EFE31CFBE406002EA9BA /* SWRevealViewController.h */,
-				C9B9EFE41CFBE406002EA9BA /* SWRevealViewController.m */,
 				C9B9EFE51CFBE406002EA9BA /* MapKit.framework */,
 				C9B9EFE61CFBE406002EA9BA /* Bolts.framework */,
 				C9B9EFE71CFBE406002EA9BA /* FacebookSDKStrings.bundle */,
@@ -401,7 +396,6 @@
 				5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */,
 				5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */,
 				5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */,
-				C9B9F0001CFBE406002EA9BA /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,7 @@ enum StoryboardNames: String {
 }
 
 enum MenuItems: String {
-	case Latest = "Latest"
+	case Home = "Home"
 	case Clothes = "Clothes"
 	case Electronics = "Electronics"
 	case Textbooks = "Textbooks"
@@ -27,6 +27,6 @@ enum MenuItems: String {
 	case Appliances = "Appliances"
 	case Miscellaneous = "Miscellaneous"
 
-	static let values = [Latest, Clothes, Electronics,
+	static let values = [Home, Clothes, Electronics,
 		Textbooks, Accessories, Appliances, Miscellaneous]
 }
