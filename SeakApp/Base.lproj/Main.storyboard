@@ -314,7 +314,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="HomeView" id="Eub-5k-Yne" customClass="HomeViewController" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="chM-Bh-Rei">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.83529411760000005" green="0.84313725490000002" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="R4o-WW-s1T">
@@ -325,7 +325,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyCell" id="PK4-Sl-dcO" customClass="CollectionViewCell" customModule="SeakApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="168" height="228"/>
+                                <rect key="frame" x="0.0" y="0.0" width="168" height="228"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="168" height="228"/>
@@ -841,9 +841,15 @@
             <objects>
                 <navigationController storyboardIdentifier="navigation" automaticallyAdjustsScrollViewInsets="NO" id="XyU-Dv-nSM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vg7-Et-Xz6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="vg7-Et-Xz6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.13725490196078433" green="0.43137254901960786" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.13725490200000001" green="0.43137254899999999" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

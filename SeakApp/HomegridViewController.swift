@@ -32,10 +32,10 @@ class HomeViewController: UICollectionViewController {
 		navigationItem.rightBarButtonItem = rightBarButton
 		rightBarButton.action = #selector(HomeViewController.addItem(_:)) // adds search icon
 
-		let leftBarButton = UIBarButtonItem(image: UIImage(named: "hamburger"), style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
+		let leftBarButton = UIBarButtonItem(image: UIImage(named: "menuIcon"), style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
 		self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 		navigationItem.leftBarButtonItem = leftBarButton// adds sidebar-menu icon
-
+		self.navigationItem.hidesBackButton = true
 		loadCollectionViewData()
 
 		self.refreshControl = UIRefreshControl() // adds refreshing
