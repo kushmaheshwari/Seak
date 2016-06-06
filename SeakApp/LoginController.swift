@@ -33,6 +33,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		self.view.hidden = true
 		let imageView: UIView = UIView()
 		imageView.frame = CGRectMake(100, 20, 7, 26) // adds spacing on text  field
 		UsernameTF.leftView = imageView
@@ -94,6 +95,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 							appDelegate.window?.rootViewController = startView
 						} else {
 							print("Uh oh. There was an error logging in.")
+							self.view.hidden = false
 						}
 				})
 			}
