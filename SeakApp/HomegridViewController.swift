@@ -32,7 +32,8 @@ class HomeViewController: UICollectionViewController {
 		navigationItem.rightBarButtonItem = rightBarButton
 		rightBarButton.action = #selector(HomeViewController.addItem(_:)) // adds search icon
 
-		let leftBarButton = UIBarButtonItem(image: UIImage(named: "hamburger"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HomeViewController.leftButtonTap))
+		let leftBarButton = UIBarButtonItem(image: UIImage(named: "hamburger"), style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
+		self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 		navigationItem.leftBarButtonItem = leftBarButton// adds sidebar-menu icon
 
 		loadCollectionViewData()
@@ -41,6 +42,7 @@ class HomeViewController: UICollectionViewController {
 		self.refreshControl.attributedTitle = NSAttributedString(string: "")
 		self.refreshControl.addTarget(self, action: #selector(HomeViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 		self.collectionVieww.addSubview(refreshControl)
+
 	}
 
 	override func viewWillAppear(animated: Bool) {
