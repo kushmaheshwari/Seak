@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E07CB651D053F2600F38D0B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB641D053F2600F38D0B /* SWRevealViewController.m */; };
+		5E07CB671D05481200F38D0B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB661D05481200F38D0B /* MenuViewController.swift */; };
 		5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */; };
 		5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A451D02CE3200BCD0B6 /* Extensions.swift */; };
 		5E507A481D02DB7400BCD0B6 /* ScrollableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */; };
@@ -60,6 +62,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E07CB631D053F2600F38D0B /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		5E07CB641D053F2600F38D0B /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		5E07CB661D05481200F38D0B /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		5E507A451D02CE3200BCD0B6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableMenu.swift; sourceTree = "<group>"; };
@@ -172,6 +177,7 @@
 				C9B9F01E1CFBE5E8002EA9BA /* RegisterController.swift */,
 				C9B9F0221CFBE75A002EA9BA /* HomegridViewController.swift */,
 				C9B9F0241CFBE793002EA9BA /* GridViewCell.swift */,
+				5E07CB661D05481200F38D0B /* MenuViewController.swift */,
 			);
 			name = ViewConvtrollers;
 			sourceTree = "<group>";
@@ -233,6 +239,8 @@
 		C9B9EFE11CFBE375002EA9BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E07CB631D053F2600F38D0B /* SWRevealViewController.h */,
+				5E07CB641D053F2600F38D0B /* SWRevealViewController.m */,
 				C9B9EFE51CFBE406002EA9BA /* MapKit.framework */,
 				C9B9EFE61CFBE406002EA9BA /* Bolts.framework */,
 				C9B9EFE71CFBE406002EA9BA /* FacebookSDKStrings.bundle */,
@@ -392,10 +400,12 @@
 				C9B9EFCF1CFBDDEA002EA9BA /* AppDelegate.swift in Sources */,
 				C9B9F01D1CFBE58C002EA9BA /* LoginController.swift in Sources */,
 				5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */,
+				5E07CB671D05481200F38D0B /* MenuViewController.swift in Sources */,
 				5E507A481D02DB7400BCD0B6 /* ScrollableMenu.swift in Sources */,
 				5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */,
 				5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */,
 				5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */,
+				5E07CB651D053F2600F38D0B /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
