@@ -22,7 +22,10 @@ class MenuViewController: UITableViewController {
 		logoImage.layer.borderColor = UIColor.colorWithHexString("1677a6").CGColor
 		nameLabel.text = "JOHN YOON"
 
-		// self.tableView.separatorColor
+//		self.tableView.contentInset = UIEdgeInsetsMake(0, -100, 0, 0)
+//		self.tableView.setNeedsLayout()
+//		self.view.layoutSubviews()
+
 	}
 
 	override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -48,5 +51,8 @@ class MenuViewController: UITableViewController {
 			cell.bringSubviewToFront(line)
 
 		}
+		let bgView = UIView()
+		bgView.backgroundColor = UIColor.clearColor()
+		cell.selectedBackgroundView = bgView
 	}
 }

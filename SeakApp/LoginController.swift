@@ -22,15 +22,15 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 	@IBOutlet weak var FBLoginButton: FBSDKLoginButton!
 
-    var attrs = [
-        NSFontAttributeName : UIFont.boldSystemFontOfSize(13.0),
-        NSForegroundColorAttributeName : UIColor.whiteColor(),
-        NSUnderlineStyleAttributeName : 1
-        
-    ]
-    
-    var attributedString = NSMutableAttributedString(string:"")
-    
+	var attrs = [
+		NSFontAttributeName: UIFont.boldSystemFontOfSize(13.0),
+		NSForegroundColorAttributeName: UIColor.whiteColor(),
+		NSUnderlineStyleAttributeName: 1
+
+	]
+
+	var attributedString = NSMutableAttributedString(string: "")
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		let imageView: UIView = UIView()
@@ -47,11 +47,11 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 		FBLoginButton.delegate = self
 		FBLoginButton.readPermissions = ["public_profile", "email", "user_friends"] // FBLogin button
-        
-        let buttonTitleStr = NSMutableAttributedString(string:"Sign Up!", attributes:attrs)
-        attributedString.appendAttributedString(buttonTitleStr)
-        registerBtn.setAttributedTitle(attributedString, forState: .Normal)
-            
+
+		let buttonTitleStr = NSMutableAttributedString(string: "Sign Up!", attributes: attrs)
+		attributedString.appendAttributedString(buttonTitleStr)
+		registerBtn.setAttributedTitle(attributedString, forState: .Normal)
+
 		self.hideKeyboardWhenTappedAround()
 	}
 
@@ -89,10 +89,9 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 					block: { (user: PFUser?, error: NSError?) -> Void in
 						if user != nil {
 							print("User logged in through Facebook!")
-							let homeview = self.storyboard?.instantiateViewControllerWithIdentifier("HomeView")
-							let homeViewNav = UINavigationController (rootViewController: homeview!)
+							let startView = self.storyboard?.instantiateViewControllerWithIdentifier("StartPointView")
 							let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-							appDelegate.window?.rootViewController = homeViewNav
+							appDelegate.window?.rootViewController = startView
 						} else {
 							print("Uh oh. There was an error logging in.")
 						}

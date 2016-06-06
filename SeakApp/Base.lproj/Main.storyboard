@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1sO-Ye-hIa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tET-wW-OE3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -152,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fkq-Cl-M1f" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1859" y="538"/>
+            <point key="canvasLocation" x="-137" y="1050"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dUw-bK-cA5">
@@ -171,7 +171,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bkX-1F-bAk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1175" y="529"/>
+            <point key="canvasLocation" x="-941" y="1059"/>
         </scene>
         <!--Register-->
         <scene sceneID="SOm-yi-gJu">
@@ -307,7 +307,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6BC-PV-9cT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2660" y="529"/>
+            <point key="canvasLocation" x="664" y="1041"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="F8C-01-0bZ">
@@ -581,12 +581,12 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Rn-VH-UPA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2761" y="-290"/>
+            <point key="canvasLocation" x="1681" y="-470"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="dU4-W0-n63">
             <objects>
-                <viewController id="1sO-Ye-hIa" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartPointView" id="1sO-Ye-hIa" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nKW-wt-aYi"/>
                         <viewControllerLayoutGuide type="bottom" id="ijG-nt-jGb"/>
@@ -603,13 +603,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cnc-Ir-twZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-475" y="-458"/>
+            <point key="canvasLocation" x="-1151" y="-498"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="Z7O-HU-GgH">
             <objects>
                 <tableViewController id="L0h-o4-48G" customClass="MenuViewController" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UZX-2u-QLs">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UZX-2u-QLs">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.023529411760000001" green="0.20784313730000001" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -770,6 +770,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.023529411760000001" green="0.20784313730000001" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.32549019610000002" green="0.68235294120000001" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="XyU-Dv-nSM" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="c3D-J7-Pcj"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1an-xr-vaW">
                                         <rect key="frame" x="0.0" y="412" width="600" height="44"/>
@@ -823,6 +826,7 @@
                             <outlet property="delegate" destination="L0h-o4-48G" id="xei-gm-oJh"/>
                         </connections>
                     </tableView>
+                    <value key="contentSizeForViewInPopover" type="size" width="260" height="600"/>
                     <connections>
                         <outlet property="logoImage" destination="jCM-DZ-vCW" id="Mph-Ss-nM8"/>
                         <outlet property="nameLabel" destination="eJE-cO-oFd" id="Iqb-sE-eIy"/>
@@ -830,7 +834,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rwz-94-fkp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="490" y="-909"/>
+            <point key="canvasLocation" x="-178" y="291"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7Mh-8R-yyV">
@@ -848,7 +852,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Mr-6W-oOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1795" y="-290"/>
+            <point key="canvasLocation" x="787" y="-470"/>
         </scene>
     </scenes>
     <resources>
@@ -858,4 +862,7 @@
         <image name="logo2" width="397" height="212"/>
         <image name="product.png" width="213" height="213"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="c3D-J7-Pcj"/>
+    </inferredMetricsTieBreakers>
 </document>

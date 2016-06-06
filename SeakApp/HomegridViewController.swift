@@ -43,6 +43,8 @@ class HomeViewController: UICollectionViewController {
 		self.refreshControl.addTarget(self, action: #selector(HomeViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 		self.collectionVieww.addSubview(refreshControl)
 
+		print(self.revealViewController().rearViewRevealWidth)
+
 	}
 
 	override func viewWillAppear(animated: Bool) {
