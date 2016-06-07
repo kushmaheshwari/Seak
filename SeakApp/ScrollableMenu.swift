@@ -20,7 +20,7 @@ class ScrollableMenu: ACTabScrollView {
 		self.contentSectionBackgroundColor = UIColor.colorWithHexString("126c94")
 		self.tabGradient = true
 		self.pagingEnabled = true
-		self.cachedPageLimit = 3
-		self.defaultPage = 1
+		self.cachedPageLimit = 7
+		self.defaultPage = 0
 	}
 }

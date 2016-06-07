@@ -18,7 +18,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 	var searchBarActive: Bool = false
 	var searchBarBoundsY: CGFloat?
 
-	var views: [ItemsCollectionView] = []
+	var views: [UIViewController] = []
 	var menuLabels: [UILabel] = []
 
 	var attrs = [
@@ -49,21 +49,16 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 //		self.collectionView.addSubview(refreshControl)
 
 		for item in MenuItems.values {
-			let v = ItemsCollectionView()
-			let index = MenuItems.values.indexOf(item)
-			switch Int(index!) {
-			case 0:
-				v.backgroundColor = UIColor.redColor()
-			case 1:
-				v.backgroundColor = UIColor.blueColor()
-			case 2:
-				v.backgroundColor = UIColor.grayColor()
-			case 3:
-				v.backgroundColor = UIColor.orangeColor()
-			default:
-				v.backgroundColor = UIColor.blackColor()
+			if item != .Home {
+				if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("itemsCollectionViewID") as? ItemsCollectionViewController {
+					vc.setCategory(item)
+					addChildViewController(vc)
+					views.append(vc)
+				}
 			}
-			views.append(v)
+			else {
+				views.append(UIViewController())
+			}
 		}
 
 	}
@@ -136,7 +131,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 	}
 
 	func tabScrollView(tabScrollView: ACTabScrollView, contentViewForPageAtIndex index: Int) -> UIView {
-		return views[index]
+		return views[index].view
 	}
 
 }

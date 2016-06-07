@@ -63,6 +63,23 @@ class ItemRepository {
 		}
 	}
 
+	func getAllFromCategory(type: MenuItems, completion: ItemRepositoryComplectionBlock) {
+		let query = PFQuery(className: ParseClassNames.Item.rawValue)
+			.whereKey("category", containsString: type.rawValue)
+		query.cachePolicy = .CacheThenNetwork
+		query.maxCacheAge = cacheAge
+
+		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+			if error != nil {
+				print("Error: \(error!) \(error!.userInfo)")
+			} else {
+				if let items = self.processItems(objects) {
+					completion(items: items)
+				}
+			}
+		}
+	}
+
 	func search(value: String, completion: ItemRepositoryComplectionBlock) {
 		let query = PFQuery(className: ParseClassNames.Item.rawValue)
 			.whereKey("name", containsString: value)

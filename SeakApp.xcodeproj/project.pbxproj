@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5E07CB671D05481200F38D0B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB661D05481200F38D0B /* MenuViewController.swift */; };
-		5E07CB6A1D05A05A00F38D0B /* ItemsCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E07CB691D05A05A00F38D0B /* ItemsCollectionView.xib */; };
 		5E07CB6E1D05A10000F38D0B /* ItemsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB6D1D05A10000F38D0B /* ItemsCollectionView.swift */; };
 		5E07CB701D05D5DF00F38D0B /* ItemCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E07CB6F1D05D5DF00F38D0B /* ItemCellView.xib */; };
 		5E07CB721D05D69800F38D0B /* ItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB711D05D69800F38D0B /* ItemCellView.swift */; };
@@ -70,7 +69,6 @@
 
 /* Begin PBXFileReference section */
 		5E07CB661D05481200F38D0B /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		5E07CB691D05A05A00F38D0B /* ItemsCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemsCollectionView.xib; sourceTree = "<group>"; };
 		5E07CB6D1D05A10000F38D0B /* ItemsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsCollectionView.swift; sourceTree = "<group>"; };
 		5E07CB6F1D05D5DF00F38D0B /* ItemCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCellView.xib; sourceTree = "<group>"; };
 		5E07CB711D05D69800F38D0B /* ItemCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCellView.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 			children = (
 				C9B9EFD21CFBDDEA002EA9BA /* Main.storyboard */,
 				C9B9EFD71CFBDDEA002EA9BA /* LaunchScreen.storyboard */,
-				5E07CB691D05A05A00F38D0B /* ItemsCollectionView.xib */,
 				5E07CB6D1D05A10000F38D0B /* ItemsCollectionView.swift */,
 				5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */,
 				5E07CB6F1D05D5DF00F38D0B /* ItemCellView.xib */,
@@ -401,7 +398,6 @@
 				5E07CB701D05D5DF00F38D0B /* ItemCellView.xib in Resources */,
 				C9B9F0371CFBEFA7002EA9BA /* search@2x.png in Resources */,
 				C9B9F0321CFBEFA7002EA9BA /* hamburger@2x.png in Resources */,
-				5E07CB6A1D05A05A00F38D0B /* ItemsCollectionView.xib in Resources */,
 				C9B9F0381CFBEFA7002EA9BA /* Image.png in Resources */,
 				C9B9F0361CFBEFA7002EA9BA /* heart.png in Resources */,
 				C9B9EFD91CFBDDEA002EA9BA /* LaunchScreen.storyboard in Resources */,

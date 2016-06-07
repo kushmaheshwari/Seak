@@ -10,5 +10,5 @@ import Foundation
 import UIKit
 
 class ItemCellView: UICollectionViewCell {
-
+	static var nibLoaded = false
 }

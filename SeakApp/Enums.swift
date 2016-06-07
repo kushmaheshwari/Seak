@@ -19,6 +19,7 @@ enum StoryboardNames: String {
 }
 
 enum MenuItems: String {
+	case None = ""
 	case Home = "Home"
 	case Clothes = "Clothes"
 	case Electronics = "Electronics"

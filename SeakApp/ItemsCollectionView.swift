@@ -9,41 +9,44 @@
 import Foundation
 import UIKit
 
-class ItemsCollectionView: UIView,
-UICollectionViewDelegate, UICollectionViewDataSource {
+class ItemsCollectionViewController: UICollectionViewController {
 
 	private let reuseIdentifier = "ItemCellIdentifier"
 	private let repository = ItemRepository()
+	private var category: MenuItems = .None
 
 	var items = [ItemEntity]()
 	var searchItems = [ItemEntity]()
 
-	@IBOutlet weak var collectionView: UICollectionView!
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
-	override func awakeFromNib() {
-		super.awakeFromNib()
+		let nib = UINib(nibName: "ItemCellView", bundle: nil)
 
-		self.collectionView.delegate = self
-		self.collectionView.dataSource = self
+		collectionView?.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
 
 		loadCollectionViewData()
 	}
 
 	func loadCollectionViewData() { // loading cells with data
 
-		repository.getAll() { (data) -> Void in
+		repository.getAllFromCategory(category) { (data) -> Void in
 			self.items = data
 			print("Successfully retrieved \(data.count) scores.")
-			self.collectionView.reloadData()
+			self.collectionView?.reloadData()
 		}
 	}
 
+	func setCategory(type: MenuItems) {
+		self.category = type
+	}
+
 	// MARK: UICollectionViewDataSource
-	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+	override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 		return 1
 	}
 
-	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //		if self.searchBarActive {
 //			return searchItems.count
 //		}
@@ -53,17 +56,22 @@ UICollectionViewDelegate, UICollectionViewDataSource {
 
 	}
 
-	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCell
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ItemCellView
 
 		let item = items[indexPath.row]
-		cell.itemNameLabel.text = item.name
-		if let price = item.price {
-			cell.priceLabel.text = String(format: "%.1f", price)
-		}
-		cell.productImageView.file = item.picture
-		cell.productImageView.loadInBackground()
+		let label = UILabel()
+		label.text = item.objectID
+		cell.addSubview(label)
+		cell.bringSubviewToFront(label)
+		label.sizeToFit()
+//		cell.itemNameLabel.text = item.name
+//		if let price = item.price {
+//			cell.priceLabel.text = String(format: "%.1f", price)
+//		}
+//		cell.productImageView.file = item.picture
+//		cell.productImageView.loadInBackground()
 
 		return cell
 	}
