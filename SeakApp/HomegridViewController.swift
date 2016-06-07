@@ -10,19 +10,12 @@ import UIKit
 import Parse
 import FBSDKLoginKit
 
-private let reuseIdentifier = "MyCell"
-
-class HomeViewController: UICollectionViewController {
-
-	private let repository = ItemRepository()
-
-	var items = [ItemEntity]()
-	var searchItems = [ItemEntity]()
+class HomeViewController: UIViewController
+{
 	var refreshControl: UIRefreshControl!
 	var searchBar: UISearchBar?
 	var searchBarActive: Bool = false
 	var searchBarBoundsY: CGFloat?
-	@IBOutlet var collectionVieww: UICollectionView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -32,19 +25,20 @@ class HomeViewController: UICollectionViewController {
 		navigationItem.rightBarButtonItem = rightBarButton
 		rightBarButton.action = #selector(HomeViewController.addItem(_:)) // adds search icon
 
-		let leftBarButton = UIBarButtonItem(image: UIImage(named: "menuIcon"), style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
-		self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+		let leftBarButton = UIBarButtonItem(image: UIImage(named: "menuIcon"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HomeViewController.openMenu))
+
 		navigationItem.leftBarButtonItem = leftBarButton// adds sidebar-menu icon
 		self.navigationItem.hidesBackButton = true
-		loadCollectionViewData()
 
 		self.refreshControl = UIRefreshControl() // adds refreshing
 		self.refreshControl.attributedTitle = NSAttributedString(string: "")
 		self.refreshControl.addTarget(self, action: #selector(HomeViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-		self.collectionVieww.addSubview(refreshControl)
+//		self.collectionView.addSubview(refreshControl)
 
-		print(self.revealViewController().rearViewRevealWidth)
+	}
 
+	func openMenu() {
+		self.slideMenuController()?.openLeft()
 	}
 
 	override func viewWillAppear(animated: Bool) {
@@ -57,22 +51,13 @@ class HomeViewController: UICollectionViewController {
 	}
 
 	func refresh(sender: AnyObject) {
-		loadCollectionViewData()
+		// loadCollectionViewData()
 		self.refreshControl.endRefreshing()
 	}
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
-	}
-
-	func loadCollectionViewData() { // loading cells with data
-
-		repository.getAll() { (data) -> Void in
-			self.items = data
-			print("Successfully retrieved \(data.count) scores.")
-			self.collectionVieww.reloadData()
-		}
 	}
 
 	func leftButtonTap() { // right now the left menu side bar is actually a button for logout. when you make sidebar can u just make one of the tabs in there to do this
@@ -91,51 +76,4 @@ class HomeViewController: UICollectionViewController {
 
 	}
 
-	// MARK: UICollectionViewDataSource
-	override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-		return 1
-	}
-
-	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		if self.searchBarActive {
-			return searchItems.count
-		}
-		else {
-			return items.count
-		}
-
-	}
-
-	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCell
-
-		let item = items[indexPath.row]
-		cell.itemNameLabel.text = item.name
-		if let price = item.price {
-			cell.priceLabel.text = String(format: "%.1f", price)
-		}
-		cell.productImageView.file = item.picture
-		cell.productImageView.loadInBackground()
-
-		return cell
-	}
-
-}
-
-extension HomeViewController: UICollectionViewDelegateFlowLayout { // Grid View
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-		return CGSizeMake(collectionView.frame.size.width / 2 - 16, 228)
-	}
-
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-		return 8
-	}
-
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-		return 8
-	}
-
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-		return UIEdgeInsetsMake(8, 8, 4, 8)
-	}
 }
