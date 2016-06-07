@@ -43,6 +43,15 @@ class MenuViewController: UITableViewController {
 		return 0
 	}
 
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		// settings TODO change
+		if indexPath.row == 1 {
+			if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("navigationID") {
+				self.slideMenuController()?.changeMainViewController(controller, close: true)
+			}
+		}
+	}
+
 	override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
 		if (indexPath.row > 0 && indexPath.row != self.tableView.numberOfRowsInSection(0) - 1) {
 			let line = UIView(frame: CGRectMake(0, cell.bounds.size.height - 1.5, cell.bounds.size.width, 1.5))
@@ -54,5 +63,6 @@ class MenuViewController: UITableViewController {
 		let bgView = UIView()
 		bgView.backgroundColor = UIColor.clearColor()
 		cell.selectedBackgroundView = bgView
+		cell.selectionStyle = .None
 	}
 }

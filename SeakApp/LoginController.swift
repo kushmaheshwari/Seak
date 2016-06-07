@@ -33,7 +33,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.view.hidden = true
 		let imageView: UIView = UIView()
 		imageView.frame = CGRectMake(100, 20, 7, 26) // adds spacing on text  field
 		UsernameTF.leftView = imageView
@@ -54,6 +53,26 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 		registerBtn.setAttributedTitle(attributedString, forState: .Normal)
 
 		self.hideKeyboardWhenTappedAround()
+
+		if (FBSDKAccessToken.currentAccessToken() != nil || PFUser.currentUser() != nil) {
+			// this code is for if user is already signed in and can bypass this screen
+			if (FBSDKAccessToken.currentAccessToken() != nil) {
+				let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken()
+
+				PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken,
+					block: { (user: PFUser?, error: NSError?) -> Void in
+						if user != nil {
+							print("User logged in through Facebook!")
+							let startView = self.storyboard?.instantiateViewControllerWithIdentifier("StartPointView")
+							let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+							appDelegate.window?.rootViewController = startView
+						} else {
+							print("Uh oh. There was an error logging in.")
+						}
+				})
+			}
+
+		}
 	}
 
 	override func viewDidLayoutSubviews() {
@@ -80,27 +99,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		self.navigationController?.navigationBarHidden = true
-
-		if (FBSDKAccessToken.currentAccessToken() != nil || PFUser.currentUser() != nil) {
-			// this code is for if user is already signed in and can bypass this screen
-			if (FBSDKAccessToken.currentAccessToken() != nil) {
-				let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken()
-
-				PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken,
-					block: { (user: PFUser?, error: NSError?) -> Void in
-						if user != nil {
-							print("User logged in through Facebook!")
-							let startView = self.storyboard?.instantiateViewControllerWithIdentifier("StartPointView")
-							let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-							appDelegate.window?.rootViewController = startView
-						} else {
-							print("Uh oh. There was an error logging in.")
-							self.view.hidden = false
-						}
-				})
-			}
-
-		}
 	}
 
 	override func viewWillDisappear(animated: Bool) {
