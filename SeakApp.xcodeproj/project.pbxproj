@@ -14,6 +14,8 @@
 		5E07CB721D05D69800F38D0B /* ItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB711D05D69800F38D0B /* ItemCellView.swift */; };
 		5E07CB741D05D78F00F38D0B /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB731D05D78F00F38D0B /* SlideMenuController.swift */; };
 		5E07CB761D05D7CD00F38D0B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB751D05D7CD00F38D0B /* ContainerViewController.swift */; };
+		5E07CB791D06C1A500F38D0B /* ACTabScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB771D06C1A500F38D0B /* ACTabScrollView.swift */; };
+		5E07CB7A1D06C1A500F38D0B /* ACTabScrollView+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB781D06C1A500F38D0B /* ACTabScrollView+Protocol.swift */; };
 		5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */; };
 		5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A451D02CE3200BCD0B6 /* Extensions.swift */; };
 		5E507A481D02DB7400BCD0B6 /* ScrollableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */; };
@@ -74,6 +76,8 @@
 		5E07CB711D05D69800F38D0B /* ItemCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCellView.swift; sourceTree = "<group>"; };
 		5E07CB731D05D78F00F38D0B /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		5E07CB751D05D7CD00F38D0B /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		5E07CB771D06C1A500F38D0B /* ACTabScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACTabScrollView.swift; sourceTree = "<group>"; };
+		5E07CB781D06C1A500F38D0B /* ACTabScrollView+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ACTabScrollView+Protocol.swift"; sourceTree = "<group>"; };
 		5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		5E507A451D02CE3200BCD0B6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableMenu.swift; sourceTree = "<group>"; };
@@ -261,6 +265,8 @@
 		C9B9EFE11CFBE375002EA9BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E07CB771D06C1A500F38D0B /* ACTabScrollView.swift */,
+				5E07CB781D06C1A500F38D0B /* ACTabScrollView+Protocol.swift */,
 				5E07CB731D05D78F00F38D0B /* SlideMenuController.swift */,
 				C9B9EFE51CFBE406002EA9BA /* MapKit.framework */,
 				C9B9EFE61CFBE406002EA9BA /* Bolts.framework */,
@@ -427,9 +433,11 @@
 				5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */,
 				5E07CB671D05481200F38D0B /* MenuViewController.swift in Sources */,
 				5E507A481D02DB7400BCD0B6 /* ScrollableMenu.swift in Sources */,
+				5E07CB7A1D06C1A500F38D0B /* ACTabScrollView+Protocol.swift in Sources */,
 				5E07CB761D05D7CD00F38D0B /* ContainerViewController.swift in Sources */,
 				5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */,
 				5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */,
+				5E07CB791D06C1A500F38D0B /* ACTabScrollView.swift in Sources */,
 				5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */,
 				5E07CB741D05D78F00F38D0B /* SlideMenuController.swift in Sources */,
 			);
