@@ -75,6 +75,8 @@ class ItemsCollectionViewController: UICollectionViewController {
 
 		if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? ItemCellView {
 
+			cell.backgroundColor = (indexPath.row % 4 == 0 || indexPath.row % 4 == 3) ? UIColor.lightGrayColor() : UIColor.whiteColor()
+
 			let item = items[indexPath.row]
 
 //		cell.itemNameLabel.text = item.name
@@ -87,6 +89,29 @@ class ItemsCollectionViewController: UICollectionViewController {
 			return cell
 		}
 		return UICollectionViewCell()
+	}
+
+}
+
+extension ItemsCollectionViewController: UICollectionViewDelegateFlowLayout {
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+		let screenSize = self.view.bounds
+		return CGSize(width: screenSize.width / 2, height: screenSize.width / 2)
+	}
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+		return UIEdgeInsetsZero
+	}
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+		return CGFloat(0)
+	}
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+		return CGFloat(0)
+	}
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+		return CGSizeZero
+	}
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+		return CGSizeZero
 	}
 
 }
