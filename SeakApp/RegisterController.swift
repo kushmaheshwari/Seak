@@ -15,21 +15,24 @@ class RegisterController: UIViewController { // here
 	@IBOutlet var LastNameTF: UITextField!
 	@IBOutlet var EmailTF: UITextField!
 	@IBOutlet var PasswordTF: UITextField!
-    @IBOutlet weak var termsOfUseBtn: UIButton!
-    @IBOutlet weak var ppBtn: UIButton!
+	@IBOutlet weak var termsOfUseBtn: UIButton!
+	@IBOutlet weak var ppBtn: UIButton!
 
-    var attrs = [
-        NSFontAttributeName : UIFont.systemFontOfSize(8.0),
-        NSForegroundColorAttributeName : UIColor.whiteColor(),
-        NSUnderlineStyleAttributeName : 1
-        
-    ]
-    
-    var termsOfUseAttrString = NSMutableAttributedString(string:"")
-    var ppAttrString = NSMutableAttributedString(string:"")
-    
+	var attrs = [
+		NSFontAttributeName: UIFont.systemFontOfSize(8.0),
+		NSForegroundColorAttributeName: UIColor.whiteColor(),
+		NSUnderlineStyleAttributeName: 1
+
+	]
+
+	var termsOfUseAttrString = NSMutableAttributedString(string: "")
+	var ppAttrString = NSMutableAttributedString(string: "")
+
 	override func viewDidLoad() { // again spacing and textfields
 		super.viewDidLoad()
+
+		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+
 		let imageView: UIView = UIView()
 		imageView.frame = CGRectMake(20, 0, 7, 26)
 		FirstNameTF.leftView = imageView
@@ -55,14 +58,14 @@ class RegisterController: UIViewController { // here
 		self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 		self.navigationController?.navigationBar.shadowImage = UIImage()
 		// Do any additional setup after loading the view.
-        
-        let termsOfUseTitleStr = NSMutableAttributedString(string: "TERMS OF USE", attributes: attrs)
-        termsOfUseAttrString.appendAttributedString(termsOfUseTitleStr)
-        termsOfUseBtn.setAttributedTitle(termsOfUseAttrString, forState: .Normal)
-        
-        let ppTitleString = NSMutableAttributedString(string: "PRIVACY POLICY", attributes: attrs)
-        ppAttrString.appendAttributedString(ppTitleString)
-        ppBtn.setAttributedTitle(ppTitleString, forState: .Normal)
+
+		let termsOfUseTitleStr = NSMutableAttributedString(string: "TERMS OF USE", attributes: attrs)
+		termsOfUseAttrString.appendAttributedString(termsOfUseTitleStr)
+		termsOfUseBtn.setAttributedTitle(termsOfUseAttrString, forState: .Normal)
+
+		let ppTitleString = NSMutableAttributedString(string: "PRIVACY POLICY", attributes: attrs)
+		ppAttrString.appendAttributedString(ppTitleString)
+		ppBtn.setAttributedTitle(ppTitleString, forState: .Normal)
 	}
 
 	override func viewDidLayoutSubviews() { // this code deals with all the newly formatted text fields
