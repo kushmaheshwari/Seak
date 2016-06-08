@@ -13,17 +13,13 @@ import FBSDKLoginKit
 class HomeViewController: UIViewController,
 ACTabScrollViewDelegate, ACTabScrollViewDataSource
 {
-	var refreshControl: UIRefreshControl!
+
 	var searchBar: UISearchBar?
 	var searchBarActive: Bool = false
 	var searchBarBoundsY: CGFloat?
 
 	var views: [UIViewController] = []
 	var menuLabels: [UILabel] = []
-
-	var attrs = [
-
-	]
 
 	@IBOutlet weak var scrollingMenu: ACTabScrollView!
 
@@ -42,11 +38,6 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 
 		navigationItem.leftBarButtonItem = leftBarButton// adds sidebar-menu icon
 		self.navigationItem.hidesBackButton = true
-
-		self.refreshControl = UIRefreshControl() // adds refreshing
-		self.refreshControl.attributedTitle = NSAttributedString(string: "")
-		self.refreshControl.addTarget(self, action: #selector(HomeViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-//		self.collectionView.addSubview(refreshControl)
 
 		for item in MenuItems.values {
 			if item != .Home {
@@ -74,11 +65,6 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 	func addItem(sender: UIButton!)
 	{
 		print("search icon pressed")
-	}
-
-	func refresh(sender: AnyObject) {
-		// loadCollectionViewData()
-		self.refreshControl.endRefreshing()
 	}
 
 	func leftButtonTap() { // right now the left menu side bar is actually a button for logout. when you make sidebar can u just make one of the tabs in there to do this

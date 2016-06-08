@@ -18,21 +18,36 @@ class ItemsCollectionViewController: UICollectionViewController {
 	var items = [ItemEntity]()
 	var searchItems = [ItemEntity]()
 
+	var refreshControl: UIRefreshControl!
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		let nib = UINib(nibName: "ItemCellView", bundle: nil)
+		self.collectionView?.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
 
-		collectionView?.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
+		self.collectionView?.alwaysBounceVertical = true
+
+		self.refreshControl = UIRefreshControl() // adds refreshing
+		self.refreshControl.attributedTitle = NSAttributedString(string: "")
+		self.refreshControl.addTarget(self, action: #selector(ItemsCollectionViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+		self.collectionView?.addSubview(refreshControl)
 
 		loadCollectionViewData()
 	}
 
-	func loadCollectionViewData() { // loading cells with data
+	func refresh(sender: AnyObject) {
+		loadCollectionViewData()
+		self.refreshControl.endRefreshing()
+	}
 
+	func loadCollectionViewData() { // loading cells with data
+		self.items.removeAll()
+		self.collectionView?.reloadData()
 		repository.getAllFromCategory(category) { (data) -> Void in
 			self.items = data
 			print("Successfully retrieved \(data.count) scores.")
+			self.refreshControl.endRefreshing()
 			self.collectionView?.reloadData()
 		}
 	}
@@ -58,14 +73,10 @@ class ItemsCollectionViewController: UICollectionViewController {
 
 	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ItemCellView
+		if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? ItemCellView {
 
-		let item = items[indexPath.row]
-		let label = UILabel()
-		label.text = item.objectID
-		cell.addSubview(label)
-		cell.bringSubviewToFront(label)
-		label.sizeToFit()
+			let item = items[indexPath.row]
+
 //		cell.itemNameLabel.text = item.name
 //		if let price = item.price {
 //			cell.priceLabel.text = String(format: "%.1f", price)
@@ -73,7 +84,9 @@ class ItemsCollectionViewController: UICollectionViewController {
 //		cell.productImageView.file = item.picture
 //		cell.productImageView.loadInBackground()
 
-		return cell
+			return cell
+		}
+		return UICollectionViewCell()
 	}
 
 }
