@@ -23,6 +23,8 @@ class ItemsCollectionViewController: UICollectionViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		self.collectionView?.backgroundColor = UIColor.whiteColor()
+
 		let nib = UINib(nibName: "ItemCellView", bundle: nil)
 		self.collectionView?.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
 
@@ -75,17 +77,24 @@ class ItemsCollectionViewController: UICollectionViewController {
 
 		if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? ItemCellView {
 
-			cell.backgroundColor = (indexPath.row % 4 == 0 || indexPath.row % 4 == 3) ? UIColor.lightGrayColor() : UIColor.whiteColor()
+			let backColor = (indexPath.row % 4 == 0 || indexPath.row % 4 == 3) ? UIColor.lightGrayColor() : UIColor.whiteColor()
+			cell.backgroundColor = backColor
+			cell.pictureImage?.layer.backgroundColor = backColor.CGColor
 
 			let item = items[indexPath.row]
+			cell.nameLabel.text = item.name
 
-//		cell.itemNameLabel.text = item.name
-//		if let price = item.price {
-//			cell.priceLabel.text = String(format: "%.1f", price)
-//		}
-//		cell.productImageView.file = item.picture
-//		cell.productImageView.loadInBackground()
+			if let price = item.price {
+				cell.priceLabel.text = String(format: "%.1f$", price)
+			}
 
+			cell.pictureImage.file = item.picture
+			cell.pictureImage.loadInBackground({ (img, error) in
+				cell.pictureImage.image = img
+				cell.pictureImage.setNeedsDisplay()
+			})
+			cell.layoutSubviews()
+			cell.sizeToFit()
 			return cell
 		}
 		return UICollectionViewCell()
@@ -96,7 +105,7 @@ class ItemsCollectionViewController: UICollectionViewController {
 extension ItemsCollectionViewController: UICollectionViewDelegateFlowLayout {
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 		let screenSize = self.view.bounds
-		return CGSize(width: screenSize.width / 2, height: screenSize.width / 2)
+		return CGSize(width: screenSize.width / 2, height: screenSize.width / 2 / 0.8)
 	}
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
 		return UIEdgeInsetsZero

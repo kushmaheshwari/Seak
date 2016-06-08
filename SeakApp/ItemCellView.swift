@@ -8,7 +8,18 @@
 
 import Foundation
 import UIKit
+import ParseUI
 
 class ItemCellView: UICollectionViewCell {
-	static var nibLoaded = false
+	@IBOutlet weak var likeImage: UIImageView!
+	@IBOutlet weak var pictureImage: PFImageView!
+	@IBOutlet weak var nameLabel: UILabel!
+	@IBOutlet weak var priceLabel: UILabel!
+
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		self.pictureImage?.layer.borderColor = UIColor.colorWithHexString("1982b1").CGColor
+		self.pictureImage?.layer.borderWidth = 2
+	}
+
 }
