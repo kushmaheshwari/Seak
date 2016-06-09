@@ -33,6 +33,9 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+
 		let imageView: UIView = UIView()
 		imageView.frame = CGRectMake(100, 20, 7, 26) // adds spacing on text  field
 		UsernameTF.leftView = imageView
@@ -98,7 +101,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		self.navigationController?.navigationBarHidden = true
+//		self.navigationController?.navigationBarHidden = true
 	}
 
 	override func viewWillDisappear(animated: Bool) {

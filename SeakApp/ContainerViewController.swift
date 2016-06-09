@@ -17,6 +17,8 @@ class ContainerViewController: SlideMenuController {
 		if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("LeftMenuID") {
 			self.leftViewController = controller
 		}
+		SlideMenuOptions.leftViewWidth = UIScreen.mainScreen().bounds.width / 2
+		SlideMenuOptions.contentViewScale = 1
 		super.awakeFromNib()
 	}
 }

@@ -13,17 +13,13 @@ import FBSDKLoginKit
 class HomeViewController: UIViewController,
 ACTabScrollViewDelegate, ACTabScrollViewDataSource
 {
-	var refreshControl: UIRefreshControl!
+
 	var searchBar: UISearchBar?
 	var searchBarActive: Bool = false
 	var searchBarBoundsY: CGFloat?
 
 	var views: [UIViewController] = []
 	var menuLabels: [UILabel] = []
-
-	var attrs = [
-
-	]
 
 	@IBOutlet weak var scrollingMenu: ACTabScrollView!
 
@@ -42,11 +38,6 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 
 		navigationItem.leftBarButtonItem = leftBarButton// adds sidebar-menu icon
 		self.navigationItem.hidesBackButton = true
-
-		self.refreshControl = UIRefreshControl() // adds refreshing
-		self.refreshControl.attributedTitle = NSAttributedString(string: "")
-		self.refreshControl.addTarget(self, action: #selector(HomeViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-//		self.collectionView.addSubview(refreshControl)
 
 		for item in MenuItems.values {
 			if item != .Home {
@@ -76,11 +67,6 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 		print("search icon pressed")
 	}
 
-	func refresh(sender: AnyObject) {
-		// loadCollectionViewData()
-		self.refreshControl.endRefreshing()
-	}
-
 	func leftButtonTap() { // right now the left menu side bar is actually a button for logout. when you make sidebar can u just make one of the tabs in there to do this
 		print("Left button tapped!")
 
@@ -102,7 +88,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 //		print(index)
 		scrollingMenu.changePageToIndex(index, animated: true)
 
-		self.menuLabels[index].attributedText = NSAttributedString(string: MenuItems.values[index].rawValue, attributes: [NSUnderlineStyleAttributeName: 1])
+		self.menuLabels[index].attributedText = NSAttributedString(string: MenuItems.values[index].rawValue.uppercaseString, attributes: [NSUnderlineStyleAttributeName: 1])
 	}
 
 	func tabScrollView(tabScrollView: ACTabScrollView, didScrollPageTo index: Int) {
@@ -114,20 +100,32 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 	}
 
 	func tabScrollView(tabScrollView: ACTabScrollView, tabViewForPageAtIndex index: Int) -> UIView {
+		let stackView = UIStackView()
+		stackView.axis = .Horizontal
 		// create a label
 		let label = UILabel()
 		label.text = MenuItems.values[index].rawValue
 		label.textAlignment = .Center
 		label.textColor = UIColor.whiteColor()
+		label.font = UIFont.systemFontOfSize(17, weight: UIFontWeightThin)
 
-		// if the size of your tab is not fixed, you can adjust the size by the following way.
 		label.sizeToFit() // resize the label to the size of content
 		label.frame.size = CGSize(
-			width: label.frame.size.width + 28,
+			width: label.frame.size.width + 40,
 			height: label.frame.size.height + 5) // add some paddings
+		let sep = UILabel()
+		sep.textColor = UIColor.whiteColor()
+		sep.text = "|"
+		sep.frame.size = CGSize(width: CGFloat(5), height: label.frame.height)
+
+		stackView.addArrangedSubview(label)
+		if (index != MenuItems.values.count - 1) {
+			stackView.addArrangedSubview(sep)
+		}
+		stackView.frame.size = CGSize(width: label.frame.width + sep.frame.width, height: label.frame.height)
 		menuLabels.append(label)
 
-		return label
+		return stackView
 	}
 
 	func tabScrollView(tabScrollView: ACTabScrollView, contentViewForPageAtIndex index: Int) -> UIView {
