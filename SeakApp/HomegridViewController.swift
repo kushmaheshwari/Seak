@@ -114,9 +114,14 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 			width: label.frame.size.width + 40,
 			height: label.frame.size.height + 5) // add some paddings
 		let sep = UILabel()
+		sep.textColor = UIColor.whiteColor()
 		sep.text = "|"
-		stackView.addSubview(label)
-		stackView.addSubview(sep)
+		sep.frame.size = CGSize(width: CGFloat(5), height: label.frame.height)
+
+		stackView.addArrangedSubview(label)
+		if (index != MenuItems.values.count - 1) {
+			stackView.addArrangedSubview(sep)
+		}
 		stackView.frame.size = CGSize(width: label.frame.width + sep.frame.width, height: label.frame.height)
 		menuLabels.append(label)
 

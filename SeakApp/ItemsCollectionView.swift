@@ -64,13 +64,7 @@ class ItemsCollectionViewController: UICollectionViewController {
 	}
 
 	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//		if self.searchBarActive {
-//			return searchItems.count
-//		}
-//		else {
 		return items.count
-//		}
-
 	}
 
 	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -83,6 +77,7 @@ class ItemsCollectionViewController: UICollectionViewController {
 
 			let item = items[indexPath.row]
 			cell.nameLabel.text = item.name
+			cell.storeLabel.text = item.store
 
 			if let price = item.price {
 				cell.priceLabel.text = String(format: "%.1f$", price)

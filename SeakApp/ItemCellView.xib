@@ -61,12 +61,12 @@
                         <constraint firstAttribute="height" constant="20" id="dev-7m-UsD"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQ8-uL-Aoo">
-                    <rect key="frame" x="8" y="298" width="24" height="11"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                    <rect key="frame" x="8" y="302" width="20" height="9"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="7"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -77,7 +77,7 @@
                 <constraint firstItem="FYD-UO-ddH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="NOU-kR-Bws"/>
                 <constraint firstAttribute="trailing" secondItem="FYD-UO-ddH" secondAttribute="trailing" constant="30" id="NzO-3E-uCQ"/>
                 <constraint firstItem="xQp-pD-blV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Sd5-FX-Jiy"/>
-                <constraint firstAttribute="bottom" secondItem="pQ8-uL-Aoo" secondAttribute="bottom" constant="4" id="VHp-XX-pQB"/>
+                <constraint firstAttribute="bottom" secondItem="pQ8-uL-Aoo" secondAttribute="bottom" constant="2" id="VHp-XX-pQB"/>
                 <constraint firstItem="gGP-ig-0sv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Y4d-QH-7NQ"/>
                 <constraint firstItem="pVh-sV-Xa2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="fiY-4r-VCr"/>
                 <constraint firstItem="pQ8-uL-Aoo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="g6A-1P-Dcv"/>
@@ -94,6 +94,7 @@
                 <outlet property="nameLabel" destination="pv8-mZ-nAg" id="jtn-nD-vTQ"/>
                 <outlet property="pictureImage" destination="pVh-sV-Xa2" id="eBW-19-VaH"/>
                 <outlet property="priceLabel" destination="xQp-pD-blV" id="tjH-iJ-DXd"/>
+                <outlet property="storeLabel" destination="pQ8-uL-Aoo" id="rkh-uC-26m"/>
             </connections>
             <point key="canvasLocation" x="245" y="355.5"/>
         </view>

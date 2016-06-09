@@ -16,6 +16,7 @@ class ItemCellView: UICollectionViewCell {
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var priceLabel: UILabel!
 
+    @IBOutlet weak var storeLabel: UILabel!
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		self.pictureImage?.layer.borderColor = UIColor.colorWithHexString("1982b1").CGColor
