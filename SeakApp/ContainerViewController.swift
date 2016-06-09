@@ -11,7 +11,7 @@ import UIKit
 
 class ContainerViewController: SlideMenuController {
 	override func awakeFromNib() {
-		if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("navigationID") {
+		if let controller = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Navigation.rawValue) {
 			self.mainViewController = controller
 		}
 		if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("LeftMenuID") {

@@ -15,7 +15,7 @@ enum ParseClassNames: String {
 enum StoryboardNames: String {
 	case MainStoryboard = "Main"
 	case Login = "Login"
-	case Navigation = "navigation"
+	case Navigation = "navigationID"
 }
 
 enum MenuItems: String {
