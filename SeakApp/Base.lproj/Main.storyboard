@@ -360,7 +360,25 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cof-cn-cFS">
                                 <rect key="frame" x="0.0" y="29" width="600" height="507"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Scq-Fw-3Xe">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="507"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Klo-jI-TQJ">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Scq-Fw-3Xe" firstAttribute="top" secondItem="Cof-cn-cFS" secondAttribute="top" id="9pQ-sd-cZ1"/>
+                                    <constraint firstAttribute="trailing" secondItem="Scq-Fw-3Xe" secondAttribute="trailing" id="QQR-Yb-zoR"/>
+                                    <constraint firstAttribute="bottom" secondItem="Scq-Fw-3Xe" secondAttribute="bottom" id="ZSN-6n-0zd"/>
+                                    <constraint firstItem="Scq-Fw-3Xe" firstAttribute="leading" secondItem="Cof-cn-cFS" secondAttribute="leading" id="xNu-Ns-ydN"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -376,6 +394,7 @@
                     </view>
                     <connections>
                         <outlet property="containerView" destination="Cof-cn-cFS" id="F36-Ut-ZaQ"/>
+                        <outlet property="searchItemsCollectionView" destination="Scq-Fw-3Xe" id="RFF-ZD-qOg"/>
                         <outlet property="searchTitleTextLabel" destination="5hD-Ad-7cP" id="Asu-Xw-5Lo"/>
                     </connections>
                 </viewController>
