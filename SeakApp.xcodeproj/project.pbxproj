@@ -15,6 +15,7 @@
 		5E07CB761D05D7CD00F38D0B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB751D05D7CD00F38D0B /* ContainerViewController.swift */; };
 		5E07CB791D06C1A500F38D0B /* ACTabScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB771D06C1A500F38D0B /* ACTabScrollView.swift */; };
 		5E07CB7A1D06C1A500F38D0B /* ACTabScrollView+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB781D06C1A500F38D0B /* ACTabScrollView+Protocol.swift */; };
+		5E15334A1D0A8ECB00C2E5E1 /* SearchItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1533491D0A8ECB00C2E5E1 /* SearchItemsViewController.swift */; };
 		5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */; };
 		5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A451D02CE3200BCD0B6 /* Extensions.swift */; };
 		5E507A481D02DB7400BCD0B6 /* ScrollableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */; };
@@ -76,6 +77,7 @@
 		5E07CB751D05D7CD00F38D0B /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		5E07CB771D06C1A500F38D0B /* ACTabScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACTabScrollView.swift; sourceTree = "<group>"; };
 		5E07CB781D06C1A500F38D0B /* ACTabScrollView+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ACTabScrollView+Protocol.swift"; sourceTree = "<group>"; };
+		5E1533491D0A8ECB00C2E5E1 /* SearchItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchItemsViewController.swift; sourceTree = "<group>"; };
 		5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		5E507A451D02CE3200BCD0B6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableMenu.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				C9B9F0221CFBE75A002EA9BA /* HomegridViewController.swift */,
 				C9B9F0241CFBE793002EA9BA /* GridViewCell.swift */,
 				5E07CB661D05481200F38D0B /* MenuViewController.swift */,
+				5E1533491D0A8ECB00C2E5E1 /* SearchItemsViewController.swift */,
 			);
 			name = ViewConvtrollers;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9B9F0231CFBE75A002EA9BA /* HomegridViewController.swift in Sources */,
+				5E15334A1D0A8ECB00C2E5E1 /* SearchItemsViewController.swift in Sources */,
 				5E9346291D00282100CF4DC6 /* ItemEntity.swift in Sources */,
 				C9B9F01F1CFBE5E8002EA9BA /* RegisterController.swift in Sources */,
 				5E07CB6E1D05A10000F38D0B /* ItemsCollectionView.swift in Sources */,

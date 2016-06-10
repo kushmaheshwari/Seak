@@ -13,13 +13,7 @@ import FBSDKLoginKit
 class HomeViewController: UIViewController,
 ACTabScrollViewDelegate, ACTabScrollViewDataSource
 {
-
-	var searchBar: UISearchBar?
-	var searchBarActive: Bool = false
-	var searchBarBoundsY: CGFloat?
-
 	var views: [UIViewController] = []
-	var menuLabels: [UILabel] = []
 
 	@IBOutlet weak var scrollingMenu: ACTabScrollView!
 
@@ -28,7 +22,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 
 		self.scrollingMenu.delegate = self
 		self.scrollingMenu.dataSource = self
-
+		self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 		self.title = "SEAK"
 		let rightBarButton = UIBarButtonItem(image: UIImage(named: "search"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HomeViewController.addItem(_:)))
 		navigationItem.rightBarButtonItem = rightBarButton
@@ -64,7 +58,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 
 	func addItem(sender: UIButton!)
 	{
-		print("search icon pressed")
+		self.performSegueWithIdentifier("searchViewSegue", sender: nil)
 	}
 
 	func leftButtonTap() { // right now the left menu side bar is actually a button for logout. when you make sidebar can u just make one of the tabs in there to do this
@@ -85,10 +79,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 
 	// MARK: ACTabScrollViewDelegate
 	func tabScrollView(tabScrollView: ACTabScrollView, didChangePageTo index: Int) {
-//		print(index)
 		scrollingMenu.changePageToIndex(index, animated: true)
-
-		self.menuLabels[index].attributedText = NSAttributedString(string: MenuItems.values[index].rawValue.uppercaseString, attributes: [NSUnderlineStyleAttributeName: 1])
 	}
 
 	func tabScrollView(tabScrollView: ACTabScrollView, didScrollPageTo index: Int) {
@@ -102,6 +93,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 	func tabScrollView(tabScrollView: ACTabScrollView, tabViewForPageAtIndex index: Int) -> UIView {
 		let stackView = UIStackView()
 		stackView.axis = .Horizontal
+
 		// create a label
 		let label = UILabel()
 		label.text = MenuItems.values[index].rawValue
@@ -123,7 +115,6 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 			stackView.addArrangedSubview(sep)
 		}
 		stackView.frame.size = CGSize(width: label.frame.width + sep.frame.width, height: label.frame.height)
-		menuLabels.append(label)
 
 		return stackView
 	}
