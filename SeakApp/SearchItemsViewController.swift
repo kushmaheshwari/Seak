@@ -83,6 +83,7 @@ UICollectionViewDelegate, UICollectionViewDataSource
 			repository.search(searchTextValue, completion: { (items) in
 				self.items = items
 				self.searchItemsCollectionView.reloadData()
+				RecentSearches.add(searchTextValue)
 			})
 		}
 	}

@@ -16,6 +16,8 @@
 		5E07CB791D06C1A500F38D0B /* ACTabScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB771D06C1A500F38D0B /* ACTabScrollView.swift */; };
 		5E07CB7A1D06C1A500F38D0B /* ACTabScrollView+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB781D06C1A500F38D0B /* ACTabScrollView+Protocol.swift */; };
 		5E15334A1D0A8ECB00C2E5E1 /* SearchItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1533491D0A8ECB00C2E5E1 /* SearchItemsViewController.swift */; };
+		5E1533521D0AE30600C2E5E1 /* RecentSearchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1533511D0AE30600C2E5E1 /* RecentSearchesViewController.swift */; };
+		5E1533541D0AE4CC00C2E5E1 /* RecentSearches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1533531D0AE4CC00C2E5E1 /* RecentSearches.swift */; };
 		5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */; };
 		5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A451D02CE3200BCD0B6 /* Extensions.swift */; };
 		5E507A481D02DB7400BCD0B6 /* ScrollableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */; };
@@ -78,6 +80,8 @@
 		5E07CB771D06C1A500F38D0B /* ACTabScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACTabScrollView.swift; sourceTree = "<group>"; };
 		5E07CB781D06C1A500F38D0B /* ACTabScrollView+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ACTabScrollView+Protocol.swift"; sourceTree = "<group>"; };
 		5E1533491D0A8ECB00C2E5E1 /* SearchItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchItemsViewController.swift; sourceTree = "<group>"; };
+		5E1533511D0AE30600C2E5E1 /* RecentSearchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchesViewController.swift; sourceTree = "<group>"; };
+		5E1533531D0AE4CC00C2E5E1 /* RecentSearches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearches.swift; sourceTree = "<group>"; };
 		5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		5E507A451D02CE3200BCD0B6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableMenu.swift; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 				C9B9F0241CFBE793002EA9BA /* GridViewCell.swift */,
 				5E07CB661D05481200F38D0B /* MenuViewController.swift */,
 				5E1533491D0A8ECB00C2E5E1 /* SearchItemsViewController.swift */,
+				5E1533511D0AE30600C2E5E1 /* RecentSearchesViewController.swift */,
 			);
 			name = ViewConvtrollers;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 			children = (
 				5E9346281D00282100CF4DC6 /* ItemEntity.swift */,
 				5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */,
+				5E1533531D0AE4CC00C2E5E1 /* RecentSearches.swift */,
 			);
 			name = DataLayer;
 			sourceTree = "<group>";
@@ -431,11 +437,13 @@
 				5E07CB721D05D69800F38D0B /* ItemCellView.swift in Sources */,
 				C9B9F01D1CFBE58C002EA9BA /* LoginController.swift in Sources */,
 				5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */,
+				5E1533541D0AE4CC00C2E5E1 /* RecentSearches.swift in Sources */,
 				5E07CB671D05481200F38D0B /* MenuViewController.swift in Sources */,
 				5E507A481D02DB7400BCD0B6 /* ScrollableMenu.swift in Sources */,
 				5E07CB7A1D06C1A500F38D0B /* ACTabScrollView+Protocol.swift in Sources */,
 				5E07CB761D05D7CD00F38D0B /* ContainerViewController.swift in Sources */,
 				5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */,
+				5E1533521D0AE30600C2E5E1 /* RecentSearchesViewController.swift in Sources */,
 				5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */,
 				5E07CB791D06C1A500F38D0B /* ACTabScrollView.swift in Sources */,
 				5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */,
