@@ -17,8 +17,9 @@ UICollectionViewDelegate, UICollectionViewDataSource
 	private let repository = ItemRepository()
 	private var items: [ItemEntity] = []
 	private let reuseIdentifier = "ItemCellIdentifier"
-
+	var searchFromTyping = false
 	var searchController: UISearchController!
+	private var recentSearches: RecentSearchesViewController!
 
 	@IBOutlet weak var searchTitleTextLabel: UILabel!
 	@IBOutlet weak var containerView: UIView!
@@ -27,6 +28,7 @@ UICollectionViewDelegate, UICollectionViewDataSource
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		self.recentSearches = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.RecentSearches.rawValue) as! RecentSearchesViewController
 		addSearchbar()
 		self.searchItemsCollectionView.delegate = self
 		self.searchItemsCollectionView.dataSource = self
@@ -49,7 +51,21 @@ UICollectionViewDelegate, UICollectionViewDataSource
 		self.navigationItem.rightBarButtonItem = nil
 		self.searchTitleTextLabel.hidden = true
 		self.containerView.hidden = true
-		self.searchController.searchBar.becomeFirstResponder()
+		// recent controller
+
+		self.recentSearches.selectionCompletionBlock = { (text) in
+			self.searchController.searchBar.text = text
+			self.searchFromTyping = false
+			self.searchBarTextDidEndEditing(self.searchController.searchBar)
+//			self.searchController.searchBar.endEditing(true)
+//			self.searchController.searchBar.resignFirstResponder()
+			self.recentSearches.view.removeFromSuperview()
+		}
+
+		self.recentSearches.reload()
+		self.view.addSubview(recentSearches.view)
+		self.view.sendSubviewToBack(recentSearches.view)
+
 	}
 
 	func addPlainHeader(searchTextValue: String) {
@@ -70,8 +86,13 @@ UICollectionViewDelegate, UICollectionViewDataSource
 	func searchBarCancelButtonClicked(searchBar: UISearchBar) {
 
 	}
+
+	func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+		self.searchFromTyping = true
+	}
 	func searchBarTextDidEndEditing(searchBar: UISearchBar) {
 		print("do search")
+		self.recentSearches.view.removeFromSuperview()
 		items.removeAll()
 		self.searchItemsCollectionView.reloadData()
 		if let searchTextValue = searchBar.text {
@@ -83,7 +104,9 @@ UICollectionViewDelegate, UICollectionViewDataSource
 			repository.search(searchTextValue, completion: { (items) in
 				self.items = items
 				self.searchItemsCollectionView.reloadData()
-				RecentSearches.add(searchTextValue)
+				if (self.searchFromTyping) {
+					RecentSearches.add(searchTextValue)
+				}
 			})
 		}
 	}
