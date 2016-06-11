@@ -35,7 +35,7 @@ UICollectionViewDelegate, UICollectionViewDataSource
 		let nib = UINib(nibName: "ItemCellView", bundle: nil)
 		self.searchItemsCollectionView?.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
 		self.searchItemsCollectionView?.alwaysBounceVertical = true
-		self.searchItemsCollectionView.backgroundColor = UIColor.whiteColor()
+		self.searchItemsCollectionView.backgroundColor = UIColor.colorWithHexString("f5f5f5")
 
 	}
 
@@ -126,26 +126,8 @@ UICollectionViewDelegate, UICollectionViewDataSource
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
 		if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? ItemCellView {
-
-			let backColor = (indexPath.row % 4 == 0 || indexPath.row % 4 == 3) ? UIColor.lightGrayColor() : UIColor.whiteColor()
-			cell.backgroundColor = backColor
-			cell.pictureImage?.layer.backgroundColor = backColor.CGColor
-
 			let item = items[indexPath.row]
-			cell.nameLabel.text = item.name
-			cell.storeLabel.text = item.store
-
-			if let price = item.price {
-				cell.priceLabel.text = String(format: "%.1f$", price)
-			}
-
-			cell.pictureImage.file = item.picture
-			cell.pictureImage.loadInBackground({ (img, error) in
-				cell.pictureImage.image = img
-				cell.pictureImage.setNeedsDisplay()
-			})
-			cell.layoutSubviews()
-			cell.sizeToFit()
+			cell.fillCell(item)
 			return cell
 		}
 		return UICollectionViewCell()
@@ -154,17 +136,18 @@ UICollectionViewDelegate, UICollectionViewDataSource
 
 extension SearchItemsViewController: UICollectionViewDelegateFlowLayout {
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-		let screenSize = self.searchItemsCollectionView.bounds.size
-		return CGSize(width: screenSize.width / 2, height: screenSize.width / 2 / 0.8)
+		let screenSize = self.searchItemsCollectionView.bounds
+		let width = screenSize.width - 40
+		return CGSize(width: width / 2, height: width / 2 / 0.8)
 	}
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-		return UIEdgeInsetsZero
+		return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
 	}
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-		return CGFloat(0)
+		return CGFloat(8)
 	}
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-		return CGFloat(0)
+		return CGFloat(8)
 	}
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
 		return CGSizeZero
