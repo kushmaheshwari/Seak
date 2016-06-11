@@ -81,12 +81,12 @@ class ItemRepository {
 	}
 
 	func search(value: String, completion: ItemRepositoryComplectionBlock) {
-		let query = PFQuery(className: ParseClassNames.Item.rawValue)
-			.whereKey("name", containsString: value)
-			.whereKey("description", containsString: value)
+		let nameQuery = PFQuery(className: ParseClassNames.Item.rawValue)
+		nameQuery.whereKey("name", containsString: value)
+		let descriptionQuery = PFQuery(className: ParseClassNames.Item.rawValue)
+		descriptionQuery.whereKey("description", containsString: value)
+		let query = PFQuery.orQueryWithSubqueries([nameQuery, descriptionQuery])
 		query.limit = maxSearchCount
-		query.cachePolicy = .CacheThenNetwork
-		query.maxCacheAge = cacheAge
 
 		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
 			if error != nil {

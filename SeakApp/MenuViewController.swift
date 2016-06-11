@@ -46,7 +46,7 @@ class MenuViewController: UITableViewController {
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		// settings TODO change
 		if indexPath.row == 1 {
-			if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("navigationID") {
+			if let controller = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Navigation.rawValue) {
 				self.slideMenuController()?.changeMainViewController(controller, close: true)
 			}
 		}

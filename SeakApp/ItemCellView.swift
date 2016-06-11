@@ -15,12 +15,32 @@ class ItemCellView: UICollectionViewCell {
 	@IBOutlet weak var pictureImage: PFImageView!
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var priceLabel: UILabel!
+	@IBOutlet weak var stars: UIButton!
 
-    @IBOutlet weak var storeLabel: UILabel!
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		self.pictureImage?.layer.borderColor = UIColor.colorWithHexString("1982b1").CGColor
-		self.pictureImage?.layer.borderWidth = 2
+	}
+
+	func fillCell(item: ItemEntity) {
+		self.backgroundColor = UIColor.whiteColor()
+		self.pictureImage?.layer.backgroundColor = UIColor.whiteColor().CGColor
+
+		self.stars.layer.cornerRadius = 5;
+		self.stars.layer.masksToBounds = true
+
+		self.nameLabel.text = item.name
+
+		if let price = item.price {
+			self.priceLabel.text = String(format: "$%.1f", price)
+		}
+
+		self.pictureImage.file = item.picture
+		self.pictureImage.loadInBackground({ (img, error) in
+			self.pictureImage.image = img
+			self.pictureImage.setNeedsDisplay()
+		})
+		self.layoutSubviews()
+		self.sizeToFit()
 	}
 
 }
