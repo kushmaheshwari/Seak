@@ -64,17 +64,6 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 	func leftButtonTap() { // right now the left menu side bar is actually a button for logout. when you make sidebar can u just make one of the tabs in there to do this
 		print("Left button tapped!")
 
-		if (PFUser.currentUser() != nil) {
-			PFUser.logOut()
-		} else {
-			FBSDKLoginManager().logOut()
-		}
-
-		let loginview = self.storyboard?.instantiateViewControllerWithIdentifier("Login")
-		let loginPageNav = UINavigationController (rootViewController: loginview!)
-		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-		appDelegate.window?.rootViewController = loginPageNav
-
 	}
 
 	// MARK: ACTabScrollViewDelegate

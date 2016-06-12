@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import Parse
+import ParseFacebookUtilsV4
 
 class MenuViewController: UITableViewController {
 
@@ -49,6 +51,21 @@ class MenuViewController: UITableViewController {
 			if let controller = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Navigation.rawValue) {
 				self.slideMenuController()?.changeMainViewController(controller, close: true)
 			}
+		}
+
+		if indexPath.row == 2 {
+			print("LOGOUT")
+			if (PFUser.currentUser() != nil) {
+				PFUser.logOut()
+			} else {
+				FBSDKLoginManager().logOut()
+			}
+
+			let loginview = self.storyboard?.instantiateViewControllerWithIdentifier("Login")
+			let loginPageNav = UINavigationController (rootViewController: loginview!)
+			let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+			appDelegate.window?.rootViewController = loginPageNav
+
 		}
 	}
 
