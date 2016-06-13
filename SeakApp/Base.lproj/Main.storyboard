@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tET-wW-OE3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GQI-MB-ZbV">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -111,7 +111,7 @@
                                 </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.16862745098039217" green="0.51372549019607838" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.075469307040998246" green="0.58990920231729049" blue="0.88310982063279864" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="i82-55-r9e" firstAttribute="height" secondItem="WDc-zJ-eKJ" secondAttribute="height" id="0uu-C5-QRp"/>
                             <constraint firstItem="uWR-bQ-CQ9" firstAttribute="top" secondItem="g5v-9M-ggQ" secondAttribute="bottom" constant="70" id="41P-ej-Rf1"/>
@@ -754,6 +754,107 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Mr-6W-oOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="99" y="-1154"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="NLY-R8-97x">
+            <objects>
+                <viewController storyboardIdentifier="AddItem" title="Item" id="GQI-MB-ZbV" customClass="ItemAdd" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l4o-Mp-r01"/>
+                        <viewControllerLayoutGuide type="bottom" id="zFm-6h-kuy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ieb-Io-evO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cPP-Ne-Px7">
+                                <rect key="frame" x="57" y="323" width="507" height="122"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LTe-Hj-g70">
+                                <rect key="frame" x="53" y="460" width="181" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGz-gf-6LD">
+                                <rect key="frame" x="53" y="549" width="507" height="31"/>
+                                <color key="backgroundColor" red="0.83529411760000005" green="0.34509803919999998" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitBtnAction:" destination="GQI-MB-ZbV" eventType="touchUpInside" id="8fs-A5-RG3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ob5-EC-2GZ">
+                                <rect key="frame" x="120" y="218" width="46" height="36"/>
+                                <color key="backgroundColor" red="1" green="0.37784752519999998" blue="0.3638397712" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Take"/>
+                                <connections>
+                                    <action selector="takePhotoAction:" destination="GQI-MB-ZbV" eventType="touchUpInside" id="zeR-E1-5bv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZf-v9-8yV">
+                                <rect key="frame" x="385" y="218" width="86" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.37784752519999998" blue="0.3638397712" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Choose"/>
+                                <connections>
+                                    <action selector="choosePhotoAction:" destination="GQI-MB-ZbV" eventType="touchUpInside" id="tvQ-Hi-Tg4"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ivE-vy-dg5">
+                                <rect key="frame" x="53" y="271" width="507" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iiT-6M-0tO">
+                                <rect key="frame" x="172" y="48" width="238" height="136"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OJA-jp-sb0">
+                                <rect key="frame" x="55" y="504" width="503" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.31372549020000001" green="0.42745098040000001" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="iiT-6M-0tO" secondAttribute="trailing" constant="150" id="2Va-g6-7jE"/>
+                            <constraint firstItem="iiT-6M-0tO" firstAttribute="top" secondItem="l4o-Mp-r01" secondAttribute="bottom" constant="28" id="BRJ-nX-dwj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kZf-v9-8yV" secondAttribute="trailing" constant="100" id="DAd-4b-Ap7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ivE-vy-dg5" secondAttribute="trailing" constant="25" id="IL6-Jk-PMy"/>
+                            <constraint firstItem="ob5-EC-2GZ" firstAttribute="leading" secondItem="Ieb-Io-evO" secondAttribute="leadingMargin" constant="100" id="Klx-lo-Lcx"/>
+                            <constraint firstItem="ivE-vy-dg5" firstAttribute="leading" secondItem="Ieb-Io-evO" secondAttribute="leadingMargin" constant="25" id="Mbq-Qe-knC"/>
+                            <constraint firstItem="iiT-6M-0tO" firstAttribute="leading" secondItem="Ieb-Io-evO" secondAttribute="leadingMargin" constant="158" id="OJ8-pE-YB6"/>
+                            <constraint firstItem="OJA-jp-sb0" firstAttribute="leading" secondItem="Ieb-Io-evO" secondAttribute="leadingMargin" constant="37" id="SOk-6Q-WLv"/>
+                            <constraint firstItem="iiT-6M-0tO" firstAttribute="leading" secondItem="Ieb-Io-evO" secondAttribute="leadingMargin" constant="152" id="cUX-JR-Ild"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cPP-Ne-Px7" secondAttribute="trailing" constant="16" id="egJ-9n-5Su"/>
+                            <constraint firstItem="ob5-EC-2GZ" firstAttribute="top" secondItem="iiT-6M-0tO" secondAttribute="bottom" constant="34" id="ifT-pQ-anQ"/>
+                            <constraint firstItem="cPP-Ne-Px7" firstAttribute="leading" secondItem="Ieb-Io-evO" secondAttribute="leadingMargin" constant="25" id="kXK-Og-2MW"/>
+                            <constraint firstItem="OJA-jp-sb0" firstAttribute="top" secondItem="LTe-Hj-g70" secondAttribute="bottom" constant="28" id="lmC-hz-JpY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OJA-jp-sb0" secondAttribute="trailing" constant="20" id="oiX-GW-wtV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IGz-gf-6LD" secondAttribute="trailing" constant="20" id="pRf-EO-Rkm"/>
+                            <constraint firstItem="kZf-v9-8yV" firstAttribute="top" secondItem="iiT-6M-0tO" secondAttribute="bottom" constant="34" id="xbW-7O-OVj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="DDx-1f-oPh"/>
+                    <connections>
+                        <outlet property="Category" destination="OJA-jp-sb0" id="FLn-2e-dG2"/>
+                        <outlet property="ChoosePhoto" destination="kZf-v9-8yV" id="cd9-kD-euA"/>
+                        <outlet property="Price" destination="LTe-Hj-g70" id="OhZ-6I-Pew"/>
+                        <outlet property="ProductDescription" destination="cPP-Ne-Px7" id="act-gu-erI"/>
+                        <outlet property="ProductImage1" destination="iiT-6M-0tO" id="Ucz-g8-pki"/>
+                        <outlet property="ProductName" destination="ivE-vy-dg5" id="JXD-vi-5lD"/>
+                        <outlet property="SubmitBtn" destination="IGz-gf-6LD" id="tlM-Qa-Jwb"/>
+                        <outlet property="TakePhoto" destination="ob5-EC-2GZ" id="P3A-oH-dlg"/>
+                        <outlet property="submitBtn" destination="IGz-gf-6LD" id="IWd-Ke-Ltb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MJ7-t6-cS9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4268" y="488"/>
         </scene>
     </scenes>
     <resources>
