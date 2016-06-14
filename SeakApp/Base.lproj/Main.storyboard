@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GQI-MB-ZbV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tET-wW-OE3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -111,7 +111,7 @@
                                 </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.075469307040998246" green="0.58990920231729049" blue="0.88310982063279864" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.074509803920000006" green="0.58823529409999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="i82-55-r9e" firstAttribute="height" secondItem="WDc-zJ-eKJ" secondAttribute="height" id="0uu-C5-QRp"/>
                             <constraint firstItem="uWR-bQ-CQ9" firstAttribute="top" secondItem="g5v-9M-ggQ" secondAttribute="bottom" constant="70" id="41P-ej-Rf1"/>
@@ -162,7 +162,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.16862745100000001" green="0.51372549020000002" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.074509803921568626" green="0.58823529411764708" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -282,7 +282,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.16862745100000001" green="0.51372549020000002" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.074509803920000006" green="0.58823529409999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="XCX-an-UAR" secondAttribute="trailing" constant="50" id="3Af-jW-1oh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SZV-I8-BlC" secondAttribute="trailing" constant="-20" id="KuP-MG-ddT"/>
@@ -741,7 +741,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.13725490196078433" green="0.43137254901960786" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.13725490200000001" green="0.43137254899999999" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.074509803920000006" green="0.58823529409999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
