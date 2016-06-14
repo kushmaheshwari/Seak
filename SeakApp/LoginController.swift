@@ -46,8 +46,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 		PasswordTF.leftView = imageView2
 		PasswordTF.leftViewMode = UITextFieldViewMode.Always
 
-		loginBtn.titleLabel!.font = UIFont(name: "Roboto-Medium", size: 14) // changing font of button
-
 		FBLoginButton.delegate = self
 		FBLoginButton.readPermissions = ["public_profile", "email", "user_friends"] // FBLogin button
 
