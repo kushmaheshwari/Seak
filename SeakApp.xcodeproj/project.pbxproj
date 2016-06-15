@@ -18,6 +18,7 @@
 		5E15334A1D0A8ECB00C2E5E1 /* SearchItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1533491D0A8ECB00C2E5E1 /* SearchItemsViewController.swift */; };
 		5E1533521D0AE30600C2E5E1 /* RecentSearchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1533511D0AE30600C2E5E1 /* RecentSearchesViewController.swift */; };
 		5E1533541D0AE4CC00C2E5E1 /* RecentSearches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1533531D0AE4CC00C2E5E1 /* RecentSearches.swift */; };
+		5E4FAFBD1D11808E000411D8 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4FAFBC1D11808E000411D8 /* StartAppViewController.swift */; };
 		5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */; };
 		5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A451D02CE3200BCD0B6 /* Extensions.swift */; };
 		5E507A481D02DB7400BCD0B6 /* ScrollableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */; };
@@ -83,6 +84,7 @@
 		5E1533491D0A8ECB00C2E5E1 /* SearchItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchItemsViewController.swift; sourceTree = "<group>"; };
 		5E1533511D0AE30600C2E5E1 /* RecentSearchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchesViewController.swift; sourceTree = "<group>"; };
 		5E1533531D0AE4CC00C2E5E1 /* RecentSearches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearches.swift; sourceTree = "<group>"; };
+		5E4FAFBC1D11808E000411D8 /* StartAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAppViewController.swift; sourceTree = "<group>"; };
 		5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		5E507A451D02CE3200BCD0B6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableMenu.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				5E1533491D0A8ECB00C2E5E1 /* SearchItemsViewController.swift */,
 				5E1533511D0AE30600C2E5E1 /* RecentSearchesViewController.swift */,
 				C9B39B101D0E644E00F64D24 /* ItemAdd.swift */,
+				5E4FAFBC1D11808E000411D8 /* StartAppViewController.swift */,
 			);
 			name = ViewConvtrollers;
 			sourceTree = "<group>";
@@ -379,7 +382,7 @@
 				TargetAttributes = {
 					C9B9EFCA1CFBDDEA002EA9BA = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = A56L2334RX;
+						DevelopmentTeam = 978L98WATL;
 					};
 				};
 			};
@@ -447,6 +450,7 @@
 				5E07CB7A1D06C1A500F38D0B /* ACTabScrollView+Protocol.swift in Sources */,
 				5E07CB761D05D7CD00F38D0B /* ContainerViewController.swift in Sources */,
 				5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */,
+				5E4FAFBD1D11808E000411D8 /* StartAppViewController.swift in Sources */,
 				5E1533521D0AE30600C2E5E1 /* RecentSearchesViewController.swift in Sources */,
 				5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */,
 				5E07CB791D06C1A500F38D0B /* ACTabScrollView.swift in Sources */,
@@ -577,7 +581,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kushmaheshwari.SeakApp.xxx;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kushmaheshwari.SeakApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SeakApp-Bridging-Header.h";
@@ -603,7 +607,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kushmaheshwari.SeakApp.xxx;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kushmaheshwari.SeakApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SeakApp-Bridging-Header.h";

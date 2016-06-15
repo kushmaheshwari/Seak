@@ -78,29 +78,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 		PasswordTF.textColor = UIColor.whiteColor()
 	}
 
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
-		if (FBSDKAccessToken.currentAccessToken() != nil || PFUser.currentUser() != nil) {
-			if (FBSDKAccessToken.currentAccessToken() != nil) {
-				let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken()
-
-				PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken,
-					block: { (user: PFUser?, error: NSError?) -> Void in
-						if user != nil {
-							print("User logged in through Facebook!")
-							let startView = self.storyboard?.instantiateViewControllerWithIdentifier("StartPointView")
-							let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-							appDelegate.window?.rootViewController = startView
-						} else {
-							print("Uh oh. There was an error logging in.")
-						}
-				})
-			}
-
-		}
-
-	}
-
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
 		FBLoginButton.delegate = nil

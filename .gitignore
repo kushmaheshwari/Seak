@@ -18,3 +18,6 @@ Pods/
 *.xcuserstate
 Build/*
 *.xcuserdatad
+*.zip
+*.ipa
+fastlane/
