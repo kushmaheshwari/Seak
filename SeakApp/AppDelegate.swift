@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
 		FBSDKButton.classForCoder()
 
+		IQKeyboardManager.sharedManager().enable = true
+		IQKeyboardManager.sharedManager().enableAutoToolbar = true
+
 		return FBSDKApplicationDelegate.sharedInstance()
 			.application(application, didFinishLaunchingWithOptions: launchOptions)
 

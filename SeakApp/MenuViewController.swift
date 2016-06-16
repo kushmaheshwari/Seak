@@ -61,10 +61,9 @@ class MenuViewController: UITableViewController {
 				FBSDKLoginManager().logOut()
 			}
 
-			let loginview = self.storyboard?.instantiateViewControllerWithIdentifier("Login")
-			let loginPageNav = UINavigationController (rootViewController: loginview!)
+			let loginview = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Login.rawValue)
 			let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-			appDelegate.window?.rootViewController = loginPageNav
+			appDelegate.window?.rootViewController = loginview
 
 		}
 	}

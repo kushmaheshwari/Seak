@@ -31,12 +31,12 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 	var attributedString = NSMutableAttributedString(string: "")
 
-	let keyboardManager = KeyboardManager()
+//	let keyboardManager = KeyboardManager()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		keyboardManager.viewController = self
+//		keyboardManager.viewController = self
 
 		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
 		self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
