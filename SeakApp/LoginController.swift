@@ -31,10 +31,15 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 	var attributedString = NSMutableAttributedString(string: "")
 
+	let keyboardManager = KeyboardManager()
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		keyboardManager.viewController = self
+
 		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+		self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 
 		let imageView: UIView = UIView()
 		imageView.frame = CGRectMake(100, 20, 7, 26) // adds spacing on text  field
@@ -92,10 +97,10 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 			}
 
 			if result.token != nil {
-				let homeview = self.storyboard?.instantiateViewControllerWithIdentifier("HomeView")
-				let homeViewNav = UINavigationController (rootViewController: homeview!)
+				let homeView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
+
 				let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-				appDelegate.window?.rootViewController = homeViewNav
+				appDelegate.window?.rootViewController = homeView
 			}
 	}
 

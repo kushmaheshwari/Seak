@@ -18,6 +18,16 @@ extension UIViewController {
 	func dismissKeyboard() {
 		view.endEditing(true)
 	}
+
+	func getFirstResponder() -> UIView {
+		for v in self.view.subviews {
+			if v.isFirstResponder() {
+				return v
+			}
+		}
+
+		return UIView()
+	}
 }
 
 extension UIColor {
