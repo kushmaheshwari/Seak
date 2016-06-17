@@ -19,8 +19,7 @@ class UserLogin {
 
 			if error == nil {
 				dispatch_async(dispatch_get_main_queue()) {
-					// chnage intent: youtube.com/watch?v=XIJLIywoSoA
-					let NavigationVC: UIViewController = storyboard.instantiateViewControllerWithIdentifier(StoryboardNames.Navigation.rawValue)
+					let NavigationVC: UIViewController = storyboard.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
 					view.presentViewController(NavigationVC, animated: true, completion: nil)
 
 				}
