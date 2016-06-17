@@ -44,8 +44,7 @@ class ItemRepository {
 			}
 			return result
 		}
-		print("Error on parsing Items from Parse objects")
-		return nil
+		fatalError("Error on parsing Items from Parse objects")
 	}
 
 	func getAll(completion: ItemRepositoryComplectionBlock) {
