@@ -484,7 +484,7 @@
 				TargetAttributes = {
 					C9B9EFCA1CFBDDEA002EA9BA = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 978L98WATL;
+						DevelopmentTeam = A56L2334RX;
 					};
 				};
 			};
@@ -701,7 +701,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kushmaheshwari.SeakApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kushmaheshwari1.SeakApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SeakApp-Bridging-Header.h";
@@ -727,7 +727,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kushmaheshwari.SeakApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kushmaheshwari1.SeakApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SeakApp-Bridging-Header.h";
