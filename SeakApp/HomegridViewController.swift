@@ -22,7 +22,8 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 
 		self.scrollingMenu.delegate = self
 		self.scrollingMenu.dataSource = self
-		self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+		self.navigationItem.backBarButtonItem = nil
+//            UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 
 		let titleImage = UIImage(named: "navBarLogo")
 		let imgView = UIImageView(image: titleImage)

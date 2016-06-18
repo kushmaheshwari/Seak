@@ -71,8 +71,12 @@ UICollectionViewDelegate, UICollectionViewDataSource
 	}
 
 	func addPlainHeader(searchTextValue: String) {
-		self.navigationItem.titleView = nil
-		self.navigationItem.title = "SEAK"
+		let titleImage = UIImage(named: "navBarLogo")
+		let imgView = UIImageView(image: titleImage)
+		imgView.frame = CGRectMake(0, 0, 50, 25)
+		imgView.contentMode = .ScaleAspectFit
+		self.title = ""
+		self.navigationItem.titleView = imgView
 		let rightBarButton = UIBarButtonItem(image: UIImage(named: "search"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SearchItemsViewController.searchIconTaped(_:)))
 		navigationItem.rightBarButtonItem = rightBarButton
 		self.searchTitleTextLabel.text = searchTextValue
