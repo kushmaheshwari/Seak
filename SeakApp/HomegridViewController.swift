@@ -23,7 +23,14 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 		self.scrollingMenu.delegate = self
 		self.scrollingMenu.dataSource = self
 		self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-		self.title = "SEAK"
+
+		let titleImage = UIImage(named: "navBarLogo")
+		let imgView = UIImageView(image: titleImage)
+		imgView.frame = CGRectMake(0, 0, 50, 25)
+		imgView.contentMode = .ScaleAspectFit
+		self.title = ""
+		self.navigationItem.titleView = imgView
+
 		let rightBarButton = UIBarButtonItem(image: UIImage(named: "search"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HomeViewController.addItem(_:)))
 		navigationItem.rightBarButtonItem = rightBarButton
 		rightBarButton.action = #selector(HomeViewController.addItem(_:)) // adds search icon
@@ -35,7 +42,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 
 		for item in MenuItems.values {
 			if item != .Home {
-				if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("itemsCollectionViewID") as? ItemsCollectionViewController {
+				if let vc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.ItemsCollection.rawValue) as? ItemsCollectionViewController {
 					vc.setCategory(item)
 					addChildViewController(vc)
 					views.append(vc)

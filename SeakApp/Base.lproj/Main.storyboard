@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e0r-zk-c29">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e0r-zk-c29">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -62,7 +62,7 @@
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="g5v-9M-ggQ">
-                                <rect key="frame" x="162" y="0.0" width="277" height="139"/>
+                                <rect key="frame" x="162" y="5" width="277" height="139"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="277" id="K3r-Wh-18m"/>
@@ -70,7 +70,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Bhe-hX-P3D">
-                                <rect key="frame" x="187" y="486" width="226" height="30"/>
+                                <rect key="frame" x="187" y="486" width="227" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Don't have an account? " textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cp0-0O-4zF">
                                         <rect key="frame" x="0.0" y="0.0" width="129" height="30"/>
@@ -152,7 +152,7 @@
                             <constraint firstItem="4tH-v5-5tm" firstAttribute="top" secondItem="WDc-zJ-eKJ" secondAttribute="bottom" constant="8" id="dBD-qm-raV"/>
                             <constraint firstItem="Bhe-hX-P3D" firstAttribute="centerX" secondItem="oQm-fD-OpK" secondAttribute="centerX" id="eu2-no-Gxx"/>
                             <constraint firstItem="i82-55-r9e" firstAttribute="centerX" secondItem="oQm-fD-OpK" secondAttribute="centerX" id="hKS-bc-8u8"/>
-                            <constraint firstItem="g5v-9M-ggQ" firstAttribute="top" secondItem="bhv-LI-typ" secondAttribute="bottom" id="jxq-oi-3gd"/>
+                            <constraint firstItem="g5v-9M-ggQ" firstAttribute="top" secondItem="bhv-LI-typ" secondAttribute="bottom" constant="5" id="jxq-oi-3gd"/>
                             <constraint firstItem="i82-55-r9e" firstAttribute="width" secondItem="WDc-zJ-eKJ" secondAttribute="width" id="kOL-Qb-h1B"/>
                             <constraint firstItem="g5v-9M-ggQ" firstAttribute="centerX" secondItem="oQm-fD-OpK" secondAttribute="centerX" id="ool-lz-WmM"/>
                             <constraint firstItem="WDc-zJ-eKJ" firstAttribute="centerX" secondItem="oQm-fD-OpK" secondAttribute="centerX" id="qqZ-r1-jwF"/>
@@ -273,7 +273,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo2" translatesAutoresizingMaskIntoConstraints="NO" id="zpP-d8-ZO9">
-                                <rect key="frame" x="162" y="1" width="277" height="139"/>
+                                <rect key="frame" x="162" y="5" width="277" height="139"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="277" id="ANN-LD-Io8"/>
@@ -283,10 +283,10 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ipc-Jb-CUv">
                                 <rect key="frame" x="20" y="354" width="560" height="44"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="MuM-FV-Aqj">
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="MuM-FV-Aqj">
                                         <rect key="frame" x="198" y="0.0" width="164" height="22"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsK-fi-4hK">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsK-fi-4hK">
                                                 <rect key="frame" x="0.0" y="0.0" width="164" height="22"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="8"/>
                                                 <state key="normal" title="BY CLICKING SIGN UP YOU AGREE TO SEAK'S">
@@ -299,22 +299,22 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="elU-h6-vri">
-                                        <rect key="frame" x="211" y="22" width="140" height="22"/>
+                                        <rect key="frame" x="210" y="22" width="140" height="22"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isv-jI-zFd">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isv-jI-zFd">
                                                 <rect key="frame" x="0.0" y="0.0" width="55" height="22"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="8"/>
                                                 <state key="normal" title="TERMS OF USE">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNl-zu-SqK">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="AND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNl-zu-SqK">
                                                 <rect key="frame" x="58" y="0.0" width="17" height="22"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="8"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCn-BM-Xlc">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCn-BM-Xlc">
                                                 <rect key="frame" x="78" y="0.0" width="62" height="22"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="8"/>
                                                 <state key="normal" title="PRIVACY POLICY">
@@ -331,7 +331,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="XCX-an-UAR" secondAttribute="trailing" constant="30" id="3Af-jW-1oh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SZV-I8-BlC" secondAttribute="trailing" constant="-20" id="KuP-MG-ddT"/>
                             <constraint firstItem="XCX-an-UAR" firstAttribute="leading" secondItem="8GQ-su-48V" secondAttribute="leadingMargin" constant="30" id="MiX-2R-haE"/>
-                            <constraint firstItem="zpP-d8-ZO9" firstAttribute="top" secondItem="W6W-7O-WJt" secondAttribute="bottom" constant="1" id="Wvm-NA-O6I"/>
+                            <constraint firstItem="zpP-d8-ZO9" firstAttribute="top" secondItem="W6W-7O-WJt" secondAttribute="bottom" constant="5" id="Wvm-NA-O6I"/>
                             <constraint firstItem="XCX-an-UAR" firstAttribute="centerY" secondItem="8GQ-su-48V" secondAttribute="centerY" id="m9s-II-nBE"/>
                             <constraint firstItem="zpP-d8-ZO9" firstAttribute="centerX" secondItem="8GQ-su-48V" secondAttribute="centerX" id="mcX-zU-F8l"/>
                             <constraint firstItem="Ipc-Jb-CUv" firstAttribute="centerX" secondItem="8GQ-su-48V" secondAttribute="centerX" id="sEF-LZ-m5Z"/>

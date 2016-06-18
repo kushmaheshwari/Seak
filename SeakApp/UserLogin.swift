@@ -14,35 +14,33 @@ class UserLogin {
 
 	private static let storyboard = UIStoryboard(name: StoryboardNames.MainStoryboard.rawValue, bundle: nil)
 
-	static func logIn(username: String, password: String, view: UIViewController){
+	static func logIn(username: String, password: String, view: UIViewController) {
+
 		PFUser.logInWithUsernameInBackground(username, password: password, block: {
 			(user: PFUser?, error: NSError?) -> Void in
 			if error == nil {
-				dispatch_async(dispatch_get_main_queue()) {
-					let NavigationVC: UIViewController = storyboard.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
-					view.presentViewController(NavigationVC, animated: true, completion: nil)
-				}
+				let NavigationVC: UIViewController = storyboard.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
+				view.presentViewController(NavigationVC, animated: true, completion: nil)
+
 			} else {
 				// problem
 				print(error);
-                callAlert()
+				callAlert()
 			}
 
 		})
-        
-        
 
 	}
-    
-    static func callAlert(){
-        
-        let alertController: UIAlertController = UIAlertController(title: "Invalid Login", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action: UIAlertAction!) in
-            print("Handle Cancel Logic here")
-        }))
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
-        
-    }
+
+	static func callAlert() {
+
+		let alertController: UIAlertController = UIAlertController(title: "Invalid Login", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+		alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action: UIAlertAction!) in
+			print("Handle Cancel Logic here")
+			}))
+		UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+
+	}
 
 	static func signUp(username: String, email: String,
 		password: String, firsname: String,

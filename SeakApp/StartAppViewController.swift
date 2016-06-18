@@ -17,6 +17,12 @@ class StartAppViewController: UIViewController {
 		let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
 
 		if (FBSDKAccessToken.currentAccessToken() != nil || PFUser.currentUser() != nil) {
+			if PFUser.currentUser() != nil {
+				let startView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
+				appDelegate?.window?.rootViewController = startView
+			}
+			else
+
 			if (FBSDKAccessToken.currentAccessToken() != nil) {
 				let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken()
 

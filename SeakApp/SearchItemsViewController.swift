@@ -28,6 +28,8 @@ UICollectionViewDelegate, UICollectionViewDataSource
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		self.navigationItem.hidesBackButton = false
+
 		self.recentSearches = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.RecentSearches.rawValue) as! RecentSearchesViewController
 		addSearchbar()
 		self.searchItemsCollectionView.delegate = self
