@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home Items View Controller-->
+        <scene sceneID="7SD-t9-og6">
+            <objects>
+                <viewController storyboardIdentifier="homeItemsViewID" id="veZ-wb-iKL" customClass="HomeItemsViewController" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yip-Fr-9Vj"/>
+                        <viewControllerLayoutGuide type="bottom" id="iJm-Fc-IuF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="566-MG-nBi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart2.png" translatesAutoresizingMaskIntoConstraints="NO" id="rD9-Xo-aMd">
+                                <rect key="frame" x="0.0" y="20" width="600" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="7JA-XI-IcH"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qqy-NA-6xM">
+                                <rect key="frame" x="0.0" y="170" width="600" height="430"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qqy-NA-6xM" firstAttribute="leading" secondItem="566-MG-nBi" secondAttribute="leadingMargin" constant="-20" id="1ZO-wt-VUM"/>
+                            <constraint firstItem="rD9-Xo-aMd" firstAttribute="leading" secondItem="566-MG-nBi" secondAttribute="leadingMargin" constant="-20" id="96T-uo-YoF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rD9-Xo-aMd" secondAttribute="trailing" constant="-20" id="UuZ-AK-2qe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qqy-NA-6xM" secondAttribute="trailing" constant="-20" id="Wh8-ME-yuO"/>
+                            <constraint firstItem="iJm-Fc-IuF" firstAttribute="top" secondItem="qqy-NA-6xM" secondAttribute="bottom" id="YL5-lF-gCk"/>
+                            <constraint firstItem="rD9-Xo-aMd" firstAttribute="top" secondItem="Yip-Fr-9Vj" secondAttribute="bottom" id="l9m-y4-srV"/>
+                            <constraint firstItem="qqy-NA-6xM" firstAttribute="top" secondItem="rD9-Xo-aMd" secondAttribute="bottom" id="p9i-7R-vPb"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oa7-Ka-jyX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="558" y="-176"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="heart2.png" width="44" height="40"/>
+    </resources>
+</document>

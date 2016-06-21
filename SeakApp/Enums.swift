@@ -14,12 +14,14 @@ enum ParseClassNames: String {
 
 enum StoryboardNames: String {
 	case MainStoryboard = "Main"
+	case HomeItemsViewStoryboard = "HomeItemsView"
 	case Login = "Login"
 	case Navigation = "navigationID"
 	case RecentSearches = "recentSearchesID"
 	case Main = "StartPointView"
 	case ItemsCollection = "itemsCollectionViewID"
 	case StoreNavigation = "storeNavigationID"
+	case HomeItemsView = "homeItemsViewID"
 }
 
 enum MenuItems: String {

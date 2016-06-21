@@ -465,10 +465,10 @@
             </objects>
             <point key="canvasLocation" x="145" y="-1922"/>
         </scene>
-        <!--View Controller-->
+        <!--Stores View Controller-->
         <scene sceneID="2Iv-Xd-7BX">
             <objects>
-                <viewController id="5vX-BZ-gQo" sceneMemberID="viewController">
+                <viewController id="5vX-BZ-gQo" customClass="StoresViewController" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m08-gC-X9T"/>
                         <viewControllerLayoutGuide type="bottom" id="zDv-zE-PaJ"/>
@@ -481,9 +481,15 @@
                     <navigationItem key="navigationItem" id="LLu-4R-NSV">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="menuIcon" id="LWb-Jv-iFQ">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="menuIceonPressed:" destination="5vX-BZ-gQo" id="dcZ-uY-Vlb"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="search.png" id="gT4-5Z-PjF">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="searchIconPressed:" destination="5vX-BZ-gQo" id="Fni-V5-z2M"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -936,7 +942,7 @@
     <resources>
         <image name="Image.png" width="79" height="78"/>
         <image name="loginLogo" width="353" height="157"/>
-        <image name="menuIcon" width="94" height="90"/>
+        <image name="menuIcon" width="48" height="46"/>
         <image name="registerLogo" width="353" height="157"/>
         <image name="search.png" width="20" height="20"/>
     </resources>

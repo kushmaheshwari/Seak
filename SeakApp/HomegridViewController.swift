@@ -50,7 +50,10 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 				}
 			}
 			else {
-				views.append(UIViewController())
+				let st = UIStoryboard(name: StoryboardNames.HomeItemsViewStoryboard.rawValue, bundle: nil)
+				if let v = st.instantiateViewControllerWithIdentifier(StoryboardNames.HomeItemsView.rawValue) as? HomeItemsViewController {
+					views.append(v)
+				}
 			}
 		}
 
