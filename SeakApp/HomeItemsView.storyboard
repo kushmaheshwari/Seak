@@ -62,8 +62,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="collectionView" destination="pe1-dn-AHr" id="lUw-x4-sjS"/>
-                                            <outlet property="groupNameLabel" destination="pe1-dn-AHr" id="gKU-t8-TqG"/>
+                                            <outlet property="collectionView" destination="TvM-TV-I09" id="cTL-xX-uLv"/>
+                                            <outlet property="groupNameLabel" destination="pyX-G4-ftf" id="cPn-1V-qoo"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCellID" rowHeight="203" id="VLT-zj-zjw" customClass="BannerCell" customModule="SeakApp" customModuleProvider="target">

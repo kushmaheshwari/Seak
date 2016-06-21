@@ -22,10 +22,15 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
 	var status: ItemStatus = .None {
 		didSet {
-//			self.collectionView.dataSource = self
-//			self.collectionView.delegate = self
+			self.groupNameLabel.text? = status.rawValue
 			self.loadItems()
 		}
+	}
+
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		self.collectionView.dataSource = self
+		self.collectionView.delegate = self
 	}
 
 	@IBOutlet weak var groupNameLabel: UILabel!
