@@ -380,7 +380,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NkX-z1-NLn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1577" y="-1824"/>
+            <point key="canvasLocation" x="2457" y="-1160"/>
         </scene>
         <!--Search Items View Controller-->
         <scene sceneID="kQV-1E-Z4v">
@@ -457,10 +457,39 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.074509803920000006" green="0.58823529409999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="5vX-BZ-gQo" kind="relationship" relationship="rootViewController" id="Pte-eb-k5i"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWU-B8-eac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="99" y="-1894"/>
+            <point key="canvasLocation" x="145" y="-1922"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2Iv-Xd-7BX">
+            <objects>
+                <viewController id="5vX-BZ-gQo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="m08-gC-X9T"/>
+                        <viewControllerLayoutGuide type="bottom" id="zDv-zE-PaJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SZJ-Kf-X8b">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LLu-4R-NSV">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="menuIcon" id="LWb-Jv-iFQ">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="search.png" id="gT4-5Z-PjF">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kLu-mC-hGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="881" y="-1922"/>
         </scene>
         <!--Recent Searches View Controller-->
         <scene sceneID="1bh-SR-EdZ">
@@ -498,7 +527,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vZT-Q5-ehe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879" y="-1827"/>
+            <point key="canvasLocation" x="3323" y="-1141"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="Feu-Ax-6IG">
@@ -907,6 +936,8 @@
     <resources>
         <image name="Image.png" width="79" height="78"/>
         <image name="loginLogo" width="353" height="157"/>
+        <image name="menuIcon" width="94" height="90"/>
         <image name="registerLogo" width="353" height="157"/>
+        <image name="search.png" width="20" height="20"/>
     </resources>
 </document>
