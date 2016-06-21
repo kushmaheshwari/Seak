@@ -46,14 +46,20 @@ class MenuViewController: UITableViewController {
 	}
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		// settings TODO change
+		// Browse
 		if indexPath.row == 1 {
 			if let controller = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Navigation.rawValue) {
 				self.slideMenuController()?.changeMainViewController(controller, close: true)
 			}
 		}
-
+//Stores
 		if indexPath.row == 2 {
+			guard let controller = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.StoreNavigation.rawValue) else { return }
+			self.slideMenuController()?.changeMainViewController(controller, close: true)
+		}
+
+		// Settings
+		if indexPath.row == 5 {
 			print("LOGOUT")
 			if (PFUser.currentUser() != nil) {
 				PFUser.logOut()
