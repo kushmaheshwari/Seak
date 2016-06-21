@@ -64,6 +64,10 @@ class ItemRepository {
 	}
 
 	func getByStatus(status: ItemStatus, completion: ItemRepositoryComplectionBlock) {
+		if status == .None {
+			return
+		}
+
 		let query = PFQuery(className: ParseClassNames.Item.rawValue)
 			.whereKey("Status", containsString: status.rawValue)
 		query.cachePolicy = .CacheThenNetwork
@@ -82,6 +86,10 @@ class ItemRepository {
 	}
 
 	func getAllFromCategory(type: MenuItems, completion: ItemRepositoryComplectionBlock) {
+		if type == .None {
+			return
+		}
+
 		let query = PFQuery(className: ParseClassNames.Item.rawValue)
 			.whereKey("category", containsString: type.rawValue)
 		query.cachePolicy = .CacheThenNetwork

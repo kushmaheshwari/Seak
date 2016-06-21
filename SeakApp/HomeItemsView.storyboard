@@ -23,14 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart2.png" translatesAutoresizingMaskIntoConstraints="NO" id="rD9-Xo-aMd">
-                                <rect key="frame" x="0.0" y="20" width="600" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="7JA-XI-IcH"/>
-                                </constraints>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="181" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qqy-NA-6xM">
-                                <rect key="frame" x="0.0" y="170" width="600" height="430"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupCellID" rowHeight="181" id="fbv-vj-rsL" customClass="GroupCell" customModule="SeakApp" customModuleProvider="target">
@@ -72,18 +66,37 @@
                                             <outlet property="groupNameLabel" destination="pe1-dn-AHr" id="gKU-t8-TqG"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCellID" rowHeight="203" id="VLT-zj-zjw" customClass="BannerCell" customModule="SeakApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="209" width="600" height="203"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VLT-zj-zjw" id="IWh-HN-Mjk">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="202"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo2" translatesAutoresizingMaskIntoConstraints="NO" id="9Fo-IC-mB9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="202"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9Fo-IC-mB9" firstAttribute="top" secondItem="IWh-HN-Mjk" secondAttribute="topMargin" constant="-8" id="5wg-cN-RRX"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="9Fo-IC-mB9" secondAttribute="trailing" constant="-8" id="sfF-Sj-Akd"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="9Fo-IC-mB9" secondAttribute="bottom" constant="-8" id="tyh-5d-NGB"/>
+                                                <constraint firstItem="9Fo-IC-mB9" firstAttribute="leading" secondItem="IWh-HN-Mjk" secondAttribute="leadingMargin" constant="-8" id="xsC-4f-Tli"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgVIew" destination="IWh-HN-Mjk" id="mu8-t4-u6b"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qqy-NA-6xM" firstAttribute="leading" secondItem="566-MG-nBi" secondAttribute="leadingMargin" constant="-20" id="1ZO-wt-VUM"/>
-                            <constraint firstItem="rD9-Xo-aMd" firstAttribute="leading" secondItem="566-MG-nBi" secondAttribute="leadingMargin" constant="-20" id="96T-uo-YoF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rD9-Xo-aMd" secondAttribute="trailing" constant="-20" id="UuZ-AK-2qe"/>
+                            <constraint firstItem="qqy-NA-6xM" firstAttribute="top" secondItem="Yip-Fr-9Vj" secondAttribute="bottom" id="7QS-bD-Iok"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qqy-NA-6xM" secondAttribute="trailing" constant="-20" id="Wh8-ME-yuO"/>
                             <constraint firstItem="iJm-Fc-IuF" firstAttribute="top" secondItem="qqy-NA-6xM" secondAttribute="bottom" id="YL5-lF-gCk"/>
-                            <constraint firstItem="rD9-Xo-aMd" firstAttribute="top" secondItem="Yip-Fr-9Vj" secondAttribute="bottom" id="l9m-y4-srV"/>
-                            <constraint firstItem="qqy-NA-6xM" firstAttribute="top" secondItem="rD9-Xo-aMd" secondAttribute="bottom" id="p9i-7R-vPb"/>
                         </constraints>
                     </view>
                     <connections>
@@ -96,6 +109,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart2.png" width="44" height="40"/>
+        <image name="logo2" width="397" height="212"/>
     </resources>
 </document>
