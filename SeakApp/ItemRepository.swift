@@ -14,6 +14,7 @@ typealias ItemRepositoryComplectionBlock = (items: [ItemEntity]) -> Void
 class ItemRepository {
 
 	let maxSearchCount = 30
+	let maxCountByStatus = 10
 	let cacheAge: NSTimeInterval = 60 * 5 // 5 minutes
 
 	func processItems(data: [PFObject]?) -> [ItemEntity]? {
@@ -67,6 +68,7 @@ class ItemRepository {
 			.whereKey("Status", containsString: status.rawValue)
 		query.cachePolicy = .CacheThenNetwork
 		query.maxCacheAge = cacheAge
+		query.limit = maxCountByStatus
 
 		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
 			if error != nil {

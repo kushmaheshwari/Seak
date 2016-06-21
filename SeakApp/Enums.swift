@@ -39,8 +39,11 @@ enum MenuItems: String {
 }
 
 enum ItemStatus: String {
+	case None = ""
 	case Trending = "Trending"
 	case Featured = "Featured"
 	case Recent = "Recent"
 	case Latest = "Latest"
+
+	static let values = [Trending, Featured, Recent, Latest]
 }

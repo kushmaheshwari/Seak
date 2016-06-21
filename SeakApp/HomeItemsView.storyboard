@@ -5,6 +5,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Home Items View Controller-->
         <scene sceneID="7SD-t9-og6">
@@ -24,9 +29,50 @@
                                     <constraint firstAttribute="height" constant="150" id="7JA-XI-IcH"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qqy-NA-6xM">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="181" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qqy-NA-6xM">
                                 <rect key="frame" x="0.0" y="170" width="600" height="430"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupCellID" rowHeight="181" id="fbv-vj-rsL" customClass="GroupCell" customModule="SeakApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="181"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fbv-vj-rsL" id="pe1-dn-AHr">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyX-G4-ftf">
+                                                    <rect key="frame" x="8" y="8" width="584" height="24"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TvM-TV-I09">
+                                                    <rect key="frame" x="0.0" y="40" width="600" height="140"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="J1F-Q9-2HC">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells/>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="pyX-G4-ftf" firstAttribute="top" secondItem="pe1-dn-AHr" secondAttribute="topMargin" id="Wud-x6-y1Z"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="TvM-TV-I09" secondAttribute="bottom" constant="-8" id="XJe-BG-dC4"/>
+                                                <constraint firstItem="pyX-G4-ftf" firstAttribute="leading" secondItem="pe1-dn-AHr" secondAttribute="leadingMargin" id="Yqs-bb-ZiU"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TvM-TV-I09" secondAttribute="trailing" constant="-8" id="aBj-i8-oeq"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="pyX-G4-ftf" secondAttribute="trailing" id="al6-BM-jjL"/>
+                                                <constraint firstItem="TvM-TV-I09" firstAttribute="leading" secondItem="pe1-dn-AHr" secondAttribute="leadingMargin" constant="-8" id="iu8-WJ-fEq"/>
+                                                <constraint firstItem="TvM-TV-I09" firstAttribute="top" secondItem="pyX-G4-ftf" secondAttribute="bottom" constant="8" id="pt8-Jc-Vfi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="collectionView" destination="pe1-dn-AHr" id="lUw-x4-sjS"/>
+                                            <outlet property="groupNameLabel" destination="pe1-dn-AHr" id="gKU-t8-TqG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,6 +86,9 @@
                             <constraint firstItem="qqy-NA-6xM" firstAttribute="top" secondItem="rD9-Xo-aMd" secondAttribute="bottom" id="p9i-7R-vPb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="qqy-NA-6xM" id="7Az-Mr-KOK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oa7-Ka-jyX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
