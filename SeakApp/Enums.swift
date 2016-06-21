@@ -35,3 +35,10 @@ enum MenuItems: String {
 	static let values = [Home, Clothes, Electronics,
 		Textbooks, Accessories, Appliances, Miscellaneous]
 }
+
+enum ItemStatus: String {
+	case Trending = "Trending"
+	case Featured = "Featured"
+	case Recent = "Recent"
+	case Latest = "Latest"
+}
