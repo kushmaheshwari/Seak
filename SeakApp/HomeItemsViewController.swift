@@ -17,6 +17,8 @@ class BannerCell: UITableViewCell {
 class GroupCell: UITableViewCell, UICollectionViewDelegate,
 UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+	static let reusableIdentifier = "groupCellID"
+
 	private let repository = ItemRepository()
 	private var items: [ItemEntity] = []
 
@@ -62,7 +64,6 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
 class HomeItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-	private let reusableIdentifier = "groupCellID"
 	private let bannerCellIdentifier = "imageCellID"
 
 	private let items = ItemStatus.values
@@ -83,11 +84,11 @@ class HomeItemsViewController: UIViewController, UITableViewDelegate, UITableVie
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
 		if indexPath.row == 0 {
-			guard let cell = self.tableView.dequeueReusableCellWithIdentifier(bannerCellIdentifier) as? BannerCell else { fatalError("error on creating bannerCell") }
+			guard let cell = self.tableView.dequeueReusableCellWithIdentifier(self.bannerCellIdentifier) as? BannerCell else { fatalError("error on creating bannerCell") }
 			return cell
 		}
 
-		guard let cell = self.tableView.dequeueReusableCellWithIdentifier(reusableIdentifier) as? GroupCell else { fatalError("can't dequeue GroupCell") }
+		guard let cell = self.tableView.dequeueReusableCellWithIdentifier(GroupCell.reusableIdentifier) as? GroupCell else { fatalError("can't dequeue GroupCell") }
 		cell.status = items[indexPath.row - 1]
 		return cell
 
