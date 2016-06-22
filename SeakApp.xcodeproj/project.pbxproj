@@ -18,7 +18,6 @@
 		5E15334A1D0A8ECB00C2E5E1 /* SearchItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1533491D0A8ECB00C2E5E1 /* SearchItemsViewController.swift */; };
 		5E1533521D0AE30600C2E5E1 /* RecentSearchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1533511D0AE30600C2E5E1 /* RecentSearchesViewController.swift */; };
 		5E1533541D0AE4CC00C2E5E1 /* RecentSearches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1533531D0AE4CC00C2E5E1 /* RecentSearches.swift */; };
-		5E2A44D11D129DA900BA866D /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44D01D129DA900BA866D /* KeyboardManager.swift */; };
 		5E2A44E91D12C2C300BA866D /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44D41D12C2C300BA866D /* IQNSArray+Sort.swift */; };
 		5E2A44EA1D12C2C300BA866D /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44D51D12C2C300BA866D /* IQUIScrollView+Additions.swift */; };
 		5E2A44EB1D12C2C300BA866D /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44D61D12C2C300BA866D /* IQUITextFieldView+Additions.swift */; };
@@ -40,6 +39,7 @@
 		5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */; };
 		5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A451D02CE3200BCD0B6 /* Extensions.swift */; };
 		5E507A481D02DB7400BCD0B6 /* ScrollableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */; };
+		5E87402B1D1AE923003A9354 /* UserDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87402A1D1AE923003A9354 /* UserDataCache.swift */; };
 		5E9346291D00282100CF4DC6 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9346281D00282100CF4DC6 /* ItemEntity.swift */; };
 		5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */; };
 		5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93462F1D002C2F00CF4DC6 /* Enums.swift */; };
@@ -105,7 +105,6 @@
 		5E1533491D0A8ECB00C2E5E1 /* SearchItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchItemsViewController.swift; sourceTree = "<group>"; };
 		5E1533511D0AE30600C2E5E1 /* RecentSearchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchesViewController.swift; sourceTree = "<group>"; };
 		5E1533531D0AE4CC00C2E5E1 /* RecentSearches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearches.swift; sourceTree = "<group>"; };
-		5E2A44D01D129DA900BA866D /* KeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		5E2A44D41D12C2C300BA866D /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQNSArray+Sort.swift"; sourceTree = "<group>"; };
 		5E2A44D51D12C2C300BA866D /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
 		5E2A44D61D12C2C300BA866D /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
@@ -127,6 +126,7 @@
 		5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		5E507A451D02CE3200BCD0B6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableMenu.swift; sourceTree = "<group>"; };
+		5E87402A1D1AE923003A9354 /* UserDataCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataCache.swift; sourceTree = "<group>"; };
 		5E9346281D00282100CF4DC6 /* ItemEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
 		5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		5E93462F1D002C2F00CF4DC6 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -330,6 +330,16 @@
 			name = ViewConvtrollers;
 			sourceTree = "<group>";
 		};
+		5E8740291D1AE607003A9354 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5E507A451D02CE3200BCD0B6 /* Extensions.swift */,
+				5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */,
+				5E87402A1D1AE923003A9354 /* UserDataCache.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		5E9346271D00280E00CF4DC6 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,15 +381,13 @@
 				5E507A421D02CC7000BCD0B6 /* ViewConvtrollers */,
 				5E93462C1D002A5100CF4DC6 /* Enums */,
 				5E9346271D00280E00CF4DC6 /* DataLayer */,
+				5E8740291D1AE607003A9354 /* Utilities */,
 				C9B9F03B1CFBEFD2002EA9BA /* Fonts */,
 				C9B9F0261CFBEF7F002EA9BA /* Images */,
 				C9B9EFE11CFBE375002EA9BA /* Frameworks */,
 				C9B9EFCE1CFBDDEA002EA9BA /* AppDelegate.swift */,
 				C9B9EFD51CFBDDEA002EA9BA /* Assets.xcassets */,
 				C9B9EFDA1CFBDDEA002EA9BA /* Info.plist */,
-				5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */,
-				5E507A451D02CE3200BCD0B6 /* Extensions.swift */,
-				5E2A44D01D129DA900BA866D /* KeyboardManager.swift */,
 			);
 			path = SeakApp;
 			sourceTree = "<group>";
@@ -580,8 +588,8 @@
 				5E1533521D0AE30600C2E5E1 /* RecentSearchesViewController.swift in Sources */,
 				5EC0768F1D193CF900E84EE5 /* HomeItemsViewController.swift in Sources */,
 				5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */,
-				5E2A44D11D129DA900BA866D /* KeyboardManager.swift in Sources */,
 				5E2A44F41D12C2C300BA866D /* IQBarButtonItem.swift in Sources */,
+				5E87402B1D1AE923003A9354 /* UserDataCache.swift in Sources */,
 				5E2A44EB1D12C2C300BA866D /* IQUITextFieldView+Additions.swift in Sources */,
 				5E07CB791D06C1A500F38D0B /* ACTabScrollView.swift in Sources */,
 				5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */,

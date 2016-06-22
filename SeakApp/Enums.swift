@@ -47,3 +47,14 @@ enum ItemStatus: String {
 
 	static let values = [Trending, Featured, Recent, Latest]
 }
+
+enum UserLoginType {
+	case None
+	case Parse
+	case Facebook
+}
+
+enum UserDataCacheProperties: String {
+	case UserPicture = "userpicture"
+	case UserName = "username"
+}

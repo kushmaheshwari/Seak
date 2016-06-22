@@ -16,35 +16,31 @@ class StartAppViewController: UIViewController {
 		let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Login.rawValue)
 		let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
 
-		if (FBSDKAccessToken.currentAccessToken() != nil || PFUser.currentUser() != nil) {
-			if PFUser.currentUser() != nil {
-				let startView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
-				appDelegate?.window?.rootViewController = startView
-			}
-			else
+		if (FBSDKAccessToken.currentAccessToken() != nil) {
+			let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken()
 
-			if (FBSDKAccessToken.currentAccessToken() != nil) {
-				let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken()
-
-				PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken,
-					block: { (user: PFUser?, error: NSError?) -> Void in
-						if user != nil {
-							print("User logged in through Facebook!")
-							let startView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
-							appDelegate?.window?.rootViewController = startView
-						} else {
-							print("Uh oh. There was an error logging in.")
-							appDelegate?.window?.rootViewController = loginVC
-						}
-				})
-			}
-			else {
-				appDelegate?.window?.rootViewController = loginVC
-			}
-
+			PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken,
+				block: { (user: PFUser?, error: NSError?) -> Void in
+					if user != nil {
+						UserLogin.loginType = .Facebook
+						let startView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
+						appDelegate?.window?.rootViewController = startView
+					} else {
+						print("Uh oh. There was an error logging in.")
+						appDelegate?.window?.rootViewController = loginVC
+					}
+			})
 		}
+		else
+		if PFUser.currentUser() != nil {
+			UserLogin.loginType = .Parse
+			let startView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
+			appDelegate?.window?.rootViewController = startView
+		}
+
 		else {
 			appDelegate?.window?.rootViewController = loginVC
 		}
+
 	}
 }

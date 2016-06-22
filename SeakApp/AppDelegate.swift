@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
 		PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
 		FBSDKButton.classForCoder()
+		FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
 
 		IQKeyboardManager.sharedManager().enable = true
 		IQKeyboardManager.sharedManager().enableAutoToolbar = true

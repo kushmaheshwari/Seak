@@ -22,12 +22,45 @@ class MenuViewController: UITableViewController {
 		logoImage.layer.borderWidth = 10
 		logoImage.clipsToBounds = true
 		logoImage.layer.borderColor = UIColor.colorWithHexString("1677a6").CGColor
-		nameLabel.text = "JOHN YOON"
 
-//		self.tableView.contentInset = UIEdgeInsetsMake(0, -100, 0, 0)
-//		self.tableView.setNeedsLayout()
-//		self.view.layoutSubviews()
+		nameLabel.text = "USER NAME"
 
+		switch UserLogin.loginType {
+		case .Facebook:
+			setFacebookInfo()
+		case .Parse:
+			setParseInfo()
+		default: break
+		}
+
+	}
+
+	func setParseInfo() {
+		self.nameLabel.text = PFUser.currentUser()?.username
+	}
+
+	func setFacebookInfo() {
+		if let userName = UserDataCache.getUserName() {
+			self.nameLabel.text = userName
+		}
+		else {
+			let firstName = FBSDKProfile.currentProfile().firstName
+			let lastname = FBSDKProfile.currentProfile().lastName
+			let userName = firstName + " " + lastname
+			self.nameLabel.text = userName
+			UserDataCache.saveUserName(userName)
+		}
+
+		if let userPictureData = UserDataCache.getUserPicture() {
+			self.logoImage.image = UIImage(data: userPictureData)
+		}
+		else {
+			let url = FBSDKProfile.currentProfile().imageURLForPictureMode(.Square, size: self.logoImage.frame.size)
+			if let data = NSData(contentsOfURL: url) {
+				self.logoImage.image = UIImage(data: data)
+				UserDataCache.saveUserPicture(data)
+			}
+		}
 	}
 
 	override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -52,7 +85,7 @@ class MenuViewController: UITableViewController {
 				self.slideMenuController()?.changeMainViewController(controller, close: true)
 			}
 		}
-//Stores
+		// Stores
 		if indexPath.row == 2 {
 			guard let controller = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.StoreNavigation.rawValue) else { return }
 			self.slideMenuController()?.changeMainViewController(controller, close: true)
@@ -63,8 +96,10 @@ class MenuViewController: UITableViewController {
 			print("LOGOUT")
 			if (PFUser.currentUser() != nil) {
 				PFUser.logOut()
+				UserDataCache.clearCache()
 			} else {
 				FBSDKLoginManager().logOut()
+				UserDataCache.clearCache()
 			}
 
 			let loginview = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Login.rawValue)
