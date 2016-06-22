@@ -66,14 +66,14 @@
                                             <outlet property="groupNameLabel" destination="pyX-G4-ftf" id="cPn-1V-qoo"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCellID" rowHeight="203" id="VLT-zj-zjw" customClass="BannerCell" customModule="SeakApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="209" width="600" height="203"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCellID" rowHeight="130" id="VLT-zj-zjw" customClass="BannerCell" customModule="SeakApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="209" width="600" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VLT-zj-zjw" id="IWh-HN-Mjk">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="202"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="129"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo2" translatesAutoresizingMaskIntoConstraints="NO" id="9Fo-IC-mB9">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Puerto_Vallarta_Radio_Shack Clipped" translatesAutoresizingMaskIntoConstraints="NO" id="9Fo-IC-mB9">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="202"/>
                                                 </imageView>
                                             </subviews>
@@ -109,6 +109,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo2" width="397" height="212"/>
+        <image name="Puerto_Vallarta_Radio_Shack Clipped" width="375" height="133"/>
     </resources>
 </document>
