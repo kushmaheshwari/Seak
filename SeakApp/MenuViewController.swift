@@ -36,7 +36,11 @@ class MenuViewController: UITableViewController {
 	}
 
 	func setParseInfo() {
-		self.nameLabel.text = PFUser.currentUser()?.username
+		if let user = PFUser.currentUser() {
+			guard let firstName = user["firstName"] as? String else { return }
+			guard let lastName = user["lastName"] as? String else { return }
+			self.nameLabel.text = firstName + " " + lastName
+		}
 	}
 
 	func setFacebookInfo() {
