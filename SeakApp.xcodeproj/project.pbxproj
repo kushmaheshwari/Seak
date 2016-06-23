@@ -43,6 +43,8 @@
 		5E9346291D00282100CF4DC6 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9346281D00282100CF4DC6 /* ItemEntity.swift */; };
 		5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */; };
 		5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93462F1D002C2F00CF4DC6 /* Enums.swift */; };
+		5EA0F3EF1D1C4CA9006175BB /* ItemGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EA0F3EE1D1C4CA9006175BB /* ItemGroupView.xib */; };
+		5EA0F3F11D1C4EB2006175BB /* ItemGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA0F3F01D1C4EB2006175BB /* ItemGroupView.swift */; };
 		5EC076851D1935B300E84EE5 /* StoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC076841D1935B300E84EE5 /* StoresViewController.swift */; };
 		5EC0768D1D193B2100E84EE5 /* HomeItemsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EC0768C1D193B2100E84EE5 /* HomeItemsView.storyboard */; };
 		5EC0768F1D193CF900E84EE5 /* HomeItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0768E1D193CF900E84EE5 /* HomeItemsViewController.swift */; };
@@ -130,6 +132,8 @@
 		5E9346281D00282100CF4DC6 /* ItemEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
 		5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		5E93462F1D002C2F00CF4DC6 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		5EA0F3EE1D1C4CA9006175BB /* ItemGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemGroupView.xib; sourceTree = "<group>"; };
+		5EA0F3F01D1C4EB2006175BB /* ItemGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemGroupView.swift; sourceTree = "<group>"; };
 		5EC076841D1935B300E84EE5 /* StoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresViewController.swift; sourceTree = "<group>"; };
 		5EC0768C1D193B2100E84EE5 /* HomeItemsView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeItemsView.storyboard; sourceTree = "<group>"; };
 		5EC0768E1D193CF900E84EE5 /* HomeItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeItemsViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +247,8 @@
 				5E07CB6F1D05D5DF00F38D0B /* ItemCellView.xib */,
 				5E07CB711D05D69800F38D0B /* ItemCellView.swift */,
 				5EC0768C1D193B2100E84EE5 /* HomeItemsView.storyboard */,
+				5EA0F3EE1D1C4CA9006175BB /* ItemGroupView.xib */,
+				5EA0F3F01D1C4EB2006175BB /* ItemGroupView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -538,6 +544,7 @@
 				C9B9F0361CFBEFA7002EA9BA /* heart.png in Resources */,
 				C9B9EFD91CFBDDEA002EA9BA /* LaunchScreen.storyboard in Resources */,
 				C9B9F0391CFBEFA7002EA9BA /* product.png in Resources */,
+				5EA0F3EF1D1C4CA9006175BB /* ItemGroupView.xib in Resources */,
 				C9B9F0341CFBEFA7002EA9BA /* heart2.png in Resources */,
 				C9B9F0331CFBEFA7002EA9BA /* favorite.png in Resources */,
 				C9B9F03A1CFBEFA7002EA9BA /* search@2x.png in Resources */,
@@ -589,6 +596,7 @@
 				5EC0768F1D193CF900E84EE5 /* HomeItemsViewController.swift in Sources */,
 				5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */,
 				5E2A44F41D12C2C300BA866D /* IQBarButtonItem.swift in Sources */,
+				5EA0F3F11D1C4EB2006175BB /* ItemGroupView.swift in Sources */,
 				5E87402B1D1AE923003A9354 /* UserDataCache.swift in Sources */,
 				5E2A44EB1D12C2C300BA866D /* IQUITextFieldView+Additions.swift in Sources */,
 				5E07CB791D06C1A500F38D0B /* ACTabScrollView.swift in Sources */,

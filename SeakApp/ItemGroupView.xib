@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ItemGroupView" customModule="SeakApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uSw-Id-vP2" customClass="PFImageView">
+                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                    <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00% Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AuX-Db-EZQ">
+                    <rect key="frame" x="48" y="8" width="44" height="14"/>
+                    <color key="backgroundColor" red="0.19607843137254902" green="0.76470588235294112" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="AuX-Db-EZQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="BbK-L5-Onn"/>
+                <constraint firstItem="uSw-Id-vP2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hLR-Et-Hm4"/>
+                <constraint firstAttribute="trailing" secondItem="uSw-Id-vP2" secondAttribute="trailing" id="lHm-cn-bBF"/>
+                <constraint firstAttribute="bottom" secondItem="uSw-Id-vP2" secondAttribute="bottom" id="mGB-VE-d9E"/>
+                <constraint firstItem="uSw-Id-vP2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vqH-qO-7JK"/>
+                <constraint firstAttribute="trailing" secondItem="AuX-Db-EZQ" secondAttribute="trailing" constant="8" id="zDJ-uj-Adh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="discountLabel" destination="AuX-Db-EZQ" id="m56-wf-RqT"/>
+                <outlet property="imgView" destination="uSw-Id-vP2" id="pFU-Sa-sEK"/>
+            </connections>
+            <point key="canvasLocation" x="353" y="356"/>
+        </view>
+    </objects>
+</document>

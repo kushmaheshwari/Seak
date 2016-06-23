@@ -45,7 +45,8 @@ enum ItemStatus: String {
 	case Recent = "Recent"
 	case Latest = "Latest"
 
-	static let values = [Trending, Featured, Recent, Latest]
+	static let values = [Featured, Latest, Trending, Recent]
+	static let StatusGroupNames = [Trending: "Trending", Featured: "Featured Items", Recent: "Recent Items", Latest: "Latest Deals"]
 }
 
 enum UserLoginType {

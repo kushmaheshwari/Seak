@@ -21,10 +21,11 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
 	private let repository = ItemRepository()
 	private var items: [ItemEntity] = []
+	private let collectionViewReusableIdentifier = "ItemGroupViewID"
 
 	var status: ItemStatus = .None {
 		didSet {
-			self.groupNameLabel.text? = status.rawValue
+			self.groupNameLabel.text? = ItemStatus.StatusGroupNames[status]!
 			self.loadItems()
 		}
 	}
@@ -33,6 +34,9 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 		super.awakeFromNib()
 		self.collectionView.dataSource = self
 		self.collectionView.delegate = self
+
+		let nib = UINib(nibName: "ItemGroupView", bundle: nil)
+		self.collectionView?.registerNib(nib, forCellWithReuseIdentifier: self.collectionViewReusableIdentifier)
 	}
 
 	@IBOutlet weak var groupNameLabel: UILabel!
@@ -42,7 +46,7 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 		repository.getByStatus(self.status) { (items) in
 			self.items = items
 			dispatch_async(dispatch_get_main_queue(), {
-//				self.collectionView.reloadData()
+				self.collectionView.reloadData()
 			})
 		}
 	}
@@ -58,7 +62,19 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
+		if let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(self.collectionViewReusableIdentifier, forIndexPath: indexPath) as? ItemGroupView
+		{
+			cell.discountLabel.hidden = true
+			cell.imgView.file = self.items[indexPath.row].picture
+			cell.imgView.loadInBackground()
+			return cell
+		}
 		return UICollectionViewCell()
+	}
+
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+		let side = self.collectionView.contentSize.height
+		return CGSize(width: side, height: side)
 	}
 }
 
