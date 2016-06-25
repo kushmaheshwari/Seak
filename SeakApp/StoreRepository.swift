@@ -35,4 +35,19 @@ class StoreRepository {
 		}
 		fatalError("Error on parsing Stores from Parse objects")
 	}
+
+	func getAll(completion: StoreRepositoryComplectionBlock) {
+		let query = PFQuery(className: ParseClassNames.Store.rawValue)
+		query.cachePolicy = .CacheThenNetwork
+		query.maxCacheAge = cacheAge
+		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+			if error != nil {
+				print("Error: \(error!) \(error!.userInfo)")
+			} else {
+				if let items = self.processStores(objects) {
+					completion(items: items)
+				}
+			}
+		}
+	}
 }
