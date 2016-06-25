@@ -9,6 +9,7 @@
 import Foundation
 
 class StoreEntity {
+	var objectID: String?
 	var address: String?
 	var description: String?
 	var name: String?

@@ -7,9 +7,32 @@
 //
 
 import Foundation
+import Parse
 
 typealias StoreRepositoryComplectionBlock = (items: [StoreEntity]) -> Void
 
 class StoreRepository {
+	let cacheAge: NSTimeInterval = 60 * 5 // 5 minutes
 
+	func processStores(data: [PFObject]?) -> [StoreEntity]? {
+		if let data = data as [PFObject]! {
+			let result = Array(data.generate()).map() { (iter) -> StoreEntity in
+
+				let store = StoreEntity()
+				if let name = iter["name"] {
+					store.name = name as? String
+				}
+				store.description = iter.description
+				store.objectID = iter.objectId!
+
+				if let address = iter.objectForKey("Address") {
+					store.address = address as? String
+				}
+
+				return store
+			}
+			return result
+		}
+		fatalError("Error on parsing Stores from Parse objects")
+	}
 }
