@@ -45,7 +45,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 			if item != .Home {
 				if let vc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.ItemsCollection.rawValue) as? ItemsCollectionViewController {
 					vc.setCategory(item)
-					addChildViewController(vc)
+					self.addChildViewController(vc)
 					views.append(vc)
 				}
 			}
@@ -65,6 +65,13 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
+	}
+
+	override func viewDidDisappear(animated: Bool) {
+		super.viewDidDisappear(animated)
+		for view in self.views {
+			view.removeFromParentViewController()
+		}
 	}
 
 	func addItem(sender: UIButton!)
