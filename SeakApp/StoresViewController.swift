@@ -15,7 +15,8 @@ class StoresViewCellController: UICollectionViewCell
 	@IBOutlet weak var descriptionLabel: UILabel!
 }
 
-class StoresViewController: UIViewController, UICollectionViewDataSource {
+class StoresViewController: UIViewController, UICollectionViewDataSource,
+UICollectionViewDelegateFlowLayout {
 
 	@IBOutlet weak var collectionView: UICollectionView!
 	var storeArray: [StoreEntity] = []
@@ -31,7 +32,11 @@ class StoresViewController: UIViewController, UICollectionViewDataSource {
 		self.refreshControl.addTarget(self, action: #selector(ItemsCollectionViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 		self.collectionView?.addSubview(refreshControl)
 
-		collectionView.dataSource = self
+		self.collectionView.dataSource = self
+		self.collectionView.delegate = self
+
+		self.collectionView?.registerNib(UINib(nibName: "StoreViewItemCell", bundle: nil), forCellWithReuseIdentifier: self.collectionCellId)
+
 		loadCollectionViewDataCell()
 	}
 
@@ -44,7 +49,6 @@ class StoresViewController: UIViewController, UICollectionViewDataSource {
 	func loadCollectionViewDataCell()
 	{
 		repository.getAll { (items) in
-
 			self.storeArray = items
 			self.collectionView.reloadData()
 		}
@@ -55,10 +59,15 @@ class StoresViewController: UIViewController, UICollectionViewDataSource {
 	}
 
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(collectionCellId, forIndexPath: indexPath) as? StoresViewCellController
+		if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(self.collectionCellId, forIndexPath: indexPath) as? StoresViewCellController
 		{
-			cell.titleLabel.text = storeArray[indexPath.row].name
-			cell.descriptionLabel.text = storeArray[indexPath.row].description
+			let item = storeArray[indexPath.row]
+			if let name = item.name {
+				cell.titleLabel.text = name
+			}
+			if let description = item.descr {
+				cell.descriptionLabel.text = description
+			}
 			return cell
 		}
 		return UICollectionViewCell()

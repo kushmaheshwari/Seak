@@ -26,10 +26,10 @@ class StoreRepository {
 			let result = Array(data.generate()).map() { (iter) -> StoreEntity in
 
 				let store = StoreEntity()
-				if let name = iter["name"] {
+				if let name = iter["Name"] {
 					store.name = name as? String
 				}
-				store.description = iter.description
+				store.descr = iter.objectForKey("Description") as? String
 				store.objectID = iter.objectId!
 
 				if let address = iter.objectForKey("Address") {
