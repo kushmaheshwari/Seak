@@ -23,6 +23,9 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	private var items: [ItemEntity] = []
 	private let collectionViewReusableIdentifier = "ItemGroupViewID"
 
+	weak var storyboard: UIStoryboard? = nil
+	weak var navigationController: UINavigationController? = nil
+
 	var status: ItemStatus = .None {
 		didSet {
 			self.groupNameLabel.text? = ItemStatus.StatusGroupNames[status]!
@@ -67,6 +70,15 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 			cell.discountLabel.hidden = true
 			cell.imgView.file = self.items[indexPath.row].picture
 			cell.imgView.loadInBackground()
+
+			cell.tapExecutionBlock = { () -> Void in
+				let storyboard = UIStoryboard(name: "Main", bundle: nil)
+				if let destination = storyboard.instantiateViewControllerWithIdentifier(StoryboardNames.ItemDetailsView.rawValue) as? ItemDetailsViewConroller {
+					destination.itemEntity = self.items[indexPath.row]
+					self.navigationController?.pushViewController(destination, animated: true)
+				}
+			}
+
 			return cell
 		}
 		return UICollectionViewCell()
@@ -83,6 +95,8 @@ class HomeItemsViewController: UIViewController, UITableViewDelegate, UITableVie
 	private let bannerCellIdentifier = "imageCellID"
 
 	private let items = ItemStatus.values
+
+	weak var navigationVC: UINavigationController? = nil
 
 	@IBOutlet weak var tableView: UITableView!
 
@@ -105,6 +119,7 @@ class HomeItemsViewController: UIViewController, UITableViewDelegate, UITableVie
 		}
 
 		guard let cell = self.tableView.dequeueReusableCellWithIdentifier(GroupCell.reusableIdentifier) as? GroupCell else { fatalError("can't dequeue GroupCell") }
+		cell.navigationController = self.navigationVC
 		cell.status = items[indexPath.row - 1]
 		return cell
 

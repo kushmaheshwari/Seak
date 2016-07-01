@@ -52,6 +52,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 			else {
 				let st = UIStoryboard(name: StoryboardNames.HomeItemsViewStoryboard.rawValue, bundle: nil)
 				if let v = st.instantiateViewControllerWithIdentifier(StoryboardNames.HomeItemsView.rawValue) as? HomeItemsViewController {
+					v.navigationVC = self.navigationController
 					views.append(v)
 				}
 			}
