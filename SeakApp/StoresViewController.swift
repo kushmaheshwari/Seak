@@ -53,6 +53,8 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 
 		self.locationManager.delegate = self
 		self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+		self.locationManager.requestWhenInUseAuthorization()
+		self.locationManager.startMonitoringSignificantLocationChanges()
 		self.locationManager.startUpdatingLocation()
 
 		loadCollectionViewDataCell()
@@ -65,9 +67,7 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 			if let itemCoords = item.coordintaes {
 				let location = CLLocation(latitude: itemCoords.latitude, longitude: itemCoords.longitude)
 				if let distance = self.currentLocation?.distanceFromLocation(location) {
-					let miles = distance / 0.000621371
-
-					label.text = "\(miles)mi away"
+					label.text = String(format: "%.2fmi away", distance / 0.000621371)
 				}
 			}
 		}
@@ -76,6 +76,8 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 	override func viewDidDisappear(animated: Bool) {
 		super.viewDidDisappear(animated)
 		self.locationManager.stopUpdatingLocation()
+		self.locationManager.stopMonitoringSignificantLocationChanges()
+		self.distanceLabels.removeAll()
 	}
 
 	func refresh(sender: AnyObject)
@@ -116,6 +118,8 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 
 			cell.updateConstraintsIfNeeded()
 			cell.sizeToFit()
+			cell.titleLabel.sizeToFit()
+			cell.descriptionLabel.sizeToFit()
 			return cell
 		}
 		return UICollectionViewCell()
