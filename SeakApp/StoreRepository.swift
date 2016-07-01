@@ -12,6 +12,13 @@ import Parse
 typealias StoreRepositoryComplectionBlock = (items: [StoreEntity]) -> Void
 
 class StoreRepository {
+
+	private static let cache = [String: StoreEntity]()
+
+	static func getStoreBy(id: String) -> StoreEntity? {
+		return nil
+	}
+
 	let cacheAge: NSTimeInterval = 60 * 5 // 5 minutes
 
 	func processStores(data: [PFObject]?) -> [StoreEntity]? {

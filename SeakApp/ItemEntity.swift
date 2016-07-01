@@ -18,5 +18,6 @@ class ItemEntity {
 	var picture: PFFile?
 	var description: String?
 	var store: String?
+	var storeEntity: StoreEntity?
 
 }
