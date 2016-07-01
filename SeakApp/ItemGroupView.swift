@@ -15,7 +15,9 @@ class ItemGroupView: UICollectionViewCell {
 
 	@IBOutlet weak var imgView: PFImageView!
 
-	var tapExecutionBlock: () -> Void = { }
+	var item = ItemEntity()
+
+	var tapExecutionBlock: (updatedItem: ItemEntity) -> Void = { _ in }
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -26,6 +28,18 @@ class ItemGroupView: UICollectionViewCell {
 	}
 
 	func openDetails(gesture: UITapGestureRecognizer?) {
-		self.tapExecutionBlock()
+		if let storeObject = item.store {
+			storeObject.fetchInBackgroundWithBlock({ (object, error) in
+				if error != nil {
+					fatalError("Error on parsing store for \(self.item)")
+				}
+				let store = StoreRepository.processStore(object!)
+				self.item.storeEntity = store
+				dispatch_async(dispatch_get_main_queue(), {
+					self.tapExecutionBlock(updatedItem: self.item)
+				})
+
+			})
+		}
 	}
 }

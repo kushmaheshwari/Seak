@@ -37,7 +37,7 @@ class ItemRepository {
 
 				}
 				if let store = iter.objectForKey("Store") {
-					item.store = store as? String
+					item.store = store as? PFObject
 				}
 				item.description = iter.description
 

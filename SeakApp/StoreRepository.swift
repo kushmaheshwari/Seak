@@ -10,7 +10,7 @@ import Foundation
 import Parse
 
 typealias StoresRepositoryComplectionBlock = (items: [StoreEntity]) -> Void
-typealias StoreRepositoryComplectionBlock = (item: StoreEntity) -> Void
+typealias StoreRepositoryComplectionBlock = (store: StoreEntity) -> Void
 
 class StoreRepository {
 
@@ -25,29 +25,32 @@ class StoreRepository {
 			if error != nil {
 				print("Error: \(error!) \(error!.userInfo)")
 			} else {
-				if let item = self.processStores(objects)?.first {
-					completion(item: item)
+				if let item = StoreRepository.processStores(objects)?.first {
+					completion(store: item)
 				}
 			}
 		}
 	}
 
-	func processStores(data: [PFObject]?) -> [StoreEntity]? {
+	static func processStore(storeObject: PFObject) -> StoreEntity {
+		let store = StoreEntity()
+		if let name = storeObject["Name"] {
+			store.name = name as? String
+		}
+		store.descr = storeObject.objectForKey("Description") as? String
+		store.objectID = storeObject.objectId!
+
+		if let address = storeObject.objectForKey("Address") {
+			store.address = address as? String
+		}
+
+		return store
+	}
+
+	static func processStores(data: [PFObject]?) -> [StoreEntity]? {
 		if let data = data as [PFObject]! {
 			let result = Array(data.generate()).map() { (iter) -> StoreEntity in
-
-				let store = StoreEntity()
-				if let name = iter["Name"] {
-					store.name = name as? String
-				}
-				store.descr = iter.objectForKey("Description") as? String
-				store.objectID = iter.objectId!
-
-				if let address = iter.objectForKey("Address") {
-					store.address = address as? String
-				}
-
-				return store
+				return processStore(iter)
 			}
 			return result
 		}
@@ -62,7 +65,7 @@ class StoreRepository {
 			if error != nil {
 				print("Error: \(error!) \(error!.userInfo)")
 			} else {
-				if let items = self.processStores(objects) {
+				if let items = StoreRepository.processStores(objects) {
 					completion(items: items)
 				}
 			}

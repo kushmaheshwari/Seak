@@ -24,6 +24,7 @@ class ItemDetailsViewConroller: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
 	}
 
 	func setStars(count: Int) {

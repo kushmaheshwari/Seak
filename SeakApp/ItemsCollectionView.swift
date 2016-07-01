@@ -73,9 +73,9 @@ class ItemsCollectionViewController: UICollectionViewController {
 			let item = items[indexPath.row]
 			cell.fillCell(item)
 
-			cell.tapExecutionBlock = { () -> Void in
+			cell.tapExecutionBlock = { (updatedItem) -> Void in
 				if let destination = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.ItemDetailsView.rawValue) as? ItemDetailsViewConroller {
-					destination.itemEntity = item
+					destination.itemEntity = updatedItem
 					self.navigationController?.pushViewController(destination, animated: true)
 				}
 			}

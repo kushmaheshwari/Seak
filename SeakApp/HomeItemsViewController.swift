@@ -71,10 +71,12 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 			cell.imgView.file = self.items[indexPath.row].picture
 			cell.imgView.loadInBackground()
 
-			cell.tapExecutionBlock = { () -> Void in
+			cell.item = self.items[indexPath.row]
+
+			cell.tapExecutionBlock = { (updatedItem) -> Void in
 				let storyboard = UIStoryboard(name: "Main", bundle: nil)
 				if let destination = storyboard.instantiateViewControllerWithIdentifier(StoryboardNames.ItemDetailsView.rawValue) as? ItemDetailsViewConroller {
-					destination.itemEntity = self.items[indexPath.row]
+					destination.itemEntity = updatedItem
 					self.navigationController?.pushViewController(destination, animated: true)
 				}
 			}
