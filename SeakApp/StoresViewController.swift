@@ -13,6 +13,15 @@ class StoresViewCellController: UICollectionViewCell
 {
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var descriptionLabel: UILabel!
+	@IBOutlet weak var distanceLabel: UILabel!
+
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		self.distanceLabel.layer.cornerRadius = 3
+		self.distanceLabel.layer.masksToBounds = true
+		self.layer.cornerRadius = 5
+		self.layer.masksToBounds = true
+	}
 }
 
 class StoresViewController: UIViewController, UICollectionViewDataSource,
@@ -27,7 +36,7 @@ UICollectionViewDelegateFlowLayout {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-        self.collectionView?.alwaysBounceVertical = true
+		self.collectionView?.alwaysBounceVertical = true
 		self.refreshControl = UIRefreshControl()
 		self.refreshControl.attributedTitle = NSAttributedString(string: "")
 		self.refreshControl.addTarget(self, action: #selector(ItemsCollectionViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -38,7 +47,6 @@ UICollectionViewDelegateFlowLayout {
 
 		self.collectionView?.registerNib(UINib(nibName: "StoreViewItemCell", bundle: nil), forCellWithReuseIdentifier: self.collectionCellId)
 
-        
 		loadCollectionViewDataCell()
 	}
 
@@ -73,7 +81,8 @@ UICollectionViewDelegateFlowLayout {
 			if let description = item.descr {
 				cell.descriptionLabel.text = description
 			}
-            cell.layoutSubviews()
+			cell.updateConstraintsIfNeeded()
+			cell.sizeToFit()
 			return cell
 		}
 		return UICollectionViewCell()
@@ -82,31 +91,32 @@ UICollectionViewDelegateFlowLayout {
 	@IBAction func menuIceonPressed(sender: AnyObject) {
 		self.slideMenuController()?.openLeft()
 	}
-    @IBAction func searchIconPressed(sender: AnyObject) {
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
-        let screenSize = self.collectionView.bounds
-        let width = screenSize.width - 40
-        let constrainedSize = CGSize(width: width /  2, height: 100)
+	@IBAction func searchIconPressed(sender: AnyObject) {
+	}
 
-        return constrainedSize
-    }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-    }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return CGFloat(8)
-    }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return CGFloat(8)
-    }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSizeZero
-    }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSizeZero
-    }
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+
+		let screenSize = self.collectionView.bounds
+		let width = screenSize.width - 40
+		let constrainedSize = CGSize(width: width / 2, height: 100)
+
+		return constrainedSize
+	}
+
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+		return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+	}
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+		return CGFloat(8)
+	}
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+		return CGFloat(8)
+	}
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+		return CGSizeZero
+	}
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+		return CGSizeZero
+	}
 
 }
