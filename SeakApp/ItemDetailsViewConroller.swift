@@ -12,6 +12,8 @@ import ParseUI
 
 class ItemDetailsViewConroller: UIViewController {
 
+	var itemEntity: ItemEntity? = nil
+
 	@IBOutlet weak var itemImage: PFImageView!
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var priceLabel: UILabel!

@@ -23,6 +23,7 @@ enum StoryboardNames: String {
 	case ItemsCollection = "itemsCollectionViewID"
 	case StoreNavigation = "storeNavigationID"
 	case HomeItemsView = "homeItemsViewID"
+	case ItemDetailsView = "itemDetailsView"
 }
 
 enum MenuItems: String {

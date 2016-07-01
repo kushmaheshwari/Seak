@@ -17,6 +17,10 @@ class ItemCellView: UICollectionViewCell {
 	@IBOutlet weak var priceLabel: UILabel!
 	@IBOutlet weak var stars: UIButton!
 
+	var tapExecutionBlock: () -> Void = { }
+
+	private var objectId: String?
+
 	override func awakeFromNib() {
 		super.awakeFromNib()
 	}
@@ -39,8 +43,19 @@ class ItemCellView: UICollectionViewCell {
 			self.pictureImage.image = img
 			self.pictureImage.setNeedsDisplay()
 		})
+
+		self.objectId = item.objectID
+
+		let tap = UITapGestureRecognizer(target: self, action: #selector(ItemCellView.openDetails(_:)))
+
+		tap.numberOfTouchesRequired = 1
+		self.addGestureRecognizer(tap)
 		self.layoutSubviews()
 		self.sizeToFit()
+	}
+
+	func openDetails(gesture: UITapGestureRecognizer?) {
+		self.tapExecutionBlock()
 	}
 
 }

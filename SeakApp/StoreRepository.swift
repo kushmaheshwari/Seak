@@ -19,7 +19,7 @@ class StoreRepository {
 	func getStoreBy(id: String, completion: StoreRepositoryComplectionBlock) {
 		let query = PFQuery(className: ParseClassNames.Store.rawValue)
 		query.whereKey("objectId", equalTo: id)
-		query.cachePolicy = .CacheThenNetwork
+		query.cachePolicy = .CacheElseNetwork
 		query.maxCacheAge = cacheAge
 		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
 			if error != nil {

@@ -466,16 +466,16 @@
         <!--Item Details View Conroller-->
         <scene sceneID="603-ws-qEL">
             <objects>
-                <viewController id="zKl-Oa-sKD" customClass="ItemDetailsViewConroller" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="itemDetailsView" id="zKl-Oa-sKD" customClass="ItemDetailsViewConroller" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Ns-aS-Qkp"/>
                         <viewControllerLayoutGuide type="bottom" id="kbR-Pt-D6c"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Gwy-dX-mrF">
-                        <rect key="frame" x="0.0" y="64" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="950"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpW-83-bk9">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cpW-83-bk9">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testItemFullImage" translatesAutoresizingMaskIntoConstraints="NO" id="NaE-uj-F9B" customClass="PFImageView">
@@ -850,7 +850,6 @@
                     <connections>
                         <outlet property="scrollingMenu" destination="DV4-Zr-7Z2" id="YBg-wB-Bws"/>
                         <segue destination="VdI-OY-Qu4" kind="show" identifier="searchViewSegue" id="I6g-7K-zYI"/>
-                        <segue destination="zKl-Oa-sKD" kind="show" identifier="showDetailsSegue" id="kZn-wO-q03"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGx-K2-JQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
