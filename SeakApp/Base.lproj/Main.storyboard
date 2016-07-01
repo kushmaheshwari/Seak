@@ -730,7 +730,58 @@
                     <view key="view" contentMode="scaleToFill" id="SZJ-Kf-X8b">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dOg-ws-Wlm">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8na-JS-KXI">
+                                    <size key="itemSize" width="195" height="167"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier=" StoreCellID" id="Ovn-bK-Ouk" customClass="StoresViewCellController" customModule="SeakApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="64" width="195" height="167"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="195" height="167"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgp-mN-h0e">
+                                                    <rect key="frame" x="8" y="23" width="179" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBD-Sg-LF0">
+                                                    <rect key="frame" x="8" y="73" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="pgp-mN-h0e" firstAttribute="top" secondItem="Ovn-bK-Ouk" secondAttribute="topMargin" constant="15" id="Kr0-Sp-oMd"/>
+                                            <constraint firstItem="pgp-mN-h0e" firstAttribute="trailing" secondItem="Ovn-bK-Ouk" secondAttribute="trailingMargin" id="WyC-SW-59k"/>
+                                            <constraint firstItem="pgp-mN-h0e" firstAttribute="centerX" secondItem="Ovn-bK-Ouk" secondAttribute="centerX" id="fhS-x9-nQn"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="gBD-Sg-LF0" id="30l-Jc-hmU"/>
+                                            <outlet property="titleLabel" destination="pgp-mN-h0e" id="7Fs-n1-qgi"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dOg-ws-Wlm" firstAttribute="top" secondItem="m08-gC-X9T" secondAttribute="bottom" id="D30-RB-Whu"/>
+                            <constraint firstItem="zDv-zE-PaJ" firstAttribute="top" secondItem="dOg-ws-Wlm" secondAttribute="bottom" id="p9B-yD-iZo"/>
+                            <constraint firstItem="dOg-ws-Wlm" firstAttribute="leading" secondItem="SZJ-Kf-X8b" secondAttribute="leadingMargin" constant="-20" id="xJV-gk-JMA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dOg-ws-Wlm" secondAttribute="trailing" constant="-20" id="yfV-dy-XHa"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LLu-4R-NSV">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="menuIcon" id="LWb-Jv-iFQ">
@@ -746,6 +797,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="dOg-ws-Wlm" id="2V2-Ft-wx6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kLu-mC-hGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
