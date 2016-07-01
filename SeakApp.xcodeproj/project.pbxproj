@@ -35,6 +35,7 @@
 		5E2A44F71D12C2C300BA866D /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44E51D12C2C300BA866D /* IQToolbar.swift */; };
 		5E2A44F81D12C2C300BA866D /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44E61D12C2C300BA866D /* IQUIView+IQKeyboardToolbar.swift */; };
 		5E2A44F91D12C2C300BA866D /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E2A44E81D12C2C300BA866D /* IQKeyboardManager.bundle */; };
+		5E2F99C31D2651E3000D8B49 /* ItemDetailsViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2F99C21D2651E3000D8B49 /* ItemDetailsViewConroller.swift */; };
 		5E4FAFBD1D11808E000411D8 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4FAFBC1D11808E000411D8 /* StartAppViewController.swift */; };
 		5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */; };
 		5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A451D02CE3200BCD0B6 /* Extensions.swift */; };
@@ -126,6 +127,7 @@
 		5E2A44E51D12C2C300BA866D /* IQToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQToolbar.swift; sourceTree = "<group>"; };
 		5E2A44E61D12C2C300BA866D /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
 		5E2A44E81D12C2C300BA866D /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		5E2F99C21D2651E3000D8B49 /* ItemDetailsViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewConroller.swift; sourceTree = "<group>"; };
 		5E4FAFBC1D11808E000411D8 /* StartAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartAppViewController.swift; sourceTree = "<group>"; };
 		5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		5E507A451D02CE3200BCD0B6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				5E4FAFBC1D11808E000411D8 /* StartAppViewController.swift */,
 				5EC076841D1935B300E84EE5 /* StoresViewController.swift */,
 				5EC0768E1D193CF900E84EE5 /* HomeItemsViewController.swift */,
+				5E2F99C21D2651E3000D8B49 /* ItemDetailsViewConroller.swift */,
 			);
 			name = ViewConvtrollers;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				5EC0768F1D193CF900E84EE5 /* HomeItemsViewController.swift in Sources */,
 				5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */,
 				5E2A44F41D12C2C300BA866D /* IQBarButtonItem.swift in Sources */,
+				5E2F99C31D2651E3000D8B49 /* ItemDetailsViewConroller.swift in Sources */,
 				5EA0F3F11D1C4EB2006175BB /* ItemGroupView.swift in Sources */,
 				5E87402B1D1AE923003A9354 /* UserDataCache.swift in Sources */,
 				5E2A44EB1D12C2C300BA866D /* IQUITextFieldView+Additions.swift in Sources */,

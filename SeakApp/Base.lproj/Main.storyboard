@@ -463,10 +463,10 @@
             </objects>
             <point key="canvasLocation" x="1625" y="-1154"/>
         </scene>
-        <!--View Controller-->
+        <!--Item Details View Conroller-->
         <scene sceneID="603-ws-qEL">
             <objects>
-                <viewController id="zKl-Oa-sKD" sceneMemberID="viewController">
+                <viewController id="zKl-Oa-sKD" customClass="ItemDetailsViewConroller" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Ns-aS-Qkp"/>
                         <viewControllerLayoutGuide type="bottom" id="kbR-Pt-D6c"/>
@@ -478,7 +478,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpW-83-bk9">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testItemFullImage" translatesAutoresizingMaskIntoConstraints="NO" id="NaE-uj-F9B">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testItemFullImage" translatesAutoresizingMaskIntoConstraints="NO" id="NaE-uj-F9B" customClass="PFImageView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="8Ij-6B-La1"/>
@@ -593,7 +593,7 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="callButton" translatesAutoresizingMaskIntoConstraints="NO" id="C5E-qK-07D">
                                                         <rect key="frame" x="0.0" y="0.0" width="118" height="73"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xry-uv-DW7">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xry-uv-DW7">
                                                         <rect key="frame" x="0.0" y="83" width="118" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                         <color key="textColor" red="0.56470588239999997" green="0.56470588239999997" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -607,7 +607,7 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="exploreButton" translatesAutoresizingMaskIntoConstraints="NO" id="JPo-im-hgG">
                                                         <rect key="frame" x="0.0" y="0.0" width="118" height="73"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3P-tr-jYG">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3P-tr-jYG">
                                                         <rect key="frame" x="0.0" y="83" width="118" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                         <color key="textColor" red="0.56470588239999997" green="0.56470588239999997" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -621,7 +621,7 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="shareButton" translatesAutoresizingMaskIntoConstraints="NO" id="EKw-ZX-TlB">
                                                         <rect key="frame" x="0.0" y="0.0" width="118" height="73"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIW-gF-sEj">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIW-gF-sEj">
                                                         <rect key="frame" x="0.0" y="83" width="118" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                         <color key="textColor" red="0.56470588235294117" green="0.56470588235294117" blue="0.56470588235294117" alpha="1" colorSpace="calibratedRGB"/>
@@ -688,6 +688,15 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="950"/>
+                    <connections>
+                        <outlet property="addresslabel" destination="nER-Jh-700" id="XTd-jy-BCP"/>
+                        <outlet property="descriptionLabel" destination="3IM-bP-CPH" id="9ph-4q-hV6"/>
+                        <outlet property="itemImage" destination="NaE-uj-F9B" id="cie-Vv-9kY"/>
+                        <outlet property="priceLabel" destination="Brd-Tt-QwD" id="WM0-Bg-ISa"/>
+                        <outlet property="reviewsTitle" destination="XFc-Gs-3fg" id="CfW-fd-l5P"/>
+                        <outlet property="starsStackView" destination="iD6-4d-0Ii" id="133-Sb-5Lf"/>
+                        <outlet property="titleLabel" destination="VTp-0L-OlU" id="m3w-jA-FXL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IAj-p4-pyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
