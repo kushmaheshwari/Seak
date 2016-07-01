@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 class StoresViewCellController: UICollectionViewCell
 {
@@ -25,12 +26,15 @@ class StoresViewCellController: UICollectionViewCell
 }
 
 class StoresViewController: UIViewController, UICollectionViewDataSource,
-UICollectionViewDelegateFlowLayout {
+UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 
 	@IBOutlet weak var collectionView: UICollectionView!
 	var storeArray: [StoreEntity] = []
 	private let repository = StoreRepository()
 	private let collectionCellId = "StoreCellID"
+	private let locationManager = CLLocationManager()
+	private var currentLocation: CLLocation? = nil
+	private var distanceLabels: [UILabel] = []
 	var refreshControl: UIRefreshControl!
 
 	override func viewDidLoad() {
@@ -47,7 +51,31 @@ UICollectionViewDelegateFlowLayout {
 
 		self.collectionView?.registerNib(UINib(nibName: "StoreViewItemCell", bundle: nil), forCellWithReuseIdentifier: self.collectionCellId)
 
+		self.locationManager.delegate = self
+		self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+		self.locationManager.startUpdatingLocation()
+
 		loadCollectionViewDataCell()
+	}
+
+	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		self.currentLocation = locations.first
+		for label in self.distanceLabels {
+			let item = self.storeArray[label.tag]
+			if let itemCoords = item.coordintaes {
+				let location = CLLocation(latitude: itemCoords.latitude, longitude: itemCoords.longitude)
+				if let distance = self.currentLocation?.distanceFromLocation(location) {
+					let miles = distance / 0.000621371
+
+					label.text = "\(miles)mi away"
+				}
+			}
+		}
+	}
+
+	override func viewDidDisappear(animated: Bool) {
+		super.viewDidDisappear(animated)
+		self.locationManager.stopUpdatingLocation()
 	}
 
 	func refresh(sender: AnyObject)
@@ -58,6 +86,7 @@ UICollectionViewDelegateFlowLayout {
 
 	func loadCollectionViewDataCell()
 	{
+		self.distanceLabels.removeAll()
 		repository.getAll { (items) in
 			self.storeArray = items
 			dispatch_async(dispatch_get_main_queue(), {
@@ -81,6 +110,10 @@ UICollectionViewDelegateFlowLayout {
 			if let description = item.descr {
 				cell.descriptionLabel.text = description
 			}
+
+			cell.distanceLabel.tag = indexPath.row
+			self.distanceLabels.append(cell.distanceLabel)
+
 			cell.updateConstraintsIfNeeded()
 			cell.sizeToFit()
 			return cell
