@@ -90,8 +90,9 @@ class ItemsCollectionViewController: UICollectionViewController {
 extension ItemsCollectionViewController: UICollectionViewDelegateFlowLayout {
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 		let screenSize = self.view.bounds
-		let width = screenSize.width - 40
-		return CGSize(width: width /  2, height: width / 2 / 0.75)
+		let widthCell = (screenSize.width - 40) / 2
+		let coefficient = widthCell / 250
+		return CGSize(width: widthCell, height: 313 * coefficient)
 	}
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
 		return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)

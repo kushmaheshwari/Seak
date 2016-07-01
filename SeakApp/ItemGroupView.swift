@@ -19,6 +19,8 @@ class ItemGroupView: UICollectionViewCell {
 
 	var tapExecutionBlock: (updatedItem: ItemEntity) -> Void = { _ in }
 
+	private var tapped: Bool = false
+
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		let tap = UITapGestureRecognizer(target: self, action: #selector(ItemGroupView.openDetails(_:)))
@@ -28,6 +30,10 @@ class ItemGroupView: UICollectionViewCell {
 	}
 
 	func openDetails(gesture: UITapGestureRecognizer?) {
+		if tapped {
+			return
+		}
+		tapped = true
 		if let storeObject = item.store {
 			storeObject.fetchInBackgroundWithBlock({ (object, error) in
 				if error != nil {
@@ -37,6 +43,7 @@ class ItemGroupView: UICollectionViewCell {
 				self.item.storeEntity = store
 				dispatch_async(dispatch_get_main_queue(), {
 					self.tapExecutionBlock(updatedItem: self.item)
+					self.tapped = false
 				})
 
 			})

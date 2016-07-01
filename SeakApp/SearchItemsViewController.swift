@@ -134,6 +134,14 @@ UICollectionViewDelegate, UICollectionViewDataSource
 		if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? ItemCellView {
 			let item = items[indexPath.row]
 			cell.fillCell(item)
+
+			cell.tapExecutionBlock = { (updatedItem) -> Void in
+				if let destination = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.ItemDetailsView.rawValue) as? ItemDetailsViewConroller {
+					destination.itemEntity = updatedItem
+					self.navigationController?.pushViewController(destination, animated: true)
+				}
+			}
+
 			return cell
 		}
 		return UICollectionViewCell()
