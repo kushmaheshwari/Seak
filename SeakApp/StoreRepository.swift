@@ -44,6 +44,12 @@ class StoreRepository {
 			store.address = address as? String
 		}
 
+		if let coordinates = storeObject.objectForKey("AddressLatLong") {
+			if let geoPoint = coordinates as? PFGeoPoint {
+				store.coordintaes = CLLocationCoordinate2D(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
+			}
+		}
+
 		return store
 	}
 

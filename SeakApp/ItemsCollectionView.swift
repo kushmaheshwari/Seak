@@ -19,7 +19,7 @@ class ItemsCollectionViewController: UICollectionViewController {
 	var searchItems = [ItemEntity]()
 
 	var refreshControl: UIRefreshControl!
-
+	weak var navigationVC: UINavigationController? = nil
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -76,7 +76,7 @@ class ItemsCollectionViewController: UICollectionViewController {
 			cell.tapExecutionBlock = { (updatedItem) -> Void in
 				if let destination = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.ItemDetailsView.rawValue) as? ItemDetailsViewConroller {
 					destination.itemEntity = updatedItem
-					self.navigationController?.pushViewController(destination, animated: true)
+					self.navigationVC?.pushViewController(destination, animated: true)
 				}
 			}
 

@@ -45,6 +45,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 			if item != .Home {
 				if let vc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.ItemsCollection.rawValue) as? ItemsCollectionViewController {
 					vc.setCategory(item)
+					vc.navigationVC = self.navigationController
 					self.addChildViewController(vc)
 					views.append(vc)
 				}

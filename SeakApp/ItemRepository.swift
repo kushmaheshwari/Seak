@@ -39,7 +39,9 @@ class ItemRepository {
 				if let store = iter.objectForKey("Store") {
 					item.store = store as? PFObject
 				}
-				item.description = iter.description
+				if let description = iter.objectForKey("Description") {
+					item.descr = description as? String
+				}
 
 				return item
 			}

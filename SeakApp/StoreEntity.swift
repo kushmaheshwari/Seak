@@ -7,33 +7,12 @@
 //
 
 import Foundation
+import MapKit
 
 class StoreEntity {
 	var objectID: String?
 	var address: String?
 	var descr: String?
 	var name: String?
-	var addressLatLong: String?
-
-	var coordinates: [String] {
-		guard let coordinatesString = addressLatLong else { return [] }
-		let coordinates = coordinatesString.componentsSeparatedByString(",")
-		if coordinates.count < 2 {
-			fatalError("wrong coordinates \(coordinatesString)")
-		}
-		return coordinates
-	}
-	var latitude: Double? {
-		if self.coordinates.count == 2 {
-			return Double(coordinates[0])
-		}
-		return nil
-	}
-
-	var longitude: Double? {
-		if self.coordinates.count == 2 {
-			return Double(coordinates[1])
-		}
-		return nil
-	}
+	var coordintaes: CLLocationCoordinate2D?
 }
