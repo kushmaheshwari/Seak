@@ -9,17 +9,28 @@
 import Foundation
 import Parse
 
-typealias StoreRepositoryComplectionBlock = (items: [StoreEntity]) -> Void
+typealias StoresRepositoryComplectionBlock = (items: [StoreEntity]) -> Void
+typealias StoreRepositoryComplectionBlock = (item: StoreEntity) -> Void
 
 class StoreRepository {
 
-	private static let cache = [String: StoreEntity]()
-
-	static func getStoreBy(id: String) -> StoreEntity? {
-		return nil
-	}
-
 	let cacheAge: NSTimeInterval = 60 * 5 // 5 minutes
+
+	func getStoreBy(id: String, completion: StoreRepositoryComplectionBlock) {
+		let query = PFQuery(className: ParseClassNames.Store.rawValue)
+		query.whereKey("objectId", equalTo: id)
+		query.cachePolicy = .CacheThenNetwork
+		query.maxCacheAge = cacheAge
+		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+			if error != nil {
+				print("Error: \(error!) \(error!.userInfo)")
+			} else {
+				if let item = self.processStores(objects)?.first {
+					completion(item: item)
+				}
+			}
+		}
+	}
 
 	func processStores(data: [PFObject]?) -> [StoreEntity]? {
 		if let data = data as [PFObject]! {
@@ -43,7 +54,7 @@ class StoreRepository {
 		fatalError("Error on parsing Stores from Parse objects")
 	}
 
-	func getAll(completion: StoreRepositoryComplectionBlock) {
+	func getAll(completion: StoresRepositoryComplectionBlock) {
 		let query = PFQuery(className: ParseClassNames.Store.rawValue)
 		query.cachePolicy = .CacheThenNetwork
 		query.maxCacheAge = cacheAge
