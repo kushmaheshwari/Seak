@@ -11,6 +11,7 @@ import Foundation
 enum ParseClassNames: String {
 	case Item = "Item"
 	case Store = "Store"
+	case Review = "Reviews"
 }
 
 enum StoryboardNames: String {

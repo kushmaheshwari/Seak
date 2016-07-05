@@ -41,6 +41,8 @@
 		5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */; };
 		5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A451D02CE3200BCD0B6 /* Extensions.swift */; };
 		5E507A481D02DB7400BCD0B6 /* ScrollableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */; };
+		5E62FB551D2ACF30007C0C0A /* ReviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E62FB541D2ACF30007C0C0A /* ReviewEntity.swift */; };
+		5E62FB5A1D2ACFCB007C0C0A /* ReviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E62FB591D2ACFCB007C0C0A /* ReviewRepository.swift */; };
 		5E87402B1D1AE923003A9354 /* UserDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87402A1D1AE923003A9354 /* UserDataCache.swift */; };
 		5E9346291D00282100CF4DC6 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9346281D00282100CF4DC6 /* ItemEntity.swift */; };
 		5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */; };
@@ -134,6 +136,8 @@
 		5E507A431D02CC8B00BCD0B6 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		5E507A451D02CE3200BCD0B6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableMenu.swift; sourceTree = "<group>"; };
+		5E62FB541D2ACF30007C0C0A /* ReviewEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewEntity.swift; sourceTree = "<group>"; };
+		5E62FB591D2ACFCB007C0C0A /* ReviewRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewRepository.swift; sourceTree = "<group>"; };
 		5E87402A1D1AE923003A9354 /* UserDataCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataCache.swift; sourceTree = "<group>"; };
 		5E9346281D00282100CF4DC6 /* ItemEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
 		5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
@@ -346,6 +350,33 @@
 			name = ViewConvtrollers;
 			sourceTree = "<group>";
 		};
+		5E62FB561D2ACF97007C0C0A /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				5E9346281D00282100CF4DC6 /* ItemEntity.swift */,
+				5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */,
+			);
+			name = Item;
+			sourceTree = "<group>";
+		};
+		5E62FB571D2ACFA4007C0C0A /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				5EB6220A1D1E7BB60029F864 /* StoreEntity.swift */,
+				5EB6220C1D1E7E280029F864 /* StoreRepository.swift */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		5E62FB581D2ACFB0007C0C0A /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				5E62FB541D2ACF30007C0C0A /* ReviewEntity.swift */,
+				5E62FB591D2ACFCB007C0C0A /* ReviewRepository.swift */,
+			);
+			name = Review;
+			sourceTree = "<group>";
+		};
 		5E8740291D1AE607003A9354 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,11 +390,10 @@
 		5E9346271D00280E00CF4DC6 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
-				5E9346281D00282100CF4DC6 /* ItemEntity.swift */,
-				5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */,
+				5E62FB581D2ACFB0007C0C0A /* Review */,
+				5E62FB571D2ACFA4007C0C0A /* Store */,
+				5E62FB561D2ACF97007C0C0A /* Item */,
 				5E1533531D0AE4CC00C2E5E1 /* RecentSearches.swift */,
-				5EB6220A1D1E7BB60029F864 /* StoreEntity.swift */,
-				5EB6220C1D1E7E280029F864 /* StoreRepository.swift */,
 			);
 			name = DataLayer;
 			sourceTree = "<group>";
@@ -577,6 +607,7 @@
 				5EC076851D1935B300E84EE5 /* StoresViewController.swift in Sources */,
 				C9B9F0231CFBE75A002EA9BA /* HomegridViewController.swift in Sources */,
 				5E2A44E91D12C2C300BA866D /* IQNSArray+Sort.swift in Sources */,
+				5E62FB5A1D2ACFCB007C0C0A /* ReviewRepository.swift in Sources */,
 				5E15334A1D0A8ECB00C2E5E1 /* SearchItemsViewController.swift in Sources */,
 				5E2A44F01D12C2C300BA866D /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				5E9346291D00282100CF4DC6 /* ItemEntity.swift in Sources */,
@@ -611,6 +642,7 @@
 				5EC0768F1D193CF900E84EE5 /* HomeItemsViewController.swift in Sources */,
 				5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */,
 				5E2A44F41D12C2C300BA866D /* IQBarButtonItem.swift in Sources */,
+				5E62FB551D2ACF30007C0C0A /* ReviewEntity.swift in Sources */,
 				5E2F99C31D2651E3000D8B49 /* ItemDetailsViewConroller.swift in Sources */,
 				5EA0F3F11D1C4EB2006175BB /* ItemGroupView.swift in Sources */,
 				5E87402B1D1AE923003A9354 /* UserDataCache.swift in Sources */,

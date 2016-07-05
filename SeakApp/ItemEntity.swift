@@ -19,5 +19,6 @@ class ItemEntity {
 	var descr: String?
 	var store: PFObject?
 	var storeEntity: StoreEntity?
+	var reviewCount: Double?
 
 }
