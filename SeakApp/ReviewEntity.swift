@@ -16,5 +16,6 @@ class ReviewEntity {
 	var itemEntity: ItemEntity?
 	var rating: Double?
 	var review: String?
+	var createdAt: NSDate?
 
 }

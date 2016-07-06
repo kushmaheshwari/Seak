@@ -564,7 +564,7 @@
                                         <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Check reviews"/>
                                         <connections>
-                                            <segue destination="qoq-yO-XVP" kind="presentation" id="Id6-zF-ihW"/>
+                                            <segue destination="qoq-yO-XVP" kind="presentation" identifier="goToReviewsSegue" id="Id6-zF-ihW"/>
                                         </connections>
                                     </button>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="crK-QC-2DK">
@@ -838,7 +838,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Nha-A5-LA7">
                                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="29"/>
                                                                     <subviews>
-                                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c43-J7-nSZ">
+                                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c43-J7-nSZ">
                                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="17"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="6a9-Hx-8nc"/>
@@ -956,6 +956,7 @@
                                             <outlet property="previewDateTextField" destination="DOE-E3-lrJ" id="sSr-qF-4RD"/>
                                             <outlet property="previewMainTextField" destination="jAG-cn-2Av" id="RVT-3m-tPD"/>
                                             <outlet property="previewNameTextField" destination="c43-J7-nSZ" id="pb2-yT-Ni5"/>
+                                            <outlet property="starsStackView" destination="ruy-N0-oOK" id="ZAr-qz-8iC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

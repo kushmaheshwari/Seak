@@ -37,9 +37,7 @@ class MenuViewController: UITableViewController {
 
 	func setParseInfo() {
 		if let user = PFUser.currentUser() {
-			guard let firstName = user["firstName"] as? String else { return }
-			guard let lastName = user["lastName"] as? String else { return }
-			self.nameLabel.text = firstName + " " + lastName
+			self.nameLabel.text = user.getUserName()
 		}
 	}
 

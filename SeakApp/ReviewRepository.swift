@@ -28,6 +28,7 @@ class ReviewRepository {
 		review.item = reviewObject["Item"] as? PFObject
 		review.rating = reviewObject["Rating"] as? Double
 		review.review = reviewObject["Review"] as? String
+		review.createdAt = reviewObject.createdAt
 		return review
 	}
 

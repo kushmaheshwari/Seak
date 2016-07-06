@@ -90,4 +90,12 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 			}
 		}
 	}
+
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "goToReviewsSegue" {
+			if let destinationVC = segue.destinationViewController as? ReviewViewController {
+				destinationVC.itemEntity = self.itemEntity
+			}
+		}
+	}
 }

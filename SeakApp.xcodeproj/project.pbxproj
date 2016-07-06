@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		221402501D2AA48500E27659 /*  ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214024F1D2AA48500E27659 /*  ReviewViewController.swift */; };
+		221402501D2AA48500E27659 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214024F1D2AA48500E27659 /* ReviewViewController.swift */; };
 		5E07CB671D05481200F38D0B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB661D05481200F38D0B /* MenuViewController.swift */; };
 		5E07CB6E1D05A10000F38D0B /* ItemsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB6D1D05A10000F38D0B /* ItemsCollectionView.swift */; };
 		5E07CB701D05D5DF00F38D0B /* ItemCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E07CB6F1D05D5DF00F38D0B /* ItemCellView.xib */; };
@@ -106,7 +106,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2214024F1D2AA48500E27659 /*  ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = " ReviewViewController.swift"; sourceTree = "<group>"; };
+		2214024F1D2AA48500E27659 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		5E07CB661D05481200F38D0B /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		5E07CB6D1D05A10000F38D0B /* ItemsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsCollectionView.swift; sourceTree = "<group>"; };
 		5E07CB6F1D05D5DF00F38D0B /* ItemCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCellView.xib; sourceTree = "<group>"; };
@@ -354,7 +354,7 @@
 				5E4FAFBC1D11808E000411D8 /* StartAppViewController.swift */,
 				5EC076841D1935B300E84EE5 /* StoresViewController.swift */,
 				5EC0768E1D193CF900E84EE5 /* HomeItemsViewController.swift */,
-				2214024F1D2AA48500E27659 /*  ReviewViewController.swift */,
+				2214024F1D2AA48500E27659 /* ReviewViewController.swift */,
 				5E2F99C21D2651E3000D8B49 /* ItemDetailsViewConroller.swift */,
 			);
 			name = ViewConvtrollers;
@@ -645,7 +645,7 @@
 				5E2A44F71D12C2C300BA866D /* IQToolbar.swift in Sources */,
 				C9B9EFCF1CFBDDEA002EA9BA /* AppDelegate.swift in Sources */,
 				5E07CB721D05D69800F38D0B /* ItemCellView.swift in Sources */,
-				221402501D2AA48500E27659 /*  ReviewViewController.swift in Sources */,
+				221402501D2AA48500E27659 /* ReviewViewController.swift in Sources */,
 				C9B9F01D1CFBE58C002EA9BA /* LoginController.swift in Sources */,
 				5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */,
 				5E2A44F51D12C2C300BA866D /* IQPreviousNextView.swift in Sources */,

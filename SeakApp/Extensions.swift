@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Parse
 
 extension UIViewController {
 	func hideKeyboardWhenTappedAround() {
@@ -53,5 +54,20 @@ extension UIColor {
 		NSScanner(string: bString).scanHexInt(&b)
 
 		return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
+	}
+}
+
+extension PFUser {
+	func getUserName() -> String? {
+		do {
+			try self.fetchIfNeeded()
+			guard let firstName = self["firstName"] as? String else { return nil }
+			guard let lastName = self["lastName"] as? String else { return nil }
+
+			return firstName + " " + lastName
+		}
+		catch {
+			fatalError("PFUser getUserName error")
+		}
 	}
 }
