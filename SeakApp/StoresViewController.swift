@@ -40,6 +40,7 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		self.setTitle()
 		self.collectionView?.alwaysBounceVertical = true
 		self.refreshControl = UIRefreshControl()
 		self.refreshControl.attributedTitle = NSAttributedString(string: "")
@@ -58,6 +59,13 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 		self.locationManager.startUpdatingLocation()
 
 		loadCollectionViewDataCell()
+	}
+
+	func setTitle() {
+		guard let titleView = NSBundle.mainBundle().loadNibNamed("StoresNavigationTitle", owner: nil, options: nil)[0] as? UIView else { fatalError("Can't init StoresNavigationTitleView") }
+
+		self.navigationItem.title = nil
+		self.navigationItem.titleView = titleView
 	}
 
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

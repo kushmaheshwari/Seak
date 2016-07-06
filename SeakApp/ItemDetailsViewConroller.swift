@@ -27,7 +27,7 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.title = self.itemEntity?.storeEntity?.name
+		self.setTitle()
 		self.itemImage.file = self.itemEntity?.picture
 		self.itemImage.loadInBackground()
 		self.titleLabel.text = self.itemEntity?.name
@@ -50,6 +50,15 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 
 			self.mapView.addAnnotation(point)
 		}
+	}
+
+	func setTitle() {
+		guard let titleView = NSBundle.mainBundle().loadNibNamed("DetailsNavigationTitle", owner: nil, options: nil)[0] as? DetailsNavigationTitleView else { fatalError("Can't init DetailsNavigationTitleView") }
+
+		titleView.titleView.text = self.itemEntity?.storeEntity?.name
+
+		self.navigationItem.title = nil
+		self.navigationItem.titleView = titleView
 	}
 
 	func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
