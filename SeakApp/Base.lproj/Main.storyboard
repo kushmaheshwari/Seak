@@ -746,10 +746,10 @@
             </objects>
             <point key="canvasLocation" x="2237" y="-421"/>
         </scene>
-        <!--AdoptedUI Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="gg5-fF-7op">
             <objects>
-                <navigationController storyboardIdentifier="storeNavigationID" id="PyC-Po-0fq" customClass="AdoptedUINavigationController" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="storeNavigationID" id="PyC-Po-0fq" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rcH-ah-fbz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -761,7 +761,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWU-B8-eac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="105" y="-1914"/>
+            <point key="canvasLocation" x="105" y="-1922"/>
         </scene>
         <!--Stores View Controller-->
         <scene sceneID="2Iv-Xd-7BX">
@@ -1104,10 +1104,10 @@
             </objects>
             <point key="canvasLocation" x="-631" y="-437"/>
         </scene>
-        <!--AdoptedUI Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="7Mh-8R-yyV">
             <objects>
-                <navigationController storyboardIdentifier="navigationID" automaticallyAdjustsScrollViewInsets="NO" id="XyU-Dv-nSM" customClass="AdoptedUINavigationController" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigationID" automaticallyAdjustsScrollViewInsets="NO" id="XyU-Dv-nSM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="vg7-Et-Xz6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1267,7 +1267,7 @@
         <image name="dislike" width="20" height="19"/>
         <image name="exploreButton" width="68" height="68"/>
         <image name="loginLogo" width="353" height="157"/>
-        <image name="menuIcon" width="48" height="46"/>
+        <image name="menuIcon" width="22" height="25"/>
         <image name="registerLogo" width="353" height="157"/>
         <image name="search.png" width="20" height="20"/>
         <image name="shareButton" width="68" height="68"/>
