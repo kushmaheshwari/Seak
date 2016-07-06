@@ -746,10 +746,10 @@
             </objects>
             <point key="canvasLocation" x="2237" y="-421"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--AdoptedUI Navigation Controller-->
         <scene sceneID="gg5-fF-7op">
             <objects>
-                <navigationController storyboardIdentifier="storeNavigationID" id="PyC-Po-0fq" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="storeNavigationID" id="PyC-Po-0fq" customClass="AdoptedUINavigationController" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rcH-ah-fbz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1104,10 +1104,10 @@
             </objects>
             <point key="canvasLocation" x="-631" y="-437"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--AdoptedUI Navigation Controller-->
         <scene sceneID="7Mh-8R-yyV">
             <objects>
-                <navigationController storyboardIdentifier="navigationID" automaticallyAdjustsScrollViewInsets="NO" id="XyU-Dv-nSM" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigationID" automaticallyAdjustsScrollViewInsets="NO" id="XyU-Dv-nSM" customClass="AdoptedUINavigationController" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="vg7-Et-Xz6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
