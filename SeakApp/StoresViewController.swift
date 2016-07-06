@@ -67,7 +67,7 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 			if let itemCoords = item.coordintaes {
 				let location = CLLocation(latitude: itemCoords.latitude, longitude: itemCoords.longitude)
 				if let distance = self.currentLocation?.distanceFromLocation(location) {
-					label.text = String(format: "%.2fmi away", distance / 0.000621371)
+					label.text = String(format: "%.1fmi away", distance / 0.000621371)
 				}
 			}
 		}

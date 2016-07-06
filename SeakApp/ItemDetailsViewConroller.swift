@@ -33,7 +33,7 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 		self.titleLabel.text = self.itemEntity?.name
 		self.descriptionLabel.text = self.itemEntity?.descr
 		if let price = self.itemEntity?.price {
-			self.priceLabel.text = "$\(price)"
+			self.priceLabel.text = String(format: "$%.2f", price)
 		}
 		self.reviewsTitle.text = ""
 		setStars(3)
