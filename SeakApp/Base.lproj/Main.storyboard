@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -472,21 +473,27 @@
                         <viewControllerLayoutGuide type="bottom" id="kbR-Pt-D6c"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Gwy-dX-mrF">
-                        <rect key="frame" x="0.0" y="64" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="1036"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpW-83-bk9">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1036"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NaE-uj-F9B" customClass="PFImageView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="8Ij-6B-La1"/>
+                                            <constraint firstAttribute="width" secondItem="NaE-uj-F9B" secondAttribute="height" multiplier="1:1" id="auF-3X-fDo"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="8Ij-6B-La1"/>
+                                            </mask>
+                                        </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acer Desktop 6th gen. Core i7 64gb Ram Gaming Comp" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTp-0L-OlU">
-                                        <rect key="frame" x="16" y="258" width="382" height="50"/>
+                                        <rect key="frame" x="16" y="422" width="382" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ESq-PU-2UX"/>
                                         </constraints>
@@ -495,7 +502,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKj-uo-5Nj">
-                                        <rect key="frame" x="8" y="316" width="398" height="45"/>
+                                        <rect key="frame" x="8" y="480" width="398" height="45"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iD6-4d-0Ii">
                                                 <rect key="frame" x="8" y="16" width="65" height="13"/>
@@ -542,7 +549,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IM-bP-CPH">
-                                        <rect key="frame" x="16" y="369" width="382" height="17"/>
+                                        <rect key="frame" x="16" y="533" width="382" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="RVM-6O-PZT"/>
                                         </constraints>
@@ -556,7 +563,7 @@
                                         </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJM-3T-QXv">
-                                        <rect key="frame" x="0.0" y="394" width="414" height="40"/>
+                                        <rect key="frame" x="0.0" y="558" width="414" height="40"/>
                                         <color key="backgroundColor" red="0.20000000000000001" green="0.76470588235294112" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="vkq-HB-m97"/>
@@ -568,13 +575,13 @@
                                         </connections>
                                     </button>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="crK-QC-2DK">
-                                        <rect key="frame" x="0.0" y="434" width="414" height="171"/>
+                                        <rect key="frame" x="0.0" y="598" width="414" height="171"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="171" id="eh4-wk-afl"/>
                                         </constraints>
                                     </mapView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sJk-HF-hmi">
-                                        <rect key="frame" x="57" y="534" width="300" height="46"/>
+                                        <rect key="frame" x="57" y="698" width="300" height="46"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5478 Hickory Ln. Champaign, IL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nER-Jh-700">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="46"/>
@@ -594,7 +601,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="FgT-7b-GUy">
-                                        <rect key="frame" x="30" y="635" width="354" height="100"/>
+                                        <rect key="frame" x="30" y="799" width="354" height="100"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PNN-1R-337">
                                                 <rect key="frame" x="0.0" y="0.0" width="118" height="100"/>
@@ -644,7 +651,11 @@
                                         </constraints>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dislike" translatesAutoresizingMaskIntoConstraints="NO" id="oal-np-dkW">
-                                        <rect key="frame" x="386" y="30" width="20" height="19"/>
+                                        <rect key="frame" x="381" y="30" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="e2D-GU-a8o"/>
+                                            <constraint firstAttribute="height" constant="25" id="pAY-17-KDG"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -701,7 +712,7 @@
                         </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="950"/>
+                    <size key="freeformSize" width="414" height="1100"/>
                     <connections>
                         <outlet property="addresslabel" destination="nER-Jh-700" id="XTd-jy-BCP"/>
                         <outlet property="descriptionLabel" destination="3IM-bP-CPH" id="9ph-4q-hV6"/>
