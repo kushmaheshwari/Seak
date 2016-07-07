@@ -15,9 +15,9 @@ class ReviewViewCellController: UITableViewCell
 {
 	@IBOutlet weak var starsStackView: UIStackView!
 
-    @IBOutlet weak var previewMainLabel: UILabel!
-    @IBOutlet weak var previewNameLabel: UILabel!
-    @IBOutlet weak var previewDateLabel: UILabel!
+	@IBOutlet weak var previewMainLabel: UILabel!
+	@IBOutlet weak var previewNameLabel: UILabel!
+	@IBOutlet weak var previewDateLabel: UILabel!
 	@IBOutlet weak var previewAuthorImage: UIImageView!
 }
 

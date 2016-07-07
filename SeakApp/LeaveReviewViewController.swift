@@ -15,4 +15,8 @@ class LeaveReviewViewController: UIViewController {
 		self.view.layer.cornerRadius = 5
 		self.view.layer.masksToBounds = true
 	}
+
+	@IBAction func closeView(sender: AnyObject) {
+		self.dismissViewControllerAnimated(true, completion: nil)
+	}
 }
