@@ -15,9 +15,9 @@ class ReviewViewCellController: UITableViewCell
 {
 	@IBOutlet weak var starsStackView: UIStackView!
 
-	@IBOutlet weak var previewMainTextField: UITextField!
-	@IBOutlet weak var previewDateTextField: UITextField!
-	@IBOutlet weak var previewNameTextField: UITextField!
+    @IBOutlet weak var previewMainLabel: UILabel!
+    @IBOutlet weak var previewNameLabel: UILabel!
+    @IBOutlet weak var previewDateLabel: UILabel!
 	@IBOutlet weak var previewAuthorImage: UIImageView!
 }
 
@@ -33,7 +33,7 @@ class LeaveReviewPresentationController: UIPresentationController {
 class ReviewViewController: UIViewController,
 UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate
 {
-	@IBOutlet weak var previewLabel: UITextField!
+	@IBOutlet weak var previewLabel: UILabel!
 	@IBOutlet weak var previewTableView: UITableView!
 	@IBOutlet weak var closeWindowButton: UIButton!
 
@@ -112,9 +112,9 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		if let cell = previewTableView.dequeueReusableCellWithIdentifier(cellIdentifire) as? ReviewViewCellController
 		{
 			let item = self.items[indexPath.row]
-			cell.previewDateTextField.text = item.createdAt?.description
-			cell.previewNameTextField.text = item.user?.getUserName()
-			cell.previewMainTextField.text = item.review
+			cell.previewDateLabel.text = item.createdAt?.description
+			cell.previewNameLabel.text = item.user?.getUserName()
+			cell.previewMainLabel.text = item.review
 			setStars(cell.starsStackView, count: Int(item.rating!))
 
 			cell.contentView.backgroundColor = UIColor.lightGrayColor()

@@ -746,12 +746,16 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="dwJ-CF-Wyw">
                                         <rect key="frame" x="21" y="15" width="96" height="41"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Previews" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WrA-qN-FdQ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Previews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJv-Kk-u4o">
                                                 <rect key="frame" x="0.0" y="0.0" width="96" height="28"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="2Cn-e2-0cq"/>
+                                                    <constraint firstAttribute="width" constant="96" id="hDl-70-WFo"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srr-Sb-qFh">
                                                 <rect key="frame" x="0.0" y="28" width="70" height="13"/>
                                                 <subviews>
@@ -849,43 +853,38 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Nha-A5-LA7">
                                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="29"/>
                                                                     <subviews>
-                                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c43-J7-nSZ">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOP-2i-12L">
                                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="17"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="6a9-Hx-8nc"/>
-                                                                                <constraint firstAttribute="width" constant="59" id="HZ0-kh-BPh"/>
-                                                                                <constraint firstAttribute="height" constant="13" id="Ukj-V7-iDx"/>
+                                                                                <constraint firstAttribute="width" constant="80" id="9Ld-Lz-jOd"/>
+                                                                                <constraint firstAttribute="height" constant="17" id="dQT-ep-2lG"/>
                                                                             </constraints>
-                                                                            <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
-                                                                            <textInputTraits key="textInputTraits"/>
-                                                                            <variation key="default">
-                                                                                <mask key="constraints">
-                                                                                    <exclude reference="HZ0-kh-BPh"/>
-                                                                                    <exclude reference="Ukj-V7-iDx"/>
-                                                                                </mask>
-                                                                            </variation>
-                                                                        </textField>
-                                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOE-E3-lrJ">
+                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngf-M7-NNr">
                                                                             <rect key="frame" x="0.0" y="19" width="80" height="10"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="10" id="1tL-IC-EFk"/>
-                                                                                <constraint firstAttribute="width" constant="72" id="dhR-y4-yEK"/>
-                                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="fnm-C6-TVG"/>
+                                                                                <constraint firstAttribute="height" constant="10" id="aGA-wM-f66"/>
+                                                                                <constraint firstAttribute="width" constant="80" id="qVG-Q7-951"/>
                                                                             </constraints>
-                                                                            <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="8"/>
-                                                                            <textInputTraits key="textInputTraits"/>
-                                                                            <variation key="default">
-                                                                                <mask key="constraints">
-                                                                                    <exclude reference="dhR-y4-yEK"/>
-                                                                                </mask>
-                                                                            </variation>
-                                                                        </textField>
+                                                                            <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="80" id="Kqe-sh-7KH"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="uOP-2i-12L" secondAttribute="trailing" id="PLd-IF-BgP"/>
+                                                                        <constraint firstItem="uOP-2i-12L" firstAttribute="leading" secondItem="Nha-A5-LA7" secondAttribute="leading" id="hTz-Te-SYf"/>
+                                                                        <constraint firstItem="uOP-2i-12L" firstAttribute="top" secondItem="Nha-A5-LA7" secondAttribute="top" constant="2" id="xVd-lZ-191"/>
                                                                     </constraints>
+                                                                    <variation key="default">
+                                                                        <mask key="constraints">
+                                                                            <exclude reference="xVd-lZ-191"/>
+                                                                        </mask>
+                                                                    </variation>
                                                                 </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ruy-N0-oOK">
                                                                     <rect key="frame" x="0.0" y="37" width="70" height="13"/>
@@ -938,22 +937,22 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Some review" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="jAG-cn-2Av">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SomeReview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyk-nY-esY">
                                                     <rect key="frame" x="19" y="79" width="562" height="39"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="39" id="ROG-AC-qJ2"/>
+                                                        <constraint firstAttribute="height" constant="39" id="MXT-NC-DbX"/>
                                                     </constraints>
-                                                    <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="uvn-2P-2YM" firstAttribute="top" secondItem="Jco-Ts-So4" secondAttribute="topMargin" constant="13" id="GZb-tH-cFA"/>
-                                                <constraint firstItem="jAG-cn-2Av" firstAttribute="leading" secondItem="Jco-Ts-So4" secondAttribute="leadingMargin" constant="11" id="HBH-Wb-lWK"/>
-                                                <constraint firstItem="jAG-cn-2Av" firstAttribute="top" secondItem="uvn-2P-2YM" secondAttribute="bottom" constant="8" id="Ryk-ZV-Kce"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="uyk-nY-esY" secondAttribute="trailing" constant="11" id="ZX7-K5-0Hb"/>
+                                                <constraint firstItem="uyk-nY-esY" firstAttribute="top" secondItem="uvn-2P-2YM" secondAttribute="bottom" constant="8" id="mSZ-dN-Y16"/>
                                                 <constraint firstItem="uvn-2P-2YM" firstAttribute="leading" secondItem="Jco-Ts-So4" secondAttribute="leadingMargin" constant="11" id="trg-ch-BCt"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="jAG-cn-2Av" secondAttribute="trailing" constant="11" id="yyF-Ro-Qob"/>
+                                                <constraint firstItem="uyk-nY-esY" firstAttribute="leading" secondItem="Jco-Ts-So4" secondAttribute="leadingMargin" constant="11" id="yqP-uO-NgL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <userDefinedRuntimeAttributes>
@@ -964,9 +963,9 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="previewAuthorImage" destination="b6n-bI-gqi" id="ZUD-yE-fbg"/>
-                                            <outlet property="previewDateTextField" destination="DOE-E3-lrJ" id="sSr-qF-4RD"/>
-                                            <outlet property="previewMainTextField" destination="jAG-cn-2Av" id="RVT-3m-tPD"/>
-                                            <outlet property="previewNameTextField" destination="c43-J7-nSZ" id="pb2-yT-Ni5"/>
+                                            <outlet property="previewDateLabel" destination="ngf-M7-NNr" id="c42-6k-e5H"/>
+                                            <outlet property="previewMainLabel" destination="uyk-nY-esY" id="eoW-65-hPh"/>
+                                            <outlet property="previewNameLabel" destination="uOP-2i-12L" id="9tK-RO-NSM"/>
                                             <outlet property="starsStackView" destination="ruy-N0-oOK" id="ZAr-qz-8iC"/>
                                         </connections>
                                     </tableViewCell>
@@ -1017,7 +1016,7 @@
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="closeWindowButton" destination="nYB-Wr-c9l" id="koz-Gn-jzf"/>
-                        <outlet property="previewLabel" destination="WrA-qN-FdQ" id="ffj-qG-ZK3"/>
+                        <outlet property="previewLabel" destination="FJv-Kk-u4o" id="dOD-BF-hnT"/>
                         <outlet property="previewTableView" destination="7vv-vZ-iKV" id="ULc-1P-hS8"/>
                     </connections>
                 </viewController>
