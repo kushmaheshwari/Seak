@@ -14,6 +14,7 @@ import MapKit
 class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 
 	var itemEntity: ItemEntity? = nil
+	private let reviewRepository = ReviewRepository()
 
 	@IBOutlet weak var itemImage: PFImageView!
 	@IBOutlet weak var titleLabel: UILabel!
@@ -36,7 +37,6 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 			self.priceLabel.text = String(format: "$%.2f", price)
 		}
 		self.reviewsTitle.text = ""
-		setStars(3)
 		self.addresslabel.text = self.itemEntity?.storeEntity?.address
 
 		if let coordinates = self.itemEntity?.storeEntity?.coordintaes {
@@ -49,6 +49,24 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 			point.title = self.itemEntity?.storeEntity?.name
 
 			self.mapView.addAnnotation(point)
+		}
+	}
+
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		self.setAvgRating()
+	}
+
+	func setAvgRating() {
+		if self.itemEntity == nil {
+			return
+		}
+		self.reviewRepository.getAll(by: self.itemEntity!) { (reviews) in
+			let rating = reviews.reduce(0) { (sum, item) -> Int in
+				return sum + Int(item.rating!)
+			} / reviews.count
+
+			self.starsStackView.setStars(rating)
 		}
 	}
 
@@ -75,20 +93,6 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 		}
 
 		return pinView
-	}
-
-	func setStars(count: Int) {
-		for starView in self.starsStackView.arrangedSubviews {
-			if let imgView = starView as? UIImageView {
-				imgView.image = UIImage(named: "blankStar")
-			}
-		}
-
-		for i in 0..<count {
-			if let imgView = self.starsStackView.arrangedSubviews[i] as? UIImageView {
-				imgView.image = UIImage(named: "filledStar")
-			}
-		}
 	}
 
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

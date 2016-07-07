@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import ParseUI
-import MapKit
+import ParseFacebookUtilsV4
 
 class ReviewViewCellController: UITableViewCell
 {
@@ -36,6 +36,7 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 	@IBOutlet weak var previewLabel: UILabel!
 	@IBOutlet weak var previewTableView: UITableView!
 	@IBOutlet weak var closeWindowButton: UIButton!
+	@IBOutlet weak var starsStackView: UIStackView!
 
 	private let repository = ReviewRepository()
 	private var items: [ReviewEntity] = []
@@ -51,11 +52,17 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		self.title = ""
 		self.navigationItem.titleView = imgView
 
+		self.previewTableView.separatorColor = UIColor.colorWithHexString("f5f5f5")
+
 		previewTableView.dataSource = self
 		previewTableView.delegate = self
 
 		closeWindowButton.addTarget(self, action: #selector(ReviewViewController.closeModalWindow), forControlEvents: UIControlEvents.TouchUpInside)
+	}
 
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		self.items.removeAll()
 		self.loadReviews()
 	}
 
@@ -67,9 +74,18 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		self.repository.getAll(by: self.itemEntity!) { (reviews) in
 			self.items = reviews
 			dispatch_async(dispatch_get_main_queue(), {
+				self.setAvgRating()
 				self.previewTableView.reloadData()
 			})
 		}
+	}
+
+	func setAvgRating() {
+		let rating = self.items.reduce(0) { (sum, item) -> Int in
+			return sum + Int(item.rating!)
+		} / self.items.count
+
+		self.starsStackView.setStars(rating)
 	}
 
 	func closeModalWindow()
@@ -85,67 +101,56 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		if segue.identifier == "goToAddReview" {
 			segue.destinationViewController.transitioningDelegate = self
 			segue.destinationViewController.modalPresentationStyle = .Custom
+			if let vc = segue.destinationViewController as? LeaveReviewViewController {
+				vc.item = self.itemEntity
+
+				vc.submitComletionBlock = { review in
+					self.items.append(review)
+					dispatch_async(dispatch_get_main_queue(), {
+						self.setAvgRating()
+						self.previewTableView.reloadData()
+					})
+				}
+			} // end cast
 
 		}
 	}
 
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return 1 // self.items.count
+	}
+
+	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return self.items.count
 	}
 
-	func setStars(stackView: UIStackView, count: Int) {
-		for starView in stackView.arrangedSubviews {
-			if let imgView = starView as? UIImageView {
-				imgView.image = UIImage(named: "blankStar")
-			}
-		}
-
-		for i in 0..<count {
-			if let imgView = stackView.arrangedSubviews[i] as? UIImageView {
-				imgView.image = UIImage(named: "filledStar")
-			}
-		}
+	func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+		return 4
 	}
 
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cellIdentifire = "Cell"
 		if let cell = previewTableView.dequeueReusableCellWithIdentifier(cellIdentifire) as? ReviewViewCellController
 		{
-			let item = self.items[indexPath.row]
-			cell.previewDateLabel.text = item.createdAt?.description
+			let item = self.items[indexPath.section]
+			let dateFormater = NSDateFormatter()
+			dateFormater.dateFormat = "MMMM dd, yyyy"
+			cell.previewDateLabel.text = "Posted " + dateFormater.stringFromDate(item.createdAt!)
 			cell.previewNameLabel.text = item.user?.getUserName()
 			cell.previewMainLabel.text = item.review
-			setStars(cell.starsStackView, count: Int(item.rating!))
+			cell.starsStackView.setStars(Int(item.rating!))
 
-			cell.contentView.backgroundColor = UIColor.lightGrayColor()
-			let whiteRoundedView: UIView = UIView(frame: CGRectMake(8, 4, self.previewTableView.frame.size.width - 16, 127))
-			whiteRoundedView.layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [216, 216, 216, 100])
-			whiteRoundedView.layer.masksToBounds = false
-			whiteRoundedView.layer.cornerRadius = 5.0
-			whiteRoundedView.layer.shadowOffset = CGSizeMake(-1, 1)
-			whiteRoundedView.layer.shadowOpacity = 0.2
+			if item.user != nil {
+				if PFFacebookUtils.isLinkedWithUser(item.user!) {
+					// TODO set picture
 
-			cell.contentView.addSubview(whiteRoundedView)
-			cell.contentView.sendSubviewToBack(whiteRoundedView)
+				}
+			}
+
+//			cell.layer.borderColor = UIColor.colorWithHexString("f5f5f5").CGColor
 
 			return cell
 		}
 		return UITableViewCell()
-	}
-
-	func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-
-		cell.contentView.backgroundColor = UIColor.clearColor()
-
-		let whiteRoundedView: UIView = UIView(frame: CGRectMake(10, 10, self.view.frame.size.width, 130))
-
-		whiteRoundedView.layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 1.0, 1.0, 1.0])
-		whiteRoundedView.layer.masksToBounds = true
-		whiteRoundedView.layer.cornerRadius = 5.0
-		whiteRoundedView.layer.shadowOffset = CGSizeMake(-1, 1)
-		whiteRoundedView.layer.shadowOpacity = 0.2
-
-		cell.contentView.addSubview(whiteRoundedView)
-		cell.contentView.sendSubviewToBack(whiteRoundedView)
 	}
 }

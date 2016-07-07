@@ -50,18 +50,25 @@ class ReviewRepository {
 		}
 	}
 
-	func save(review: ReviewEntity, saveCallback: () -> Void) {
+	func saveReview(text: String, rating: Int, item: ItemEntity, saveCallback: (review: ReviewEntity) -> Void) {
 		let object = PFObject(className: ParseClassNames.Review.rawValue)
 		object["ReviewWriter"] = PFUser.currentUser()
-		if let itemObjectId = review.itemEntity?.objectID {
+		if let itemObjectId = item.objectID {
 			object["Item"] = PFObject(outDataWithClassName: ParseClassNames.Item.rawValue, objectId: itemObjectId)
 		}
-		object["Rating"] = review.rating
-		object["Review"] = review.review
+		object["Rating"] = Double(rating)
+		object["Review"] = text
 
 		object.saveInBackgroundWithBlock { (success, error) in
 			if success {
-				saveCallback()
+				let review = ReviewEntity()
+				review.objectID = object.objectId
+				review.createdAt = object.createdAt
+				review.review = text
+				review.itemEntity = item
+				review.item = PFObject(outDataWithClassName: ParseClassNames.Item.rawValue, objectId: item.objectID)
+				review.rating = Double(rating)
+				saveCallback(review: review)
 			}
 			else {
 				fatalError("Error on saving review \(error)")

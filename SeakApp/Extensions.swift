@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Parse
+import ParseFacebookUtilsV4
 
 extension UIViewController {
 	func hideKeyboardWhenTappedAround() {
@@ -64,6 +65,10 @@ extension PFUser {
 			let firstName = self["firstName"] as? String
 			let lastName = self["lastName"] as? String
 
+			if PFFacebookUtils.isLinkedWithUser(self) {
+				print ("linked")
+			}
+
 			if (firstName == nil || lastName == nil) {
 				return self.email
 			}
@@ -72,6 +77,22 @@ extension PFUser {
 		}
 		catch {
 			fatalError("PFUser getUserName error")
+		}
+	}
+}
+
+extension UIStackView {
+	func setStars(count: Int) {
+		for starView in self.arrangedSubviews {
+			if let imgView = starView as? UIImageView {
+				imgView.image = UIImage(named: "blankStar")
+			}
+		}
+
+		for i in 0..<count {
+			if let imgView = self.arrangedSubviews[i] as? UIImageView {
+				imgView.image = UIImage(named: "filledStar")
+			}
 		}
 	}
 }
