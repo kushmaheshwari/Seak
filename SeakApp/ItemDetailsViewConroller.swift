@@ -62,9 +62,9 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 			return
 		}
 		self.reviewRepository.getAll(by: self.itemEntity!) { (reviews) in
-			let rating = reviews.reduce(0) { (sum, item) -> Int in
+			let rating = (reviews.count > 0) ? reviews.reduce(0) { (sum, item) -> Int in
 				return sum + Int(item.rating!)
-			} / reviews.count
+			} / reviews.count: 0
 
 			self.starsStackView.setStars(rating)
 		}

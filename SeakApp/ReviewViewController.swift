@@ -81,9 +81,9 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 	}
 
 	func setAvgRating() {
-		let rating = self.items.reduce(0) { (sum, item) -> Int in
+		let rating = (self.items.count > 0) ? self.items.reduce(0) { (sum, item) -> Int in
 			return sum + Int(item.rating!)
-		} / self.items.count
+		} / self.items.count: 0
 
 		self.starsStackView.setStars(rating)
 	}
