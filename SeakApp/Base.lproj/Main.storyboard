@@ -71,7 +71,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Bhe-hX-P3D">
-                                <rect key="frame" x="187" y="486" width="227" height="30"/>
+                                <rect key="frame" x="180" y="486" width="240" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? " textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cp0-0O-4zF">
                                         <rect key="frame" x="0.0" y="0.0" width="129" height="30"/>
@@ -82,8 +82,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOx-Cr-6No">
-                                        <rect key="frame" x="134" y="0.0" width="57" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOx-Cr-6No">
+                                        <rect key="frame" x="134" y="0.0" width="70" height="30"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                         <state key="normal" title="Sign Up!">
                                             <color key="titleColor" red="0.99638384579999995" green="0.98038965460000005" blue="0.98008841280000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -93,14 +93,14 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM6-Uc-fac">
-                                        <rect key="frame" x="196" y="0.0" width="31" height="30"/>
+                                        <rect key="frame" x="209" y="0.0" width="31" height="30"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="227" id="zkM-Dx-Si7"/>
+                                    <constraint firstAttribute="width" constant="240" id="zkM-Dx-Si7"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tH-v5-5tm">
@@ -291,10 +291,10 @@
                                 <rect key="frame" x="20" y="354" width="560" height="44"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="MuM-FV-Aqj">
-                                        <rect key="frame" x="198" y="0.0" width="164" height="22"/>
+                                        <rect key="frame" x="190" y="0.0" width="180" height="22"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsK-fi-4hK">
-                                                <rect key="frame" x="0.0" y="0.0" width="164" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="180" height="22"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="8"/>
                                                 <state key="normal" title="BY CLICKING SIGN UP YOU AGREE TO SEAK'S">
                                                     <color key="titleColor" red="0.99638384579999995" green="0.98038965460000005" blue="0.98008841280000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -305,29 +305,29 @@
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="164" id="ju2-76-58R"/>
+                                            <constraint firstAttribute="width" constant="180" id="ju2-76-58R"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="elU-h6-vri">
-                                        <rect key="frame" x="210" y="22" width="140" height="22"/>
+                                        <rect key="frame" x="200" y="22" width="160" height="22"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isv-jI-zFd">
-                                                <rect key="frame" x="0.0" y="0.0" width="55" height="22"/>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isv-jI-zFd">
+                                                <rect key="frame" x="0.0" y="0.0" width="67" height="22"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="8"/>
                                                 <state key="normal" title="TERMS OF USE">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNl-zu-SqK">
-                                                <rect key="frame" x="58" y="0.0" width="17" height="22"/>
+                                                <rect key="frame" x="70" y="0.0" width="17" height="22"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="8"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCn-BM-Xlc">
-                                                <rect key="frame" x="78" y="0.0" width="62" height="22"/>
+                                                <rect key="frame" x="90" y="0.0" width="70" height="22"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="62" id="KJs-Jv-KFk"/>
+                                                    <constraint firstAttribute="width" constant="70" id="KJs-Jv-KFk"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="8"/>
                                                 <state key="normal" title="PRIVACY POLICY">
@@ -336,7 +336,7 @@
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="140" id="SMP-Fs-OAt"/>
+                                            <constraint firstAttribute="width" constant="160" id="SMP-Fs-OAt"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -741,10 +741,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFD-pa-thX">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="dwJ-CF-Wyw">
-                                        <rect key="frame" x="21" y="15" width="96" height="41"/>
+                                        <rect key="frame" x="21" y="35" width="96" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Previews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJv-Kk-u4o">
                                                 <rect key="frame" x="0.0" y="0.0" width="96" height="28"/>
@@ -803,7 +803,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYB-Wr-c9l">
-                                        <rect key="frame" x="558" y="24" width="22" height="22"/>
+                                        <rect key="frame" x="558" y="54" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="GbP-I7-Drr"/>
                                             <constraint firstAttribute="height" constant="22" id="QxV-xv-ABM"/>
@@ -814,11 +814,11 @@
                                 <color key="backgroundColor" red="0.0" green="0.42352941179999998" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="nYB-Wr-c9l" secondAttribute="trailing" constant="20" id="WUb-Dd-YZp"/>
-                                    <constraint firstAttribute="height" constant="69" id="YHd-a4-g0R"/>
-                                    <constraint firstItem="nYB-Wr-c9l" firstAttribute="centerY" secondItem="GFD-pa-thX" secondAttribute="centerY" id="Yal-xo-YOp"/>
+                                    <constraint firstAttribute="height" constant="90" id="YHd-a4-g0R"/>
+                                    <constraint firstItem="nYB-Wr-c9l" firstAttribute="centerY" secondItem="GFD-pa-thX" secondAttribute="centerY" constant="20" id="Yal-xo-YOp"/>
                                     <constraint firstItem="dwJ-CF-Wyw" firstAttribute="leading" secondItem="GFD-pa-thX" secondAttribute="leading" constant="21" id="m8t-1x-wxX"/>
                                     <constraint firstItem="dwJ-CF-Wyw" firstAttribute="top" secondItem="GFD-pa-thX" secondAttribute="top" constant="19" id="pja-HG-mEW"/>
-                                    <constraint firstItem="dwJ-CF-Wyw" firstAttribute="top" secondItem="GFD-pa-thX" secondAttribute="top" constant="15" id="v8q-8s-fKr"/>
+                                    <constraint firstItem="dwJ-CF-Wyw" firstAttribute="top" secondItem="GFD-pa-thX" secondAttribute="top" constant="35" id="v8q-8s-fKr"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -827,7 +827,7 @@
                                 </variation>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="135" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7vv-vZ-iKV">
-                                <rect key="frame" x="12" y="69" width="576" height="527"/>
+                                <rect key="frame" x="12" y="90" width="576" height="506"/>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>

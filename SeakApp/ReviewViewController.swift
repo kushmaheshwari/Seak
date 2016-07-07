@@ -128,6 +128,12 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		return 4
 	}
 
+	func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+		let headerView = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, 4))
+		headerView.backgroundColor = UIColor.clearColor()
+		return headerView
+	}
+
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cellIdentifire = "Cell"
 		if let cell = previewTableView.dequeueReusableCellWithIdentifier(cellIdentifire) as? ReviewViewCellController
