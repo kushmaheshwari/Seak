@@ -61,10 +61,14 @@ extension PFUser {
 	func getUserName() -> String? {
 		do {
 			try self.fetchIfNeeded()
-			guard let firstName = self["firstName"] as? String else { return nil }
-			guard let lastName = self["lastName"] as? String else { return nil }
+			let firstName = self["firstName"] as? String
+			let lastName = self["lastName"] as? String
 
-			return firstName + " " + lastName
+			if (firstName == nil || lastName == nil) {
+				return self.email
+			}
+
+			return firstName! + " " + lastName!
 		}
 		catch {
 			fatalError("PFUser getUserName error")

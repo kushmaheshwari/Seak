@@ -995,6 +995,9 @@
                                         <exclude reference="R9C-TP-vLt"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="qtZ-Ae-rWJ" kind="presentation" identifier="goToAddReview" id="giL-TS-2D4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1021,6 +1024,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FFo-On-kv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2265" y="-348"/>
+        </scene>
+        <!--Leave Review View Controller-->
+        <scene sceneID="TwJ-ya-2is">
+            <objects>
+                <viewController id="qtZ-Ae-rWJ" customClass="LeaveReviewViewController" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iDb-TO-MLq"/>
+                        <viewControllerLayoutGuide type="bottom" id="oap-Pv-Pmm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ES2-cS-Hgb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="230"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="V6j-c8-zTr">
+                                <rect key="frame" x="12" y="28" width="119" height="17"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5F-9i-Ygv">
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.3411764705882353" green="0.3411764705882353" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xkt-Ih-HCd">
+                                        <rect key="frame" x="54" y="2" width="65" height="13"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankStar" translatesAutoresizingMaskIntoConstraints="NO" id="nEp-TO-YvA">
+                                                <rect key="frame" x="0.0" y="0.0" width="13" height="13"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankStar" translatesAutoresizingMaskIntoConstraints="NO" id="DMR-6j-QYc">
+                                                <rect key="frame" x="13" y="0.0" width="13" height="13"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankStar" translatesAutoresizingMaskIntoConstraints="NO" id="SVp-JQ-zMa">
+                                                <rect key="frame" x="26" y="0.0" width="13" height="13"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankStar" translatesAutoresizingMaskIntoConstraints="NO" id="Hcu-rC-XDw">
+                                                <rect key="frame" x="39" y="0.0" width="13" height="13"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankStar" translatesAutoresizingMaskIntoConstraints="NO" id="hHt-4r-6Sz">
+                                                <rect key="frame" x="52" y="0.0" width="13" height="13"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g96-qj-djP">
+                                <rect key="frame" x="47" y="-81" width="8" height="74"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZQ-LB-oST">
+                                <rect key="frame" x="12" y="195" width="576" height="27"/>
+                                <color key="backgroundColor" red="0.16078431372549018" green="0.74901960784313726" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="YWm-pb-Mia">
+                                <rect key="frame" x="12" y="53" width="576" height="134"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="oap-Pv-Pmm" firstAttribute="top" secondItem="YZQ-LB-oST" secondAttribute="bottom" constant="8" id="2Lx-ya-P9a"/>
+                            <constraint firstItem="V6j-c8-zTr" firstAttribute="leading" secondItem="ES2-cS-Hgb" secondAttribute="leading" constant="12" id="QCl-Z3-ttG"/>
+                            <constraint firstAttribute="trailing" secondItem="YZQ-LB-oST" secondAttribute="trailing" constant="12" id="Rpj-RG-fXu"/>
+                            <constraint firstItem="YZQ-LB-oST" firstAttribute="leading" secondItem="ES2-cS-Hgb" secondAttribute="leading" constant="12" id="XNB-kb-mh6"/>
+                            <constraint firstItem="YZQ-LB-oST" firstAttribute="top" secondItem="YWm-pb-Mia" secondAttribute="bottom" constant="8" id="ePV-qn-acr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YWm-pb-Mia" secondAttribute="trailing" constant="-8" id="kPk-9J-Yko"/>
+                            <constraint firstItem="V6j-c8-zTr" firstAttribute="top" secondItem="iDb-TO-MLq" secondAttribute="bottom" constant="8" id="nHI-U6-Yyr"/>
+                            <constraint firstItem="YWm-pb-Mia" firstAttribute="leading" secondItem="ES2-cS-Hgb" secondAttribute="leadingMargin" constant="-8" id="rL5-Y3-iuK"/>
+                            <constraint firstItem="YWm-pb-Mia" firstAttribute="top" secondItem="V6j-c8-zTr" secondAttribute="bottom" constant="8" id="rVD-Tq-CWk"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="230"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="92T-W1-N7p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3058" y="-333"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gg5-fF-7op">

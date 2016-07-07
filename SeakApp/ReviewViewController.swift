@@ -21,8 +21,17 @@ class ReviewViewCellController: UITableViewCell
 	@IBOutlet weak var previewAuthorImage: UIImageView!
 }
 
+class LeaveReviewPresentationController: UIPresentationController {
+	override func frameOfPresentedViewInContainerView() -> CGRect {
+		let height: CGFloat = 230
+		let bottomSpacing: CGFloat = 4
+		let borderSpacing: CGFloat = 8
+		return CGRect(x: borderSpacing, y: UIScreen.mainScreen().bounds.size.height - height - bottomSpacing, width: UIScreen.mainScreen().bounds.size.width - borderSpacing * 2, height: height)
+	}
+}
+
 class ReviewViewController: UIViewController,
-UITableViewDataSource, UITableViewDelegate
+UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate
 {
 	@IBOutlet weak var previewLabel: UITextField!
 	@IBOutlet weak var previewTableView: UITableView!
@@ -66,6 +75,18 @@ UITableViewDataSource, UITableViewDelegate
 	func closeModalWindow()
 	{
 		self.dismissViewControllerAnimated(true, completion: nil)
+	}
+
+	func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
+		return LeaveReviewPresentationController(presentedViewController: presented, presentingViewController: presentingViewController!)
+	}
+
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "goToAddReview" {
+			segue.destinationViewController.transitioningDelegate = self
+			segue.destinationViewController.modalPresentationStyle = .Custom
+
+		}
 	}
 
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
