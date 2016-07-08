@@ -22,11 +22,14 @@ class ReviewViewCellController: UITableViewCell
 }
 
 class LeaveReviewPresentationController: UIPresentationController {
+
+	var overlappingHeight: CGFloat = 0.0
+
 	override func frameOfPresentedViewInContainerView() -> CGRect {
-		let height: CGFloat = 230
+		let topSpacing: CGFloat = 4
 		let bottomSpacing: CGFloat = 4
 		let borderSpacing: CGFloat = 8
-		return CGRect(x: borderSpacing, y: UIScreen.mainScreen().bounds.size.height - height - bottomSpacing, width: UIScreen.mainScreen().bounds.size.width - borderSpacing * 2, height: height)
+		return CGRect(x: borderSpacing, y: UIScreen.mainScreen().bounds.size.height - self.overlappingHeight - bottomSpacing + topSpacing, width: UIScreen.mainScreen().bounds.size.width - borderSpacing * 2, height: self.overlappingHeight - topSpacing)
 	}
 }
 
@@ -96,7 +99,9 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 	}
 
 	func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-		return LeaveReviewPresentationController(presentedViewController: presented, presentingViewController: presentingViewController!)
+		let presenter = LeaveReviewPresentationController(presentedViewController: presented, presentingViewController: presentingViewController!)
+		presenter.overlappingHeight = self.previewTableView.frame.size.height
+		return presenter
 	}
 
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
