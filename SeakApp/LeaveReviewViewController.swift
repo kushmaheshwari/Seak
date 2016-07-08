@@ -53,7 +53,7 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 		self.placeholderLabel.font = self.reviewText.font
 		placeholderLabel.sizeToFit()
 		self.reviewText.addSubview(self.placeholderLabel)
-		placeholderLabel.frame.origin = CGPointMake(5, self.reviewText.font!.pointSize / 2)
+		placeholderLabel.frame.origin = CGPointMake(12, self.reviewText.font!.pointSize / 2)
 		placeholderLabel.textColor = UIColor(white: 0, alpha: 0.3)
 		placeholderLabel.hidden = !self.reviewText.text.isEmpty
 	}
