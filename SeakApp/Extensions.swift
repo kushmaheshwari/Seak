@@ -61,13 +61,9 @@ extension UIColor {
 extension PFUser {
 	func getUserName() -> String? {
 		do {
-			try self.fetchIfNeeded()
+			self.fetchInBackground()
 			let firstName = self["firstName"] as? String
 			let lastName = self["lastName"] as? String
-
-			if PFFacebookUtils.isLinkedWithUser(self) {
-				print ("linked")
-			}
 
 			if (firstName == nil || lastName == nil) {
 				return self.email

@@ -36,7 +36,6 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 		if let price = self.itemEntity?.price {
 			self.priceLabel.text = String(format: "$%.2f", price)
 		}
-		self.reviewsTitle.text = ""
 		self.addresslabel.text = self.itemEntity?.storeEntity?.address
 
 		if let coordinates = self.itemEntity?.storeEntity?.coordintaes {
@@ -67,6 +66,7 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 			} / reviews.count: 0
 
 			self.starsStackView.setStars(rating)
+			self.reviewsTitle.text = "\(rating)/5 \(reviews.count) reviews."
 		}
 	}
 

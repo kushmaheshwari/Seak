@@ -50,14 +50,16 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		imgView.frame = CGRectMake(0, 0, 50, 25)
 		imgView.contentMode = .ScaleAspectFit
 		self.title = ""
+		self.previewLabel.text = ""
 		self.navigationItem.titleView = imgView
 
 		self.previewTableView.separatorColor = UIColor.colorWithHexString("f5f5f5")
 
-		previewTableView.dataSource = self
-		previewTableView.delegate = self
+		self.previewTableView.dataSource = self
+		self.previewTableView.delegate = self
 
-		closeWindowButton.addTarget(self, action: #selector(ReviewViewController.closeModalWindow), forControlEvents: UIControlEvents.TouchUpInside)
+		self.previewTableView.estimatedRowHeight = 135
+		self.previewTableView.rowHeight = UITableViewAutomaticDimension
 	}
 
 	override func viewWillAppear(animated: Bool) {
@@ -86,10 +88,10 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		} / self.items.count: 0
 
 		self.starsStackView.setStars(rating)
+		self.previewLabel.text = "\(rating) Reviews"
 	}
 
-	func closeModalWindow()
-	{
+	@IBAction func closeView(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 
@@ -142,7 +144,7 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 			let dateFormater = NSDateFormatter()
 			dateFormater.dateFormat = "MMMM dd, yyyy"
 			cell.previewDateLabel.text = "Posted " + dateFormater.stringFromDate(item.createdAt!)
-			cell.previewNameLabel.text = item.user?.getUserName()
+//			cell.previewNameLabel.text = item.user?.getUserName()
 			cell.previewMainLabel.text = item.review
 			cell.starsStackView.setStars(Int(item.rating!))
 
@@ -152,8 +154,6 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 
 				}
 			}
-
-//			cell.layer.borderColor = UIColor.colorWithHexString("f5f5f5").CGColor
 
 			return cell
 		}
