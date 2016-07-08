@@ -32,7 +32,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 		self.title = ""
 		self.navigationItem.titleView = imgView
 
-		let rightBarButton = UIBarButtonItem(image: UIImage(named: "search"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HomeViewController.addItem(_:)))
+		let rightBarButton = UIBarButtonItem(image: UIImage(named: "searchIcon"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HomeViewController.addItem(_:)))
 		navigationItem.rightBarButtonItem = rightBarButton
 		rightBarButton.action = #selector(HomeViewController.addItem(_:)) // adds search icon
 

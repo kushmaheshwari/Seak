@@ -15,12 +15,13 @@ class ItemCellView: UICollectionViewCell {
 	@IBOutlet weak var pictureImage: PFImageView!
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var priceLabel: UILabel!
-	@IBOutlet weak var stars: UIButton!
+	@IBOutlet weak var starsStackView: UIStackView!
 
 	var tapExecutionBlock: (updatedItem: ItemEntity) -> Void = { _ in }
 
 	private var item = ItemEntity()
 	private var tapped: Bool = false
+	private let reviewRepository = ReviewRepository()
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -30,8 +31,7 @@ class ItemCellView: UICollectionViewCell {
 		self.backgroundColor = UIColor.whiteColor()
 		self.pictureImage?.layer.backgroundColor = UIColor.whiteColor().CGColor
 
-		self.stars.layer.cornerRadius = 5;
-		self.stars.layer.masksToBounds = true
+		self.starsStackView.backgroundColor = UIColor.colorWithHexString("21c2f8")
 
 		self.nameLabel.text = item.name
 
@@ -53,6 +53,14 @@ class ItemCellView: UICollectionViewCell {
 		self.addGestureRecognizer(tap)
 		self.layoutSubviews()
 		self.sizeToFit()
+
+		reviewRepository.getAll(by: self.item) { (reviews) in
+			let rating = (reviews.count > 0) ? reviews.reduce(0) { (sum, item) -> Int in
+				return sum + Int(item.rating!)
+			} / reviews.count: 0
+
+			self.starsStackView.setStars(rating)
+		}
 	}
 
 	func openDetails(gesture: UITapGestureRecognizer?) {

@@ -59,8 +59,6 @@ UICollectionViewDelegate, UICollectionViewDataSource
 			self.searchController.searchBar.text = text
 			self.searchFromTyping = false
 			self.searchBarTextDidEndEditing(self.searchController.searchBar)
-//			self.searchController.searchBar.endEditing(true)
-//			self.searchController.searchBar.resignFirstResponder()
 			self.recentSearches.view.removeFromSuperview()
 		}
 
@@ -77,7 +75,7 @@ UICollectionViewDelegate, UICollectionViewDataSource
 		imgView.contentMode = .ScaleAspectFit
 		self.title = ""
 		self.navigationItem.titleView = imgView
-		let rightBarButton = UIBarButtonItem(image: UIImage(named: "search"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SearchItemsViewController.searchIconTaped(_:)))
+		let rightBarButton = UIBarButtonItem(image: UIImage(named: "searchIcon"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SearchItemsViewController.searchIconTaped(_:)))
 		navigationItem.rightBarButtonItem = rightBarButton
 		self.searchTitleTextLabel.text = searchTextValue
 		self.searchTitleTextLabel.hidden = false
