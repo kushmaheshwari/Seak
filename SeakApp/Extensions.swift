@@ -60,19 +60,25 @@ extension UIColor {
 
 extension PFUser {
 	func getUserName() -> String? {
-		do {
-			self.fetchInBackground()
-			let firstName = self["firstName"] as? String
-			let lastName = self["lastName"] as? String
+		let firstName = self["firstName"] as? String
+		let lastName = self["lastName"] as? String
 
-			if (firstName == nil || lastName == nil) {
-				return self.email
-			}
-
-			return firstName! + " " + lastName!
+		if (firstName == nil || lastName == nil) {
+			return self.email
 		}
-		catch {
-			fatalError("PFUser getUserName error")
+
+		return firstName! + " " + lastName!
+	}
+
+	func fetchInfo(completion: (firstName: String?, lastName: String?, profilePicture: PFFile?) -> Void) {
+		self.fetchInBackgroundWithBlock { (obj, error) in
+			if error != nil {
+				print (error)
+			} else {
+				completion(firstName: obj?["firstName"] as? String,
+					lastName: obj?["lastName"] as? String,
+					profilePicture: obj?["userPicture"] as? PFFile)
+			}
 		}
 	}
 }

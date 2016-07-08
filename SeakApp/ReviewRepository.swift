@@ -64,6 +64,7 @@ class ReviewRepository {
 				let review = ReviewEntity()
 				review.objectID = object.objectId
 				review.createdAt = object.createdAt
+				review.user = PFUser.currentUser()
 				review.review = text
 				review.itemEntity = item
 				review.item = PFObject(outDataWithClassName: ParseClassNames.Item.rawValue, objectId: item.objectID)

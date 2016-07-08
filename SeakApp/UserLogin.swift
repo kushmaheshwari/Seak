@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import ParseFacebookUtilsV4
 import UIKit
 
 class UserLogin {
@@ -42,6 +43,25 @@ class UserLogin {
 			}))
 		UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
 
+	}
+
+	static func storeFacebookInfobackend() {
+		if let user = PFUser.currentUser() {
+			let url = FBSDKProfile.currentProfile().imageURLForPictureMode(.Square, size: CGSize(width: 100, height: 100))
+			if let data = NSData(contentsOfURL: url) {
+				let img = PFFile(name: "\(user.objectId!)", data: data)
+				img?.saveInBackgroundWithBlock({ (success, error) in
+					if success {
+						user["userPicture"] = img
+						user["firstName"] = FBSDKProfile.currentProfile().firstName
+						user["lastName"] = FBSDKProfile.currentProfile().lastName
+						user.saveInBackground()
+					} else {
+						print (error)
+					}
+				})
+			}
+		}
 	}
 
 	static func signUp(username: String, email: String,

@@ -91,7 +91,7 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		} / self.items.count: 0
 
 		self.starsStackView.setStars(rating)
-		self.previewLabel.text = "\(rating) Reviews"
+		self.previewLabel.text = "\(self.items.count) Reviews"
 	}
 
 	@IBAction func closeView(sender: AnyObject) {
@@ -145,20 +145,33 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		let cellIdentifire = "Cell"
 		if let cell = previewTableView.dequeueReusableCellWithIdentifier(cellIdentifire) as? ReviewViewCellController
 		{
+			cell.previewNameLabel.text = ""
 			let item = self.items[indexPath.section]
 			let dateFormater = NSDateFormatter()
 			dateFormater.dateFormat = "MMMM dd, yyyy"
 			cell.previewDateLabel.text = "Posted " + dateFormater.stringFromDate(item.createdAt!)
-//			cell.previewNameLabel.text = item.user?.getUserName()
+			item.user?.fetchInfo({ (firstName, lastName, profilePicture) in
+				let name = (firstName != nil) ? firstName! : "" +
+					" " + ((lastName != nil) ? lastName! : "")
+				cell.previewNameLabel.text = name
+				profilePicture?.getDataInBackgroundWithBlock({ (data, error) in
+					if error != nil {
+						print(error)
+					}
+					else {
+						dispatch_async(dispatch_get_main_queue(), {
+							cell.previewAuthorImage.image = UIImage(data: data!)
+						})
+
+					}
+				})
+			})
+
+			cell.previewAuthorImage.layer.cornerRadius = CGFloat(25)
+			cell.previewAuthorImage.clipsToBounds = true
+
 			cell.previewMainLabel.text = item.review
 			cell.starsStackView.setStars(Int(item.rating!))
-
-			if item.user != nil {
-				if PFFacebookUtils.isLinkedWithUser(item.user!) {
-					// TODO set picture
-
-				}
-			}
 
 			return cell
 		}
