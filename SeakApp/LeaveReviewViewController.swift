@@ -46,6 +46,16 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 		self.addPlaceholderLabelAtTextView()
 	}
 
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		IQKeyboardManager.sharedManager().enable = false
+	}
+
+	override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+		IQKeyboardManager.sharedManager().enable = true
+	}
+
 	func addPlaceholderLabelAtTextView() {
 		self.reviewText.delegate = self
 		self.placeholderLabel = UILabel()
