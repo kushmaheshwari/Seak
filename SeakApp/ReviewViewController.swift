@@ -100,7 +100,7 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 
 	func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
 		let presenter = LeaveReviewPresentationController(presentedViewController: presented, presentingViewController: presentingViewController!)
-		presenter.overlappingHeight = self.previewTableView.frame.size.height
+		presenter.overlappingHeight = self.previewTableView.frame.size.height + 60
 		return presenter
 	}
 
