@@ -44,6 +44,25 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 		}
 
 		self.addPlaceholderLabelAtTextView()
+
+		// keyboard management
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LeaveReviewViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: self.view.window)
+
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LeaveReviewViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: self.view.window)
+	}
+
+	func keyboardWillShow(n: NSNotification) {
+		let bottomShift: CGFloat = 56
+		if let height = (n.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().height {
+			self.reviewText.frame.size.height = self.reviewText.frame.size.height - height + bottomShift
+		}
+	}
+
+	func keyboardWillHide(n: NSNotification) {
+		let bottomShift: CGFloat = 56
+		if let height = (n.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().height {
+			self.reviewText.frame.size.height = self.reviewText.frame.size.height + height - bottomShift
+		}
 	}
 
 	override func viewWillAppear(animated: Bool) {

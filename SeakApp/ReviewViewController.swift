@@ -65,6 +65,7 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		self.previewTableView.rowHeight = UITableViewAutomaticDimension
 	}
 
+
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		self.items.removeAll()
