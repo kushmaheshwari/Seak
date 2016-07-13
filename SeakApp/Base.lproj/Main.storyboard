@@ -1195,55 +1195,42 @@
                                     <action selector="closeView:" destination="qtZ-Ae-rWJ" eventType="touchUpInside" id="hej-mB-vJy"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cs3-ON-GgM">
-                                <rect key="frame" x="12" y="58" width="576" height="236"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="YWm-pb-Mia">
-                                        <rect key="frame" x="0.0" y="0.0" width="576" height="236"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="236" id="18K-xz-Ymx"/>
-                                            <constraint firstAttribute="width" constant="576" id="Vni-sP-pYU"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="18K-xz-Ymx"/>
-                                                <exclude reference="Vni-sP-pYU"/>
-                                            </mask>
-                                        </variation>
-                                    </textView>
-                                </subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="YWm-pb-Mia">
+                                <rect key="frame" x="12" y="57" width="576" height="237"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="YWm-pb-Mia" firstAttribute="centerX" secondItem="cs3-ON-GgM" secondAttribute="centerX" id="Sji-FB-GaY"/>
-                                    <constraint firstAttribute="trailing" secondItem="YWm-pb-Mia" secondAttribute="trailing" id="UN0-Ho-sEh"/>
-                                    <constraint firstItem="YWm-pb-Mia" firstAttribute="centerY" secondItem="cs3-ON-GgM" secondAttribute="centerY" id="kKu-Pf-GmN"/>
-                                    <constraint firstItem="YWm-pb-Mia" firstAttribute="top" secondItem="cs3-ON-GgM" secondAttribute="top" id="kjV-x6-eVX"/>
-                                    <constraint firstItem="YWm-pb-Mia" firstAttribute="leading" secondItem="cs3-ON-GgM" secondAttribute="leading" id="nvX-wh-hLu"/>
-                                    <constraint firstAttribute="bottom" secondItem="YWm-pb-Mia" secondAttribute="bottom" id="z73-0x-d2w"/>
+                                    <constraint firstAttribute="height" constant="236" id="18K-xz-Ymx"/>
+                                    <constraint firstAttribute="width" constant="576" id="Vni-sP-pYU"/>
                                 </constraints>
-                            </scrollView>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="18K-xz-Ymx"/>
+                                        <exclude reference="Vni-sP-pYU"/>
+                                    </mask>
+                                </variation>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="oap-Pv-Pmm" firstAttribute="top" secondItem="YZQ-LB-oST" secondAttribute="bottom" constant="8" id="2Lx-ya-P9a"/>
-                            <constraint firstItem="YZQ-LB-oST" firstAttribute="top" secondItem="cs3-ON-GgM" secondAttribute="bottom" constant="8" id="OJK-UI-xvL"/>
+                            <constraint firstItem="YWm-pb-Mia" firstAttribute="leading" secondItem="ES2-cS-Hgb" secondAttribute="leadingMargin" constant="-8" id="GKo-1L-H6i"/>
                             <constraint firstItem="V6j-c8-zTr" firstAttribute="leading" secondItem="ES2-cS-Hgb" secondAttribute="leading" constant="12" id="QCl-Z3-ttG"/>
                             <constraint firstAttribute="trailing" secondItem="YZQ-LB-oST" secondAttribute="trailing" constant="12" id="Rpj-RG-fXu"/>
                             <constraint firstItem="YZQ-LB-oST" firstAttribute="leading" secondItem="ES2-cS-Hgb" secondAttribute="leading" constant="12" id="XNB-kb-mh6"/>
                             <constraint firstItem="bvB-sG-uYS" firstAttribute="baseline" secondItem="V6j-c8-zTr" secondAttribute="baseline" id="aEd-L5-EBL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bvB-sG-uYS" secondAttribute="trailing" constant="-12" id="beI-Yg-4LD"/>
-                            <constraint firstItem="cs3-ON-GgM" firstAttribute="top" secondItem="V6j-c8-zTr" secondAttribute="bottom" constant="8" id="huV-k2-bNY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YWm-pb-Mia" secondAttribute="trailing" constant="-8" id="ioY-d5-cmW"/>
                             <constraint firstItem="V6j-c8-zTr" firstAttribute="top" secondItem="iDb-TO-MLq" secondAttribute="bottom" constant="8" id="nHI-U6-Yyr"/>
-                            <constraint firstItem="cs3-ON-GgM" firstAttribute="leading" secondItem="ES2-cS-Hgb" secondAttribute="leadingMargin" constant="-8" id="pe7-Q4-SAf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cs3-ON-GgM" secondAttribute="trailing" constant="-8" id="umj-m3-rnW"/>
+                            <constraint firstItem="YZQ-LB-oST" firstAttribute="top" secondItem="YWm-pb-Mia" secondAttribute="bottom" constant="8" id="qYb-YS-8ST"/>
+                            <constraint firstItem="YWm-pb-Mia" firstAttribute="top" secondItem="V6j-c8-zTr" secondAttribute="bottom" constant="7" id="rAd-ER-EhG"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -1251,6 +1238,7 @@
                     <connections>
                         <outlet property="reviewText" destination="YWm-pb-Mia" id="9W0-eH-KGV"/>
                         <outlet property="starsStackView" destination="Xkt-Ih-HCd" id="253-Rl-Img"/>
+                        <outlet property="textViewBottomConstrain" destination="qYb-YS-8ST" id="3Rc-se-7tW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="92T-W1-N7p" userLabel="First Responder" sceneMemberID="firstResponder"/>

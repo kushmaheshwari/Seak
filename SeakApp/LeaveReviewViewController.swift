@@ -16,10 +16,12 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 
 	private let repository = ReviewRepository()
 	private var placeholderLabel: UILabel!
-
+	private var bottomConstrainInitValue: CGFloat = 0.0
 	var rating: Int = 0
 	var item: ItemEntity? = nil
 	var submitComletionBlock: (review: ReviewEntity) -> Void = { _ in }
+
+	@IBOutlet weak var textViewBottomConstrain: NSLayoutConstraint!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -39,7 +41,6 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 				tap.numberOfTapsRequired = 1
 				v.userInteractionEnabled = true
 				v.addGestureRecognizer(tap)
-
 			}
 		}
 
@@ -49,20 +50,25 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LeaveReviewViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: self.view.window)
 
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LeaveReviewViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: self.view.window)
+
+		self.bottomConstrainInitValue = self.textViewBottomConstrain.constant
+	}
+
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
 	}
 
 	func keyboardWillShow(n: NSNotification) {
-		let bottomShift: CGFloat = 56
-		if let height = (n.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().height {
-			self.reviewText.frame.size.height = self.reviewText.frame.size.height - height + bottomShift
+		let bottomShift: CGFloat = 64
+		if let height = (n.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue().height {
+			self.textViewBottomConstrain.constant = self.bottomConstrainInitValue + (height - bottomShift)
 		}
 	}
 
 	func keyboardWillHide(n: NSNotification) {
-		let bottomShift: CGFloat = 56
-		if let height = (n.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().height {
-			self.reviewText.frame.size.height = self.reviewText.frame.size.height + height - bottomShift
-		}
+//		if let height = (n.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().height {
+		self.textViewBottomConstrain.constant = self.bottomConstrainInitValue
+//		}
 	}
 
 	override func viewWillAppear(animated: Bool) {
