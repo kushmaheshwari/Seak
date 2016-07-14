@@ -17,33 +17,36 @@ class ItemRepository {
 	let maxCountByStatus = 10
 	let cacheAge: NSTimeInterval = 60 * 5 // 5 minutes
 
-	func processItems(data: [PFObject]?) -> [ItemEntity]? {
+	static func processItem(object: PFObject) -> ItemEntity {
+		let item = ItemEntity()
+		if let name = object["name"] {
+			item.name = name as? String
+		}
+		if let category = object.objectForKey("category") {
+			item.category = category as? String
+		}
+		item.objectID = object.objectId!
+		if let price = object.objectForKey("price") {
+			item.price = price.doubleValue
+		}
+		if let picture = object.objectForKey("picture") {
+			item.picture = picture as? PFFile
+
+		}
+		if let store = object.objectForKey("Store") {
+			item.store = store as? PFObject
+		}
+		if let description = object.objectForKey("Description") {
+			item.descr = description as? String
+		}
+
+		return item
+	}
+
+	static func processItems(data: [PFObject]?) -> [ItemEntity]? {
 		if let data = data as [PFObject]! {
 			let result = Array(data.generate()).map() { (iter) -> ItemEntity in
-
-				let item = ItemEntity()
-				if let name = iter["name"] {
-					item.name = name as? String
-				}
-				if let category = iter.objectForKey("category") {
-					item.category = category as? String
-				}
-				item.objectID = iter.objectId!
-				if let price = iter.objectForKey("price") {
-					item.price = price.doubleValue
-				}
-				if let picture = iter.objectForKey("picture") {
-					item.picture = picture as? PFFile
-
-				}
-				if let store = iter.objectForKey("Store") {
-					item.store = store as? PFObject
-				}
-				if let description = iter.objectForKey("Description") {
-					item.descr = description as? String
-				}
-
-				return item
+				return ItemRepository.processItem(iter)
 			}
 			return result
 		}
@@ -58,7 +61,7 @@ class ItemRepository {
 			if error != nil {
 				print("Error: \(error!) \(error!.userInfo)")
 			} else {
-				if let items = self.processItems(objects) {
+				if let items = ItemRepository.processItems(objects) {
 					completion(items: items)
 				}
 			}
@@ -80,7 +83,7 @@ class ItemRepository {
 			if error != nil {
 				print("Error: \(error!) \(error!.userInfo)")
 			} else {
-				if let items = self.processItems(objects) {
+				if let items = ItemRepository.processItems(objects) {
 					completion(items: items)
 				}
 			}
@@ -101,7 +104,7 @@ class ItemRepository {
 			if error != nil {
 				print("Error: \(error!) \(error!.userInfo)")
 			} else {
-				if let items = self.processItems(objects) {
+				if let items = ItemRepository.processItems(objects) {
 					completion(items: items)
 				}
 			}
@@ -120,7 +123,7 @@ class ItemRepository {
 			if error != nil {
 				print("Error: \(error!) \(error!.userInfo)")
 			} else {
-				if let items = self.processItems(objects) {
+				if let items = ItemRepository.processItems(objects) {
 					completion(items: items)
 				}
 			}

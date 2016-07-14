@@ -261,6 +261,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E0558091D378F29009C5FDF /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				5E05580A1D378F42009C5FDF /* FavoriteStore.swift */,
+				5E05580C1D378F7E009C5FDF /* FavoriteItem.swift */,
+				5E05580E1D378FA8009C5FDF /* FavoriteRepository.swift */,
+			);
+			name = Favorites;
+			sourceTree = "<group>";
+		};
 		5E07CB681D05A01800F38D0B /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +416,7 @@
 		5E9346271D00280E00CF4DC6 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				5E0558091D378F29009C5FDF /* Favorites */,
 				5E62FB581D2ACFB0007C0C0A /* Review */,
 				5E62FB571D2ACFA4007C0C0A /* Store */,
 				5E62FB561D2ACF97007C0C0A /* Item */,
@@ -659,6 +670,7 @@
 				5E1533541D0AE4CC00C2E5E1 /* RecentSearches.swift in Sources */,
 				5E2A44EE1D12C2C300BA866D /* IQUIWindow+Hierarchy.swift in Sources */,
 				5E07CB671D05481200F38D0B /* MenuViewController.swift in Sources */,
+				5E05580B1D378F42009C5FDF /* FavoriteStore.swift in Sources */,
 				5E2A44F11D12C2C300BA866D /* IQKeyboardManager.swift in Sources */,
 				5E2A44F31D12C2C300BA866D /* IQTextView.swift in Sources */,
 				C9B39B111D0E644E00F64D24 /* ItemAdd.swift in Sources */,
@@ -678,6 +690,8 @@
 				5E2F99C31D2651E3000D8B49 /* ItemDetailsViewConroller.swift in Sources */,
 				5EA0F3F11D1C4EB2006175BB /* ItemGroupView.swift in Sources */,
 				5E87402B1D1AE923003A9354 /* UserDataCache.swift in Sources */,
+				5E05580D1D378F7E009C5FDF /* FavoriteItem.swift in Sources */,
+				5E05580F1D378FA8009C5FDF /* FavoriteRepository.swift in Sources */,
 				5E2A44EB1D12C2C300BA866D /* IQUITextFieldView+Additions.swift in Sources */,
 				5E07CB791D06C1A500F38D0B /* ACTabScrollView.swift in Sources */,
 				5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */,

@@ -7,13 +7,17 @@
 //
 
 import Foundation
+import Parse
 import UIKit
 
 class ItemsCollectionViewController: UICollectionViewController {
 
 	private let reuseIdentifier = "ItemCellIdentifier"
 	private let repository = ItemRepository()
+	private let favoritesRepository = FavoriteRepository()
 	private var category: MenuItems = .None
+
+	var dataSourceType: ItemsCollectionViewDataSource = .None
 
 	var items = [ItemEntity]()
 	var searchItems = [ItemEntity]()
@@ -46,12 +50,27 @@ class ItemsCollectionViewController: UICollectionViewController {
 	func loadCollectionViewData() { // loading cells with data
 		self.items.removeAll()
 		self.collectionView?.reloadData()
-		repository.getAllFromCategory(category) { (data) -> Void in
-			self.items = data
-			print("Successfully retrieved \(data.count) scores.")
-			self.refreshControl.endRefreshing()
-			self.collectionView?.reloadData()
+
+		switch self.dataSourceType {
+		case .Categories:
+			repository.getAllFromCategory(category) { (data) -> Void in
+				self.items = data
+				print("Successfully retrieved \(data.count) scores.")
+				self.refreshControl.endRefreshing()
+				self.collectionView?.reloadData()
+			}
+		case .Favorites:
+			guard let currentUser = PFUser.currentUser() else { fatalError("empty current user") }
+			favoritesRepository.getAllItems(by: currentUser, completion: { (data) in
+				self.items = data
+				print("Successfully retrieved \(data.count) scores.")
+				self.refreshControl.endRefreshing()
+				self.collectionView?.reloadData()
+			})
+		default:
+			fatalError("uncatched source type")
 		}
+
 	}
 
 	func setCategory(type: MenuItems) {
