@@ -12,6 +12,9 @@ enum ParseClassNames: String {
 	case Item = "Item"
 	case Store = "Store"
 	case Review = "Reviews"
+	case FavoriteItems = "FavoriteItems"
+	case FavoriteStores = "FavoriteStores"
+    case User = "User"
 }
 
 enum StoryboardNames: String {
