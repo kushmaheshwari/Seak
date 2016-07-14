@@ -44,6 +44,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 		for item in MenuItems.values {
 			if item != .Home {
 				if let vc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.ItemsCollection.rawValue) as? ItemsCollectionViewController {
+					vc.dataSourceType = .Categories
 					vc.setCategory(item)
 					vc.navigationVC = self.navigationController
 					self.addChildViewController(vc)

@@ -14,7 +14,7 @@ enum ParseClassNames: String {
 	case Review = "Reviews"
 	case FavoriteItems = "FavoriteItems"
 	case FavoriteStores = "FavoriteStores"
-    case User = "User"
+	case User = "User"
 }
 
 enum StoryboardNames: String {
@@ -64,4 +64,10 @@ enum UserLoginType {
 enum UserDataCacheProperties: String {
 	case UserPicture = "userpicture"
 	case UserName = "username"
+}
+
+enum ItemsCollectionViewDataSource {
+	case None
+	case Categories
+	case Favorites
 }
