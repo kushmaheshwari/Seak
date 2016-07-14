@@ -13,7 +13,7 @@
 		5E05580D1D378F7E009C5FDF /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05580C1D378F7E009C5FDF /* FavoriteItem.swift */; };
 		5E05580F1D378FA8009C5FDF /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05580E1D378FA8009C5FDF /* FavoriteRepository.swift */; };
 		5E0558121D37D02B009C5FDF /* LikeItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E0558111D37D02B009C5FDF /* LikeItemView.xib */; };
-		5E0558141D37D7A5009C5FDF /* LikeItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0558131D37D7A5009C5FDF /* LikeItemViewController.swift */; };
+		5E0558141D37D7A5009C5FDF /* LikeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0558131D37D7A5009C5FDF /* LikeItemView.swift */; };
 		5E07CB671D05481200F38D0B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB661D05481200F38D0B /* MenuViewController.swift */; };
 		5E07CB6E1D05A10000F38D0B /* ItemsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB6D1D05A10000F38D0B /* ItemsCollectionView.swift */; };
 		5E07CB701D05D5DF00F38D0B /* ItemCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E07CB6F1D05D5DF00F38D0B /* ItemCellView.xib */; };
@@ -119,7 +119,7 @@
 		5E05580C1D378F7E009C5FDF /* FavoriteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		5E05580E1D378FA8009C5FDF /* FavoriteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteRepository.swift; sourceTree = "<group>"; };
 		5E0558111D37D02B009C5FDF /* LikeItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeItemView.xib; sourceTree = "<group>"; };
-		5E0558131D37D7A5009C5FDF /* LikeItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeItemViewController.swift; sourceTree = "<group>"; };
+		5E0558131D37D7A5009C5FDF /* LikeItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeItemView.swift; sourceTree = "<group>"; };
 		5E07CB661D05481200F38D0B /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		5E07CB6D1D05A10000F38D0B /* ItemsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsCollectionView.swift; sourceTree = "<group>"; };
 		5E07CB6F1D05D5DF00F38D0B /* ItemCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCellView.xib; sourceTree = "<group>"; };
@@ -285,7 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				5E0558111D37D02B009C5FDF /* LikeItemView.xib */,
-				5E0558131D37D7A5009C5FDF /* LikeItemViewController.swift */,
+				5E0558131D37D7A5009C5FDF /* LikeItemView.swift */,
 			);
 			name = LikeButtons;
 			sourceTree = "<group>";
@@ -690,7 +690,7 @@
 				5E2A44EA1D12C2C300BA866D /* IQUIScrollView+Additions.swift in Sources */,
 				5E1533541D0AE4CC00C2E5E1 /* RecentSearches.swift in Sources */,
 				5E2A44EE1D12C2C300BA866D /* IQUIWindow+Hierarchy.swift in Sources */,
-				5E0558141D37D7A5009C5FDF /* LikeItemViewController.swift in Sources */,
+				5E0558141D37D7A5009C5FDF /* LikeItemView.swift in Sources */,
 				5E07CB671D05481200F38D0B /* MenuViewController.swift in Sources */,
 				5E05580B1D378F42009C5FDF /* FavoriteStore.swift in Sources */,
 				5E2A44F11D12C2C300BA866D /* IQKeyboardManager.swift in Sources */,

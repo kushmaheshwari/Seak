@@ -3,45 +3,37 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LikeItemViewController" customModule="SeakApp" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <viewController id="hqx-H3-cOu" customClass="LikeItemViewController" customModule="SeakApp" customModuleProvider="target">
-            <layoutGuides>
-                <viewControllerLayoutGuide type="top" id="55L-IS-PTD"/>
-                <viewControllerLayoutGuide type="bottom" id="Lw5-Pf-3by"/>
-            </layoutGuides>
-            <view key="view" contentMode="scaleToFill" id="fFG-H4-AdO">
-                <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dislike" translatesAutoresizingMaskIntoConstraints="NO" id="Qcp-oc-rEe">
-                        <rect key="frame" x="4" y="4" width="24" height="24"/>
-                    </imageView>
-                </subviews>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                <constraints>
-                    <constraint firstItem="Qcp-oc-rEe" firstAttribute="top" secondItem="fFG-H4-AdO" secondAttribute="topMargin" constant="4" id="UcP-JB-xPm"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Qcp-oc-rEe" secondAttribute="bottom" constant="4" id="g8n-Mp-Tn8"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Qcp-oc-rEe" secondAttribute="trailing" constant="-12" id="hAC-MZ-lAe"/>
-                    <constraint firstItem="Qcp-oc-rEe" firstAttribute="leading" secondItem="fFG-H4-AdO" secondAttribute="leadingMargin" constant="-12" id="xhe-2v-p5k"/>
-                </constraints>
-                <userDefinedRuntimeAttributes>
-                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                        <integer key="value" value="16"/>
-                    </userDefinedRuntimeAttribute>
-                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipToBounds" value="YES"/>
-                </userDefinedRuntimeAttributes>
-            </view>
+        <view contentMode="scaleToFill" id="BLq-hW-dcC" customClass="LikeItemView" customModule="SeakApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dislike" translatesAutoresizingMaskIntoConstraints="NO" id="bWo-Ib-VLo">
+                    <rect key="frame" x="4" y="4" width="24" height="24"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="bWo-Ib-VLo" secondAttribute="bottom" constant="4" id="5uo-Zx-EZS"/>
+                <constraint firstItem="bWo-Ib-VLo" firstAttribute="top" secondItem="BLq-hW-dcC" secondAttribute="top" constant="4" id="Swy-fJ-Yrr"/>
+                <constraint firstAttribute="trailing" secondItem="bWo-Ib-VLo" secondAttribute="trailing" constant="4" id="VIB-Gk-rV6"/>
+                <constraint firstItem="bWo-Ib-VLo" firstAttribute="leading" secondItem="BLq-hW-dcC" secondAttribute="leading" constant="4" id="cpV-lX-s7c"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <size key="freeformSize" width="32" height="32"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipToBounds" value="YES"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="16"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="likeImage" destination="Qcp-oc-rEe" id="HYZ-Ao-dQ7"/>
+                <outlet property="likeImage" destination="bWo-Ib-VLo" id="29h-Hp-yMf"/>
             </connections>
-            <point key="canvasLocation" x="444" y="467"/>
-        </viewController>
+            <point key="canvasLocation" x="120" y="359"/>
+        </view>
     </objects>
     <resources>
         <image name="dislike" width="19" height="17"/>

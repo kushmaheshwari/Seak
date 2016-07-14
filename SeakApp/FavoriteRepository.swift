@@ -36,6 +36,10 @@ class FavoriteRepository {
 		result.createdAt = object.createdAt
 		result.item = object["item"] as? PFObject
 		if let item = result.item {
+			do {
+				try item.fetchIfNeeded()
+			}
+			catch { }
 			result.itemEntity = ItemRepository.processItem(item)
 		}
 		return result
@@ -124,8 +128,16 @@ class FavoriteRepository {
 
 		object.saveInBackgroundWithBlock { (success, error) in
 			if success {
-				let favoriteItem = FavoriteRepository.processFavoriteItem(object)
-				completion(favoriteItem: favoriteItem)
+				object.fetchInBackgroundWithBlock({ (obj, error) in
+					if error != nil {
+						print(error)
+					}
+					else {
+						let favoriteItem = FavoriteRepository.processFavoriteItem(obj!)
+						completion(favoriteItem: favoriteItem)
+					}
+				})
+
 			}
 			else {
 				fatalError("Error on saving review \(error)")

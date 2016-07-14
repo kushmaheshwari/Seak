@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LikeItemViewController: UIViewController {
+class LikeItemView: UIView {
 
 	@IBOutlet weak var likeImage: UIImageView!
 	private let repository = FavoriteRepository()
@@ -17,19 +17,23 @@ class LikeItemViewController: UIViewController {
 
 	var item: ItemEntity? = nil
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		self.likeImage.hidden = true
+		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(LikeItemView.tap(_:)))
+		self.addGestureRecognizer(tapRecognizer)
+	}
+
+	func load() {
 		guard let _ = self.item else { fatalError("empty Item Entity") }
 		repository.getLike(by: self.item!) { (item) in
 			self.favoriteItem = item
+			self.setImage()
 		}
-
-		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(LikeItemViewController.tap(_:)))
-		self.view.addGestureRecognizer(tapRecognizer)
 	}
 
 	func tap(sender: AnyObject?) {
-		if self.favoriteItem == nil {
+		if self.favoriteItem == nil { // means neeed to like it and retrieve favoriteItem
 			self.repository.like(self.item!, completion: { (favoriteItem) in
 				self.favoriteItem = favoriteItem
 				self.setImage()
@@ -45,7 +49,8 @@ class LikeItemViewController: UIViewController {
 	}
 
 	func setImage() {
-		if self.favoriteItem == nil {
+		self.likeImage.hidden = false
+		if self.favoriteItem != nil {
 			self.likeImage.image = UIImage(named: "like")
 		} else {
 			self.likeImage.image = UIImage(named: "dislike")

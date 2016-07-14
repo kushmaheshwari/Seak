@@ -24,6 +24,7 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 	@IBOutlet weak var descriptionLabel: UILabel!
 	@IBOutlet weak var addresslabel: UILabel!
 	@IBOutlet weak var mapView: MKMapView!
+	@IBOutlet weak var likeViewContainer: UIView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -48,6 +49,16 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 			point.title = self.itemEntity?.storeEntity?.name
 
 			self.mapView.addAnnotation(point)
+		}
+
+		// add like viewcontroller
+		self.likeViewContainer.backgroundColor = UIColor.clearColor()
+
+		if let v = NSBundle.mainBundle().loadNibNamed("LikeItemView", owner: self, options: nil)[0] as? LikeItemView {
+			v.item = self.itemEntity
+			self.likeViewContainer.addSubview(v)
+			self.likeViewContainer.bringSubviewToFront(v)
+			v.load()
 		}
 	}
 

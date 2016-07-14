@@ -744,13 +744,6 @@
                                             <constraint firstAttribute="height" constant="100" id="0R2-yB-wyC"/>
                                         </constraints>
                                     </stackView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dislike" translatesAutoresizingMaskIntoConstraints="NO" id="oal-np-dkW">
-                                        <rect key="frame" x="381" y="30" width="25" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="25" id="e2D-GU-a8o"/>
-                                            <constraint firstAttribute="height" constant="25" id="pAY-17-KDG"/>
-                                        </constraints>
-                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u7h-fX-rOO">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -772,6 +765,14 @@
                                             <constraint firstAttribute="height" constant="1" id="TUM-4I-MoP"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNh-BI-8bA">
+                                        <rect key="frame" x="366" y="17" width="32" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="JVj-U0-JhT"/>
+                                            <constraint firstAttribute="height" constant="32" id="tO0-9E-gQk"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="FGJ-aS-Ett" firstAttribute="bottom" secondItem="NaE-uj-F9B" secondAttribute="bottom" id="1Db-oI-3lz"/>
@@ -789,7 +790,7 @@
                                     <constraint firstAttribute="trailing" secondItem="3IM-bP-CPH" secondAttribute="trailing" constant="16" id="E66-NY-Kie"/>
                                     <constraint firstItem="FgT-7b-GUy" firstAttribute="top" secondItem="crK-QC-2DK" secondAttribute="bottom" constant="30" id="FXj-FC-ZBN"/>
                                     <constraint firstAttribute="trailing" secondItem="u7h-fX-rOO" secondAttribute="trailing" id="G4I-en-pW1"/>
-                                    <constraint firstItem="oal-np-dkW" firstAttribute="top" secondItem="cpW-83-bk9" secondAttribute="top" constant="30" id="IfY-Cz-vSS"/>
+                                    <constraint firstAttribute="trailing" secondItem="pNh-BI-8bA" secondAttribute="trailing" constant="16" id="KhY-YN-gPj"/>
                                     <constraint firstItem="FgT-7b-GUy" firstAttribute="leading" secondItem="cpW-83-bk9" secondAttribute="leading" id="RkM-W2-XV1"/>
                                     <constraint firstAttribute="trailing" secondItem="FgT-7b-GUy" secondAttribute="trailing" constant="30" id="StJ-Sa-ZhV"/>
                                     <constraint firstItem="3IM-bP-CPH" firstAttribute="leading" secondItem="cpW-83-bk9" secondAttribute="leading" constant="16" id="SuK-Z5-1ph"/>
@@ -799,7 +800,6 @@
                                     <constraint firstAttribute="trailing" secondItem="FGJ-aS-Ett" secondAttribute="trailing" id="aOQ-cI-c4b"/>
                                     <constraint firstItem="crK-QC-2DK" firstAttribute="top" secondItem="aJM-3T-QXv" secondAttribute="bottom" id="b9r-qV-afD"/>
                                     <constraint firstItem="aJM-3T-QXv" firstAttribute="top" secondItem="3IM-bP-CPH" secondAttribute="bottom" constant="26" id="dZn-7L-CKZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="oal-np-dkW" secondAttribute="trailing" constant="8" id="ffC-YE-9Dc"/>
                                     <constraint firstItem="u7h-fX-rOO" firstAttribute="top" secondItem="cpW-83-bk9" secondAttribute="top" id="gMT-zw-Ur2"/>
                                     <constraint firstItem="VKj-uo-5Nj" firstAttribute="leading" secondItem="cpW-83-bk9" secondAttribute="leading" constant="8" id="gRK-KI-qvz"/>
                                     <constraint firstItem="u7h-fX-rOO" firstAttribute="top" secondItem="VTp-0L-OlU" secondAttribute="bottom" id="hSh-j6-cHf"/>
@@ -807,6 +807,7 @@
                                     <constraint firstItem="FgT-7b-GUy" firstAttribute="top" secondItem="OL7-wE-3IB" secondAttribute="bottom" constant="316" id="i1e-uz-SFu"/>
                                     <constraint firstItem="OL7-wE-3IB" firstAttribute="leading" secondItem="cpW-83-bk9" secondAttribute="leading" id="k6I-iD-ByM"/>
                                     <constraint firstItem="VTp-0L-OlU" firstAttribute="leading" secondItem="cpW-83-bk9" secondAttribute="leading" constant="16" id="kYK-Ae-XaF"/>
+                                    <constraint firstItem="pNh-BI-8bA" firstAttribute="top" secondItem="u7h-fX-rOO" secondAttribute="bottom" constant="16" id="mAf-rp-qpO"/>
                                     <constraint firstAttribute="trailing" secondItem="FgT-7b-GUy" secondAttribute="trailing" id="mEe-NL-Kz6"/>
                                     <constraint firstItem="u7h-fX-rOO" firstAttribute="leading" secondItem="cpW-83-bk9" secondAttribute="leading" id="npB-bb-4TZ"/>
                                     <constraint firstItem="NaE-uj-F9B" firstAttribute="top" secondItem="cpW-83-bk9" secondAttribute="top" constant="1" id="qCw-TK-gNw"/>
@@ -847,6 +848,7 @@
                         <outlet property="addresslabel" destination="nER-Jh-700" id="XTd-jy-BCP"/>
                         <outlet property="descriptionLabel" destination="3IM-bP-CPH" id="9ph-4q-hV6"/>
                         <outlet property="itemImage" destination="NaE-uj-F9B" id="cie-Vv-9kY"/>
+                        <outlet property="likeViewContainer" destination="pNh-BI-8bA" id="XSW-eM-zAK"/>
                         <outlet property="mapView" destination="crK-QC-2DK" id="jCB-JN-RFI"/>
                         <outlet property="priceLabel" destination="Brd-Tt-QwD" id="WM0-Bg-ISa"/>
                         <outlet property="reviewsTitle" destination="XFc-Gs-3fg" id="CfW-fd-l5P"/>
@@ -1861,12 +1863,24 @@
             </objects>
             <point key="canvasLocation" x="59" y="-320"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="jzG-c2-IFW">
+            <objects>
+                <viewController id="UFu-kn-SF0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9kJ-t6-JhK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YM0-En-Q9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="blankStar" width="27" height="25"/>
         <image name="callButton" width="68" height="68"/>
         <image name="closeView" width="23" height="24"/>
-        <image name="dislike" width="19" height="17"/>
         <image name="exploreButton" width="68" height="68"/>
         <image name="grayCloseIcon" width="12" height="10"/>
         <image name="loginLogo" width="353" height="157"/>
