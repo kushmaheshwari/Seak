@@ -18,6 +18,11 @@ class FavoriteRepository {
 		result.createdAt = object.createdAt
 		result.store = object["store"] as? PFObject
 		if let store = result.store {
+            do {
+                try store.fetch() }
+            catch {
+                fatalError("can't fetch favorite store")
+            }
 			result.storeEntity = StoreRepository.processStore(store)
 		}
 		return result
@@ -36,6 +41,11 @@ class FavoriteRepository {
 		result.createdAt = object.createdAt
 		result.item = object["item"] as? PFObject
 		if let item = result.item {
+            do {
+                try item.fetch() }
+            catch {
+                fatalError("can't fetch favorite item")
+            }
 			result.itemEntity = ItemRepository.processItem(item)
 		}
 		return result

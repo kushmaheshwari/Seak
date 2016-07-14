@@ -504,11 +504,19 @@
                                     <constraint firstAttribute="height" constant="43" id="cce-s2-XRP"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jx2-vx-r9N">
+                                <rect key="frame" x="0.0" y="107" width="600" height="449"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="X1p-Nc-1ey" firstAttribute="top" secondItem="Jx2-vx-r9N" secondAttribute="bottom" id="42N-9d-LJ1"/>
                             <constraint firstItem="VvF-7m-wlE" firstAttribute="leading" secondItem="HJI-eb-T9K" secondAttribute="leadingMargin" constant="-20" id="7BV-bl-Rg7"/>
                             <constraint firstItem="VvF-7m-wlE" firstAttribute="top" secondItem="nah-9Y-HIb" secondAttribute="bottom" id="K8p-5k-HdJ"/>
+                            <constraint firstItem="Jx2-vx-r9N" firstAttribute="top" secondItem="VvF-7m-wlE" secondAttribute="bottom" id="Nm0-gF-dAj"/>
+                            <constraint firstItem="Jx2-vx-r9N" firstAttribute="leading" secondItem="HJI-eb-T9K" secondAttribute="leadingMargin" constant="-20" id="RxV-Fk-Rv9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jx2-vx-r9N" secondAttribute="trailing" constant="-20" id="bil-RQ-X0p"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VvF-7m-wlE" secondAttribute="trailing" constant="-20" id="eGy-2H-RgE"/>
                         </constraints>
                     </view>
@@ -531,6 +539,7 @@
                     <connections>
                         <outlet property="ItemsButton" destination="tAW-Cg-CGE" id="hht-u4-JMv"/>
                         <outlet property="StoreButton" destination="BZz-V1-Oy3" id="Yv8-x2-mSI"/>
+                        <outlet property="commonView" destination="Jx2-vx-r9N" id="2v9-c4-AsG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJw-EB-uXS" userLabel="First Responder" sceneMemberID="firstResponder"/>
