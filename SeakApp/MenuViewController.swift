@@ -94,7 +94,13 @@ class MenuViewController: UITableViewController {
 			guard let controller = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.StoreNavigation.rawValue) else { return }
 			self.slideMenuController()?.changeMainViewController(controller, close: true)
 		}
-
+        
+        //Favorites
+        if indexPath.row == 3 {
+            guard let controller = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.FavNavigation.rawValue) else { return }
+            self.slideMenuController()?.changeMainViewController(controller, close: true)
+        }
+        
 		// Settings
 		if indexPath.row == 5 {
 			print("LOGOUT")
