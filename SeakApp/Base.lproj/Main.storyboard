@@ -1866,7 +1866,7 @@
         <image name="blankStar" width="27" height="25"/>
         <image name="callButton" width="68" height="68"/>
         <image name="closeView" width="23" height="24"/>
-        <image name="dislike" width="20" height="19"/>
+        <image name="dislike" width="19" height="17"/>
         <image name="exploreButton" width="68" height="68"/>
         <image name="grayCloseIcon" width="12" height="10"/>
         <image name="loginLogo" width="353" height="157"/>

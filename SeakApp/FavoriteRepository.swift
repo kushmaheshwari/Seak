@@ -83,7 +83,53 @@ class FavoriteRepository {
 				}
 			}
 		}
-
 	}
 
+	func getLike(by item: ItemEntity, completion: (item: FavoriteItem?) -> Void) {
+		let query = PFQuery(className: ParseClassNames.FavoriteItems.rawValue)
+		query.whereKey("user", equalTo: PFUser.currentUser()!)
+		query.whereKey("item", equalTo: PFObject(outDataWithClassName: ParseClassNames.Item.rawValue, objectId: item.objectID!))
+		query.cachePolicy = .IgnoreCache
+
+		query.findObjectsInBackgroundWithBlock { (objects, error) in
+			if objects?.count > 0 {
+				if let object = objects?.first {
+					let item = FavoriteRepository.processFavoriteItem(object)
+					completion(item: item)
+				}
+			} else {
+				completion(item: nil)
+			}
+		}
+	}
+
+	func dislike(item: FavoriteItem, successBlock: (success: Bool) -> Void) {
+		guard let _ = item.objectID else { fatalError("empty objectId for FavoriteItem") }
+		let parseObject = PFObject(outDataWithClassName: ParseClassNames.FavoriteItems.rawValue, objectId: item.objectID!)
+		parseObject.deleteInBackgroundWithBlock { (flag, error) in
+			if (error != nil) {
+				print(error)
+
+			}
+			successBlock(success: flag)
+		}
+	}
+
+	func like(item: ItemEntity, completion: (favoriteItem: FavoriteItem) -> Void) {
+		let object = PFObject(className: ParseClassNames.FavoriteItems.rawValue)
+		object["user"] = PFUser.currentUser()
+		if let itemObjectId = item.objectID {
+			object["item"] = PFObject(outDataWithClassName: ParseClassNames.Item.rawValue, objectId: itemObjectId)
+		}
+
+		object.saveInBackgroundWithBlock { (success, error) in
+			if success {
+				let favoriteItem = FavoriteRepository.processFavoriteItem(object)
+				completion(favoriteItem: favoriteItem)
+			}
+			else {
+				fatalError("Error on saving review \(error)")
+			}
+		}
+	}
 }
