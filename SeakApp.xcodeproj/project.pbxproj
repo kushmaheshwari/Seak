@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		221402501D2AA48500E27659 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214024F1D2AA48500E27659 /* ReviewViewController.swift */; };
+		5E05580B1D378F42009C5FDF /* FavoriteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05580A1D378F42009C5FDF /* FavoriteStore.swift */; };
+		5E05580D1D378F7E009C5FDF /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05580C1D378F7E009C5FDF /* FavoriteItem.swift */; };
+		5E05580F1D378FA8009C5FDF /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05580E1D378FA8009C5FDF /* FavoriteRepository.swift */; };
 		226F61071D365BCD003177A7 /* FavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F61061D365BCD003177A7 /* FavViewController.swift */; };
 		5E07CB671D05481200F38D0B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB661D05481200F38D0B /* MenuViewController.swift */; };
 		5E07CB6E1D05A10000F38D0B /* ItemsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB6D1D05A10000F38D0B /* ItemsCollectionView.swift */; };
@@ -109,6 +112,9 @@
 
 /* Begin PBXFileReference section */
 		2214024F1D2AA48500E27659 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		5E05580A1D378F42009C5FDF /* FavoriteStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
+		5E05580C1D378F7E009C5FDF /* FavoriteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
+		5E05580E1D378FA8009C5FDF /* FavoriteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteRepository.swift; sourceTree = "<group>"; };
 		226F61061D365BCD003177A7 /* FavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavViewController.swift; sourceTree = "<group>"; };
 		5E07CB661D05481200F38D0B /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		5E07CB6D1D05A10000F38D0B /* ItemsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsCollectionView.swift; sourceTree = "<group>"; };
