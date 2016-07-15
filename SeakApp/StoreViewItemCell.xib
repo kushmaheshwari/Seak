@@ -14,17 +14,17 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dNC-GE-w4Z">
                     <rect key="frame" x="8" y="8" width="184" height="84"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="cf6-56-QG6">
-                            <rect key="frame" x="0.0" y="0.0" width="184" height="30"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cf6-56-QG6">
+                            <rect key="frame" x="0.0" y="0.0" width="184" height="25"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="FyQ-Fj-N0h"/>
+                                <constraint firstAttribute="height" constant="25" id="FyQ-Fj-N0h"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                             <color key="textColor" red="0.12941176470588237" green="0.50196078431372548" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cks-3c-mqx">
-                            <rect key="frame" x="0.0" y="30" width="184" height="44"/>
+                            <rect key="frame" x="0.0" y="25" width="184" height="49"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -49,13 +49,22 @@
                         </view>
                     </subviews>
                 </stackView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plussignsvg" translatesAutoresizingMaskIntoConstraints="NO" id="WdM-5W-7Y4">
+                    <rect key="frame" x="12" y="73" width="23" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="23" id="TyO-PN-bJH"/>
+                        <constraint firstAttribute="height" constant="23" id="sGO-id-TWO"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="WdM-5W-7Y4" secondAttribute="bottom" constant="4" id="1zt-Zr-Kq5"/>
                 <constraint firstAttribute="bottom" secondItem="dNC-GE-w4Z" secondAttribute="bottom" id="4GZ-lg-C1v"/>
                 <constraint firstItem="dNC-GE-w4Z" firstAttribute="leading" secondItem="EWs-Lf-BuQ" secondAttribute="leading" constant="8" id="4Hm-yD-VMI"/>
                 <constraint firstItem="dNC-GE-w4Z" firstAttribute="top" secondItem="EWs-Lf-BuQ" secondAttribute="top" constant="8" id="Q7J-lo-8xp"/>
                 <constraint firstAttribute="trailing" secondItem="dNC-GE-w4Z" secondAttribute="trailing" id="Tou-6M-bVH"/>
+                <constraint firstItem="WdM-5W-7Y4" firstAttribute="leading" secondItem="EWs-Lf-BuQ" secondAttribute="leading" constant="12" id="Who-Vc-6eU"/>
                 <constraint firstAttribute="trailing" secondItem="dNC-GE-w4Z" secondAttribute="trailing" constant="8" id="e4x-Zm-FbI"/>
                 <constraint firstAttribute="bottom" secondItem="dNC-GE-w4Z" secondAttribute="bottom" constant="8" id="nzo-Os-Eug"/>
                 <constraint firstItem="dNC-GE-w4Z" firstAttribute="top" secondItem="EWs-Lf-BuQ" secondAttribute="top" id="saE-6F-t4i"/>
@@ -75,7 +84,10 @@
                 <outlet property="distanceLabel" destination="SYR-Qw-PB6" id="JLT-VS-68W"/>
                 <outlet property="titleLabel" destination="cf6-56-QG6" id="6QV-TN-BFD"/>
             </connections>
-            <point key="canvasLocation" x="167" y="322.5"/>
+            <point key="canvasLocation" x="167" y="323"/>
         </view>
     </objects>
+    <resources>
+        <image name="plussignsvg" width="23" height="23"/>
+    </resources>
 </document>

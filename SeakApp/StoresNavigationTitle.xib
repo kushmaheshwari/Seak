@@ -47,6 +47,6 @@
         </view>
     </objects>
     <resources>
-        <image name="seakLogo" width="86" height="27"/>
+        <image name="seakLogo" width="84" height="27"/>
     </resources>
 </document>
