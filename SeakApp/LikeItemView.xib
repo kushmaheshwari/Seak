@@ -12,23 +12,17 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dislike" translatesAutoresizingMaskIntoConstraints="NO" id="bWo-Ib-VLo">
-                    <rect key="frame" x="4" y="4" width="24" height="24"/>
+                    <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="bWo-Ib-VLo" secondAttribute="bottom" constant="4" id="5uo-Zx-EZS"/>
-                <constraint firstItem="bWo-Ib-VLo" firstAttribute="top" secondItem="BLq-hW-dcC" secondAttribute="top" constant="4" id="Swy-fJ-Yrr"/>
-                <constraint firstAttribute="trailing" secondItem="bWo-Ib-VLo" secondAttribute="trailing" constant="4" id="VIB-Gk-rV6"/>
-                <constraint firstItem="bWo-Ib-VLo" firstAttribute="leading" secondItem="BLq-hW-dcC" secondAttribute="leading" constant="4" id="cpV-lX-s7c"/>
+                <constraint firstAttribute="bottom" secondItem="bWo-Ib-VLo" secondAttribute="bottom" id="5uo-Zx-EZS"/>
+                <constraint firstItem="bWo-Ib-VLo" firstAttribute="top" secondItem="BLq-hW-dcC" secondAttribute="top" id="Swy-fJ-Yrr"/>
+                <constraint firstAttribute="trailing" secondItem="bWo-Ib-VLo" secondAttribute="trailing" id="VIB-Gk-rV6"/>
+                <constraint firstItem="bWo-Ib-VLo" firstAttribute="leading" secondItem="BLq-hW-dcC" secondAttribute="leading" id="cpV-lX-s7c"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipToBounds" value="YES"/>
-                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                    <integer key="value" value="16"/>
-                </userDefinedRuntimeAttribute>
-            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="likeImage" destination="bWo-Ib-VLo" id="29h-Hp-yMf"/>
             </connections>
@@ -36,6 +30,6 @@
         </view>
     </objects>
     <resources>
-        <image name="dislike" width="19" height="17"/>
+        <image name="dislike" width="31" height="31"/>
     </resources>
 </document>
