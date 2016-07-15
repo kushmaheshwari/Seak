@@ -1368,26 +1368,7 @@
                     <view key="view" contentMode="scaleToFill" id="SZJ-Kf-X8b">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dOg-ws-Wlm">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RWY-gd-f7Y">
-                                    <size key="itemSize" width="0.0" height="0.0"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="dOg-ws-Wlm" firstAttribute="top" secondItem="m08-gC-X9T" secondAttribute="bottom" constant="-64" id="D30-RB-Whu"/>
-                            <constraint firstItem="zDv-zE-PaJ" firstAttribute="top" secondItem="dOg-ws-Wlm" secondAttribute="bottom" id="p9B-yD-iZo"/>
-                            <constraint firstItem="dOg-ws-Wlm" firstAttribute="leading" secondItem="SZJ-Kf-X8b" secondAttribute="leadingMargin" constant="-20" id="xJV-gk-JMA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dOg-ws-Wlm" secondAttribute="trailing" constant="-20" id="yfV-dy-XHa"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LLu-4R-NSV">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="menuIcon" id="LWb-Jv-iFQ">
@@ -1403,13 +1384,45 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="collectionView" destination="dOg-ws-Wlm" id="2V2-Ft-wx6"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kLu-mC-hGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="881" y="-1922"/>
+        </scene>
+        <!--Stores Collection View-->
+        <scene sceneID="OUi-9X-cvZ">
+            <objects>
+                <collectionViewController storyboardIdentifier="storesCollectionViewID" id="Ptu-Mk-TZY" customClass="StoresCollectionView" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lhF-kg-Ps3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oht-ja-x0V">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="htR-9a-Vvk">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Ptu-Mk-TZY" id="omG-Gk-8HL"/>
+                            <outlet property="delegate" destination="Ptu-Mk-TZY" id="vXq-ue-cEo"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rk7-fz-s0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1625" y="-1914"/>
         </scene>
         <!--Recent Searches View Controller-->
         <scene sceneID="1bh-SR-EdZ">

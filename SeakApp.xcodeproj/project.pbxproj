@@ -59,6 +59,7 @@
 		5EA0F3F11D1C4EB2006175BB /* ItemGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA0F3F01D1C4EB2006175BB /* ItemGroupView.swift */; };
 		5EB2E8AE1D38FAB1005552E9 /* AddStoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EB2E8AD1D38FAB1005552E9 /* AddStoreView.xib */; };
 		5EB2E8B01D38FB32005552E9 /* AddStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2E8AF1D38FB32005552E9 /* AddStoreView.swift */; };
+		5EB2E8B21D3931FD005552E9 /* StoresCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2E8B11D3931FD005552E9 /* StoresCollectionView.swift */; };
 		5EB6220B1D1E7BB60029F864 /* StoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6220A1D1E7BB60029F864 /* StoreEntity.swift */; };
 		5EB6220D1D1E7E280029F864 /* StoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6220C1D1E7E280029F864 /* StoreRepository.swift */; };
 		5EC076851D1935B300E84EE5 /* StoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC076841D1935B300E84EE5 /* StoresViewController.swift */; };
@@ -167,6 +168,7 @@
 		5EA0F3F01D1C4EB2006175BB /* ItemGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemGroupView.swift; sourceTree = "<group>"; };
 		5EB2E8AD1D38FAB1005552E9 /* AddStoreView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddStoreView.xib; sourceTree = "<group>"; };
 		5EB2E8AF1D38FB32005552E9 /* AddStoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStoreView.swift; sourceTree = "<group>"; };
+		5EB2E8B11D3931FD005552E9 /* StoresCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresCollectionView.swift; sourceTree = "<group>"; };
 		5EB6220A1D1E7BB60029F864 /* StoreEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreEntity.swift; sourceTree = "<group>"; };
 		5EB6220C1D1E7E280029F864 /* StoreRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
 		5EC076841D1935B300E84EE5 /* StoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresViewController.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				5EA0F3EE1D1C4CA9006175BB /* ItemGroupView.xib */,
 				5EA0F3F01D1C4EB2006175BB /* ItemGroupView.swift */,
 				5E2F99C41D267FF0000D8B49 /* StoreViewItemCell.xib */,
+				5EB2E8B11D3931FD005552E9 /* StoresCollectionView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				5E0558141D37D7A5009C5FDF /* LikeItemView.swift in Sources */,
 				5E07CB671D05481200F38D0B /* MenuViewController.swift in Sources */,
 				5E05580B1D378F42009C5FDF /* FavoriteStore.swift in Sources */,
+				5EB2E8B21D3931FD005552E9 /* StoresCollectionView.swift in Sources */,
 				5E2A44F11D12C2C300BA866D /* IQKeyboardManager.swift in Sources */,
 				5E2A44F31D12C2C300BA866D /* IQTextView.swift in Sources */,
 				C9B39B111D0E644E00F64D24 /* ItemAdd.swift in Sources */,

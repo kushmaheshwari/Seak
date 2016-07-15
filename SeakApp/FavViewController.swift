@@ -18,6 +18,7 @@ class FavViewController: UIViewController
 	let defaultTabColor = UIColor.colorWithHexString("266D96")
 
 	private var itemsCollectionView: ItemsCollectionViewController? = nil
+	private var storeCollectionView: StoresCollectionView? = nil
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -43,7 +44,15 @@ class FavViewController: UIViewController
 				self.itemsCollectionView?.dataSourceType = .Favorites
 			}
 		}
-//TODO add storeview creation
+
+		if self.storeCollectionView == nil {
+			self.storeCollectionView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.StoresCollection.rawValue) as? StoresCollectionView
+			if self.storeCollectionView != nil {
+				// vc.navigationVC = self.navigationController
+				self.addChildViewController(self.storeCollectionView!)
+			}
+		}
+
 	}
 
 	func setTitle() {
@@ -100,6 +109,17 @@ class FavViewController: UIViewController
 			break;
 		case StoryboardNames.Store.rawValue:
 
+			if self.storeCollectionView != nil {
+
+//                self.storeCollectionView?.navigationVC = self.navigationController
+				self.storeCollectionView?.view.frame = self.commonView.bounds
+
+				if self.storeCollectionView != nil {
+					self.commonView.addSubview(self.storeCollectionView!.view)
+					self.commonView.bringSubviewToFront(self.storeCollectionView!.view)
+				}
+
+			}
 			break;
 		default: break;
 		}
