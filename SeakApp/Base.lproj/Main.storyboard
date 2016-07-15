@@ -550,7 +550,7 @@
         <!--Item Details View Conroller-->
         <scene sceneID="603-ws-qEL">
             <objects>
-                <viewController storyboardIdentifier="itemDetailsView" id="zKl-Oa-sKD" customClass="ItemDetailsViewConroller" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="itemDetailsView" automaticallyAdjustsScrollViewInsets="NO" id="zKl-Oa-sKD" customClass="ItemDetailsViewConroller" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Ns-aS-Qkp"/>
                         <viewControllerLayoutGuide type="bottom" id="kbR-Pt-D6c"/>
@@ -1360,7 +1360,7 @@
         <!--Stores View Controller-->
         <scene sceneID="2Iv-Xd-7BX">
             <objects>
-                <viewController id="5vX-BZ-gQo" customClass="StoresViewController" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="storeID" id="5vX-BZ-gQo" customClass="StoresViewController" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m08-gC-X9T"/>
                         <viewControllerLayoutGuide type="bottom" id="zDv-zE-PaJ"/>

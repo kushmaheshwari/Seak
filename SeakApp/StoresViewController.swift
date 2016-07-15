@@ -134,7 +134,7 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 				cell.addViewContainer.bringSubviewToFront(v)
 				v.load()
 			}
-
+			cell.userInteractionEnabled = true
 			cell.updateConstraintsIfNeeded()
 			cell.sizeToFit()
 			cell.titleLabel.sizeToFit()

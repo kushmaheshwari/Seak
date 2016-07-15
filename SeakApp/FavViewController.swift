@@ -17,13 +17,33 @@ class FavViewController: UIViewController
 	let chosenTabColor = UIColor.colorWithHexString("318EC4")
 	let defaultTabColor = UIColor.colorWithHexString("266D96")
 
+	private var itemsCollectionView: ItemsCollectionViewController? = nil
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		ItemsButton.backgroundColor = chosenTabColor
 		StoreButton.backgroundColor = defaultTabColor
 		self.setTitle()
 		self.navigationItem.hidesBackButton = true
+		self.initCollectionViews()
+
 		setViewController(StoryboardNames.ItemsCollection.rawValue)
+	}
+
+	deinit {
+		self.itemsCollectionView?.view.removeFromSuperview()
+		self.itemsCollectionView = nil
+	}
+
+	func initCollectionViews() {
+		if self.itemsCollectionView == nil {
+			self.itemsCollectionView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.ItemsCollection.rawValue) as? ItemsCollectionViewController
+			if self.itemsCollectionView != nil {
+				self.addChildViewController(self.itemsCollectionView!)
+				self.itemsCollectionView?.dataSourceType = .Favorites
+			}
+		}
+//TODO add storeview creation
 	}
 
 	func setTitle() {
@@ -45,7 +65,7 @@ class FavViewController: UIViewController
 	@IBAction func StorePressed(sender: AnyObject) {
 		ItemsButton.backgroundColor = defaultTabColor
 		StoreButton.backgroundColor = chosenTabColor
-		setViewController("")
+		setViewController(StoryboardNames.Store.rawValue)
 	}
 
 	@IBAction func menuIconPressed(sender: AnyObject) {
@@ -57,31 +77,28 @@ class FavViewController: UIViewController
 
 	func setViewController(storyBoardName: String)
 	{
-		let sv = commonView.subviews
-		for view in sv
-		{
-			if view.tag == 1000
-			{
-				view.removeFromSuperview()
-			}
-		}
+		self.itemsCollectionView?.view.removeFromSuperview()
+//		self.storeCollectionView?.view.removeFromSuperview()
+		self.commonView.removeConstraints(self.commonView.constraints)
 
 		switch (storyBoardName)
 		{
-		case "itemsCollectionViewID":
-			dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
-				if let vc = self.storyboard?.instantiateViewControllerWithIdentifier(storyBoardName) as? ItemsCollectionViewController {
-					vc.dataSourceType = .Favorites
-					dispatch_async(dispatch_get_main_queue(), {
-						vc.navigationVC = self.navigationController
-						vc.view.frame = self.commonView.bounds
-						vc.view.tag = 1000
-						self.addChildViewController(vc)
-						self.commonView.addSubview(vc.view)
-						self.commonView.bringSubviewToFront(vc.view)
-					})
+		case StoryboardNames.ItemsCollection.rawValue:
+
+			if self.itemsCollectionView != nil {
+
+				self.itemsCollectionView?.navigationVC = self.navigationController
+				self.itemsCollectionView?.view.frame = self.commonView.bounds
+
+				if self.itemsCollectionView != nil {
+					self.commonView.addSubview(self.itemsCollectionView!.view)
+					self.commonView.bringSubviewToFront(self.itemsCollectionView!.view)
 				}
-			})
+
+			}
+
+			break;
+		case StoryboardNames.Store.rawValue:
 
 			break;
 		default: break;

@@ -23,6 +23,8 @@ class AddStoreView: UIView {
 		super.awakeFromNib()
 		self.addImg.hidden = true
 		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddStoreView.tap(_:)))
+		tapRecognizer.numberOfTapsRequired = 1
+		self.userInteractionEnabled = true
 		self.addGestureRecognizer(tapRecognizer)
 	}
 
@@ -58,7 +60,7 @@ class AddStoreView: UIView {
 
 	func setImage() {
 		self.addImg.hidden = false
-		if self.addImg != nil {
+		if self.addImg == nil {
 			self.addImg.image = UIImage(named: "checkmarksvg")
 		} else {
 			self.addImg.image = UIImage(named: "plussignsvg")
