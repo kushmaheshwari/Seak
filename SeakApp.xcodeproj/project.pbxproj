@@ -57,6 +57,8 @@
 		5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93462F1D002C2F00CF4DC6 /* Enums.swift */; };
 		5EA0F3EF1D1C4CA9006175BB /* ItemGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EA0F3EE1D1C4CA9006175BB /* ItemGroupView.xib */; };
 		5EA0F3F11D1C4EB2006175BB /* ItemGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA0F3F01D1C4EB2006175BB /* ItemGroupView.swift */; };
+		5EB2E8AE1D38FAB1005552E9 /* AddStoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EB2E8AD1D38FAB1005552E9 /* AddStoreView.xib */; };
+		5EB2E8B01D38FB32005552E9 /* AddStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB2E8AF1D38FB32005552E9 /* AddStoreView.swift */; };
 		5EB6220B1D1E7BB60029F864 /* StoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6220A1D1E7BB60029F864 /* StoreEntity.swift */; };
 		5EB6220D1D1E7E280029F864 /* StoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6220C1D1E7E280029F864 /* StoreRepository.swift */; };
 		5EC076851D1935B300E84EE5 /* StoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC076841D1935B300E84EE5 /* StoresViewController.swift */; };
@@ -163,6 +165,8 @@
 		5E93462F1D002C2F00CF4DC6 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		5EA0F3EE1D1C4CA9006175BB /* ItemGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemGroupView.xib; sourceTree = "<group>"; };
 		5EA0F3F01D1C4EB2006175BB /* ItemGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemGroupView.swift; sourceTree = "<group>"; };
+		5EB2E8AD1D38FAB1005552E9 /* AddStoreView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddStoreView.xib; sourceTree = "<group>"; };
+		5EB2E8AF1D38FB32005552E9 /* AddStoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStoreView.swift; sourceTree = "<group>"; };
 		5EB6220A1D1E7BB60029F864 /* StoreEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreEntity.swift; sourceTree = "<group>"; };
 		5EB6220C1D1E7E280029F864 /* StoreRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
 		5EC076841D1935B300E84EE5 /* StoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresViewController.swift; sourceTree = "<group>"; };
@@ -286,6 +290,8 @@
 			children = (
 				5E0558111D37D02B009C5FDF /* LikeItemView.xib */,
 				5E0558131D37D7A5009C5FDF /* LikeItemView.swift */,
+				5EB2E8AD1D38FAB1005552E9 /* AddStoreView.xib */,
+				5EB2E8AF1D38FB32005552E9 /* AddStoreView.swift */,
 			);
 			name = LikeButtons;
 			sourceTree = "<group>";
@@ -635,6 +641,7 @@
 			files = (
 				5EEB13F61D2D1E44008B3B03 /* StoresNavigationTitle.xib in Resources */,
 				C9B9F0351CFBEFA7002EA9BA /* camera.jpg in Resources */,
+				5EB2E8AE1D38FAB1005552E9 /* AddStoreView.xib in Resources */,
 				5EEB13EF1D2D1BA0008B3B03 /* DetailsNavigationTitle.xib in Resources */,
 				5E07CB701D05D5DF00F38D0B /* ItemCellView.xib in Resources */,
 				C9B9F0371CFBEFA7002EA9BA /* search@2x.png in Resources */,
@@ -678,6 +685,7 @@
 				C9B9F01F1CFBE5E8002EA9BA /* RegisterController.swift in Sources */,
 				5EB6220B1D1E7BB60029F864 /* StoreEntity.swift in Sources */,
 				5E07CB6E1D05A10000F38D0B /* ItemsCollectionView.swift in Sources */,
+				5EB2E8B01D38FB32005552E9 /* AddStoreView.swift in Sources */,
 				C9B9F0251CFBE793002EA9BA /* GridViewCell.swift in Sources */,
 				5EEB13F31D2D1C7B008B3B03 /* DetailsNavigationTitleView.swift in Sources */,
 				5E2A44F71D12C2C300BA866D /* IQToolbar.swift in Sources */,

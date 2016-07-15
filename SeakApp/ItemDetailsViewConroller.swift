@@ -60,6 +60,8 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 			self.likeViewContainer.bringSubviewToFront(v)
 			v.load()
 		}
+
+		self.automaticallyAdjustsScrollViewInsets = false
 	}
 
 	override func viewWillAppear(animated: Bool) {

@@ -49,25 +49,26 @@
                         </view>
                     </subviews>
                 </stackView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plussignsvg" translatesAutoresizingMaskIntoConstraints="NO" id="WdM-5W-7Y4">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAR-Fe-7VW">
                     <rect key="frame" x="12" y="73" width="23" height="23"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="23" id="TyO-PN-bJH"/>
-                        <constraint firstAttribute="height" constant="23" id="sGO-id-TWO"/>
+                        <constraint firstAttribute="width" constant="23" id="0AT-mF-rhb"/>
+                        <constraint firstAttribute="height" constant="23" id="NUQ-Q7-V7K"/>
                     </constraints>
-                </imageView>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="WdM-5W-7Y4" secondAttribute="bottom" constant="4" id="1zt-Zr-Kq5"/>
                 <constraint firstAttribute="bottom" secondItem="dNC-GE-w4Z" secondAttribute="bottom" id="4GZ-lg-C1v"/>
                 <constraint firstItem="dNC-GE-w4Z" firstAttribute="leading" secondItem="EWs-Lf-BuQ" secondAttribute="leading" constant="8" id="4Hm-yD-VMI"/>
                 <constraint firstItem="dNC-GE-w4Z" firstAttribute="top" secondItem="EWs-Lf-BuQ" secondAttribute="top" constant="8" id="Q7J-lo-8xp"/>
                 <constraint firstAttribute="trailing" secondItem="dNC-GE-w4Z" secondAttribute="trailing" id="Tou-6M-bVH"/>
-                <constraint firstItem="WdM-5W-7Y4" firstAttribute="leading" secondItem="EWs-Lf-BuQ" secondAttribute="leading" constant="12" id="Who-Vc-6eU"/>
+                <constraint firstItem="bAR-Fe-7VW" firstAttribute="leading" secondItem="EWs-Lf-BuQ" secondAttribute="leading" constant="12" id="dym-gI-Y7u"/>
                 <constraint firstAttribute="trailing" secondItem="dNC-GE-w4Z" secondAttribute="trailing" constant="8" id="e4x-Zm-FbI"/>
                 <constraint firstAttribute="bottom" secondItem="dNC-GE-w4Z" secondAttribute="bottom" constant="8" id="nzo-Os-Eug"/>
                 <constraint firstItem="dNC-GE-w4Z" firstAttribute="top" secondItem="EWs-Lf-BuQ" secondAttribute="top" id="saE-6F-t4i"/>
+                <constraint firstAttribute="bottom" secondItem="bAR-Fe-7VW" secondAttribute="bottom" constant="4" id="tkO-MY-Oup"/>
                 <constraint firstItem="dNC-GE-w4Z" firstAttribute="leading" secondItem="EWs-Lf-BuQ" secondAttribute="leading" id="wRB-hH-oyl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -80,6 +81,7 @@
                 </mask>
             </variation>
             <connections>
+                <outlet property="addViewContainer" destination="bAR-Fe-7VW" id="gQ1-E1-Jwo"/>
                 <outlet property="descriptionLabel" destination="Cks-3c-mqx" id="TfZ-SE-cz7"/>
                 <outlet property="distanceLabel" destination="SYR-Qw-PB6" id="JLT-VS-68W"/>
                 <outlet property="titleLabel" destination="cf6-56-QG6" id="6QV-TN-BFD"/>
@@ -87,7 +89,4 @@
             <point key="canvasLocation" x="167" y="323"/>
         </view>
     </objects>
-    <resources>
-        <image name="plussignsvg" width="23" height="23"/>
-    </resources>
 </document>

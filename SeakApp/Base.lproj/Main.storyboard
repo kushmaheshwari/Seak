@@ -522,6 +522,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="vCf-DK-3cS">
+                        <barButtonItem key="backBarButtonItem" title=" " id="8uQ-kC-gp7"/>
                         <barButtonItem key="leftBarButtonItem" image="menuIcon" id="V5Y-Rw-tbN">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -555,11 +556,11 @@
                         <viewControllerLayoutGuide type="bottom" id="kbR-Pt-D6c"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Gwy-dX-mrF">
-                        <rect key="frame" x="0.0" y="64" width="414" height="1036"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpW-83-bk9">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1036"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="1080"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NaE-uj-F9B" customClass="PFImageView">
                                         <rect key="frame" x="0.0" y="1" width="414" height="414"/>
@@ -812,7 +813,7 @@
                                     <constraint firstItem="u7h-fX-rOO" firstAttribute="top" secondItem="cpW-83-bk9" secondAttribute="top" id="gMT-zw-Ur2"/>
                                     <constraint firstItem="VKj-uo-5Nj" firstAttribute="leading" secondItem="cpW-83-bk9" secondAttribute="leading" constant="8" id="gRK-KI-qvz"/>
                                     <constraint firstItem="u7h-fX-rOO" firstAttribute="top" secondItem="VTp-0L-OlU" secondAttribute="bottom" id="hSh-j6-cHf"/>
-                                    <constraint firstAttribute="bottom" secondItem="FgT-7b-GUy" secondAttribute="bottom" constant="30" id="hWW-7Y-7kV"/>
+                                    <constraint firstAttribute="bottom" secondItem="FgT-7b-GUy" secondAttribute="bottom" constant="10" id="hWW-7Y-7kV"/>
                                     <constraint firstItem="FgT-7b-GUy" firstAttribute="top" secondItem="OL7-wE-3IB" secondAttribute="bottom" constant="316" id="i1e-uz-SFu"/>
                                     <constraint firstItem="OL7-wE-3IB" firstAttribute="leading" secondItem="cpW-83-bk9" secondAttribute="leading" id="k6I-iD-ByM"/>
                                     <constraint firstItem="VTp-0L-OlU" firstAttribute="leading" secondItem="cpW-83-bk9" secondAttribute="leading" constant="16" id="kYK-Ae-XaF"/>
@@ -841,7 +842,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="cpW-83-bk9" secondAttribute="trailing" constant="-20" id="BUb-2D-Atc"/>
                             <constraint firstItem="sJk-HF-hmi" firstAttribute="centerX" secondItem="Gwy-dX-mrF" secondAttribute="centerX" id="E8G-jf-u2t"/>
                             <constraint firstItem="kbR-Pt-D6c" firstAttribute="top" secondItem="cpW-83-bk9" secondAttribute="bottom" id="Srv-5O-D2y"/>
-                            <constraint firstItem="cpW-83-bk9" firstAttribute="top" secondItem="6Ns-aS-Qkp" secondAttribute="bottom" id="nyX-0o-QCA"/>
+                            <constraint firstItem="cpW-83-bk9" firstAttribute="top" secondItem="6Ns-aS-Qkp" secondAttribute="bottom" id="fod-BZ-mpn"/>
                             <constraint firstItem="cpW-83-bk9" firstAttribute="leading" secondItem="Gwy-dX-mrF" secondAttribute="leadingMargin" constant="-20" id="pVS-Mi-Xjz"/>
                             <constraint firstItem="kbR-Pt-D6c" firstAttribute="top" secondItem="sJk-HF-hmi" secondAttribute="bottom" constant="120" id="tFg-FN-BQz"/>
                         </constraints>
@@ -867,7 +868,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IAj-p4-pyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1625" y="-246"/>
+            <point key="canvasLocation" x="1605" y="-98"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="mi6-Gt-6Sc">
@@ -1190,7 +1191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FFo-On-kv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2265" y="-348"/>
+            <point key="canvasLocation" x="2309" y="-124"/>
         </scene>
         <!--Leave Review View Controller-->
         <scene sceneID="TwJ-ya-2is">
@@ -1483,11 +1484,12 @@
                             <constraint firstItem="DV4-Zr-7Z2" firstAttribute="leading" secondItem="Nf0-Kl-jKk" secondAttribute="leadingMargin" constant="-20" id="tWD-Ds-CY0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8Ol-7M-8eY"/>
+                    <navigationItem key="navigationItem" id="8Ol-7M-8eY">
+                        <barButtonItem key="backBarButtonItem" title=" " id="KlG-Jp-l0e"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="scrollingMenu" destination="DV4-Zr-7Z2" id="YBg-wB-Bws"/>
                         <segue destination="VdI-OY-Qu4" kind="show" identifier="searchViewSegue" id="I6g-7K-zYI"/>
-                        <segue destination="zKl-Oa-sKD" kind="show" id="zLP-AI-JxO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGx-K2-JQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1861,6 +1863,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NYG-GP-g2T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.12941176469999999" green="0.76078431369999999" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1871,19 +1874,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jdf-04-E19" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="59" y="-320"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="jzG-c2-IFW">
-            <objects>
-                <viewController id="UFu-kn-SF0" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9kJ-t6-JhK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YM0-En-Q9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>

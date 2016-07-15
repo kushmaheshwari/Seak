@@ -18,11 +18,11 @@ class FavoriteRepository {
 		result.createdAt = object.createdAt
 		result.store = object["store"] as? PFObject
 		if let store = result.store {
-            do {
-                try store.fetch() }
-            catch {
-                fatalError("can't fetch favorite store")
-            }
+			do {
+				try store.fetch() }
+			catch {
+				fatalError("can't fetch favorite store")
+			}
 			result.storeEntity = StoreRepository.processStore(store)
 		}
 		return result
@@ -41,11 +41,11 @@ class FavoriteRepository {
 		result.createdAt = object.createdAt
 		result.item = object["item"] as? PFObject
 		if let item = result.item {
-            do {
-                try item.fetch() }
-            catch {
-                fatalError("can't fetch favorite item")
-            }
+			do {
+				try item.fetch() }
+			catch {
+				fatalError("can't fetch favorite item")
+			}
 			result.itemEntity = ItemRepository.processItem(item)
 		}
 		return result
@@ -95,6 +95,7 @@ class FavoriteRepository {
 		}
 	}
 
+	// Items
 	func getLike(by item: ItemEntity, completion: (item: FavoriteItem?) -> Void) {
 		let query = PFQuery(className: ParseClassNames.FavoriteItems.rawValue)
 		query.whereKey("user", equalTo: PFUser.currentUser()!)
@@ -146,7 +147,64 @@ class FavoriteRepository {
 
 			}
 			else {
-				fatalError("Error on saving review \(error)")
+				fatalError("Error on saving favorite item \(error)")
+			}
+		}
+	}
+
+	// Store
+	func getStatus(by store: StoreEntity, completion: (store: FavoriteStore?) -> Void) {
+		let query = PFQuery(className: ParseClassNames.FavoriteStores.rawValue)
+		query.whereKey("user", equalTo: PFUser.currentUser()!)
+		query.whereKey("store", equalTo: PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: store.objectID!))
+		query.cachePolicy = .IgnoreCache
+
+		query.findObjectsInBackgroundWithBlock { (objects, error) in
+			if objects?.count > 0 {
+				if let object = objects?.first {
+					let item = FavoriteRepository.processFavoriteStore(object)
+					completion(store: item)
+				}
+			} else {
+				completion(store: nil)
+			}
+		}
+	}
+
+	func remove(store: FavoriteStore, successBlock: (success: Bool) -> Void) {
+		guard let _ = store.objectID else { fatalError("empty objectId for FavoriteStore") }
+		let parseObject = PFObject(outDataWithClassName: ParseClassNames.FavoriteStores.rawValue, objectId: store.objectID!)
+		parseObject.deleteInBackgroundWithBlock { (flag, error) in
+			if (error != nil) {
+				print(error)
+
+			}
+			successBlock(success: flag)
+		}
+	}
+
+	func add(store: StoreEntity, completion: (favoriteStore: FavoriteStore) -> Void) {
+		let object = PFObject(className: ParseClassNames.FavoriteStores.rawValue)
+		object["user"] = PFUser.currentUser()
+		if let itemObjectId = store.objectID {
+			object["item"] = PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: itemObjectId)
+		}
+
+		object.saveInBackgroundWithBlock { (success, error) in
+			if success {
+				object.fetchInBackgroundWithBlock({ (obj, error) in
+					if error != nil {
+						print(error)
+					}
+					else {
+						let favoriteStore = FavoriteRepository.processFavoriteStore(obj!)
+						completion(favoriteStore: favoriteStore)
+					}
+				})
+
+			}
+			else {
+				fatalError("Error on saving favorite store \(error)")
 			}
 		}
 	}

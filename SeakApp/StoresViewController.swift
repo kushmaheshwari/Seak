@@ -16,6 +16,8 @@ class StoresViewCellController: UICollectionViewCell
 	@IBOutlet weak var descriptionLabel: UILabel!
 	@IBOutlet weak var distanceLabel: UILabel!
 
+	@IBOutlet weak var addViewContainer: UIView!
+
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		self.distanceLabel.layer.cornerRadius = 3
@@ -123,6 +125,15 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 
 			cell.distanceLabel.tag = indexPath.row
 			self.distanceLabels.append(cell.distanceLabel)
+
+			// Add add/remove icon
+			cell.addViewContainer.backgroundColor = UIColor.clearColor()
+			if let v = NSBundle.mainBundle().loadNibNamed("AddStoreView", owner: self, options: nil)[0] as? AddStoreView {
+				v.store = item
+				cell.addViewContainer.addSubview(v)
+				cell.addViewContainer.bringSubviewToFront(v)
+				v.load()
+			}
 
 			cell.updateConstraintsIfNeeded()
 			cell.sizeToFit()
