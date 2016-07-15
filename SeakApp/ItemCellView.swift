@@ -11,11 +11,12 @@ import UIKit
 import ParseUI
 
 class ItemCellView: UICollectionViewCell {
-	@IBOutlet weak var likeImage: UIImageView!
+	
 	@IBOutlet weak var pictureImage: PFImageView!
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var priceLabel: UILabel!
 	@IBOutlet weak var starsStackView: UIStackView!
+    @IBOutlet weak var likeViewController: UIView!
 
 	var tapExecutionBlock: (updatedItem: ItemEntity) -> Void = { _ in }
 
@@ -30,7 +31,17 @@ class ItemCellView: UICollectionViewCell {
 	func fillCell(item: ItemEntity) {
 		self.backgroundColor = UIColor.whiteColor()
 		self.pictureImage?.layer.backgroundColor = UIColor.whiteColor().CGColor
-
+        
+        self.item = item
+        
+        self.likeViewController.backgroundColor = UIColor.clearColor()
+        if let v = NSBundle.mainBundle().loadNibNamed("LikeItemView", owner: self, options: nil)[0] as? LikeItemView {
+            v.item = self.item
+            self.likeViewController.addSubview(v)
+            self.likeViewController.bringSubviewToFront(v)
+            v.load()
+        }
+        
 		self.starsStackView.backgroundColor = UIColor.colorWithHexString("21c2f8")
 
 		self.nameLabel.text = item.name
@@ -45,7 +56,6 @@ class ItemCellView: UICollectionViewCell {
 			self.pictureImage.setNeedsDisplay()
 		})
 
-		self.item = item
 
 		let tap = UITapGestureRecognizer(target: self, action: #selector(ItemCellView.openDetails(_:)))
 

@@ -12,13 +12,6 @@
             <rect key="frame" x="0.0" y="0.0" width="250" height="313"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dislike" translatesAutoresizingMaskIntoConstraints="NO" id="FYD-UO-ddH">
-                    <rect key="frame" x="227" y="32" width="15" height="15"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="15" id="SII-qW-1M9"/>
-                        <constraint firstAttribute="height" constant="15" id="awB-fk-5Oq"/>
-                    </constraints>
-                </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="kKT-sn-0sl">
                     <rect key="frame" x="0.0" y="13" width="250" height="292"/>
                     <subviews>
@@ -171,15 +164,23 @@
                         </mask>
                     </variation>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDU-xz-oIm">
+                    <rect key="frame" x="215" y="10" width="23" height="23"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="23" id="GIN-B0-W7N"/>
+                        <constraint firstAttribute="height" constant="23" id="N0Q-lc-Vpd"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="NDU-xz-oIm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="3xn-Ew-Ry0"/>
+                <constraint firstAttribute="trailing" secondItem="NDU-xz-oIm" secondAttribute="trailing" constant="12" id="5jp-ao-7V1"/>
                 <constraint firstItem="kKT-sn-0sl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DIO-RI-o2w"/>
                 <constraint firstAttribute="trailing" secondItem="kKT-sn-0sl" secondAttribute="trailing" id="dUD-UB-IrO"/>
                 <constraint firstAttribute="bottom" secondItem="kKT-sn-0sl" secondAttribute="bottom" constant="8" id="f3t-Gr-Y7Q"/>
                 <constraint firstItem="kKT-sn-0sl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="miT-5Z-FMP"/>
-                <constraint firstItem="FYD-UO-ddH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32" id="moh-p2-4Jp"/>
-                <constraint firstAttribute="trailing" secondItem="FYD-UO-ddH" secondAttribute="trailing" constant="8" id="y3T-dX-iEs"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
@@ -188,7 +189,7 @@
                 </mask>
             </variation>
             <connections>
-                <outlet property="likeImage" destination="FYD-UO-ddH" id="LYt-tl-xIW"/>
+                <outlet property="likeViewController" destination="NDU-xz-oIm" id="dRa-O3-n8n"/>
                 <outlet property="nameLabel" destination="pv8-mZ-nAg" id="jtn-nD-vTQ"/>
                 <outlet property="pictureImage" destination="pVh-sV-Xa2" id="eBW-19-VaH"/>
                 <outlet property="priceLabel" destination="xQp-pD-blV" id="tjH-iJ-DXd"/>
