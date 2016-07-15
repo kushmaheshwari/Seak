@@ -53,19 +53,28 @@ class ItemsCollectionViewController: UICollectionViewController {
 
 		switch self.dataSourceType {
 		case .Categories:
-			repository.getAllFromCategory(category) { (data) -> Void in
-				self.items = data
-				print("Successfully retrieved \(data.count) scores.")
-				self.refreshControl.endRefreshing()
-				self.collectionView?.reloadData()
-			}
+			dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+				self.repository.getAllFromCategory(self.category) { (data) -> Void in
+					dispatch_async(dispatch_get_main_queue(), {
+						self.items = data
+						print("Successfully retrieved \(data.count) scores.")
+						self.refreshControl.endRefreshing()
+						self.collectionView?.reloadData()
+					})
+				}
+			})
+
 		case .Favorites:
 			guard let currentUser = PFUser.currentUser() else { fatalError("empty current user") }
-			favoritesRepository.getAllItems(by: currentUser, completion: { (data) in
-				self.items = data
-				print("Successfully retrieved \(data.count) scores.")
-				self.refreshControl.endRefreshing()
-				self.collectionView?.reloadData()
+			dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+				self.favoritesRepository.getAllItems(by: currentUser, completion: { (data) in
+					dispatch_async(dispatch_get_main_queue(), {
+						self.items = data
+						print("Successfully retrieved \(data.count) scores.")
+						self.refreshControl.endRefreshing()
+						self.collectionView?.reloadData()
+					})
+				})
 			})
 		default:
 			fatalError("uncatched source type")
