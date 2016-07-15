@@ -74,3 +74,9 @@ enum ItemsCollectionViewDataSource {
 	case Categories
 	case Favorites
 }
+
+enum StoreCollectionViewSource {
+	case None
+	case All
+	case Favorites
+}

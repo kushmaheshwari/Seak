@@ -50,6 +50,8 @@ class FavViewController: UIViewController
 			if self.storeCollectionView != nil {
 				// vc.navigationVC = self.navigationController
 				self.addChildViewController(self.storeCollectionView!)
+				self.storeCollectionView?.dataSourceType = .Favorites
+                self.storeCollectionView?.loadCollectionViewDataCell()
 			}
 		}
 

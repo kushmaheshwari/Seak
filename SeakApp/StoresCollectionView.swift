@@ -9,11 +9,13 @@
 import Foundation
 import UIKit
 import MapKit
+import Parse
 
 class StoresCollectionView: UICollectionViewController,
 UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 
 	private let repository = StoreRepository()
+	private let favoritesRepository = FavoriteRepository()
 	private let collectionCellId = "StoreCellID"
 	private let locationManager = CLLocationManager()
 	private var currentLocation: CLLocation? = nil
@@ -21,6 +23,7 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 
 	var storeArray: [StoreEntity] = []
 	var refreshControl: UIRefreshControl!
+	var dataSourceType: StoreCollectionViewSource = .None
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -38,8 +41,6 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 		self.locationManager.requestWhenInUseAuthorization()
 		self.locationManager.startMonitoringSignificantLocationChanges()
 		self.locationManager.startUpdatingLocation()
-
-		loadCollectionViewDataCell()
 	}
 
 	deinit {
@@ -70,13 +71,29 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 	func loadCollectionViewDataCell()
 	{
 		self.distanceLabels.removeAll()
-		repository.getAll { (items) in
-			self.storeArray = items
-			dispatch_async(dispatch_get_main_queue(), {
-				self.collectionView?.reloadData()
-			})
 
+		switch self.dataSourceType {
+		case .All:
+			repository.getAll { (items) in
+				self.storeArray = items
+				dispatch_async(dispatch_get_main_queue(), {
+					self.collectionView?.reloadData()
+				})
+
+			}
+
+		case .Favorites:
+			guard let currentUser = PFUser.currentUser() else { fatalError("no current PFUser") }
+			self.favoritesRepository.getAllStores(by: currentUser, completion: { (items) in
+				self.storeArray = items
+				dispatch_async(dispatch_get_main_queue(), {
+					self.collectionView?.reloadData()
+				})
+			})
+		default:
+			fatalError("unknown data source type")
 		}
+
 	}
 
 	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

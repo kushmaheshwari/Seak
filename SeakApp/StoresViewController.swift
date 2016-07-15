@@ -34,6 +34,8 @@ class StoresViewController: UIViewController {
 
 		if let vc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.StoresCollection.rawValue) as? StoresCollectionView {
 //			vc.navigationVC = self.navigationController
+			vc.dataSourceType = .All
+			vc.loadCollectionViewDataCell()
 			self.addChildViewController(vc)
 			self.view.addSubview(vc.view)
 		}
