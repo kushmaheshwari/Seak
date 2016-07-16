@@ -13,7 +13,7 @@ typealias ReviewsRepositoryComplectionBlock = (reviews: [ReviewEntity]) -> Void
 
 class ReviewRepository {
 
-	let cacheAge: NSTimeInterval = 60 * 5 // 5 minutes
+	let cacheAge: NSTimeInterval = 60 * 60 // 1 hour
 
 	func processReviews(reviewObjects: [PFObject]) -> [ReviewEntity]? {
 		return reviewObjects.map({ (object) -> ReviewEntity in

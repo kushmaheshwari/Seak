@@ -187,7 +187,7 @@ class FavoriteRepository {
 		let object = PFObject(className: ParseClassNames.FavoriteStores.rawValue)
 		object["user"] = PFUser.currentUser()
 		if let itemObjectId = store.objectID {
-			object["item"] = PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: itemObjectId)
+			object["store"] = PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: itemObjectId)
 		}
 
 		object.saveInBackgroundWithBlock { (success, error) in

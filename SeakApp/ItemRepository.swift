@@ -15,7 +15,7 @@ class ItemRepository {
 
 	let maxSearchCount = 30
 	let maxCountByStatus = 10
-	let cacheAge: NSTimeInterval = 60 * 5 // 5 minutes
+	let cacheAge: NSTimeInterval = 60 * 60 // 1 hour
 
 	static func processItem(object: PFObject) -> ItemEntity {
 		let item = ItemEntity()

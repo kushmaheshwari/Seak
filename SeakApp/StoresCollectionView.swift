@@ -29,6 +29,8 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 		super.awakeFromNib()
 
 		self.collectionView?.alwaysBounceVertical = true
+//		self.collectionView?.allowsSelection = false
+
 		self.refreshControl = UIRefreshControl()
 		self.refreshControl.attributedTitle = NSAttributedString(string: "")
 		self.refreshControl.addTarget(self, action: #selector(ItemsCollectionViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -113,6 +115,7 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 
 			cell.distanceLabel.tag = indexPath.row
 			self.distanceLabels.append(cell.distanceLabel)
+			cell.userInteractionEnabled = true
 
 			// Add add/remove icon
 			cell.addViewContainer.backgroundColor = UIColor.clearColor()
@@ -120,16 +123,23 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 				v.store = item
 				cell.addViewContainer.addSubview(v)
 				cell.addViewContainer.bringSubviewToFront(v)
+				cell.bringSubviewToFront(cell.addViewContainer)
+				cell.addViewContainer.bringSubviewToFront(v)
 				v.load()
 			}
-			cell.userInteractionEnabled = true
+
 			cell.updateConstraintsIfNeeded()
 			cell.sizeToFit()
 			cell.titleLabel.sizeToFit()
 			cell.descriptionLabel.sizeToFit()
+
 			return cell
 		}
 		return UICollectionViewCell()
+	}
+
+	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		print ("selected")
 	}
 
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

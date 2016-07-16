@@ -60,7 +60,7 @@ class AddStoreView: UIView {
 
 	func setImage() {
 		self.addImg.hidden = false
-		if self.addImg == nil {
+		if self.favoriteStore != nil {
 			self.addImg.image = UIImage(named: "checkmarksvg")
 		} else {
 			self.addImg.image = UIImage(named: "plussignsvg")

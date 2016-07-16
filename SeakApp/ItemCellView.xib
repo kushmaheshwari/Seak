@@ -200,6 +200,5 @@
     </objects>
     <resources>
         <image name="blankStar" width="27" height="25"/>
-        <image name="dislike" width="31" height="31"/>
     </resources>
 </document>

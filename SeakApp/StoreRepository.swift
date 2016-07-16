@@ -14,7 +14,7 @@ typealias StoreRepositoryComplectionBlock = (store: StoreEntity) -> Void
 
 class StoreRepository {
 
-	let cacheAge: NSTimeInterval = 60 * 5 // 5 minutes
+	let cacheAge: NSTimeInterval = 60 * 60 // 1 hour
 
 	func getStoreBy(id: String, completion: StoreRepositoryComplectionBlock) {
 		let query = PFQuery(className: ParseClassNames.Store.rawValue)
