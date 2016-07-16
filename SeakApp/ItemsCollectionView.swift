@@ -24,6 +24,7 @@ class ItemsCollectionViewController: UICollectionViewController {
 
 	var refreshControl: UIRefreshControl!
 	weak var navigationVC: UINavigationController? = nil
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -39,7 +40,46 @@ class ItemsCollectionViewController: UICollectionViewController {
 		self.refreshControl.addTarget(self, action: #selector(ItemsCollectionViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 		self.collectionView?.addSubview(refreshControl)
 
-		loadCollectionViewData()
+		self.loadCollectionViewData()
+
+		self.addObservers()
+	}
+
+	deinit {
+		self.removeObserver()
+	}
+
+	func addObservers() {
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ItemsCollectionViewController.likeNotification(_:)), name: LikeItemView.likeItemNotification, object: nil)
+
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ItemsCollectionViewController.dislikeNotification(_:)), name: LikeItemView.dislikeItemNotification, object: nil)
+
+	}
+
+	func removeObserver() {
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: LikeItemView.likeItemNotification, object: nil)
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: LikeItemView.dislikeItemNotification, object: nil)
+	}
+
+	func likeNotification(notification: NSNotification) {
+		if self.dataSourceType != .Favorites {
+			return
+		}
+	}
+
+	func dislikeNotification(notification: NSNotification) {
+		if self.dataSourceType != .Favorites {
+			return
+		}
+
+		if let objectID = notification.userInfo?["itemObjectID"] as? String {
+			if let index = self.items.indexOf({ $0.objectID == objectID }) {
+				self.items.removeAtIndex(index)
+
+				let indexPath = NSIndexPath(forItem: index, inSection: 0)
+				self.collectionView?.deleteItemsAtIndexPaths([indexPath])
+			}
+		}
 	}
 
 	func refresh(sender: AnyObject) {

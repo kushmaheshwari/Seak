@@ -18,6 +18,9 @@ class LikeItemView: UIView {
 
 	var item: ItemEntity? = nil
 
+	static let likeItemNotification = String(self) + "_like"
+	static let dislikeItemNotification = String(self) + "_dislike"
+
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		self.likeImage.hidden = true
@@ -43,10 +46,17 @@ class LikeItemView: UIView {
 				self.favoriteItem = favoriteItem
 				self.setImage()
 				self.tapped = false
+
+				let dict: [NSObject: AnyObject]? = ["itemObjectID": self.item!.objectID!]
+				NSNotificationCenter.defaultCenter().postNotificationName(LikeItemView.likeItemNotification, object: nil, userInfo: dict)
+
 			})
 		} else {
 			self.repository.dislike(self.favoriteItem!, successBlock: { (success) in
 				if (success) {
+					let dict: [NSObject: AnyObject]? = ["itemObjectID": self.item!.objectID!]
+					NSNotificationCenter.defaultCenter().postNotificationName(LikeItemView.dislikeItemNotification, object: nil, userInfo: dict)
+
 					self.favoriteItem = nil
 					self.setImage()
 					self.tapped = false

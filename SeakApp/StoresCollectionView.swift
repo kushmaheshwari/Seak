@@ -55,7 +55,6 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 	}
 
 	func addObservers() {
-
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StoresCollectionView.addStoreNotification(_:)), name: AddStoreView.addStoreNotification, object: nil)
 
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StoresCollectionView.removeStoreNotification(_:)), name: AddStoreView.removeStoreNotification, object: nil)
@@ -63,10 +62,8 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 	}
 
 	func removeObserver() {
-
 		NSNotificationCenter.defaultCenter().removeObserver(self, name: AddStoreView.addStoreNotification, object: nil)
 		NSNotificationCenter.defaultCenter().removeObserver(self, name: AddStoreView.removeStoreNotification, object: nil)
-
 	}
 
 	func addStoreNotification(notification: NSNotification) {
@@ -87,7 +84,6 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 
 				let indexPath = NSIndexPath(forItem: index, inSection: 0)
 				self.collectionView?.deleteItemsAtIndexPaths([indexPath])
-//				self.collectionView?.reloadData()
 			}
 		}
 	}

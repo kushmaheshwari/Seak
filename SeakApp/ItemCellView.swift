@@ -37,7 +37,9 @@ class ItemCellView: UICollectionViewCell {
 		self.likeViewController.backgroundColor = UIColor.clearColor()
 		if let v = NSBundle.mainBundle().loadNibNamed("LikeItemView", owner: self, options: nil)[0] as? LikeItemView {
 			v.item = self.item
+
 			self.likeViewController.addSubview(v)
+			self.bringSubviewToFront(self.likeViewController)
 			self.likeViewController.bringSubviewToFront(v)
 			v.load()
 		}
