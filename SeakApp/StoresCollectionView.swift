@@ -43,18 +43,59 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 		self.locationManager.requestWhenInUseAuthorization()
 		self.locationManager.startMonitoringSignificantLocationChanges()
 		self.locationManager.startUpdatingLocation()
+
+		self.addObservers()
 	}
 
 	deinit {
 		self.locationManager.stopUpdatingLocation()
 		self.locationManager.stopMonitoringSignificantLocationChanges()
 		self.distanceLabels.removeAll()
+		self.removeObserver()
+	}
+
+	func addObservers() {
+
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StoresCollectionView.addStoreNotification(_:)), name: AddStoreView.addStoreNotification, object: nil)
+
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StoresCollectionView.removeStoreNotification(_:)), name: AddStoreView.removeStoreNotification, object: nil)
+
+	}
+
+	func removeObserver() {
+
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: AddStoreView.addStoreNotification, object: nil)
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: AddStoreView.removeStoreNotification, object: nil)
+
+	}
+
+	func addStoreNotification(notification: NSNotification) {
+		if (self.dataSourceType != .Favorites) {
+			return
+		}
+	}
+
+	func removeStoreNotification(notification: NSNotification) {
+		if (self.dataSourceType != .Favorites) {
+			return
+		}
+
+		if let objectID = notification.userInfo?["storeObjectID"] as? String {
+			if let index = self.storeArray.indexOf({ $0.objectID == objectID }) {
+				self.storeArray.removeAtIndex(index)
+				self.distanceLabels.removeAtIndex(index)
+
+				let indexPath = NSIndexPath(forItem: index, inSection: 0)
+				self.collectionView?.deleteItemsAtIndexPaths([indexPath])
+//				self.collectionView?.reloadData()
+			}
+		}
 	}
 
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		self.currentLocation = locations.first
-		for label in self.distanceLabels {
-			let item = self.storeArray[label.tag]
+		for (index, label) in self.distanceLabels.enumerate() {
+			let item = self.storeArray[index]
 			if let itemCoords = item.coordintaes {
 				let location = CLLocation(latitude: itemCoords.latitude, longitude: itemCoords.longitude)
 				if let distance = self.currentLocation?.distanceFromLocation(location) {
@@ -78,6 +119,7 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 		case .All:
 			repository.getAll { (items) in
 				self.storeArray = items
+				self.distanceLabels = [UILabel](count: items.count, repeatedValue: UILabel())
 				dispatch_async(dispatch_get_main_queue(), {
 					self.collectionView?.reloadData()
 				})
@@ -88,6 +130,7 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 			guard let currentUser = PFUser.currentUser() else { fatalError("no current PFUser") }
 			self.favoritesRepository.getAllStores(by: currentUser, completion: { (items) in
 				self.storeArray = items
+				self.distanceLabels = [UILabel](count: items.count, repeatedValue: UILabel())
 				dispatch_async(dispatch_get_main_queue(), {
 					self.collectionView?.reloadData()
 				})
@@ -105,6 +148,10 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(self.collectionCellId, forIndexPath: indexPath) as? StoresViewCellController
 		{
+			cell.addViewContainer.subviews.forEach({ (subview) in
+				subview.removeFromSuperview()
+			})
+
 			let item = storeArray[indexPath.row]
 			if let name = item.name {
 				cell.titleLabel.text = name
@@ -113,8 +160,7 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 				cell.descriptionLabel.text = description
 			}
 
-			cell.distanceLabel.tag = indexPath.row
-			self.distanceLabels.append(cell.distanceLabel)
+			self.distanceLabels[indexPath.row] = cell.distanceLabel
 			cell.userInteractionEnabled = true
 
 			// Add add/remove icon
@@ -136,10 +182,6 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 			return cell
 		}
 		return UICollectionViewCell()
-	}
-
-	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-		print ("selected")
 	}
 
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

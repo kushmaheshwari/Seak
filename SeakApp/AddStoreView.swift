@@ -18,6 +18,8 @@ class AddStoreView: UIView {
 	private var tapped: Bool = false
 
 	var store: StoreEntity? = nil
+	static let addStoreNotification = String(self) + "_add"
+	static let removeStoreNotification = String(self) + "_remove"
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -46,10 +48,14 @@ class AddStoreView: UIView {
 				self.favoriteStore = favoriteStore
 				self.setImage()
 				self.tapped = false
+				let dict: [NSObject: AnyObject]? = ["storeObjectID": self.store!.objectID!]
+				NSNotificationCenter.defaultCenter().postNotificationName(AddStoreView.addStoreNotification, object: nil, userInfo: dict)
 			})
 		} else {
 			self.repository.remove(self.favoriteStore!, successBlock: { (success) in
 				if (success) {
+					let dict: [NSObject: AnyObject]? = ["storeObjectID": self.store!.objectID!]
+					NSNotificationCenter.defaultCenter().postNotificationName(AddStoreView.removeStoreNotification, object: nil, userInfo: dict)
 					self.favoriteStore = nil
 					self.setImage()
 					self.tapped = false
