@@ -303,19 +303,16 @@
 		5E07CB681D05A01800F38D0B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5E36C29B1D3BAD3100033112 /* Stores */,
+				5E36C29A1D3BAD1200033112 /* Items */,
 				5E0558101D37D00B009C5FDF /* LikeButtons */,
 				5EEB13F41D2D1DDF008B3B03 /* NavigationTitles */,
 				C9B9EFD21CFBDDEA002EA9BA /* Main.storyboard */,
 				C9B9EFD71CFBDDEA002EA9BA /* LaunchScreen.storyboard */,
 				5E07CB6D1D05A10000F38D0B /* ItemsCollectionView.swift */,
-				5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */,
-				5E07CB6F1D05D5DF00F38D0B /* ItemCellView.xib */,
-				5E07CB711D05D69800F38D0B /* ItemCellView.swift */,
-				5EC0768C1D193B2100E84EE5 /* HomeItemsView.storyboard */,
-				5EA0F3EE1D1C4CA9006175BB /* ItemGroupView.xib */,
-				5EA0F3F01D1C4EB2006175BB /* ItemGroupView.swift */,
-				5E2F99C41D267FF0000D8B49 /* StoreViewItemCell.xib */,
 				5EB2E8B11D3931FD005552E9 /* StoresCollectionView.swift */,
+				5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */,
+				5EC0768C1D193B2100E84EE5 /* HomeItemsView.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -392,6 +389,25 @@
 				5E36C2971D3BA63D00033112 /* MainPageViewController.swift */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		5E36C29A1D3BAD1200033112 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				5E07CB6F1D05D5DF00F38D0B /* ItemCellView.xib */,
+				5E07CB711D05D69800F38D0B /* ItemCellView.swift */,
+				5EA0F3EE1D1C4CA9006175BB /* ItemGroupView.xib */,
+				5EA0F3F01D1C4EB2006175BB /* ItemGroupView.swift */,
+			);
+			name = Items;
+			sourceTree = "<group>";
+		};
+		5E36C29B1D3BAD3100033112 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				5E2F99C41D267FF0000D8B49 /* StoreViewItemCell.xib */,
+			);
+			name = Stores;
 			sourceTree = "<group>";
 		};
 		5E507A421D02CC7000BCD0B6 /* ViewControllers */ = {

@@ -541,7 +541,6 @@
                         <outlet property="ItemsButton" destination="tAW-Cg-CGE" id="hht-u4-JMv"/>
                         <outlet property="StoreButton" destination="BZz-V1-Oy3" id="Yv8-x2-mSI"/>
                         <outlet property="commonView" destination="Jx2-vx-r9N" id="2v9-c4-AsG"/>
-                        <segue destination="5vX-BZ-gQo" kind="show" id="sjS-va-50B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJw-EB-uXS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -869,7 +868,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IAj-p4-pyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2309" y="-958"/>
+            <point key="canvasLocation" x="4493" y="-2686"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="mi6-Gt-6Sc">
@@ -1192,7 +1191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FFo-On-kv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2973" y="-1208"/>
+            <point key="canvasLocation" x="5157" y="-2936"/>
         </scene>
         <!--Leave Review View Controller-->
         <scene sceneID="TwJ-ya-2is">
@@ -1339,7 +1338,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="92T-W1-N7p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3766" y="-1208"/>
+            <point key="canvasLocation" x="5950" y="-2936"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gg5-fF-7op">
@@ -1388,7 +1387,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kLu-mC-hGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1593" y="-1930"/>
+            <point key="canvasLocation" x="881" y="-1954"/>
         </scene>
         <!--Stores Collection View-->
         <scene sceneID="OUi-9X-cvZ">
@@ -1423,7 +1422,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rk7-fz-s0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2291" y="-1930"/>
+            <point key="canvasLocation" x="1587" y="-1510"/>
         </scene>
         <!--Recent Searches View Controller-->
         <scene sceneID="1bh-SR-EdZ">
@@ -1542,7 +1541,7 @@
         <scene sceneID="Z7O-HU-GgH">
             <objects>
                 <tableViewController storyboardIdentifier="LeftMenuID" id="L0h-o4-48G" customClass="MenuViewController" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UZX-2u-QLs">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UZX-2u-QLs">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.023529411760000001" green="0.20784313730000001" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1912,7 +1911,4 @@
         <image name="searchIcon" width="27" height="25"/>
         <image name="shareButton" width="68" height="68"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Pte-eb-k5i"/>
-    </inferredMetricsTieBreakers>
 </document>

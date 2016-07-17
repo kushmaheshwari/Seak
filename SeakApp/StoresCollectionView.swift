@@ -144,9 +144,7 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(self.collectionCellId, forIndexPath: indexPath) as? StoresViewCellController
 		{
-			cell.addViewContainer.subviews.forEach({ (subview) in
-				subview.removeFromSuperview()
-			})
+			cell.addViewContainer.subviews.forEach({ $0.removeFromSuperview() })
 
 			let item = storeArray[indexPath.row]
 			if let name = item.name {
@@ -168,6 +166,10 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 				cell.bringSubviewToFront(cell.addViewContainer)
 				cell.addViewContainer.bringSubviewToFront(v)
 				v.load()
+			}
+
+			cell.openStoreBlock = { () in
+				print ("TODO open MainPageView")
 			}
 
 			cell.updateConstraintsIfNeeded()

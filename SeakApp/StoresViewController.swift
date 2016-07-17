@@ -18,12 +18,23 @@ class StoresViewCellController: UICollectionViewCell
 
 	@IBOutlet weak var addViewContainer: UIView!
 
+	var openStoreBlock: () -> Void = { print("tapped StoresViewCellController") }
+
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		self.distanceLabel.layer.cornerRadius = 3
 		self.distanceLabel.layer.masksToBounds = true
 		self.layer.cornerRadius = 5
 		self.layer.masksToBounds = true
+
+		let tap = UITapGestureRecognizer(target: self, action: #selector(StoresViewCellController.tap(_:)))
+		tap.numberOfTapsRequired = 1
+
+		self.addGestureRecognizer(tap)
+	}
+
+	func tap(gesture: UITapGestureRecognizer?) {
+		openStoreBlock()
 	}
 }
 
