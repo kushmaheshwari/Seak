@@ -59,9 +59,7 @@ class StoreRepository {
 
 	static func processStores(data: [PFObject]?) -> [StoreEntity]? {
 		if let data = data as [PFObject]! {
-			let result = Array(data.generate()).map() { (iter) -> StoreEntity in
-				return processStore(iter)
-			}
+			let result = Array(data.generate()).map() { processStore($0) }
 			return result
 		}
 		fatalError("Error on parsing Stores from Parse objects")
