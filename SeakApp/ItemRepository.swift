@@ -90,7 +90,7 @@ class ItemRepository {
 		}
 	}
 
-	func getAllFromCategory(type: MenuItems, completion: ItemRepositoryComplectionBlock) {
+	func getAllFromCategory(type: StoreCategory, completion: ItemRepositoryComplectionBlock) {
 		if type == .None {
 			return
 		}

@@ -15,7 +15,7 @@ class ItemsCollectionViewController: UICollectionViewController {
 	private let reuseIdentifier = "ItemCellIdentifier"
 	private let repository = ItemRepository()
 	private let favoritesRepository = FavoriteRepository()
-	private var category: MenuItems = .None
+	private var category: StoreCategory = .None
 
 	var dataSourceType: ItemsCollectionViewDataSource = .None
 
@@ -122,7 +122,7 @@ class ItemsCollectionViewController: UICollectionViewController {
 
 	}
 
-	func setCategory(type: MenuItems) {
+	func setCategory(type: StoreCategory) {
 		self.category = type
 	}
 

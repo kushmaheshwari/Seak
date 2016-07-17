@@ -15,4 +15,5 @@ class StoreEntity {
 	var descr: String?
 	var name: String?
 	var coordintaes: CLLocationCoordinate2D?
+	var categories: [StoreCategory] = []
 }

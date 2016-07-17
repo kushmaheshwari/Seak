@@ -50,6 +50,10 @@ class StoreRepository {
 			}
 		}
 
+		if let categories = storeObject.objectForKey("Categories") as? [String] {
+			store.categories = categories.map({ StoreCategory(rawValue: $0)! })
+		}
+
 		return store
 	}
 

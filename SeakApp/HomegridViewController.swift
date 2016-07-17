@@ -41,7 +41,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 		navigationItem.leftBarButtonItem = leftBarButton// adds sidebar-menu icon
 		self.navigationItem.hidesBackButton = true
 
-		for item in MenuItems.values {
+		for item in StoreCategory.startValues {
 			if item != .Home {
 				if let vc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.ItemsCollection.rawValue) as? ItemsCollectionViewController {
 					vc.dataSourceType = .Categories
@@ -97,7 +97,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 
 	// MARK: ACTabScrollViewDataSource
 	func numberOfPagesInTabScrollView(tabScrollView: ACTabScrollView) -> Int {
-		return MenuItems.values.count
+		return StoreCategory.startValues.count
 	}
 
 	func tabScrollView(tabScrollView: ACTabScrollView, tabViewForPageAtIndex index: Int) -> UIView {
@@ -106,7 +106,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 
 		// create a label
 		let label = UILabel()
-		label.text = MenuItems.values[index].rawValue
+		label.text = StoreCategory.startValues[index].rawValue
 		label.textAlignment = .Center
 		label.textColor = UIColor.whiteColor()
 		label.font = UIFont.systemFontOfSize(17, weight: UIFontWeightThin)
@@ -121,7 +121,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 		sep.frame.size = CGSize(width: CGFloat(5), height: label.frame.height)
 
 		stackView.addArrangedSubview(label)
-		if (index != MenuItems.values.count - 1) {
+		if (index != StoreCategory.startValues.count - 1) {
 			stackView.addArrangedSubview(sep)
 		}
 		stackView.frame.size = CGSize(width: label.frame.width + sep.frame.width, height: label.frame.height)
