@@ -384,13 +384,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		5E507A421D02CC7000BCD0B6 /* ViewConvtrollers */ = {
+		5E36C2991D3BA8F700033112 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				C9B9F0221CFBE75A002EA9BA /* HomeViewController.swift */,
+				5EC0768E1D193CF900E84EE5 /* HomeItemsViewController.swift */,
+				5E36C2971D3BA63D00033112 /* MainPageViewController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		5E507A421D02CC7000BCD0B6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5E36C2991D3BA8F700033112 /* Home */,
 				5E07CB751D05D7CD00F38D0B /* ContainerViewController.swift */,
 				C9B9F01C1CFBE58C002EA9BA /* LoginController.swift */,
 				C9B9F01E1CFBE5E8002EA9BA /* RegisterController.swift */,
-				C9B9F0221CFBE75A002EA9BA /* HomeViewController.swift */,
 				C9B9F0241CFBE793002EA9BA /* GridViewCell.swift */,
 				5E07CB661D05481200F38D0B /* MenuViewController.swift */,
 				5E1533491D0A8ECB00C2E5E1 /* SearchItemsViewController.swift */,
@@ -398,14 +408,12 @@
 				C9B39B101D0E644E00F64D24 /* ItemAdd.swift */,
 				5E4FAFBC1D11808E000411D8 /* StartAppViewController.swift */,
 				5EC076841D1935B300E84EE5 /* StoresViewController.swift */,
-				5EC0768E1D193CF900E84EE5 /* HomeItemsViewController.swift */,
 				2214024F1D2AA48500E27659 /* ReviewViewController.swift */,
 				5E2F99C21D2651E3000D8B49 /* ItemDetailsViewConroller.swift */,
 				5E4B4C891D2E59B3000EF99F /* LeaveReviewViewController.swift */,
 				226F61061D365BCD003177A7 /* FavViewController.swift */,
-				5E36C2971D3BA63D00033112 /* MainPageViewController.swift */,
 			);
-			name = ViewConvtrollers;
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		5E62FB561D2ACF97007C0C0A /* Item */ = {
@@ -495,7 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				5E07CB681D05A01800F38D0B /* Views */,
-				5E507A421D02CC7000BCD0B6 /* ViewConvtrollers */,
+				5E507A421D02CC7000BCD0B6 /* ViewControllers */,
 				5E93462C1D002A5100CF4DC6 /* Enums */,
 				5E9346271D00280E00CF4DC6 /* DataLayer */,
 				5E8740291D1AE607003A9354 /* Utilities */,
