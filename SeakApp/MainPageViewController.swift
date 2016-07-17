@@ -1,45 +1,28 @@
 //
-//  HomegridViewController.swift
+//  MainPageViewController.swift
 //  SeakApp
 //
-//  Created by Kush Maheshwari on 5/29/16.
+//  Created by Roman Volkov on 17/07/16.
 //  Copyright © 2016 Kush Maheshwari. All rights reserved.
 //
 
+import Foundation
 import UIKit
-import Parse
-import FBSDKLoginKit
 
-class HomeViewController: UIViewController,
+class MainPageViewController: UIViewController,
 ACTabScrollViewDelegate, ACTabScrollViewDataSource
 {
-	var views: [UIViewController] = []
 
-	@IBOutlet weak var scrollingMenu: ACTabScrollView!
+	@IBOutlet weak var scrollTabsMenu: ScrollableMenu!
+	weak var navigationVC: UINavigationController? = nil
+
+	var views: [UIViewController] = []
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.scrollingMenu.delegate = self
-		self.scrollingMenu.dataSource = self
-		self.navigationItem.backBarButtonItem = nil
-//            UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-
-		let titleImage = UIImage(named: "navBarLogo")
-		let imgView = UIImageView(image: titleImage)
-		imgView.frame = CGRectMake(0, 0, 50, 25)
-		imgView.contentMode = .ScaleAspectFit
-		self.title = ""
-		self.navigationItem.titleView = imgView
-
-		let rightBarButton = UIBarButtonItem(image: UIImage(named: "searchIcon"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HomeViewController.addItem(_:)))
-		navigationItem.rightBarButtonItem = rightBarButton
-		rightBarButton.action = #selector(HomeViewController.addItem(_:)) // adds search icon
-
-		let leftBarButton = UIBarButtonItem(image: UIImage(named: "menuIcon"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HomeViewController.openMenu))
-
-		navigationItem.leftBarButtonItem = leftBarButton// adds sidebar-menu icon
-		self.navigationItem.hidesBackButton = true
+		self.scrollTabsMenu.delegate = self
+		self.scrollTabsMenu.dataSource = self
 
 		for item in StoreCategory.startValues {
 			if item != .Home {
@@ -54,20 +37,11 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 			else {
 				let st = UIStoryboard(name: StoryboardNames.HomeItemsViewStoryboard.rawValue, bundle: nil)
 				if let v = st.instantiateViewControllerWithIdentifier(StoryboardNames.HomeItemsView.rawValue) as? HomeItemsViewController {
-					v.navigationVC = self.navigationController
+					v.navigationVC = self.navigationVC
 					views.append(v)
 				}
 			}
 		}
-
-	}
-
-	func openMenu() {
-		self.slideMenuController()?.openLeft()
-	}
-
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
 	}
 
 	override func viewDidDisappear(animated: Bool) {
@@ -75,21 +49,13 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 		for view in self.views {
 			view.removeFromParentViewController()
 		}
-	}
 
-	func addItem(sender: UIButton!)
-	{
-		self.performSegueWithIdentifier("searchViewSegue", sender: nil)
-	}
-
-	func leftButtonTap() { // right now the left menu side bar is actually a button for logout. when you make sidebar can u just make one of the tabs in there to do this
-		print("Left button tapped!")
-
+		self.navigationVC = nil
 	}
 
 	// MARK: ACTabScrollViewDelegate
 	func tabScrollView(tabScrollView: ACTabScrollView, didChangePageTo index: Int) {
-		scrollingMenu.changePageToIndex(index, animated: true)
+		self.scrollTabsMenu.changePageToIndex(index, animated: true)
 	}
 
 	func tabScrollView(tabScrollView: ACTabScrollView, didScrollPageTo index: Int) {
@@ -132,5 +98,4 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 	func tabScrollView(tabScrollView: ACTabScrollView, contentViewForPageAtIndex index: Int) -> UIView {
 		return views[index].view
 	}
-
 }

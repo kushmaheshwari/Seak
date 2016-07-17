@@ -31,6 +31,7 @@ enum StoryboardNames: String {
 	case HomeItemsView = "homeItemsViewID"
 	case ItemDetailsView = "itemDetailsView"
 	case FavNavigation = "favNavigationId"
+	case MainPageView = "mainPageViewID"
 }
 
 enum StoreCategory: String {
