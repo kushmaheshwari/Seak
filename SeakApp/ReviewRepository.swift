@@ -37,6 +37,7 @@ class ReviewRepository {
 		let itemParseObject = PFObject(outDataWithClassName: ParseClassNames.Item.rawValue, objectId: itemId)
 		let query = PFQuery(className: ParseClassNames.Review.rawValue)
 		query.whereKey("Item", equalTo: itemParseObject)
+		query.orderByDescending("createdAt")
 		query.cachePolicy = .CacheThenNetwork
 
 		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in

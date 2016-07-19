@@ -65,7 +65,6 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		self.previewTableView.rowHeight = UITableViewAutomaticDimension
 	}
 
-
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		self.items.removeAll()
@@ -113,7 +112,13 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 				vc.item = self.itemEntity
 
 				vc.submitComletionBlock = { review in
-					self.items.append(review)
+					if self.items.count == 0 {
+						self.items.append(review)
+					}
+					else {
+						self.items.insert(review, atIndex: 0)
+					}
+
 					dispatch_async(dispatch_get_main_queue(), {
 						self.setAvgRating()
 						self.previewTableView.reloadData()
