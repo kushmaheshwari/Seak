@@ -48,7 +48,10 @@ class HomeViewController: UIViewController
 
 	func addItem(sender: UIButton!)
 	{
-		self.performSegueWithIdentifier("searchViewSegue", sender: nil)
+        if let svc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.SearchViewController.rawValue) as? SearchItemsViewController {
+            self.navigationController?.pushViewController(svc, animated: true)
+        }
+       // self.performSegueWithIdentifier("searchViewSegue", sender: nil)
 	}
 
 }
