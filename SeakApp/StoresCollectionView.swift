@@ -169,7 +169,11 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 			}
 
 			cell.openStoreBlock = { () in
-				print ("TODO open MainPageView")
+				if let destinationVC = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.StoreDetails.rawValue) as? StoreDetailsMainViewController {
+					destinationVC.navigationVC = self.navigationController
+					destinationVC.storeEntity = item
+					self.navigationController?.pushViewController(destinationVC, animated: true)
+				}
 			}
 
 			cell.updateConstraintsIfNeeded()

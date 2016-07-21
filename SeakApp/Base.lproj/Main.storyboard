@@ -1347,6 +1347,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rcH-ah-fbz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.12941176469999999" green="0.76078431369999999" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
@@ -1413,6 +1414,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rk7-fz-s0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1587" y="-1510"/>
+        </scene>
+        <!--Store Details Main View Controller-->
+        <scene sceneID="YEY-U7-aDW">
+            <objects>
+                <viewController storyboardIdentifier="storeDetailsViewID" id="558-ID-Ta2" customClass="StoreDetailsMainViewController" customModule="SeakApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="naO-7Q-zYe"/>
+                        <viewControllerLayoutGuide type="bottom" id="X7O-Zi-PlQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OSm-4x-aU7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EuZ-TZ-gzb" customClass="ScrollableMenu" customModule="SeakApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="EuZ-TZ-gzb" secondAttribute="trailing" constant="-20" id="0TO-cM-j8j"/>
+                            <constraint firstItem="EuZ-TZ-gzb" firstAttribute="leading" secondItem="OSm-4x-aU7" secondAttribute="leadingMargin" constant="-20" id="4K2-a3-2QI"/>
+                            <constraint firstItem="EuZ-TZ-gzb" firstAttribute="top" secondItem="OSm-4x-aU7" secondAttribute="topMargin" id="9WF-7L-3qd"/>
+                            <constraint firstItem="X7O-Zi-PlQ" firstAttribute="top" secondItem="EuZ-TZ-gzb" secondAttribute="bottom" id="B2Z-hG-Xta"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollableTabs" destination="EuZ-TZ-gzb" id="XhL-vL-z2A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lhm-Dm-Tog" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2269" y="-1507"/>
         </scene>
         <!--Recent Searches View Controller-->
         <scene sceneID="1bh-SR-EdZ">
