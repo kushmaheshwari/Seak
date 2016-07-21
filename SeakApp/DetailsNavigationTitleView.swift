@@ -13,3 +13,7 @@ class DetailsNavigationTitleView: UIView {
 	@IBOutlet weak var titleView: UILabel!
 
 }
+
+class StoreNavigationTitleView: UIView {
+    @IBOutlet weak var titleView: UILabel!
+}
