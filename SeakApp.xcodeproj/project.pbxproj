@@ -66,6 +66,7 @@
 		5EC076851D1935B300E84EE5 /* StoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC076841D1935B300E84EE5 /* StoresViewController.swift */; };
 		5EC0768D1D193B2100E84EE5 /* HomeItemsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EC0768C1D193B2100E84EE5 /* HomeItemsView.storyboard */; };
 		5EC0768F1D193CF900E84EE5 /* HomeItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0768E1D193CF900E84EE5 /* HomeItemsViewController.swift */; };
+		5EDA25D21D414F11000B4C3C /* StoreDetailsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA25D11D414F10000B4C3C /* StoreDetailsMainViewController.swift */; };
 		5EEB13EF1D2D1BA0008B3B03 /* DetailsNavigationTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EEB13EE1D2D1BA0008B3B03 /* DetailsNavigationTitle.xib */; };
 		5EEB13F31D2D1C7B008B3B03 /* DetailsNavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB13F21D2D1C7B008B3B03 /* DetailsNavigationTitleView.swift */; };
 		5EEB13F61D2D1E44008B3B03 /* StoresNavigationTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EEB13F51D2D1E44008B3B03 /* StoresNavigationTitle.xib */; };
@@ -176,6 +177,7 @@
 		5EC076841D1935B300E84EE5 /* StoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresViewController.swift; sourceTree = "<group>"; };
 		5EC0768C1D193B2100E84EE5 /* HomeItemsView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeItemsView.storyboard; sourceTree = "<group>"; };
 		5EC0768E1D193CF900E84EE5 /* HomeItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeItemsViewController.swift; sourceTree = "<group>"; };
+		5EDA25D11D414F10000B4C3C /* StoreDetailsMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailsMainViewController.swift; sourceTree = "<group>"; };
 		5EEB13EE1D2D1BA0008B3B03 /* DetailsNavigationTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsNavigationTitle.xib; sourceTree = "<group>"; };
 		5EEB13F21D2D1C7B008B3B03 /* DetailsNavigationTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsNavigationTitleView.swift; sourceTree = "<group>"; };
 		5EEB13F51D2D1E44008B3B03 /* StoresNavigationTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoresNavigationTitle.xib; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				5E2F99C21D2651E3000D8B49 /* ItemDetailsViewConroller.swift */,
 				5E4B4C891D2E59B3000EF99F /* LeaveReviewViewController.swift */,
 				226F61061D365BCD003177A7 /* FavViewController.swift */,
+				5EDA25D11D414F10000B4C3C /* StoreDetailsMainViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -755,6 +758,7 @@
 				5E05580D1D378F7E009C5FDF /* FavoriteItem.swift in Sources */,
 				5E05580F1D378FA8009C5FDF /* FavoriteRepository.swift in Sources */,
 				5E2A44EB1D12C2C300BA866D /* IQUITextFieldView+Additions.swift in Sources */,
+				5EDA25D21D414F11000B4C3C /* StoreDetailsMainViewController.swift in Sources */,
 				5E07CB791D06C1A500F38D0B /* ACTabScrollView.swift in Sources */,
 				5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */,
 				5E2A44EF1D12C2C300BA866D /* IQKeyboardManagerConstants.swift in Sources */,
