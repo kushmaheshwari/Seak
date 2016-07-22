@@ -43,7 +43,8 @@ class StoreDetailsMainViewController: UIViewController {
 
 	func search(sender: AnyObject?) {
 		if let svc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.SearchViewController.rawValue) as? SearchItemsViewController {
-			self.navigationController?.pushViewController(svc, animated: true)
+			svc.storeObject = self.storeEntity
+            self.navigationController?.pushViewController(svc, animated: true)
 		}
 	}
 }

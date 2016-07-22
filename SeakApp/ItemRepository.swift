@@ -111,12 +111,18 @@ class ItemRepository {
 		}
 	}
 
-	func search(value: String, completion: ItemRepositoryComplectionBlock) {
+    func search(value: String, store: StoreEntity?, completion: ItemRepositoryComplectionBlock) {
 		let nameQuery = PFQuery(className: ParseClassNames.Item.rawValue)
 		nameQuery.whereKey("name", containsString: value)
 		let descriptionQuery = PFQuery(className: ParseClassNames.Item.rawValue)
 		descriptionQuery.whereKey("description", containsString: value)
 		let query = PFQuery.orQueryWithSubqueries([nameQuery, descriptionQuery])
+        if store != nil
+        {
+            guard let storeId = store?.objectID else {fatalError("StoreEntity with empty ObjectID")}
+            let storeParseObject = PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: storeId)
+            query.whereKey("Store", equalTo: storeParseObject)
+        }
 		query.limit = maxSearchCount
 
 		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in

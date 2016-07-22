@@ -30,6 +30,6 @@
         </view>
     </objects>
     <resources>
-        <image name="dislike" width="31" height="31"/>
+        <image name="dislike" width="19" height="17"/>
     </resources>
 </document>
