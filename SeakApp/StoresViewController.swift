@@ -63,11 +63,6 @@ class StoresViewController: UIViewController {
 
 	}
 
-	override func viewDidDisappear(animated: Bool) {
-		super.viewDidDisappear(animated)
-		// TODO remove view
-	}
-
 	@IBAction func menuIceonPressed(sender: AnyObject) {
 		self.slideMenuController()?.openLeft()
 	}

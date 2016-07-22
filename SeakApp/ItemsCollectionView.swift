@@ -18,6 +18,7 @@ class ItemsCollectionViewController: UICollectionViewController {
 	private var category: StoreCategory = .None
 
 	var dataSourceType: ItemsCollectionViewDataSource = .None
+	var storeEntity: StoreEntity? = nil
 
 	var items = [ItemEntity]()
 	var searchItems = [ItemEntity]()
@@ -94,7 +95,7 @@ class ItemsCollectionViewController: UICollectionViewController {
 		switch self.dataSourceType {
 		case .Categories:
 			dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
-				self.repository.getAllFromCategory(self.category) { (data) -> Void in
+				self.repository.getAllFromCategory(self.category, store: self.storeEntity) { (data) -> Void in
 					dispatch_async(dispatch_get_main_queue(), {
 						self.items = data
 						print("Successfully retrieved \(data.count) scores.")

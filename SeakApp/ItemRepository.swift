@@ -68,14 +68,18 @@ class ItemRepository {
 		}
 	}
 
-	func getByStatus(status: ItemStatus, completion: ItemRepositoryComplectionBlock) {
+	func getByStatus(status: ItemStatus, store: StoreEntity?, completion: ItemRepositoryComplectionBlock) {
 		if status == .None {
 			return
 		}
 
 		let query = PFQuery(className: ParseClassNames.Item.rawValue)
 			.whereKey("Status", containsString: status.rawValue)
-		query.cachePolicy = .CacheThenNetwork
+		if store != nil {
+			let storeObject = PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: store!.objectID)
+			query.whereKey("Store", equalTo: storeObject)
+		}
+		query.cachePolicy = (store != nil) ? .NetworkOnly : .CacheThenNetwork
 		query.maxCacheAge = cacheAge
 		query.limit = maxCountByStatus
 
@@ -90,14 +94,18 @@ class ItemRepository {
 		}
 	}
 
-	func getAllFromCategory(type: StoreCategory, completion: ItemRepositoryComplectionBlock) {
+	func getAllFromCategory(type: StoreCategory, store: StoreEntity?, completion: ItemRepositoryComplectionBlock) {
 		if type == .None {
 			return
 		}
 
 		let query = PFQuery(className: ParseClassNames.Item.rawValue)
 			.whereKey("category", containsString: type.rawValue)
-		query.cachePolicy = .CacheThenNetwork
+		if store != nil {
+			let storeObject = PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: store!.objectID)
+			query.whereKey("Store", equalTo: storeObject)
+		}
+		query.cachePolicy = (store != nil) ? .NetworkOnly : .CacheThenNetwork
 		query.maxCacheAge = cacheAge
 
 		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
