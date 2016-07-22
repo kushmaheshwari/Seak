@@ -15,6 +15,8 @@ class StoreDetailsMainViewController: UIViewController {
 	weak var navigationVC: UINavigationController!
 	weak var storeEntity: StoreEntity? = nil
 
+	private var views: [UIViewController] = []
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.setTitle()
@@ -32,5 +34,16 @@ class StoreDetailsMainViewController: UIViewController {
 
 		self.navigationItem.title = nil
 		self.navigationItem.titleView = titleView
+
+		let rightBarButton = UIBarButtonItem(image: UIImage(named: "searchIcon"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HomeViewController.addItem(_:)))
+		navigationItem.rightBarButtonItem = rightBarButton
+		rightBarButton.action = #selector(StoreDetailsMainViewController.search(_:)) // adds search icon
+
+	}
+
+	func search(sender: AnyObject?) {
+		if let svc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.SearchViewController.rawValue) as? SearchItemsViewController {
+			self.navigationController?.pushViewController(svc, animated: true)
+		}
 	}
 }

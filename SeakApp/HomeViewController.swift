@@ -51,7 +51,6 @@ class HomeViewController: UIViewController
         if let svc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.SearchViewController.rawValue) as? SearchItemsViewController {
             self.navigationController?.pushViewController(svc, animated: true)
         }
-       // self.performSegueWithIdentifier("searchViewSegue", sender: nil)
 	}
 
 }
