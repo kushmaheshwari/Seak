@@ -172,6 +172,7 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 				if let destinationVC = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.StoreDetails.rawValue) as? StoreDetailsMainViewController {
 					destinationVC.navigationVC = self.navigationController
 					destinationVC.storeEntity = item
+					destinationVC.initTabs()
 					self.navigationController?.pushViewController(destinationVC, animated: true)
 				}
 			}

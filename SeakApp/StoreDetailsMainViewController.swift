@@ -26,26 +26,27 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 		// Tabs
 		self.scrollableTabs.delegate = self
 		self.scrollableTabs.dataSource = self
+	}
 
+	func initTabs() {
 		// add Home view
-		// TODO pass store
 		let st = UIStoryboard(name: StoryboardNames.HomeItemsViewStoryboard.rawValue, bundle: nil)
-		if let v = st.instantiateViewControllerWithIdentifier(StoryboardNames.HomeItemsView.rawValue) as? HomeItemsViewController {
-			v.navigationVC = self.navigationVC
-			views.append(v)
+		if let vc = st.instantiateViewControllerWithIdentifier(StoryboardNames.HomeItemsView.rawValue) as? HomeItemsViewController {
+			vc.navigationVC = self.navigationVC
+			vc.storeEntity = self.storeEntity
+			views.append(vc)
 		}
 		// add rest views for each category
-		// TODO pass store
 		for item in self.storeEntity!.categories {
 			if let vc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.ItemsCollection.rawValue) as? ItemsCollectionViewController {
 				vc.dataSourceType = .Categories
 				vc.setCategory(item)
-				vc.navigationVC = self.navigationController
+				vc.storeEntity = self.storeEntity
+				vc.navigationVC = self.navigationVC
 				self.addChildViewController(vc)
 				views.append(vc)
 			}
 		}
-
 	}
 
 	deinit {

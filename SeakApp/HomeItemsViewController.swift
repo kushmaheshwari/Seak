@@ -23,6 +23,8 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	private var items: [ItemEntity] = []
 	private let collectionViewReusableIdentifier = "ItemGroupViewID"
 
+	var storeEntity: StoreEntity? = nil
+
 	weak var storyboard: UIStoryboard? = nil
 	weak var navigationController: UINavigationController? = nil
 
@@ -46,7 +48,7 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	@IBOutlet weak var collectionView: UICollectionView!
 
 	func loadItems() {
-		repository.getByStatus(self.status) { (items) in
+		repository.getByStatus(self.status, store: self.storeEntity) { (items) in
 			self.items = items
 			dispatch_async(dispatch_get_main_queue(), {
 				self.collectionView.reloadData()
@@ -95,8 +97,9 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 class HomeItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 	private let bannerCellIdentifier = "imageCellID"
-
 	private let items = ItemStatus.values
+
+	var storeEntity: StoreEntity? = nil
 
 	weak var navigationVC: UINavigationController? = nil
 
@@ -122,6 +125,7 @@ class HomeItemsViewController: UIViewController, UITableViewDelegate, UITableVie
 
 		guard let cell = self.tableView.dequeueReusableCellWithIdentifier(GroupCell.reusableIdentifier) as? GroupCell else { fatalError("can't dequeue GroupCell") }
 		cell.navigationController = self.navigationVC
+		cell.storeEntity = self.storeEntity
 		cell.status = items[indexPath.row - 1]
 		return cell
 
