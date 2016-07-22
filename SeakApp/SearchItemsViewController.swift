@@ -29,6 +29,7 @@ UICollectionViewDelegate, UICollectionViewDataSource
 		super.viewDidLoad()
 
 		self.navigationItem.hidesBackButton = false
+		self.edgesForExtendedLayout = .None
 
 		self.recentSearches = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.RecentSearches.rawValue) as! RecentSearchesViewController
 		addSearchbar()
@@ -63,8 +64,8 @@ UICollectionViewDelegate, UICollectionViewDataSource
 		}
 
 		self.recentSearches.reload()
-		self.view.addSubview(recentSearches.view)
-		self.view.sendSubviewToBack(recentSearches.view)
+		self.view.addSubview(self.recentSearches.view)
+		self.view.sendSubviewToBack(self.recentSearches.view)
 
 	}
 
