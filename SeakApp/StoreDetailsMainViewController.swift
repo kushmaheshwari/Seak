@@ -75,7 +75,50 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 	func search(sender: AnyObject?) {
 		if let svc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.SearchViewController.rawValue) as? SearchItemsViewController {
 			svc.storeObject = self.storeEntity
-            self.navigationController?.pushViewController(svc, animated: true)
+			self.navigationVC?.pushViewController(svc, animated: true)
+		}
+	}
+
+	// MARK: ACTabScrollViewDelegate
+	func tabScrollView(tabScrollView: ACTabScrollView, didChangePageTo index: Int) {
+		self.scrollableTabs.changePageToIndex(index, animated: true)
+	}
+
+	func tabScrollView(tabScrollView: ACTabScrollView, didScrollPageTo index: Int) {
+	}
+
+	// MARK: ACTabScrollViewDataSource
+	func numberOfPagesInTabScrollView(tabScrollView: ACTabScrollView) -> Int {
+		if let count = self.storeEntity?.categories.count {
+			return count + 1 // plus home
+		}
+
+		return 1 // Home view by default
+	}
+
+	func tabScrollView(tabScrollView: ACTabScrollView, tabViewForPageAtIndex index: Int) -> UIView {
+		let stackView = UIStackView()
+		stackView.axis = .Horizontal
+
+		// create a label
+		let label = UILabel()
+		label.text = (index == 0) ? StoreCategory.Home.rawValue : self.storeEntity?.categories[index - 1].rawValue
+		label.textAlignment = .Center
+		label.textColor = UIColor.whiteColor()
+		label.font = UIFont.systemFontOfSize(17, weight: UIFontWeightThin)
+
+		label.sizeToFit() // resize the label to the size of content
+		label.frame.size = CGSize(
+			width: label.frame.size.width + 40,
+			height: label.frame.size.height + 5) // add some paddings
+		let sep = UILabel()
+		sep.textColor = UIColor.whiteColor()
+		sep.text = "|"
+		sep.frame.size = CGSize(width: CGFloat(5), height: label.frame.height)
+
+		stackView.addArrangedSubview(label)
+		if (index != self.storeEntity!.categories.count) {
+			stackView.addArrangedSubview(sep)
 		}
 		stackView.frame.size = CGSize(width: label.frame.width + sep.frame.width, height: label.frame.height)
 
