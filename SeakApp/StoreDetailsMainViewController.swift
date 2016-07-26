@@ -74,8 +74,8 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 
 	func search(sender: AnyObject?) {
 		if let svc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.SearchViewController.rawValue) as? SearchItemsViewController {
+			svc.storeObject = self.storeEntity
 			self.navigationVC?.pushViewController(svc, animated: true)
-			// TODO pass storeEntuty
 		}
 	}
 

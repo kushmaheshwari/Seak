@@ -17,6 +17,8 @@ UICollectionViewDelegate, UICollectionViewDataSource
 	private let repository = ItemRepository()
 	private var items: [ItemEntity] = []
 	private let reuseIdentifier = "ItemCellIdentifier"
+    
+    var storeObject: StoreEntity? = nil
 	var searchFromTyping = false
 	var searchController: UISearchController!
 	private var recentSearches: RecentSearchesViewController!
@@ -106,7 +108,7 @@ UICollectionViewDelegate, UICollectionViewDataSource
 			}
 
 			addPlainHeader(searchTextValue)
-			repository.search(searchTextValue, completion: { (items) in
+			repository.search(searchTextValue, store: storeObject, completion: { (items) in
 				self.items = items
 				self.searchItemsCollectionView.reloadData()
 				if (self.searchFromTyping) {
