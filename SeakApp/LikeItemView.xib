@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -12,17 +12,35 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dislike" translatesAutoresizingMaskIntoConstraints="NO" id="bWo-Ib-VLo">
-                    <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                    <rect key="frame" x="6" y="6" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="GDv-wO-kJR"/>
+                        <constraint firstAttribute="height" constant="20" id="ZL6-Wu-JCq"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="bWo-Ib-VLo" secondAttribute="bottom" id="5uo-Zx-EZS"/>
+                <constraint firstItem="bWo-Ib-VLo" firstAttribute="centerY" secondItem="BLq-hW-dcC" secondAttribute="centerY" id="Pws-5B-DWJ"/>
+                <constraint firstItem="bWo-Ib-VLo" firstAttribute="centerX" secondItem="BLq-hW-dcC" secondAttribute="centerX" id="Qz5-je-46l"/>
                 <constraint firstItem="bWo-Ib-VLo" firstAttribute="top" secondItem="BLq-hW-dcC" secondAttribute="top" id="Swy-fJ-Yrr"/>
                 <constraint firstAttribute="trailing" secondItem="bWo-Ib-VLo" secondAttribute="trailing" id="VIB-Gk-rV6"/>
                 <constraint firstItem="bWo-Ib-VLo" firstAttribute="leading" secondItem="BLq-hW-dcC" secondAttribute="leading" id="cpV-lX-s7c"/>
+                <constraint firstItem="bWo-Ib-VLo" firstAttribute="centerY" secondItem="BLq-hW-dcC" secondAttribute="centerY" id="j4v-qS-0SI"/>
+                <constraint firstItem="bWo-Ib-VLo" firstAttribute="centerX" secondItem="BLq-hW-dcC" secondAttribute="centerX" id="y7P-kZ-tRs"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="5uo-Zx-EZS"/>
+                    <exclude reference="Swy-fJ-Yrr"/>
+                    <exclude reference="VIB-Gk-rV6"/>
+                    <exclude reference="cpV-lX-s7c"/>
+                    <exclude reference="j4v-qS-0SI"/>
+                    <exclude reference="y7P-kZ-tRs"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="likeImage" destination="bWo-Ib-VLo" id="29h-Hp-yMf"/>
             </connections>
