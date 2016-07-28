@@ -24,7 +24,8 @@ class FavViewController: UIViewController
 		super.viewDidLoad()
 		ItemsButton.backgroundColor = chosenTabColor
 		StoreButton.backgroundColor = defaultTabColor
-		self.setTitle()
+//		self.setTitle()
+		self.navigationItem.title = "Favorites"
 		self.navigationItem.hidesBackButton = true
 		self.initCollectionViews()
 
@@ -51,7 +52,7 @@ class FavViewController: UIViewController
 				// vc.navigationVC = self.navigationController
 				self.addChildViewController(self.storeCollectionView!)
 				self.storeCollectionView?.dataSourceType = .Favorites
-                self.storeCollectionView?.loadCollectionViewDataCell()
+				self.storeCollectionView?.loadCollectionViewDataCell()
 			}
 		}
 
