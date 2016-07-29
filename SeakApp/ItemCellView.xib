@@ -165,11 +165,11 @@
                     </variation>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDU-xz-oIm">
-                    <rect key="frame" x="215" y="10" width="23" height="23"/>
+                    <rect key="frame" x="193" y="10" width="45" height="45"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="23" id="GIN-B0-W7N"/>
-                        <constraint firstAttribute="height" constant="23" id="N0Q-lc-Vpd"/>
+                        <constraint firstAttribute="width" constant="45" id="GIN-B0-W7N"/>
+                        <constraint firstAttribute="height" constant="45" id="N0Q-lc-Vpd"/>
                     </constraints>
                 </view>
             </subviews>

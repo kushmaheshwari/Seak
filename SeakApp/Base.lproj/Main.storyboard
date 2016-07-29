@@ -776,11 +776,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNh-BI-8bA">
-                                        <rect key="frame" x="366" y="17" width="32" height="32"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="353" y="17" width="45" height="45"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="32" id="JVj-U0-JhT"/>
-                                            <constraint firstAttribute="height" constant="32" id="tO0-9E-gQk"/>
+                                            <constraint firstAttribute="width" constant="45" id="JVj-U0-JhT"/>
+                                            <constraint firstAttribute="height" constant="45" id="tO0-9E-gQk"/>
                                         </constraints>
                                     </view>
                                 </subviews>
