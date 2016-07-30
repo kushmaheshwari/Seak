@@ -20,5 +20,6 @@ class ItemEntity {
 	var store: PFObject?
 	var storeEntity: StoreEntity?
 	var reviewCount: Double?
+	var storeCategory: StoreCategory?
 
 }

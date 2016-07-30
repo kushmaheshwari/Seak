@@ -39,6 +39,9 @@ class ItemRepository {
 		if let description = object.objectForKey("Description") {
 			item.descr = description as? String
 		}
+		if let storeCategory = object.objectForKey("StoreCategory") as? String {
+			item.storeCategory = StoreCategory(rawValue: storeCategory)
+		}
 
 		return item
 	}
@@ -100,10 +103,14 @@ class ItemRepository {
 		}
 
 		let query = PFQuery(className: ParseClassNames.Item.rawValue)
-			.whereKey("category", containsString: type.rawValue)
+
 		if store != nil {
 			let storeObject = PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: store!.objectID)
 			query.whereKey("Store", equalTo: storeObject)
+			query.whereKey("StoreCategory", containsString: type.rawValue)
+		}
+		else {
+			query.whereKey("category", containsString: type.rawValue)
 		}
 		query.cachePolicy = (store != nil) ? .NetworkOnly : .CacheThenNetwork
 		query.maxCacheAge = cacheAge
@@ -119,18 +126,18 @@ class ItemRepository {
 		}
 	}
 
-    func search(value: String, store: StoreEntity?, completion: ItemRepositoryComplectionBlock) {
+	func search(value: String, store: StoreEntity?, completion: ItemRepositoryComplectionBlock) {
 		let nameQuery = PFQuery(className: ParseClassNames.Item.rawValue)
 		nameQuery.whereKey("name", containsString: value)
 		let descriptionQuery = PFQuery(className: ParseClassNames.Item.rawValue)
 		descriptionQuery.whereKey("description", containsString: value)
 		let query = PFQuery.orQueryWithSubqueries([nameQuery, descriptionQuery])
-        if store != nil
-        {
-            guard let storeId = store?.objectID else {fatalError("StoreEntity with empty ObjectID")}
-            let storeParseObject = PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: storeId)
-            query.whereKey("Store", equalTo: storeParseObject)
-        }
+		if store != nil
+		{
+			guard let storeId = store?.objectID else { fatalError("StoreEntity with empty ObjectID") }
+			let storeParseObject = PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: storeId)
+			query.whereKey("Store", equalTo: storeParseObject)
+		}
 		query.limit = maxSearchCount
 
 		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
