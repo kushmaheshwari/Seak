@@ -103,7 +103,9 @@ class MenuViewController: UITableViewController {
         
 		// Settings
 		if indexPath.row == 5 {
-			print("LOGOUT")
+            guard let controller = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.SettingNavigation.rawValue) else { return }
+            self.slideMenuController()?.changeMainViewController(controller, close: true)
+			/*print("LOGOUT")
 			if (PFUser.currentUser() != nil) {
 				PFUser.logOut()
 				UserDataCache.clearCache()
@@ -114,7 +116,7 @@ class MenuViewController: UITableViewController {
 
 			let loginview = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Login.rawValue)
 			let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-			appDelegate.window?.rootViewController = loginview
+			appDelegate.window?.rootViewController = loginview*/
 
 		}
 	}

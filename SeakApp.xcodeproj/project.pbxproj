@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		221402501D2AA48500E27659 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214024F1D2AA48500E27659 /* ReviewViewController.swift */; };
 		226F61071D365BCD003177A7 /* FavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F61061D365BCD003177A7 /* FavViewController.swift */; };
+		229C17761D50C64800CBBC87 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C17751D50C64800CBBC87 /* SettingViewController.swift */; };
+		229C17781D5261D100CBBC87 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C17771D5261D100CBBC87 /* MapViewController.swift */; };
+		229C177A1D5262F200CBBC87 /* RadiusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C17791D5262F200CBBC87 /* RadiusViewController.swift */; };
+		229C177C1D52634700CBBC87 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C177B1D52634700CBBC87 /* HelpViewController.swift */; };
 		5E05580B1D378F42009C5FDF /* FavoriteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05580A1D378F42009C5FDF /* FavoriteStore.swift */; };
 		5E05580D1D378F7E009C5FDF /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05580C1D378F7E009C5FDF /* FavoriteItem.swift */; };
 		5E05580F1D378FA8009C5FDF /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05580E1D378FA8009C5FDF /* FavoriteRepository.swift */; };
@@ -120,6 +124,10 @@
 /* Begin PBXFileReference section */
 		2214024F1D2AA48500E27659 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		226F61061D365BCD003177A7 /* FavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavViewController.swift; sourceTree = "<group>"; };
+		229C17751D50C64800CBBC87 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		229C17771D5261D100CBBC87 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		229C17791D5262F200CBBC87 /* RadiusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiusViewController.swift; sourceTree = "<group>"; };
+		229C177B1D52634700CBBC87 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		5E05580A1D378F42009C5FDF /* FavoriteStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
 		5E05580C1D378F7E009C5FDF /* FavoriteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		5E05580E1D378FA8009C5FDF /* FavoriteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteRepository.swift; sourceTree = "<group>"; };
@@ -427,6 +435,10 @@
 				5E4FAFBC1D11808E000411D8 /* StartAppViewController.swift */,
 				5EC076841D1935B300E84EE5 /* StoresViewController.swift */,
 				2214024F1D2AA48500E27659 /* ReviewViewController.swift */,
+				229C17751D50C64800CBBC87 /* SettingViewController.swift */,
+				229C17771D5261D100CBBC87 /* MapViewController.swift */,
+				229C17791D5262F200CBBC87 /* RadiusViewController.swift */,
+				229C177B1D52634700CBBC87 /* HelpViewController.swift */,
 				5E2F99C21D2651E3000D8B49 /* ItemDetailsViewConroller.swift */,
 				5E4B4C891D2E59B3000EF99F /* LeaveReviewViewController.swift */,
 				226F61061D365BCD003177A7 /* FavViewController.swift */,
@@ -705,6 +717,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EC076851D1935B300E84EE5 /* StoresViewController.swift in Sources */,
+				229C17761D50C64800CBBC87 /* SettingViewController.swift in Sources */,
 				C9B9F0231CFBE75A002EA9BA /* HomeViewController.swift in Sources */,
 				5E2A44E91D12C2C300BA866D /* IQNSArray+Sort.swift in Sources */,
 				5E62FB5A1D2ACFCB007C0C0A /* ReviewRepository.swift in Sources */,
@@ -725,6 +738,7 @@
 				C9B9EFCF1CFBDDEA002EA9BA /* AppDelegate.swift in Sources */,
 				5E07CB721D05D69800F38D0B /* ItemCellView.swift in Sources */,
 				221402501D2AA48500E27659 /* ReviewViewController.swift in Sources */,
+				229C177A1D5262F200CBBC87 /* RadiusViewController.swift in Sources */,
 				5E36C2981D3BA63D00033112 /* MainPageViewController.swift in Sources */,
 				C9B9F01D1CFBE58C002EA9BA /* LoginController.swift in Sources */,
 				5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */,
@@ -734,6 +748,7 @@
 				5E2A44EE1D12C2C300BA866D /* IQUIWindow+Hierarchy.swift in Sources */,
 				5E0558141D37D7A5009C5FDF /* LikeItemView.swift in Sources */,
 				5E07CB671D05481200F38D0B /* MenuViewController.swift in Sources */,
+				229C17781D5261D100CBBC87 /* MapViewController.swift in Sources */,
 				5E05580B1D378F42009C5FDF /* FavoriteStore.swift in Sources */,
 				5EB2E8B21D3931FD005552E9 /* StoresCollectionView.swift in Sources */,
 				5E2A44F11D12C2C300BA866D /* IQKeyboardManager.swift in Sources */,
@@ -760,6 +775,7 @@
 				5E2A44EB1D12C2C300BA866D /* IQUITextFieldView+Additions.swift in Sources */,
 				5EDA25D21D414F11000B4C3C /* StoreDetailsMainViewController.swift in Sources */,
 				5E07CB791D06C1A500F38D0B /* ACTabScrollView.swift in Sources */,
+				229C177C1D52634700CBBC87 /* HelpViewController.swift in Sources */,
 				5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */,
 				5E2A44EF1D12C2C300BA866D /* IQKeyboardManagerConstants.swift in Sources */,
 				5E2A44F81D12C2C300BA866D /* IQUIView+IQKeyboardToolbar.swift in Sources */,
