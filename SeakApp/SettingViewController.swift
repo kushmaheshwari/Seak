@@ -17,13 +17,14 @@ class SettingViewController: UITableViewController
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-
+        self.view?.backgroundColor = UIColor.lightGrayColor()
+        
         let emptyView = UIView(frame: CGRectZero)
-        emptyView.backgroundColor = UIColor.lightGrayColor()
         self.tableView.tableFooterView = emptyView
         self.tableView.tableFooterView?.hidden = true
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

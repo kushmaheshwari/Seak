@@ -13,6 +13,21 @@ class RadiusViewController: UITableViewController
 {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view?.backgroundColor = UIColor.lightGrayColor()
         self.navigationItem.title = "Radius"
+        
+        let emptyView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = emptyView
+        self.tableView.tableFooterView?.hidden = true
     }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
+    }
+    
 }
