@@ -98,6 +98,8 @@ enum UserLoginType {
 enum UserDataCacheProperties: String {
 	case UserPicture = "userpicture"
 	case UserName = "username"
+    case UserRadius = "radius"
+    case UserLocation = "location"
 }
 
 enum ItemsCollectionViewDataSource {

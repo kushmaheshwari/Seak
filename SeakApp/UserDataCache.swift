@@ -14,6 +14,7 @@ class UserDataCache {
 	static func clearCache() {
 		saveUserPicture(nil)
 		saveUserName(nil)
+        saveUserRadius(nil)
 	}
 
 	static func saveUserPicture(data: NSData?) {
@@ -28,6 +29,18 @@ class UserDataCache {
 		return nil
 	}
 
+    static func saveUserRadius(radius: Int?) {
+        userDefaults.setValue(radius, forKey: UserDataCacheProperties.UserRadius.rawValue)
+    }
+    
+    static func getUserRadius() -> Int? {
+        if let userRadius = userDefaults.objectForKey(UserDataCacheProperties.UserRadius.rawValue) as? Int {
+            return userRadius
+        }
+        
+        return nil
+    }
+    
 	static func saveUserName(userName: String?) {
 		userDefaults.setValue(userName, forKeyPath: UserDataCacheProperties.UserName.rawValue)
 	}
