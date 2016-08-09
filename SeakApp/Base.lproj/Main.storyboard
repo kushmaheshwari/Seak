@@ -711,7 +711,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsZ-SP-CRE">
-                                <rect key="frame" x="28" y="500" width="544" height="30"/>
+                                <rect key="frame" x="28" y="562" width="544" height="30"/>
                                 <color key="backgroundColor" red="0.79607843137254897" green="0.94901960784313721" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Set Location">
                                     <color key="titleColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -748,12 +748,22 @@
                                     </mask>
                                 </variation>
                             </searchBar>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Wa-WC-aGr">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Wa-WC-aGr">
                                 <rect key="frame" x="28" y="118" width="544" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="kcz-nW-Aj6"/>
                                 </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellID" rowHeight="30" id="qJf-qt-c9w">
+                                        <rect key="frame" x="0.0" y="28" width="544" height="30"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qJf-qt-c9w" id="SQH-Le-BM1">
+                                            <rect key="frame" x="0.0" y="0.0" width="544" height="29"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -762,7 +772,7 @@
                             <constraint firstItem="J4y-TH-1Te" firstAttribute="top" secondItem="NXd-p1-51r" secondAttribute="bottom" constant="8" id="E3F-Uu-ERI"/>
                             <constraint firstItem="GLT-xI-lD7" firstAttribute="leading" secondItem="mWo-pl-Jk3" secondAttribute="leadingMargin" constant="-20" id="EDk-z5-Gzl"/>
                             <constraint firstItem="3Wa-WC-aGr" firstAttribute="top" secondItem="J4y-TH-1Te" secondAttribute="bottom" id="L8b-FJ-fK2"/>
-                            <constraint firstItem="Yaj-JZ-YOP" firstAttribute="top" secondItem="DsZ-SP-CRE" secondAttribute="bottom" constant="70" id="OT5-tW-oTS"/>
+                            <constraint firstItem="Yaj-JZ-YOP" firstAttribute="top" secondItem="DsZ-SP-CRE" secondAttribute="bottom" constant="8" id="OT5-tW-oTS"/>
                             <constraint firstItem="3Wa-WC-aGr" firstAttribute="leading" secondItem="mWo-pl-Jk3" secondAttribute="leadingMargin" constant="8" id="Pm7-sh-agT"/>
                             <constraint firstItem="v8c-ns-Tg8" firstAttribute="centerY" secondItem="mWo-pl-Jk3" secondAttribute="centerY" id="RG6-Nf-sra"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GLT-xI-lD7" secondAttribute="trailing" constant="-20" id="VX4-09-NPU"/>
