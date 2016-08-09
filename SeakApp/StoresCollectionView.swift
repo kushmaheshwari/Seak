@@ -12,14 +12,13 @@ import MapKit
 import Parse
 
 class StoresCollectionView: UICollectionViewController,
-UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
+UICollectionViewDelegateFlowLayout{
 
 	private let repository = StoreRepository()
 	private let favoritesRepository = FavoriteRepository()
 	private let collectionCellId = "StoreCellID"
-	private let locationManager = CLLocationManager()
 	private var currentLocation: CLLocation? = nil
-	private var distanceLabels: [UILabel] = []
+    private var locationRadius: Int? = nil
 
 	var storeArray: [StoreEntity] = []
 	var refreshControl: UIRefreshControl!
@@ -29,7 +28,6 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 		super.awakeFromNib()
 
 		self.collectionView?.alwaysBounceVertical = true
-//		self.collectionView?.allowsSelection = false
 
 		self.refreshControl = UIRefreshControl()
 		self.refreshControl.attributedTitle = NSAttributedString(string: "")
@@ -38,19 +36,15 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 
 		self.collectionView?.registerNib(UINib(nibName: "StoreViewItemCell", bundle: nil), forCellWithReuseIdentifier: self.collectionCellId)
 
-		self.locationManager.delegate = self
-		self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-		self.locationManager.requestWhenInUseAuthorization()
-		self.locationManager.startMonitoringSignificantLocationChanges()
-		self.locationManager.startUpdatingLocation()
-
 		self.addObservers()
+        
+        if let location = UserDataCache.getUserLocation() {
+            self.currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+        }
+        self.locationRadius = UserDataCache.getUserRadius()
 	}
 
 	deinit {
-		self.locationManager.stopUpdatingLocation()
-		self.locationManager.stopMonitoringSignificantLocationChanges()
-		self.distanceLabels.removeAll()
 		self.removeObserver()
 	}
 
@@ -90,8 +84,6 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
             if let objectID = notification.userInfo?["storeObjectID"] as? String {
                 if let index = self.storeArray.indexOf({ $0.objectID == objectID }) {
                     self.storeArray.removeAtIndex(index)
-                    self.distanceLabels.removeAtIndex(index)
-                    
                     let indexPath = NSIndexPath(forItem: index, inSection: 0)
                     self.collectionView?.deleteItemsAtIndexPaths([indexPath])
                 }
@@ -109,18 +101,6 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
         }
     }
 
-	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		self.currentLocation = locations.first
-		for (index, label) in self.distanceLabels.enumerate() {
-			let item = self.storeArray[index]
-			if let itemCoords = item.coordintaes {
-				let location = CLLocation(latitude: itemCoords.latitude, longitude: itemCoords.longitude)
-				if let distance = self.currentLocation?.distanceFromLocation(location) {
-					label.text = String(format: "%.1fmi away", distance / 0.000621371)
-				}
-			}
-		}
-	}
 
 	func refresh(sender: AnyObject)
 	{
@@ -128,15 +108,25 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 		self.refreshControl.endRefreshing()
 	}
 
+    func filter(stores:[StoreEntity])->[StoreEntity] {
+        return stores.filter({ (store) -> Bool in
+            if let storeCoordinates = store.coordintaes {
+                let location = CLLocation(latitude: storeCoordinates.latitude, longitude: storeCoordinates.longitude)
+                return (self.currentLocation!.distanceFromLocation(location) / 0.000621371) <= Double(self.locationRadius!)
+            }
+            return false
+        })
+    }
+    
 	func loadCollectionViewDataCell()
 	{
-		self.distanceLabels.removeAll()
-
 		switch self.dataSourceType {
 		case .All:
 			repository.getAll { (items) in
 				self.storeArray = items
-				self.distanceLabels = [UILabel](count: items.count, repeatedValue: UILabel())
+                if let _ = self.currentLocation, let _ = self.locationRadius {
+                    self.storeArray = self.filter(self.storeArray)
+                }
 				dispatch_async(dispatch_get_main_queue(), {
 					self.collectionView?.reloadData()
 				})
@@ -147,7 +137,9 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 			guard let currentUser = PFUser.currentUser() else { fatalError("no current PFUser") }
 			self.favoritesRepository.getAllStores(by: currentUser, completion: { (items) in
 				self.storeArray = items
-				self.distanceLabels = [UILabel](count: items.count, repeatedValue: UILabel())
+                if let _ = self.currentLocation, let _ = self.locationRadius {
+                    self.storeArray = self.filter(self.storeArray)
+                }
 				dispatch_async(dispatch_get_main_queue(), {
 					self.collectionView?.reloadData()
 				})
@@ -175,7 +167,16 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 				cell.descriptionLabel.text = description
 			}
 
-			self.distanceLabels[indexPath.row] = cell.distanceLabel
+            cell.distanceLabel.hidden = true
+            if let itemCoords = item.coordintaes {
+                let location = CLLocation(latitude: itemCoords.latitude, longitude: itemCoords.longitude)
+                if let distance = self.currentLocation?.distanceFromLocation(location) {
+                    cell.distanceLabel.text = String(format: "%.1fmi away", distance / 0.000621371)
+                    cell.distanceLabel.hidden = false
+                }
+            }
+
+            
 			cell.userInteractionEnabled = true
 
 			// Add add/remove icon
