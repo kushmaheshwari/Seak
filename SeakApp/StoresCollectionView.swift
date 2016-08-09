@@ -112,7 +112,7 @@ UICollectionViewDelegateFlowLayout{
         return stores.filter({ (store) -> Bool in
             if let storeCoordinates = store.coordintaes {
                 let location = CLLocation(latitude: storeCoordinates.latitude, longitude: storeCoordinates.longitude)
-                return (self.currentLocation!.distanceFromLocation(location) / 0.000621371) <= Double(self.locationRadius!)
+                return (self.currentLocation!.distanceFromLocation(location) * 0.000621371) <= Double(self.locationRadius!)
             }
             return false
         })
@@ -137,9 +137,6 @@ UICollectionViewDelegateFlowLayout{
 			guard let currentUser = PFUser.currentUser() else { fatalError("no current PFUser") }
 			self.favoritesRepository.getAllStores(by: currentUser, completion: { (items) in
 				self.storeArray = items
-                if let _ = self.currentLocation, let _ = self.locationRadius {
-                    self.storeArray = self.filter(self.storeArray)
-                }
 				dispatch_async(dispatch_get_main_queue(), {
 					self.collectionView?.reloadData()
 				})
@@ -171,7 +168,7 @@ UICollectionViewDelegateFlowLayout{
             if let itemCoords = item.coordintaes {
                 let location = CLLocation(latitude: itemCoords.latitude, longitude: itemCoords.longitude)
                 if let distance = self.currentLocation?.distanceFromLocation(location) {
-                    cell.distanceLabel.text = String(format: "%.1fmi away", distance / 0.000621371)
+                    cell.distanceLabel.text = String(format: "%.1fmi away", distance * 0.000621371)
                     cell.distanceLabel.hidden = false
                 }
             }
