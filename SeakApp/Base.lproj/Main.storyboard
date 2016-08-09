@@ -710,15 +710,78 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GLT-xI-lD7">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsZ-SP-CRE">
+                                <rect key="frame" x="28" y="500" width="544" height="30"/>
+                                <color key="backgroundColor" red="0.79607843137254897" green="0.94901960784313721" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Set Location">
+                                    <color key="titleColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRaius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveLocation:" destination="E88-Ia-wNr" eventType="touchUpInside" id="XVF-8o-uy5"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapPoint" translatesAutoresizingMaskIntoConstraints="NO" id="v8c-ns-Tg8">
+                                <rect key="frame" x="289" y="289" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="47d-i2-F3t"/>
+                                    <constraint firstAttribute="height" constant="22" id="ROc-O0-CXb"/>
+                                </constraints>
+                            </imageView>
+                            <searchBar contentMode="redraw" placeholder="5478 Hickory Ln. Champaign, IL" translatesAutoresizingMaskIntoConstraints="NO" id="J4y-TH-1Te">
+                                <rect key="frame" x="28" y="72" width="544" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="232" id="FwB-zl-IFi"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="SZI-vv-npe"/>
+                                    <constraint firstAttribute="height" constant="46" id="VPJ-4z-r7C"/>
+                                </constraints>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="light"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="FwB-zl-IFi"/>
+                                    </mask>
+                                </variation>
+                            </searchBar>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Wa-WC-aGr">
+                                <rect key="frame" x="28" y="118" width="544" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="kcz-nW-Aj6"/>
+                                </constraints>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="J4y-TH-1Te" secondAttribute="trailing" constant="8" id="8pW-21-vwy"/>
+                            <constraint firstItem="J4y-TH-1Te" firstAttribute="top" secondItem="NXd-p1-51r" secondAttribute="bottom" constant="8" id="E3F-Uu-ERI"/>
                             <constraint firstItem="GLT-xI-lD7" firstAttribute="leading" secondItem="mWo-pl-Jk3" secondAttribute="leadingMargin" constant="-20" id="EDk-z5-Gzl"/>
+                            <constraint firstItem="3Wa-WC-aGr" firstAttribute="top" secondItem="J4y-TH-1Te" secondAttribute="bottom" id="L8b-FJ-fK2"/>
+                            <constraint firstItem="Yaj-JZ-YOP" firstAttribute="top" secondItem="DsZ-SP-CRE" secondAttribute="bottom" constant="70" id="OT5-tW-oTS"/>
+                            <constraint firstItem="3Wa-WC-aGr" firstAttribute="leading" secondItem="mWo-pl-Jk3" secondAttribute="leadingMargin" constant="8" id="Pm7-sh-agT"/>
+                            <constraint firstItem="v8c-ns-Tg8" firstAttribute="centerY" secondItem="mWo-pl-Jk3" secondAttribute="centerY" id="RG6-Nf-sra"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GLT-xI-lD7" secondAttribute="trailing" constant="-20" id="VX4-09-NPU"/>
                             <constraint firstItem="GLT-xI-lD7" firstAttribute="top" secondItem="NXd-p1-51r" secondAttribute="bottom" id="clL-d7-xJP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3Wa-WC-aGr" secondAttribute="trailing" constant="8" id="heU-ka-K6B"/>
+                            <constraint firstItem="DsZ-SP-CRE" firstAttribute="leading" secondItem="mWo-pl-Jk3" secondAttribute="leadingMargin" constant="8" id="krB-pF-dS2"/>
+                            <constraint firstItem="v8c-ns-Tg8" firstAttribute="centerX" secondItem="mWo-pl-Jk3" secondAttribute="centerX" id="pIU-ua-REu"/>
                             <constraint firstItem="Yaj-JZ-YOP" firstAttribute="top" secondItem="GLT-xI-lD7" secondAttribute="bottom" id="rVa-4b-ElV"/>
+                            <constraint firstItem="J4y-TH-1Te" firstAttribute="centerX" secondItem="mWo-pl-Jk3" secondAttribute="centerX" id="s9K-d2-WH0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DsZ-SP-CRE" secondAttribute="trailing" constant="8" id="stb-cA-m8L"/>
+                            <constraint firstItem="J4y-TH-1Te" firstAttribute="leading" secondItem="mWo-pl-Jk3" secondAttribute="leadingMargin" constant="8" id="wLa-pB-F2D"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="locationButton" destination="DsZ-SP-CRE" id="5qW-Ux-Fp5"/>
+                        <outlet property="mapView" destination="GLT-xI-lD7" id="qCm-mw-f6e"/>
+                        <outlet property="searchBar" destination="J4y-TH-1Te" id="lJe-mq-CN9"/>
+                        <outlet property="searchResultTableView" destination="3Wa-WC-aGr" id="s89-a7-2mR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mBb-Xx-191" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2256,6 +2319,7 @@
         <image name="exploreButton" width="68" height="68"/>
         <image name="grayCloseIcon" width="12" height="10"/>
         <image name="loginLogo" width="353" height="157"/>
+        <image name="mapPoint" width="22" height="22"/>
         <image name="menuIcon" width="22" height="25"/>
         <image name="registerLogo" width="353" height="157"/>
         <image name="searchIcon" width="27" height="25"/>

@@ -12,11 +12,12 @@ import FBSDKCoreKit
 import ParseFacebookUtilsV4
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
 	var window: UIWindow?
-
-	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    private let locationManager = CLLocationManager()
+	
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
 		UINavigationBar.appearance().shadowImage = UIImage()
 		UINavigationBar.appearance().backgroundColor = UIColor.clearColor()
@@ -33,9 +34,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		return FBSDKApplicationDelegate.sharedInstance()
 			.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.startUpdatingLocation()
 
 	}
 
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if UserDataCache.getUserLocation() == nil
+        {
+            let coordinates = CLLocationCoordinate2D(latitude: manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude)
+        
+            UserDataCache.saveUserLocationLatt(coordinates.latitude)
+            UserDataCache.saveUserLocationLong(coordinates.longitude)
+        }
+    }
+
+    
 	func application(application: UIApplication,
 		openURL url: NSURL,
 		sourceApplication: String?,

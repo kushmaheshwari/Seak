@@ -99,7 +99,8 @@ enum UserDataCacheProperties: String {
 	case UserPicture = "userpicture"
 	case UserName = "username"
     case UserRadius = "radius"
-    case UserLocation = "location"
+    case UserLocationLong = "locationLong"
+    case UserLocationLatt = "locationLat"
 }
 
 enum ItemsCollectionViewDataSource {
