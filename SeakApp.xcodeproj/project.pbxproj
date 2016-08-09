@@ -664,6 +664,11 @@
 					C9B9EFCA1CFBDDEA002EA9BA = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 978L98WATL;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
