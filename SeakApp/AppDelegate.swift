@@ -32,25 +32,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 		IQKeyboardManager.sharedManager().enable = true
 		IQKeyboardManager.sharedManager().enableAutoToolbar = true
 
+        if UserDataCache.getUserLocation() == nil {
+            self.locationManager.delegate = self
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.requestWhenInUseAuthorization()
+            self.locationManager.requestAlwaysAuthorization()
+            self.locationManager.startUpdatingLocation()
+        }
+        
+        if UserDataCache.getUserRadius() == nil {
+           UserDataCache.saveUserRadius(25)
+        }
+        
 		return FBSDKApplicationDelegate.sharedInstance()
 			.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.startUpdatingLocation()
 
 	}
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if UserDataCache.getUserLocation() == nil
-        {
-            let coordinates = CLLocationCoordinate2D(latitude: manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude)
+        let coordinates = CLLocationCoordinate2D(latitude: manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude)
         
-            UserDataCache.saveUserLocationLatt(coordinates.latitude)
-            UserDataCache.saveUserLocationLong(coordinates.longitude)
-        }
+        UserDataCache.saveUserLocationLatt(coordinates.latitude)
+        UserDataCache.saveUserLocationLong(coordinates.longitude)
+        self.locationManager.stopUpdatingLocation()
     }
 
     
