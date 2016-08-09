@@ -56,6 +56,13 @@ class MapViewController: UIViewController,
         }
     }
     
+    @IBAction func setToUserLocation(sender: AnyObject) {
+        self.mapView.centerCoordinate = UserDataCache.getUserLocation()!
+        self.mapView.region = MKCoordinateRegionMakeWithDistance(UserDataCache.getUserLocation()!, 700, 700)
+        searchBar.resignFirstResponder()
+        searchResultTableView.hidden = true
+    }
+    
     func textFieldShouldClear(textField: UITextField) -> Bool {
         self.performSelector(#selector(self.searchBarCancelButtonClicked), withObject: self.searchBar, afterDelay: 0.1)
         return true
@@ -108,13 +115,6 @@ class MapViewController: UIViewController,
         if searchText.characters.count == 0 {
             searchBar.performSelector(#selector(self.resignFirstResponder), withObject: nil, afterDelay: 0.1)
             searchResultTableView.hidden = true
-        }
-
-        
-        if self.mapView.annotations.count != 0
-        {
-            let annotation = self.mapView.annotations[0]
-            self.mapView.removeAnnotation(annotation)
         }
         
         let localSearchRequest = MKLocalSearchRequest()

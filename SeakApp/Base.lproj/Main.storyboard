@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e0r-zk-c29">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e0r-zk-c29">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -748,6 +748,21 @@
                                     </mask>
                                 </variation>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXI-VD-fTX">
+                                <rect key="frame" x="526" y="133" width="46" height="46"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="ZQw-Hy-f1m"/>
+                                    <constraint firstAttribute="width" constant="46" id="fI6-HZ-J6r"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="navigationArror">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="setToUserLocation:" destination="E88-Ia-wNr" eventType="touchUpInside" id="IKr-X3-3ny"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Wa-WC-aGr">
                                 <rect key="frame" x="28" y="118" width="544" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -783,6 +798,8 @@
                             <constraint firstItem="Yaj-JZ-YOP" firstAttribute="top" secondItem="GLT-xI-lD7" secondAttribute="bottom" id="rVa-4b-ElV"/>
                             <constraint firstItem="J4y-TH-1Te" firstAttribute="centerX" secondItem="mWo-pl-Jk3" secondAttribute="centerX" id="s9K-d2-WH0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DsZ-SP-CRE" secondAttribute="trailing" constant="8" id="stb-cA-m8L"/>
+                            <constraint firstItem="MXI-VD-fTX" firstAttribute="top" secondItem="J4y-TH-1Te" secondAttribute="bottom" constant="15" id="sv6-56-vv0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MXI-VD-fTX" secondAttribute="trailing" constant="8" id="ux0-q8-6UV"/>
                             <constraint firstItem="J4y-TH-1Te" firstAttribute="leading" secondItem="mWo-pl-Jk3" secondAttribute="leadingMargin" constant="8" id="wLa-pB-F2D"/>
                         </constraints>
                     </view>
@@ -2346,6 +2363,7 @@
         <image name="loginLogo" width="353" height="157"/>
         <image name="mapPoint" width="22" height="22"/>
         <image name="menuIcon" width="22" height="25"/>
+        <image name="navigationArror" width="15" height="16"/>
         <image name="registerLogo" width="353" height="157"/>
         <image name="searchIcon" width="27" height="25"/>
         <image name="shareButton" width="68" height="68"/>
