@@ -67,26 +67,47 @@ UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 	}
 
 	func addStoreNotification(notification: NSNotification) {
-		if (self.dataSourceType != .Favorites) {
-			return
-		}
+        
+        switch self.dataSourceType{
+        case .Favorites:
+            return
+        case .All:
+            if let objectID = notification.userInfo?["storeObjectID"] as? String {
+                if let index = self.storeArray.indexOf({ $0.objectID == objectID }) {
+                    let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                    self.collectionView?.reloadItemsAtIndexPaths([indexPath])
+                }
+            }
+            break
+        case .None: return
+        }
+        
 	}
 
 	func removeStoreNotification(notification: NSNotification) {
-		if (self.dataSourceType != .Favorites) {
-			return
-		}
-
-		if let objectID = notification.userInfo?["storeObjectID"] as? String {
-			if let index = self.storeArray.indexOf({ $0.objectID == objectID }) {
-				self.storeArray.removeAtIndex(index)
-				self.distanceLabels.removeAtIndex(index)
-
-				let indexPath = NSIndexPath(forItem: index, inSection: 0)
-				self.collectionView?.deleteItemsAtIndexPaths([indexPath])
-			}
-		}
-	}
+        switch self.dataSourceType{
+        case .Favorites:
+            if let objectID = notification.userInfo?["storeObjectID"] as? String {
+                if let index = self.storeArray.indexOf({ $0.objectID == objectID }) {
+                    self.storeArray.removeAtIndex(index)
+                    self.distanceLabels.removeAtIndex(index)
+                    
+                    let indexPath = NSIndexPath(forItem: index, inSection: 0)
+                    self.collectionView?.deleteItemsAtIndexPaths([indexPath])
+                }
+            }
+            break
+        case .All:
+            if let objectID = notification.userInfo?["storeObjectID"] as? String {
+                if let index = self.storeArray.indexOf({ $0.objectID == objectID }) {
+                    let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                    self.collectionView?.reloadItemsAtIndexPaths([indexPath])
+                }
+            }
+            break
+        case .None: return
+        }
+    }
 
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		self.currentLocation = locations.first

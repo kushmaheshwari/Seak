@@ -13,6 +13,7 @@ class StoreDetailsMainViewController: UIViewController,
 ACTabScrollViewDelegate, ACTabScrollViewDataSource
 {
 
+    @IBOutlet weak var followButtonPlaceHolder: UIView!
 	@IBOutlet weak var scrollableTabs: ScrollableMenu!
 	weak var navigationVC: UINavigationController!
 	weak var storeEntity: StoreEntity? = nil
@@ -26,6 +27,14 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 		// Tabs
 		self.scrollableTabs.delegate = self
 		self.scrollableTabs.dataSource = self
+        
+        self.followButtonPlaceHolder.backgroundColor = UIColor.clearColor()
+        if let followButon = NSBundle.mainBundle().loadNibNamed("BigFollowStoreButtonView", owner: nil, options: nil)[0] as? BigFollowStoreButtonView {
+            self.followButtonPlaceHolder.addSubview(followButon)
+            self.followButtonPlaceHolder.bringSubviewToFront(followButon)
+            followButon.store = self.storeEntity
+            followButon.load()
+        }
 	}
 
 	func initTabs() {
@@ -47,6 +56,9 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 				views.append(vc)
 			}
 		}
+        
+        self.view.bringSubviewToFront(self.followButtonPlaceHolder)
+        self.scrollableTabs.bringSubviewToFront(self.followButtonPlaceHolder)
 	}
 
 	deinit {
@@ -55,6 +67,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 		for view in self.views {
 			view.removeFromParentViewController()
 		}
+        
 	}
 
 	func setTitle() {

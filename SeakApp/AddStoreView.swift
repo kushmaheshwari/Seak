@@ -18,8 +18,8 @@ class AddStoreView: UIView {
 	private var tapped: Bool = false
 
 	var store: StoreEntity? = nil
-	static let addStoreNotification = String(self) + "_add"
-	static let removeStoreNotification = String(self) + "_remove"
+	static let addStoreNotification = String(AddStoreView) + "_add"
+	static let removeStoreNotification = String(AddStoreView) + "_remove"
 
 	override func awakeFromNib() {
 		super.awakeFromNib()

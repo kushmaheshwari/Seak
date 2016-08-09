@@ -56,6 +56,8 @@
 		5E507A481D02DB7400BCD0B6 /* ScrollableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */; };
 		5E62FB551D2ACF30007C0C0A /* ReviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E62FB541D2ACF30007C0C0A /* ReviewEntity.swift */; };
 		5E62FB5A1D2ACFCB007C0C0A /* ReviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E62FB591D2ACFCB007C0C0A /* ReviewRepository.swift */; };
+		5E75D80F1D59E6BA00BBA05D /* BigFollowStoreButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E75D80E1D59E6BA00BBA05D /* BigFollowStoreButtonView.xib */; };
+		5E75D8111D59E79000BBA05D /* BigFollowStoreButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E75D8101D59E79000BBA05D /* BigFollowStoreButtonView.swift */; };
 		5E87402B1D1AE923003A9354 /* UserDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87402A1D1AE923003A9354 /* UserDataCache.swift */; };
 		5E9346291D00282100CF4DC6 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9346281D00282100CF4DC6 /* ItemEntity.swift */; };
 		5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */; };
@@ -171,6 +173,8 @@
 		5E507A471D02DB7400BCD0B6 /* ScrollableMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableMenu.swift; sourceTree = "<group>"; };
 		5E62FB541D2ACF30007C0C0A /* ReviewEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewEntity.swift; sourceTree = "<group>"; };
 		5E62FB591D2ACFCB007C0C0A /* ReviewRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewRepository.swift; sourceTree = "<group>"; };
+		5E75D80E1D59E6BA00BBA05D /* BigFollowStoreButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BigFollowStoreButtonView.xib; sourceTree = "<group>"; };
+		5E75D8101D59E79000BBA05D /* BigFollowStoreButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigFollowStoreButtonView.swift; sourceTree = "<group>"; };
 		5E87402A1D1AE923003A9354 /* UserDataCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataCache.swift; sourceTree = "<group>"; };
 		5E9346281D00282100CF4DC6 /* ItemEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
 		5E93462A1D0029BF00CF4DC6 /* ItemRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
@@ -306,6 +310,8 @@
 				5E0558131D37D7A5009C5FDF /* LikeItemView.swift */,
 				5EB2E8AD1D38FAB1005552E9 /* AddStoreView.xib */,
 				5EB2E8AF1D38FB32005552E9 /* AddStoreView.swift */,
+				5E75D80E1D59E6BA00BBA05D /* BigFollowStoreButtonView.xib */,
+				5E75D8101D59E79000BBA05D /* BigFollowStoreButtonView.swift */,
 			);
 			name = LikeButtons;
 			sourceTree = "<group>";
@@ -701,6 +707,7 @@
 				C9B9F0391CFBEFA7002EA9BA /* product.png in Resources */,
 				5EA0F3EF1D1C4CA9006175BB /* ItemGroupView.xib in Resources */,
 				C9B9F0341CFBEFA7002EA9BA /* heart2.png in Resources */,
+				5E75D80F1D59E6BA00BBA05D /* BigFollowStoreButtonView.xib in Resources */,
 				C9B9F0331CFBEFA7002EA9BA /* favorite.png in Resources */,
 				C9B9F03A1CFBEFA7002EA9BA /* search@2x.png in Resources */,
 				C9B9EFD61CFBDDEA002EA9BA /* Assets.xcassets in Resources */,
@@ -767,6 +774,7 @@
 				5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */,
 				5E2A44F41D12C2C300BA866D /* IQBarButtonItem.swift in Sources */,
 				5E62FB551D2ACF30007C0C0A /* ReviewEntity.swift in Sources */,
+				5E75D8111D59E79000BBA05D /* BigFollowStoreButtonView.swift in Sources */,
 				5E2F99C31D2651E3000D8B49 /* ItemDetailsViewConroller.swift in Sources */,
 				5EA0F3F11D1C4EB2006175BB /* ItemGroupView.swift in Sources */,
 				5E87402B1D1AE923003A9354 /* UserDataCache.swift in Sources */,
