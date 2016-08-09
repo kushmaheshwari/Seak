@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e0r-zk-c29">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e0r-zk-c29">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -1805,7 +1805,21 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EuZ-TZ-gzb" customClass="ScrollableMenu" customModule="SeakApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKY-ho-TwD">
+                                        <rect key="frame" x="270" y="451" width="60" height="60"/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.67450980390000004" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="VIT-SZ-FSI"/>
+                                            <constraint firstAttribute="height" constant="60" id="dyQ-s9-70s"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="UKY-ho-TwD" secondAttribute="bottom" constant="25" id="3ZU-Dy-c2e"/>
+                                    <constraint firstItem="UKY-ho-TwD" firstAttribute="centerX" secondItem="EuZ-TZ-gzb" secondAttribute="centerX" id="poN-Qe-kKh"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1817,6 +1831,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="followButtonPlaceHolder" destination="UKY-ho-TwD" id="gDK-M2-VLv"/>
                         <outlet property="scrollableTabs" destination="EuZ-TZ-gzb" id="XhL-vL-z2A"/>
                     </connections>
                 </viewController>
