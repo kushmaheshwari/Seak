@@ -40,10 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             self.locationManager.startUpdatingLocation()
         }
         
-        if UserDataCache.getUserRadius() == nil {
-           UserDataCache.saveUserRadius(25)
-        }
-        
 		return FBSDKApplicationDelegate.sharedInstance()
 			.application(application, didFinishLaunchingWithOptions: launchOptions)
 
