@@ -62,6 +62,15 @@ class MapViewController: UIViewController,
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.startUpdatingLocation()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(MapViewController.mapTap(_:)))
+        self.mapView.addGestureRecognizer(tap)
+        
+    }
+    
+    func mapTap(sender: AnyObject?) {
+        self.searchBar.resignFirstResponder()
+        self.searchResultTableView.hidden = true
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -135,7 +144,6 @@ class MapViewController: UIViewController,
     }
     
     @IBAction func saveLocation(sender: AnyObject) {
-        self.currentLocation = mapView.centerCoordinate
         UserDataCache.saveUserLocationLatt(currentLocation?.latitude)
         UserDataCache.saveUserLocationLong(currentLocation?.longitude)
         
