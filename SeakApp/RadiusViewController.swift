@@ -51,6 +51,11 @@ class RadiusViewController: UITableViewController
                 return
             }
         }
+        else {
+            //All stores
+            let cellPath: NSIndexPath = NSIndexPath(forRow: 0, inSection: 3)
+            self.tableView.selectRowAtIndexPath(cellPath, animated: false, scrollPosition: .None)
+        }
 
     }
     
@@ -59,7 +64,7 @@ class RadiusViewController: UITableViewController
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -69,6 +74,7 @@ class RadiusViewController: UITableViewController
             case 0: UserDataCache.saveUserRadius(10)
             case 1: UserDataCache.saveUserRadius(25)
             case 2: UserDataCache.saveUserRadius(50)
+            case 3: UserDataCache.saveUserRadius(nil)
             default: return
         }
     }

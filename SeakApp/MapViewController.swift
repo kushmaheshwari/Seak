@@ -19,22 +19,22 @@ class MapViewController: UIViewController,
                          UITableViewDataSource,
                          UITextFieldDelegate
 {
-    var resultSearchController: UISearchController? = nil
+    private var resultSearchController: UISearchController? = nil
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResultTableView: UITableView!
-    var searchResultCount: Int = 1
+    private var searchResultCount: Int = 1
     
     @IBOutlet weak var mapView: MKMapView!
     private let locationManager = CLLocationManager()
     private var currentLocation: CLLocationCoordinate2D? = nil
     @IBOutlet weak var locationButton: UIButton!
-    var mapSearchItems: [MKMapItem]? = []
+    private var mapSearchItems: [MKMapItem]? = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Set Location"
         
-        locationButton.layer.cornerRadius = 15
+        self.locationButton.layer.cornerRadius = 15
         
         self.mapView.delegate = self
         if let coordinates = UserDataCache.getUserLocation() {
@@ -42,11 +42,13 @@ class MapViewController: UIViewController,
             self.mapView.region = MKCoordinateRegionMakeWithDistance(coordinates, 700, 700)
         }
         
-        searchResultTableView.delegate = self
-        searchResultTableView.dataSource = self
-        searchResultTableView.hidden = true
-        searchResultTableView.reloadData()
-        searchBar.delegate = self
+        self.searchResultTableView.delegate = self
+        self.searchResultTableView.dataSource = self
+        self.searchResultTableView.hidden = true
+        self.searchResultTableView.reloadData()
+        self.searchBar.delegate = self
+        self.searchBar.searchBarStyle = .Prominent
+        self.searchBar.backgroundImage = UIImage()
         
         for view: UIView in searchBar.subviews {
             if (view is UITextField) {
@@ -54,13 +56,41 @@ class MapViewController: UIViewController,
                 tf.delegate = self
             }
         }
+        
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = manager.location {
+            self.currentLocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            self.locationManager.stopUpdatingLocation()
+        }
     }
     
     @IBAction func setToUserLocation(sender: AnyObject) {
-        self.mapView.centerCoordinate = UserDataCache.getUserLocation()!
-        self.mapView.region = MKCoordinateRegionMakeWithDistance(UserDataCache.getUserLocation()!, 700, 700)
-        searchBar.resignFirstResponder()
-        searchResultTableView.hidden = true
+        if self.currentLocation == nil {
+        
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+                
+                while (self.currentLocation == nil) { }
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.mapView.centerCoordinate = self.currentLocation!
+                    self.mapView.region = MKCoordinateRegionMakeWithDistance(self.currentLocation!, 700, 700)
+                })
+            })
+        }
+        else {
+            self.mapView.centerCoordinate = self.currentLocation!
+            self.mapView.region = MKCoordinateRegionMakeWithDistance(self.currentLocation!, 700, 700)
+        }
+        
+        self.searchBar.resignFirstResponder()
+        self.searchResultTableView.hidden = true
+        
     }
     
     func textFieldShouldClear(textField: UITextField) -> Bool {
@@ -101,13 +131,18 @@ class MapViewController: UIViewController,
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 30
+        return 45
     }
     
     @IBAction func saveLocation(sender: AnyObject) {
         self.currentLocation = mapView.centerCoordinate
         UserDataCache.saveUserLocationLatt(currentLocation?.latitude)
         UserDataCache.saveUserLocationLong(currentLocation?.longitude)
+        
+        let alert = UIAlertController(title: "", message: "Location is saved", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+
     }
     
     

@@ -46,11 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 	}
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let coordinates = CLLocationCoordinate2D(latitude: manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude)
-        
-        UserDataCache.saveUserLocationLatt(coordinates.latitude)
-        UserDataCache.saveUserLocationLong(coordinates.longitude)
-        self.locationManager.stopUpdatingLocation()
+        if let location = manager.location {
+            let coordinates = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            
+            UserDataCache.saveUserLocationLatt(coordinates.latitude)
+            UserDataCache.saveUserLocationLong(coordinates.longitude)
+            self.locationManager.stopUpdatingLocation()
+        }        
     }
 
     
