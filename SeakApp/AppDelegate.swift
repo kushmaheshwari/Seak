@@ -12,6 +12,7 @@ import FBSDKCoreKit
 import ParseFacebookUtilsV4
 import Firebase
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
@@ -31,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 		FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
 
         FIRApp.configure()
+        FIRDatabase.database().persistenceEnabled = true
         
 		IQKeyboardManager.sharedManager().enable = true
 		IQKeyboardManager.sharedManager().enableAutoToolbar = true

@@ -7,4 +7,6 @@ target 'SeakApp' do
 
   # Pods for SeakApp
   pod 'Firebase'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 end
