@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import FBSDKCoreKit
 import ParseFacebookUtilsV4
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -29,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 		FBSDKButton.classForCoder()
 		FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
 
+        FIRApp.configure()
+        
 		IQKeyboardManager.sharedManager().enable = true
 		IQKeyboardManager.sharedManager().enableAutoToolbar = true
 

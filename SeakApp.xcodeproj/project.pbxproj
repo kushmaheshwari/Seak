@@ -73,6 +73,7 @@
 		5EC0768D1D193B2100E84EE5 /* HomeItemsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EC0768C1D193B2100E84EE5 /* HomeItemsView.storyboard */; };
 		5EC0768F1D193CF900E84EE5 /* HomeItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0768E1D193CF900E84EE5 /* HomeItemsViewController.swift */; };
 		5EDA25D21D414F11000B4C3C /* StoreDetailsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA25D11D414F10000B4C3C /* StoreDetailsMainViewController.swift */; };
+		5EEA2FA11D65E6A00028734A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5EEA2FA01D65E6A00028734A /* GoogleService-Info.plist */; };
 		5EEB13EF1D2D1BA0008B3B03 /* DetailsNavigationTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EEB13EE1D2D1BA0008B3B03 /* DetailsNavigationTitle.xib */; };
 		5EEB13F31D2D1C7B008B3B03 /* DetailsNavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB13F21D2D1C7B008B3B03 /* DetailsNavigationTitleView.swift */; };
 		5EEB13F61D2D1E44008B3B03 /* StoresNavigationTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EEB13F51D2D1E44008B3B03 /* StoresNavigationTitle.xib */; };
@@ -82,7 +83,6 @@
 		C9B9EFD61CFBDDEA002EA9BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B9EFD51CFBDDEA002EA9BA /* Assets.xcassets */; };
 		C9B9EFD91CFBDDEA002EA9BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9EFD71CFBDDEA002EA9BA /* LaunchScreen.storyboard */; };
 		C9B9F0011CFBE406002EA9BA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFE51CFBE406002EA9BA /* MapKit.framework */; };
-		C9B9F0021CFBE406002EA9BA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFE61CFBE406002EA9BA /* Bolts.framework */; };
 		C9B9F0031CFBE406002EA9BA /* FacebookSDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9B9EFE71CFBE406002EA9BA /* FacebookSDKStrings.bundle */; };
 		C9B9F0041CFBE406002EA9BA /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFE81CFBE406002EA9BA /* FBAudienceNetwork.framework */; };
 		C9B9F0051CFBE406002EA9BA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFE91CFBE406002EA9BA /* FBSDKCoreKit.framework */; };
@@ -102,9 +102,7 @@
 		C9B9F0131CFBE406002EA9BA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFF71CFBE406002EA9BA /* AudioToolbox.framework */; };
 		C9B9F0141CFBE406002EA9BA /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFF81CFBE406002EA9BA /* Accounts.framework */; };
 		C9B9F0151CFBE406002EA9BA /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFF91CFBE406002EA9BA /* Accelerate.framework */; };
-		C9B9F0161CFBE406002EA9BA /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFFA1CFBE406002EA9BA /* ParseFacebookUtils.framework */; };
 		C9B9F0171CFBE406002EA9BA /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFFB1CFBE406002EA9BA /* ParseFacebookUtilsV4.framework */; };
-		C9B9F0181CFBE406002EA9BA /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFFC1CFBE406002EA9BA /* ParseTwitterUtils.framework */; };
 		C9B9F0191CFBE406002EA9BA /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFFD1CFBE406002EA9BA /* ParseUI.framework */; };
 		C9B9F01A1CFBE406002EA9BA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFFE1CFBE406002EA9BA /* Bolts.framework */; };
 		C9B9F01B1CFBE406002EA9BA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFFF1CFBE406002EA9BA /* Parse.framework */; };
@@ -121,6 +119,7 @@
 		C9B9F0381CFBEFA7002EA9BA /* Image.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F02E1CFBEFA7002EA9BA /* Image.png */; };
 		C9B9F0391CFBEFA7002EA9BA /* product.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F02F1CFBEFA7002EA9BA /* product.png */; };
 		C9B9F03A1CFBEFA7002EA9BA /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0301CFBEFA7002EA9BA /* search@2x.png */; };
+		F10EE5A2051E33E24D83A097 /* Pods_SeakApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA86731552144BC41BCA0369 /* Pods_SeakApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -190,9 +189,11 @@
 		5EC0768C1D193B2100E84EE5 /* HomeItemsView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeItemsView.storyboard; sourceTree = "<group>"; };
 		5EC0768E1D193CF900E84EE5 /* HomeItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeItemsViewController.swift; sourceTree = "<group>"; };
 		5EDA25D11D414F10000B4C3C /* StoreDetailsMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailsMainViewController.swift; sourceTree = "<group>"; };
+		5EEA2FA01D65E6A00028734A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5EEB13EE1D2D1BA0008B3B03 /* DetailsNavigationTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsNavigationTitle.xib; sourceTree = "<group>"; };
 		5EEB13F21D2D1C7B008B3B03 /* DetailsNavigationTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsNavigationTitleView.swift; sourceTree = "<group>"; };
 		5EEB13F51D2D1E44008B3B03 /* StoresNavigationTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoresNavigationTitle.xib; sourceTree = "<group>"; };
+		74313ACB4A5744D6005C38F4 /* Pods-SeakApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeakApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeakApp/Pods-SeakApp.release.xcconfig"; sourceTree = "<group>"; };
 		C9B39B101D0E644E00F64D24 /* ItemAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemAdd.swift; sourceTree = "<group>"; };
 		C9B9EFCB1CFBDDEA002EA9BA /* SeakApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeakApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B9EFCE1CFBDDEA002EA9BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -202,7 +203,6 @@
 		C9B9EFDA1CFBDDEA002EA9BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9B9EFE21CFBE405002EA9BA /* SeakApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SeakApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		C9B9EFE51CFBE406002EA9BA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapKit.framework; sourceTree = "<group>"; };
-		C9B9EFE61CFBE406002EA9BA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		C9B9EFE71CFBE406002EA9BA /* FacebookSDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKStrings.bundle; sourceTree = "<group>"; };
 		C9B9EFE81CFBE406002EA9BA /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		C9B9EFE91CFBE406002EA9BA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -222,9 +222,7 @@
 		C9B9EFF71CFBE406002EA9BA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioToolbox.framework; sourceTree = "<group>"; };
 		C9B9EFF81CFBE406002EA9BA /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Accounts.framework; sourceTree = "<group>"; };
 		C9B9EFF91CFBE406002EA9BA /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Accelerate.framework; sourceTree = "<group>"; };
-		C9B9EFFA1CFBE406002EA9BA /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		C9B9EFFB1CFBE406002EA9BA /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
-		C9B9EFFC1CFBE406002EA9BA /* ParseTwitterUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseTwitterUtils.framework; sourceTree = "<group>"; };
 		C9B9EFFD1CFBE406002EA9BA /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		C9B9EFFE1CFBE406002EA9BA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		C9B9EFFF1CFBE406002EA9BA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -254,6 +252,8 @@
 		C9B9F0461CFBEFE7002EA9BA /* RobotoCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-BoldItalic.ttf"; sourceTree = "<group>"; };
 		C9B9F0471CFBEFE7002EA9BA /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; };
 		C9B9F0481CFBEFE7002EA9BA /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
+		CA86731552144BC41BCA0369 /* Pods_SeakApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeakApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F994DB1B792B740A9AA89B55 /* Pods-SeakApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeakApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeakApp/Pods-SeakApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,7 +268,6 @@
 				C9B9F0121CFBE406002EA9BA /* CFNetwork.framework in Frameworks */,
 				C9B9F0091CFBE406002EA9BA /* libsqlite3.tbd in Frameworks */,
 				C9B9F01B1CFBE406002EA9BA /* Parse.framework in Frameworks */,
-				C9B9F0181CFBE406002EA9BA /* ParseTwitterUtils.framework in Frameworks */,
 				C9B9F0191CFBE406002EA9BA /* ParseUI.framework in Frameworks */,
 				C9B9F0131CFBE406002EA9BA /* AudioToolbox.framework in Frameworks */,
 				C9B9F00D1CFBE406002EA9BA /* Social.framework in Frameworks */,
@@ -280,19 +279,26 @@
 				C9B9F0141CFBE406002EA9BA /* Accounts.framework in Frameworks */,
 				C9B9F0011CFBE406002EA9BA /* MapKit.framework in Frameworks */,
 				C9B9F00B1CFBE406002EA9BA /* SystemConfiguration.framework in Frameworks */,
-				C9B9F0161CFBE406002EA9BA /* ParseFacebookUtils.framework in Frameworks */,
 				C9B9F0071CFBE406002EA9BA /* FBSDKMessengerShareKit.framework in Frameworks */,
 				C9B9F0111CFBE406002EA9BA /* CoreGraphics.framework in Frameworks */,
 				C9B9F00A1CFBE406002EA9BA /* libz.tbd in Frameworks */,
 				C9B9F0151CFBE406002EA9BA /* Accelerate.framework in Frameworks */,
-				C9B9F0021CFBE406002EA9BA /* Bolts.framework in Frameworks */,
 				C9B9F00C1CFBE406002EA9BA /* StoreKit.framework in Frameworks */,
+				F10EE5A2051E33E24D83A097 /* Pods_SeakApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		361A3F420624AE7E9283DEE0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA86731552144BC41BCA0369 /* Pods_SeakApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5E0558091D378F29009C5FDF /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,6 +531,8 @@
 			children = (
 				C9B9EFCD1CFBDDEA002EA9BA /* SeakApp */,
 				C9B9EFCC1CFBDDEA002EA9BA /* Products */,
+				DA277C0B180543174C67DCF2 /* Pods */,
+				361A3F420624AE7E9283DEE0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -549,6 +557,7 @@
 				C9B9EFE11CFBE375002EA9BA /* Frameworks */,
 				C9B9EFCE1CFBDDEA002EA9BA /* AppDelegate.swift */,
 				C9B9EFD51CFBDDEA002EA9BA /* Assets.xcassets */,
+				5EEA2FA01D65E6A00028734A /* GoogleService-Info.plist */,
 				C9B9EFDA1CFBDDEA002EA9BA /* Info.plist */,
 			);
 			path = SeakApp;
@@ -562,7 +571,6 @@
 				5E07CB781D06C1A500F38D0B /* ACTabScrollView+Protocol.swift */,
 				5E07CB731D05D78F00F38D0B /* SlideMenuController.swift */,
 				C9B9EFE51CFBE406002EA9BA /* MapKit.framework */,
-				C9B9EFE61CFBE406002EA9BA /* Bolts.framework */,
 				C9B9EFE71CFBE406002EA9BA /* FacebookSDKStrings.bundle */,
 				C9B9EFE81CFBE406002EA9BA /* FBAudienceNetwork.framework */,
 				C9B9EFE91CFBE406002EA9BA /* FBSDKCoreKit.framework */,
@@ -582,9 +590,7 @@
 				C9B9EFF71CFBE406002EA9BA /* AudioToolbox.framework */,
 				C9B9EFF81CFBE406002EA9BA /* Accounts.framework */,
 				C9B9EFF91CFBE406002EA9BA /* Accelerate.framework */,
-				C9B9EFFA1CFBE406002EA9BA /* ParseFacebookUtils.framework */,
 				C9B9EFFB1CFBE406002EA9BA /* ParseFacebookUtilsV4.framework */,
-				C9B9EFFC1CFBE406002EA9BA /* ParseTwitterUtils.framework */,
 				C9B9EFFD1CFBE406002EA9BA /* ParseUI.framework */,
 				C9B9EFFE1CFBE406002EA9BA /* Bolts.framework */,
 				C9B9EFFF1CFBE406002EA9BA /* Parse.framework */,
@@ -631,6 +637,15 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		DA277C0B180543174C67DCF2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F994DB1B792B740A9AA89B55 /* Pods-SeakApp.debug.xcconfig */,
+				74313ACB4A5744D6005C38F4 /* Pods-SeakApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -638,9 +653,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9B9EFDD1CFBDDEA002EA9BA /* Build configuration list for PBXNativeTarget "SeakApp" */;
 			buildPhases = (
+				9887B5DDFFD69A1E60210E78 /* [CP] Check Pods Manifest.lock */,
 				C9B9EFC71CFBDDEA002EA9BA /* Sources */,
 				C9B9EFC81CFBDDEA002EA9BA /* Frameworks */,
 				C9B9EFC91CFBDDEA002EA9BA /* Resources */,
+				32B6634345DF32A4FAE8C9DC /* [CP] Embed Pods Frameworks */,
+				62ECBF354AE61DF212A6BFFC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -712,6 +730,7 @@
 				C9B9F0391CFBEFA7002EA9BA /* product.png in Resources */,
 				5EA0F3EF1D1C4CA9006175BB /* ItemGroupView.xib in Resources */,
 				C9B9F0341CFBEFA7002EA9BA /* heart2.png in Resources */,
+				5EEA2FA11D65E6A00028734A /* GoogleService-Info.plist in Resources */,
 				5E75D80F1D59E6BA00BBA05D /* BigFollowStoreButtonView.xib in Resources */,
 				C9B9F0331CFBEFA7002EA9BA /* favorite.png in Resources */,
 				C9B9F03A1CFBEFA7002EA9BA /* search@2x.png in Resources */,
@@ -722,6 +741,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		32B6634345DF32A4FAE8C9DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeakApp/Pods-SeakApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62ECBF354AE61DF212A6BFFC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeakApp/Pods-SeakApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9887B5DDFFD69A1E60210E78 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C9B9EFC71CFBDDEA002EA9BA /* Sources */ = {
@@ -903,6 +970,7 @@
 		};
 		C9B9EFDE1CFBDDEA002EA9BA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F994DB1B792B740A9AA89B55 /* Pods-SeakApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -929,6 +997,7 @@
 		};
 		C9B9EFDF1CFBDDEA002EA9BA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74313ACB4A5744D6005C38F4 /* Pods-SeakApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
