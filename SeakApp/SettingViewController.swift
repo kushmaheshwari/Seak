@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Parse
 import ParseFacebookUtilsV4
+import Firebase
 
 class SettingViewController: UITableViewController
 {
@@ -44,14 +45,21 @@ class SettingViewController: UITableViewController
     
     func logoutTap(gesture: UITapGestureRecognizer)
     {
-        if (PFUser.currentUser() != nil) {
-            PFUser.logOut()
-            UserDataCache.clearCache()
-        } else {
-            FBSDKLoginManager().logOut()
-            UserDataCache.clearCache()
+        if (FIRAuth.auth()?.currentUser != nil) {
+            do {
+                try FIRAuth.auth()?.signOut()
+            }
+            catch {
+                fatalError("problems on signout")
+            }
         }
         
+        if (FBSDKAccessToken.currentAccessToken() != nil)
+        {
+            FBSDKLoginManager().logOut()
+        }
+        
+        UserDataCache.clearCache()
         let loginview = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Login.rawValue)
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = loginview

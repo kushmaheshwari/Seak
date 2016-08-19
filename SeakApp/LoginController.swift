@@ -12,6 +12,7 @@ import FBSDKLoginKit
 import FBSDKCoreKit
 import ParseFacebookUtilsV4
 import QuartzCore
+import Firebase
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
@@ -51,8 +52,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 		PasswordTF.leftView = imageView2
 		PasswordTF.leftViewMode = UITextFieldViewMode.Always
 
-		FBLoginButton.delegate = self
-		FBLoginButton.readPermissions = ["public_profile", "email", "user_friends"] // FBLogin button
+		self.FBLoginButton.delegate = self
+		self.FBLoginButton.readPermissions = ["public_profile", "email", "user_friends"] // FBLogin button
 
 		let buttonTitleStr = NSMutableAttributedString(string: "Sign Up!", attributes: attrs)
 		attributedString.appendAttributedString(buttonTitleStr)
@@ -83,25 +84,26 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 		PasswordTF.textColor = UIColor.whiteColor()
 	}
 
-	override func viewWillDisappear(animated: Bool) {
-		super.viewWillDisappear(animated)
-		FBLoginButton.delegate = nil
+	deinit {
+		self.FBLoginButton?.delegate = nil
 	}
 
 	internal func loginButton(loginButton: FBSDKLoginButton!,
 		didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-			print("Here1")
+
 			if (error != nil) {
 				print(error.localizedDescription)
 				return
 			}
 
-			if result.token != nil {
-				let homeView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
-
-				let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-				appDelegate.window?.rootViewController = homeView
-			}
+			let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+			FIRAuth.auth()?.signInWithCredential(credential, completion: { (user, autherror) in
+				if user != nil {
+					let homeView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
+					let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+					appDelegate.window?.rootViewController = homeView
+				}
+			})
 	}
 
 	internal func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {

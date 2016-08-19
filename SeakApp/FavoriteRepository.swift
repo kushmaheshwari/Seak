@@ -98,7 +98,9 @@ class FavoriteRepository {
 	// Items
 	func getLike(by item: ItemEntity, completion: (item: FavoriteItem?) -> Void) {
 		let query = PFQuery(className: ParseClassNames.FavoriteItems.rawValue)
-		query.whereKey("user", equalTo: PFUser.currentUser()!)
+        if let currentUser = PFUser.currentUser() {
+            query.whereKey("user", equalTo: currentUser)
+        }
 		query.whereKey("item", equalTo: PFObject(outDataWithClassName: ParseClassNames.Item.rawValue, objectId: item.objectID!))
 		query.cachePolicy = .IgnoreCache
 
@@ -155,7 +157,9 @@ class FavoriteRepository {
 	// Store
 	func getStatus(by store: StoreEntity, completion: (store: FavoriteStore?) -> Void) {
 		let query = PFQuery(className: ParseClassNames.FavoriteStores.rawValue)
-		query.whereKey("user", equalTo: PFUser.currentUser()!)
+        if let currentuser = PFUser.currentUser() {
+            query.whereKey("user", equalTo: currentuser)
+        }
 		query.whereKey("store", equalTo: PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: store.objectID!))
 		query.cachePolicy = .IgnoreCache
 

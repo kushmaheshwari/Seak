@@ -118,7 +118,6 @@
 		C9B9F0371CFBEFA7002EA9BA /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F02D1CFBEFA7002EA9BA /* search@2x.png */; };
 		C9B9F0381CFBEFA7002EA9BA /* Image.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F02E1CFBEFA7002EA9BA /* Image.png */; };
 		C9B9F0391CFBEFA7002EA9BA /* product.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F02F1CFBEFA7002EA9BA /* product.png */; };
-		C9B9F03A1CFBEFA7002EA9BA /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0301CFBEFA7002EA9BA /* search@2x.png */; };
 		F10EE5A2051E33E24D83A097 /* Pods_SeakApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA86731552144BC41BCA0369 /* Pods_SeakApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -733,7 +732,6 @@
 				5EEA2FA11D65E6A00028734A /* GoogleService-Info.plist in Resources */,
 				5E75D80F1D59E6BA00BBA05D /* BigFollowStoreButtonView.xib in Resources */,
 				C9B9F0331CFBEFA7002EA9BA /* favorite.png in Resources */,
-				C9B9F03A1CFBEFA7002EA9BA /* search@2x.png in Resources */,
 				C9B9EFD61CFBDDEA002EA9BA /* Assets.xcassets in Resources */,
 				C9B9EFD41CFBDDEA002EA9BA /* Main.storyboard in Resources */,
 				C9B9F0031CFBE406002EA9BA /* FacebookSDKStrings.bundle in Resources */,

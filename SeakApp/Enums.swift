@@ -91,7 +91,7 @@ enum ItemStatus: String {
 
 enum UserLoginType {
 	case None
-	case Parse
+	case Firebase
 	case Facebook
 }
 

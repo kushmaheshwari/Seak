@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Parse
 import ParseFacebookUtilsV4
+import Firebase
 
 class MenuViewController: UITableViewController {
 
@@ -28,16 +29,16 @@ class MenuViewController: UITableViewController {
 		switch UserLogin.loginType {
 		case .Facebook:
 			setFacebookInfo()
-		case .Parse:
-			setParseInfo()
+		case .Firebase:
+			setFirebaseInfo()
 		default: break
 		}
 
 	}
 
-	func setParseInfo() {
-		if let user = PFUser.currentUser() {
-			self.nameLabel.text = user.getUserName()
+	func setFirebaseInfo() {
+		if let user = FIRAuth.auth()?.currentUser {
+			self.nameLabel.text = user.displayName ?? user.email
 		}
 	}
 
@@ -105,18 +106,6 @@ class MenuViewController: UITableViewController {
 		if indexPath.row == 5 {
             guard let controller = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.SettingNavigation.rawValue) else { return }
             self.slideMenuController()?.changeMainViewController(controller, close: true)
-			/*print("LOGOUT")
-			if (PFUser.currentUser() != nil) {
-				PFUser.logOut()
-				UserDataCache.clearCache()
-			} else {
-				FBSDKLoginManager().logOut()
-				UserDataCache.clearCache()
-			}
-
-			let loginview = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Login.rawValue)
-			let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-			appDelegate.window?.rootViewController = loginview*/
 
 		}
 	}

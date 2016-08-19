@@ -65,6 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 		openURL url: NSURL,
 		sourceApplication: String?,
 		annotation: AnyObject) -> Bool {
+        
 			return FBSDKApplicationDelegate.sharedInstance().application(application,
 				openURL: url,
 				sourceApplication: sourceApplication,

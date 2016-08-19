@@ -10,6 +10,7 @@ import Foundation
 import Parse
 import ParseFacebookUtilsV4
 import UIKit
+import Firebase
 
 class UserLogin {
 
@@ -19,8 +20,7 @@ class UserLogin {
 
 	static func logIn(username: String, password: String, view: UIViewController) {
 
-		PFUser.logInWithUsernameInBackground(username, password: password, block: {
-			(user: PFUser?, error: NSError?) -> Void in
+		FIRAuth.auth()?.signInWithEmail(username, password: password, completion: { (user, error) in
 			if error == nil {
 				let NavigationVC: UIViewController = storyboard.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
 				view.presentViewController(NavigationVC, animated: true, completion: nil)
@@ -28,16 +28,14 @@ class UserLogin {
 			} else {
 				// problem
 				print(error);
-				callAlert()
+				callAlert("Invalid Login")
 			}
-
 		})
-
 	}
 
-	static func callAlert() {
+    static func callAlert(message: String) {
 
-		let alertController: UIAlertController = UIAlertController(title: "Invalid Login", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+		let alertController: UIAlertController = UIAlertController(title: message, message: "", preferredStyle: UIAlertControllerStyle.Alert)
 		alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action: UIAlertAction!) in
 			print("Handle Cancel Logic here")
 			}))
@@ -46,20 +44,21 @@ class UserLogin {
 	}
 
 	static func storeFacebookInfobackend() {
-		if let user = PFUser.currentUser() {
+		if let user = FIRAuth.auth()?.currentUser {
 			let url = FBSDKProfile.currentProfile().imageURLForPictureMode(.Square, size: CGSize(width: 100, height: 100))
 			if let data = NSData(contentsOfURL: url) {
-				let img = PFFile(name: "\(user.objectId!)", data: data)
-				img?.saveInBackgroundWithBlock({ (success, error) in
-					if success {
-						user["userPicture"] = img
-						user["firstName"] = FBSDKProfile.currentProfile().firstName
-						user["lastName"] = FBSDKProfile.currentProfile().lastName
-						user.saveInBackground()
-					} else {
-						print (error)
-					}
-				})
+				// TODO store Facebook Profile image
+//				let img = PFFile(name: "\(user.objectId!)", data: data)
+//				img?.saveInBackgroundWithBlock({ (success, error) in
+//					if success {
+//						user["userPicture"] = img
+//						user["firstName"] = FBSDKProfile.currentProfile().firstName
+//						user["lastName"] = FBSDKProfile.currentProfile().lastName
+//						user.saveInBackground()
+//					} else {
+//						print (error)
+//					}
+//				})
 			}
 		}
 	}
@@ -67,21 +66,15 @@ class UserLogin {
 	static func signUp(username: String, email: String,
 		password: String, firsname: String,
 		lastname: String, view: UIViewController) {
-			let user = PFUser()
-			user.username = username
-			user.email = email
-			user.password = password
-
-			user["firstName"] = firsname
-			user["lastName"] = lastname
-
-			user.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+        
+			// TODO store lastname and firstname in DB
+			FIRAuth.auth()?.createUserWithEmail(email, password: password) { (user, error) in
 				if error == nil {
-
 					let LoginVC: UIViewController = storyboard.instantiateViewControllerWithIdentifier(StoryboardNames.Login.rawValue)
 					view.presentViewController(LoginVC, animated: true, completion: nil)
 				} else {
-					print(error?.userInfo["error"]!)
+					print(error?.userInfo["error"])
+//                    callAlert(<#T##message: String##String#>)
 				}
 			}
 

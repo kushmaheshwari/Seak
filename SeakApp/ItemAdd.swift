@@ -63,7 +63,7 @@ class ItemAdd: UIViewController, UITextViewDelegate, UIImagePickerControllerDele
         if(user == nil){
             print("NILL")
         }
-        let userID = PFUser.currentUser()!.objectId
+        let userID = PFUser.currentUser()?.objectId ?? ""
         print(userID)
         
         if ProductImage1.image == nil {

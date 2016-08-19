@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import ParseFacebookUtilsV4
+import Firebase
 
 class StartAppViewController: UIViewController {
 	override func viewDidLoad() {
@@ -17,23 +18,23 @@ class StartAppViewController: UIViewController {
 		let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
 
 		if (FBSDKAccessToken.currentAccessToken() != nil) {
-			let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken()
-
-			PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken,
-				block: { (user: PFUser?, error: NSError?) -> Void in
-					if user != nil {
-						UserLogin.loginType = .Facebook
-						let startView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
-						appDelegate?.window?.rootViewController = startView
-					} else {
-						print("Uh oh. There was an error logging in.")
-						appDelegate?.window?.rootViewController = loginVC
-					}
-			})
+            let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+            
+            FIRAuth.auth()?.signInWithCredential(credential, completion: { (user, autherror) in
+                if user != nil {
+                    UserLogin.loginType = .Facebook
+                    let startView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
+                    appDelegate?.window?.rootViewController = startView
+                } else {
+                    print("Uh oh. There was an error logging in.")
+                    appDelegate?.window?.rootViewController = loginVC
+                }
+                
+            })
 		}
 		else
-		if PFUser.currentUser() != nil {
-			UserLogin.loginType = .Parse
+		if FIRAuth.auth()?.currentUser != nil {
+			UserLogin.loginType = .Firebase
 			let startView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
 			appDelegate?.window?.rootViewController = startView
 		}
