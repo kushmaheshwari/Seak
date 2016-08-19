@@ -64,7 +64,7 @@ class MenuViewController: UITableViewController {
 				UserDataCache.saveUserPicture(data)
 			}
 
-			UserLogin.storeFacebookInfobackend()
+			UserLogin.storeFacebookUserPictureBackend()
 		}
 	}
 

@@ -60,6 +60,8 @@ class SettingViewController: UITableViewController
         }
         
         UserDataCache.clearCache()
+        UserLogin.loginType = .None
+        
         let loginview = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Login.rawValue)
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController = loginview

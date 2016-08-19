@@ -98,6 +98,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 			let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
 			FIRAuth.auth()?.signInWithCredential(credential, completion: { (user, autherror) in
+                UserLogin.loginType = .Facebook
 				if user != nil {
 					let homeView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
 					let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
