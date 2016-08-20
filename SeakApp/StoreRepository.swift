@@ -8,29 +8,13 @@
 
 import Foundation
 import Parse
+import Firebase
 
 typealias StoresRepositoryComplectionBlock = (items: [StoreEntity]) -> Void
-typealias StoreRepositoryComplectionBlock = (store: StoreEntity) -> Void
 
 class StoreRepository {
 
 	let cacheAge: NSTimeInterval = 60 * 60 // 1 hour
-
-	func getStoreBy(id: String, completion: StoreRepositoryComplectionBlock) {
-		let query = PFQuery(className: ParseClassNames.Store.rawValue)
-		query.whereKey("objectId", equalTo: id)
-		query.cachePolicy = .CacheElseNetwork
-		query.maxCacheAge = cacheAge
-		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-			if error != nil {
-				print("Error: \(error!) \(error!.userInfo)")
-			} else {
-				if let item = StoreRepository.processStores(objects)?.first {
-					completion(store: item)
-				}
-			}
-		}
-	}
 
 	static func processStore(storeObject: PFObject) -> StoreEntity {
 		let store = StoreEntity()
