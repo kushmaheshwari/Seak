@@ -112,7 +112,7 @@ class RegisterController: UIViewController { // here
 	@IBAction func RegisterBtnAction(sender: AnyObject) { // signs up user with Parse
 		if let username = EmailTF.text, password = PasswordTF.text,
 			firstname = FirstNameTF.text, lastname = LastNameTF.text {
-				UserLogin.signUp(username, email: username, password: password, firsname: firstname, lastname: lastname, view: self)
+				UserLogin.signUp(username, email: username, password: password, firstname: firstname, lastname: lastname, view: self)
 		}
 
 	}
