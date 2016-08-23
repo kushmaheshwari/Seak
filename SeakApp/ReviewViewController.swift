@@ -76,7 +76,7 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 			fatalError("Empty ItemEntity")
 		}
 
-		self.repository.getAll(by: self.itemEntity!) { (reviews) in
+		self.repository.getAll(by: self.itemEntity?.objectID) { (reviews) in
 			self.items = reviews
 			dispatch_async(dispatch_get_main_queue(), {
 				self.setAvgRating()
@@ -156,22 +156,6 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 			let dateFormater = NSDateFormatter()
 			dateFormater.dateFormat = "MMMM dd, yyyy"
 			cell.previewDateLabel.text = "Posted " + dateFormater.stringFromDate(item.createdAt!)
-			item.user?.fetchInfo({ (firstName, lastName, profilePicture) in
-				let name = (firstName != nil) ? firstName! : "" +
-					" " + ((lastName != nil) ? lastName! : "")
-				cell.previewNameLabel.text = name
-				profilePicture?.getDataInBackgroundWithBlock({ (data, error) in
-					if error != nil {
-						print(error)
-					}
-					else {
-						dispatch_async(dispatch_get_main_queue(), {
-							cell.previewAuthorImage.image = UIImage(data: data!)
-						})
-
-					}
-				})
-			})
 
 			cell.previewAuthorImage.layer.cornerRadius = CGFloat(25)
 			cell.previewAuthorImage.clipsToBounds = true

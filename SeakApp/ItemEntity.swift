@@ -15,9 +15,9 @@ class ItemEntity {
 	var name: String?
 	var price: Double?
 	var status: String? = "Brand new"
-	var picture: PFFile?
+	var picture: String?
 	var descr: String?
-	var store: PFObject?
+	var storeId: String?
 	var storeEntity: StoreEntity?
 	var reviewCount: Double?
 	var storeCategory: StoreCategory?

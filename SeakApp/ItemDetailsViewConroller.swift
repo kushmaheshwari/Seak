@@ -73,7 +73,7 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 		if self.itemEntity == nil {
 			return
 		}
-		self.reviewRepository.getAll(by: self.itemEntity!) { (reviews) in
+		self.reviewRepository.getAll(by: self.itemEntity?.objectID) { (reviews) in
 			let rating = (reviews.count > 0) ? reviews.reduce(0) { (sum, item) -> Double in
 				return sum + item.rating!
 			} / Double(reviews.count): Double(0)

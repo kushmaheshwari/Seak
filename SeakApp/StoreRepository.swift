@@ -16,51 +16,47 @@ class StoreRepository {
 
 	let cacheAge: NSTimeInterval = 60 * 60 // 1 hour
 
-	static func processStore(storeObject: PFObject) -> StoreEntity {
+    static func processStore(storeId: String?, storeObject: [String: AnyObject]) -> StoreEntity {
 		let store = StoreEntity()
-		if let name = storeObject["Name"] {
+		if let name = storeObject["name"] {
 			store.name = name as? String
 		}
-		store.descr = storeObject.objectForKey("Description") as? String
-		store.objectID = storeObject.objectId!
+		store.descr = storeObject["description"] as? String
+		store.objectID = storeId
 
-		if let address = storeObject.objectForKey("Address") {
+		if let address = storeObject["address"] {
 			store.address = address as? String
 		}
-
-		if let coordinates = storeObject.objectForKey("AddressLatLong") {
-			if let geoPoint = coordinates as? PFGeoPoint {
-				store.coordintaes = CLLocationCoordinate2D(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
-			}
+        
+        let addresslat = storeObject["latitude"] as? Double
+        let addresslong = storeObject["longitude"] as? Double
+        
+		if addresslat != nil && addresslong != nil {
+			store.coordintaes = CLLocationCoordinate2D(latitude: addresslat!, longitude: addresslong!)
 		}
 
-		if let categories = storeObject.objectForKey("Categories") as? [String] {
+		if let categories = storeObject["categories"] as? [String] { // TODO check this. MAybe it's not an array
 			store.categories = categories.map({ StoreCategory(rawValue: $0)! })
 		}
 
 		return store
 	}
 
-	static func processStores(data: [PFObject]?) -> [StoreEntity]? {
-		if let data = data as [PFObject]! {
-			let result = Array(data.generate()).map() { processStore($0) }
-			return result
-		}
-		fatalError("Error on parsing Stores from Parse objects")
+    static func processStores(data: [String: AnyObject]) -> [StoreEntity]? {
+        let resultArray = data.map { (key, value) -> StoreEntity in
+            return processStore(key, storeObject: (value as? [String: AnyObject])!)
+        }
+
+        return resultArray
 	}
 
 	func getAll(completion: StoresRepositoryComplectionBlock) {
-		let query = PFQuery(className: ParseClassNames.Store.rawValue)
-		query.cachePolicy = .CacheThenNetwork
-		query.maxCacheAge = cacheAge
-		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-			if error != nil {
-				print("Error: \(error!) \(error!.userInfo)")
-			} else {
-				if let items = StoreRepository.processStores(objects) {
-					completion(items: items)
-				}
-			}
-		}
+		let storesRef = FIRDatabase.database().reference().child("stores")
+        storesRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if let items = StoreRepository.processStores((snapshot.value as? [String: AnyObject])!)
+            {
+                completion(items: items)
+            }
+        }) { (error) in print("Error: \(error.localizedDescription)")}
 	}
 }

@@ -65,7 +65,7 @@ class ItemCellView: UICollectionViewCell {
 		self.layoutSubviews()
 		self.sizeToFit()
 
-		reviewRepository.getAll(by: self.item) { (reviews) in
+		reviewRepository.getAll(by: self.item.objectID) { (reviews) in
 			let rating = (reviews.count > 0) ? reviews.reduce(0) { (sum, item) -> Int in
 				return sum + Int(item.rating!)
 			} / reviews.count: 0
@@ -84,8 +84,11 @@ class ItemCellView: UICollectionViewCell {
 				if error != nil {
 					fatalError("Error on parsing store for \(self.item)")
 				}
-				let store = StoreRepository.processStore(object!)
-				self.item.storeEntity = store
+                
+                // TODO add loading of store
+//				let store = StoreRepository.processStore(object!)
+//				self.item.storeEntity = store
+                
 				dispatch_async(dispatch_get_main_queue(), {
 					self.tapExecutionBlock(updatedItem: self.item)
 					self.tapped = false

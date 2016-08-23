@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import Firebase
 
 typealias ItemRepositoryComplectionBlock = (items: [ItemEntity]) -> Void
 
@@ -15,60 +16,54 @@ class ItemRepository {
 
 	let maxSearchCount = 30
 	let maxCountByStatus = 10
-	let cacheAge: NSTimeInterval = 60 * 60 // 1 hour
-
-	static func processItem(object: PFObject) -> ItemEntity {
+	
+    static func processItem(itemId: String?, object: [String: AnyObject]) -> ItemEntity {
 		let item = ItemEntity()
 		if let name = object["name"] {
 			item.name = name as? String
 		}
-		if let category = object.objectForKey("category") {
+		if let category = object["category"] {
 			item.category = category as? String
 		}
-		item.objectID = object.objectId!
-		if let price = object.objectForKey("price") {
+        
+		item.objectID = itemId!
+		if let price = object["price"] {
 			item.price = price.doubleValue
 		}
-		if let picture = object.objectForKey("picture") {
-			item.picture = picture as? PFFile
+		if let picture = object["picture"] {
+			item.picture = picture as? String
 
 		}
-		if let store = object.objectForKey("Store") {
-			item.store = store as? PFObject
+		if let store = object["store"] {
+			item.storeId = store as? String
 		}
-		if let description = object.objectForKey("Description") {
+        
+		if let description = object["description"] {
 			item.descr = description as? String
 		}
-		if let storeCategory = object.objectForKey("StoreCategory") as? String {
+        
+		if let storeCategory = object["storeCategory"] as? String {
 			item.storeCategory = StoreCategory(rawValue: storeCategory)
 		}
 
 		return item
 	}
 
-	static func processItems(data: [PFObject]?) -> [ItemEntity]? {
-		if let data = data as [PFObject]! {
-			let result = Array(data.generate()).map() { (iter) -> ItemEntity in
-				return ItemRepository.processItem(iter)
-			}
-			return result
-		}
-		fatalError("Error on parsing Items from Parse objects")
+    static func processItems(data: [String: AnyObject]) -> [ItemEntity]? {
+        let resultData = data.map{(key, value) -> ItemEntity in
+            return processItem(key, object: (value as? [String: AnyObject])!)
+        }
+        return resultData
 	}
 
 	func getAll(completion: ItemRepositoryComplectionBlock) {
-		let query = PFQuery(className: ParseClassNames.Item.rawValue)
-		query.cachePolicy = .CacheThenNetwork
-		query.maxCacheAge = cacheAge
-		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-			if error != nil {
-				print("Error: \(error!) \(error!.userInfo)")
-			} else {
-				if let items = ItemRepository.processItems(objects) {
-					completion(items: items)
-				}
-			}
-		}
+        let itemRef = FIRDatabase.database().reference().child("items")
+        itemRef.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
+            if let items = ItemRepository.processItems((snapshot.value as? [String: AnyObject])!)
+            {
+                completion(items: items)
+            }
+        })
 	}
 
 	func getByStatus(status: ItemStatus, store: StoreEntity?, completion: ItemRepositoryComplectionBlock) {
@@ -76,25 +71,21 @@ class ItemRepository {
 			return
 		}
 
-		let query = PFQuery(className: ParseClassNames.Item.rawValue)
-			.whereKey("Status", containsString: status.rawValue)
-		if store != nil {
-			let storeObject = PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: store!.objectID)
-			query.whereKey("Store", equalTo: storeObject)
-		}
-		query.cachePolicy = (store != nil) ? .NetworkOnly : .CacheThenNetwork
-		query.maxCacheAge = cacheAge
-		query.limit = maxCountByStatus
-
-		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-			if error != nil {
-				print("Error: \(error!) \(error!.userInfo)")
-			} else {
-				if let items = ItemRepository.processItems(objects) {
-					completion(items: items)
-				}
-			}
-		}
+        let itemsRef = FIRDatabase.database().reference().child("items")
+        itemsRef.queryOrderedByChild("status").queryEqualToValue(status.rawValue).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if let items =  ItemRepository.processItems((snapshot.value! as? [String: AnyObject])!) //possible crash
+            {
+                if store != nil {
+                   let filteredItems = items.filter()
+                        { $0.storeId == store?.objectID }
+                    completion(items: filteredItems)
+                }
+                else
+                {
+                    completion(items: items)
+                }
+            }
+        })
 	}
 
 	func getAllFromCategory(type: StoreCategory, store: StoreEntity?, completion: ItemRepositoryComplectionBlock) {
@@ -102,28 +93,23 @@ class ItemRepository {
 			return
 		}
 
-		let query = PFQuery(className: ParseClassNames.Item.rawValue)
-
-		if store != nil {
-			let storeObject = PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: store!.objectID)
-			query.whereKey("Store", equalTo: storeObject)
-			query.whereKey("StoreCategory", containsString: type.rawValue)
-		}
-		else {
-			query.whereKey("category", containsString: type.rawValue)
-		}
-		query.cachePolicy = (store != nil) ? .NetworkOnly : .CacheThenNetwork
-		query.maxCacheAge = cacheAge
-
-		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-			if error != nil {
-				print("Error: \(error!) \(error!.userInfo)")
-			} else {
-				if let items = ItemRepository.processItems(objects) {
-					completion(items: items)
-				}
-			}
-		}
+        let itemsRef = FIRDatabase.database().reference().child("items")
+        if store != nil {
+            itemsRef.queryOrderedByChild("store").queryEqualToValue(store?.objectID).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                if let items = ItemRepository.processItems((snapshot.value! as? [String: AnyObject])!)
+                {
+                    completion(items: items.filter() { $0.storeCategory == type })
+                }
+            })
+        }
+        else {
+            itemsRef.queryOrderedByChild("category").queryEqualToValue(type.rawValue).observeSingleEventOfType(.Value, withBlock: {(snapshot) in
+                if let items = ItemRepository.processItems((snapshot.value! as? [String: AnyObject])!)
+                {
+                    completion(items: items)
+                }
+            })
+        }
 	}
 
 	func search(value: String, store: StoreEntity?, completion: ItemRepositoryComplectionBlock) {

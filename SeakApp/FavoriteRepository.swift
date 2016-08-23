@@ -23,7 +23,8 @@ class FavoriteRepository {
 			catch {
 				fatalError("can't fetch favorite store")
 			}
-			result.storeEntity = StoreRepository.processStore(store)
+            /// TODO replace it
+//			result.storeEntity = StoreRepository.processStore(store.objectId, storeObject: store)
 		}
 		return result
 	}

@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import Firebase
 
 typealias ReviewsRepositoryComplectionBlock = (reviews: [ReviewEntity]) -> Void
 
@@ -15,78 +16,54 @@ class ReviewRepository {
 
 	let cacheAge: NSTimeInterval = 60 * 60 // 1 hour
 
-	func processReviews(reviewObjects: [PFObject]) -> [ReviewEntity]? {
-		return reviewObjects.map({ (object) -> ReviewEntity in
-			return ReviewRepository.processReview(object)
+    func processReviews(itemId: String?, reviewObjects: [String: AnyObject?]) -> [ReviewEntity]? {
+		return reviewObjects.map({ (key, value) -> ReviewEntity in
+            return ReviewRepository.processReview(key, itemId: itemId, reviewObject: (value as? [String: AnyObject])!)
 		})
 	}
 
-	static func processReview(reviewObject: PFObject) -> ReviewEntity {
+    static func processReview(reviewId: String?, itemId: String?, reviewObject: [String: AnyObject]) -> ReviewEntity {
 		let review = ReviewEntity()
-		review.objectID = reviewObject.objectId
-		review.user = reviewObject["ReviewWriter"] as? PFUser
-		review.item = reviewObject["Item"] as? PFObject
-		review.rating = reviewObject["Rating"] as? Double
-		review.review = reviewObject["Review"] as? String
-		review.createdAt = reviewObject.createdAt
-		return review
+		review.objectID = reviewId
+		review.userId = reviewObject["user"] as? String
+		review.itemId = itemId
+		review.rating = reviewObject["rating"] as? Double
+		review.review = reviewObject["text"] as? String
+        if let revDate = reviewObject["timestamp"] as? Double
+        {
+            review.createdAt = NSDate(timeIntervalSinceReferenceDate: revDate)
+        }
+        return review
 	}
 
-	func getAll(by item: ItemEntity, completion: ReviewsRepositoryComplectionBlock) {
-		guard let itemId = item.objectID else { fatalError("ItemEntity with empty objectID") }
-		let itemParseObject = PFObject(outDataWithClassName: ParseClassNames.Item.rawValue, objectId: itemId)
-		let query = PFQuery(className: ParseClassNames.Review.rawValue)
-		query.whereKey("Item", equalTo: itemParseObject)
-		query.orderByDescending("createdAt")
-		query.cachePolicy = .CacheThenNetwork
-
-		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-			if error != nil {
-				print("Error: \(error!) \(error!.userInfo)")
-			} else {
-				if let items = self.processReviews(objects!) {
-					completion(reviews: items)
-				}
-			}
-		}
+	func getAll(by itemId: String?, completion: ReviewsRepositoryComplectionBlock) {
+		guard let itemId = itemId else { fatalError("ItemEntity with empty objectID") }
+        
+        let reviewRef = FIRDatabase.database().reference().child("reviews")
+        reviewRef.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
+             let revItems = snapshot.value as? [String: AnyObject]
+             if let reviews = revItems![itemId]
+             {
+                if let items = self.processReviews(itemId, reviewObjects: reviews as! [String: AnyObject?])
+                {
+                    completion(reviews: items)
+                }
+             }
+            }) { (error) in print("Error: \(error.localizedDescription)")}
 	}
 
 	func saveReview(text: String, rating: Int, item: ItemEntity, saveCallback: (review: ReviewEntity) -> Void) {
-		let object = PFObject(className: ParseClassNames.Review.rawValue)
-		object["ReviewWriter"] = PFUser.currentUser()
-		if let itemObjectId = item.objectID {
-			object["Item"] = PFObject(outDataWithClassName: ParseClassNames.Item.rawValue, objectId: itemObjectId)
-		}
-		object["Rating"] = Double(rating)
-		object["Review"] = text
-
-		object.saveInBackgroundWithBlock { (success, error) in
-			if success {
-				let review = ReviewEntity()
-				review.objectID = object.objectId
-				review.createdAt = object.createdAt
-				review.user = PFUser.currentUser()
-				review.review = text
-				review.itemEntity = item
-				review.item = PFObject(outDataWithClassName: ParseClassNames.Item.rawValue, objectId: item.objectID)
-				review.rating = Double(rating)
-				saveCallback(review: review)
-			}
-			else {
-				fatalError("Error on saving review \(error)")
-			}
-		}
+		let itemRef = FIRDatabase.database().reference().child("reviews").child(item.objectID!) // TODO check that item.objectID exists
+        let key = itemRef.childByAutoId()
+        
+        let newItem = ["text": text,
+                       "rating": rating]
+        key.setValue(newItem)
 	}
 
 	func delete(review: ReviewEntity, callback: () -> Void) {
-		PFObject(outDataWithClassName: ParseClassNames.Review.rawValue, objectId: review.objectID).deleteInBackgroundWithBlock { (success, error) in
-			if success {
-				callback()
-			}
-			else {
-				fatalError("Error on deleting review \(error)")
-			}
-		}
+        let reviewRef = FIRDatabase.database().reference().child("reviews").child(review.itemId!).child(review.objectID!)
+        reviewRef.removeValue()
 	}
 
 }

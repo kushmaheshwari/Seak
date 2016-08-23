@@ -39,8 +39,12 @@ class ItemGroupView: UICollectionViewCell {
 				if error != nil {
 					fatalError("Error on parsing store for \(self.item)")
 				}
-				let store = StoreRepository.processStore(object!)
-				self.item.storeEntity = store
+                
+                // TODO add loading of store
+//				let store = StoreRepository.processStore(object!)
+//				self.item.storeEntity = store
+                
+                
 				dispatch_async(dispatch_get_main_queue(), {
 					self.tapExecutionBlock(updatedItem: self.item)
 					self.tapped = false
