@@ -23,9 +23,9 @@ class UserLogin {
 		FIRAuth.auth()?.signInWithEmail(username, password: password, completion: { (user, error) in
 			if error == nil {
                 UserLogin.loginType = .Firebase
-				let NavigationVC: UIViewController = storyboard.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
-				view.presentViewController(NavigationVC, animated: true, completion: nil)
-
+                let homeView = self.storyboard.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.window?.rootViewController = homeView
 			} else {
 				// problem
 				print(error);
@@ -61,7 +61,7 @@ class UserLogin {
 	}
 
 	static func signUp(username: String, email: String,
-		password: String, firsname: String,
+		password: String, firstname: String,
 		lastname: String, view: UIViewController) {
 
 			FIRAuth.auth()?.createUserWithEmail(email, password: password) { (user, error) in
@@ -70,7 +70,7 @@ class UserLogin {
 					view.presentViewController(LoginVC, animated: true, completion: nil)
 
 					if let request = user?.profileChangeRequest() {
-						request.displayName = "\(firsname) \(lastname)"
+						request.displayName = "\(firstname) \(lastname)"
 						request.commitChangesWithCompletion({ (error) in
 							if error != nil {
 								print(error)
