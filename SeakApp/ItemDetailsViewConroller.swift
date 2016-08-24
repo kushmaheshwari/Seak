@@ -30,7 +30,7 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 		super.viewDidLoad()
 
 		self.setTitle()
-		self.itemImage.file = self.itemEntity?.picture
+		//self.itemImage.file = self.itemEntity?.picture TO-DO: make migration to Firebase
 		self.itemImage.loadInBackground()
 		self.titleLabel.text = self.itemEntity?.name
 		self.descriptionLabel.text = self.itemEntity?.descr

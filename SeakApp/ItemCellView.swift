@@ -52,7 +52,7 @@ class ItemCellView: UICollectionViewCell {
 			self.priceLabel.text = String(format: "$%.1f", price)
 		}
 
-		self.pictureImage.file = item.picture
+		//self.pictureImage.file = item.picture TO-DO: make migration to Firebase
 		self.pictureImage.loadInBackground({ (img, error) in
 			self.pictureImage.image = img
 			self.pictureImage.setNeedsDisplay()
@@ -79,8 +79,11 @@ class ItemCellView: UICollectionViewCell {
 			return
 		}
 		tapped = true
-		if let storeObject = item.store {
-			storeObject.fetchInBackgroundWithBlock({ (object, error) in
+		if let storeObject = item.storeId {
+            
+            //TO-DO make migration to Firebase
+			
+            /*storeObject.fetchInBackgroundWithBlock({ (object, error) in
 				if error != nil {
 					fatalError("Error on parsing store for \(self.item)")
 				}
@@ -94,7 +97,7 @@ class ItemCellView: UICollectionViewCell {
 					self.tapped = false
 				})
 
-			})
+			})*/
 		}
 
 	}

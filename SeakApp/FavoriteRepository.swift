@@ -47,7 +47,7 @@ class FavoriteRepository {
 			catch {
 				fatalError("can't fetch favorite item")
 			}
-			result.itemEntity = ItemRepository.processItem(item)
+			//result.itemEntity = ItemRepository.processItem(item.objectId, object: item) TO-DO: make migration to Firebase
 		}
 		return result
 	}

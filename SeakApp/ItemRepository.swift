@@ -51,7 +51,7 @@ class ItemRepository {
 
     static func processItems(data: [String: AnyObject]) -> [ItemEntity]? {
         let resultData = data.map{(key, value) -> ItemEntity in
-            return processItem(key, object: (value as? [String: AnyObject])!)
+            return processItem(key, object: value as! [String: AnyObject])
         }
         return resultData
 	}
@@ -59,11 +59,18 @@ class ItemRepository {
 	func getAll(completion: ItemRepositoryComplectionBlock) {
         let itemRef = FIRDatabase.database().reference().child("items")
         itemRef.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
-            if let items = ItemRepository.processItems((snapshot.value as? [String: AnyObject])!)
-            {
-                completion(items: items)
+            if !snapshot.exists() {
+                return
             }
-        })
+            
+            if let snapvalue = snapshot.value as? [String: AnyObject]
+            {
+                if let items = ItemRepository.processItems(snapvalue)
+                {
+                    completion(items: items)
+                }
+            }
+        }) { (error) in print("Error: \(error.localizedDescription)")}
 	}
 
 	func getByStatus(status: ItemStatus, store: StoreEntity?, completion: ItemRepositoryComplectionBlock) {
@@ -73,19 +80,27 @@ class ItemRepository {
 
         let itemsRef = FIRDatabase.database().reference().child("items")
         itemsRef.queryOrderedByChild("status").queryEqualToValue(status.rawValue).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            if let items =  ItemRepository.processItems((snapshot.value! as? [String: AnyObject])!) //possible crash
+            
+            if (!snapshot.exists()) {
+                return
+            }
+            
+            if let snapvalue = snapshot.value as? [String: AnyObject]
             {
-                if store != nil {
-                   let filteredItems = items.filter()
-                        { $0.storeId == store?.objectID }
-                    completion(items: filteredItems)
-                }
-                else
+                if let items =  ItemRepository.processItems(snapvalue)
                 {
-                    completion(items: items)
+                    if store != nil {
+                        let filteredItems = items.filter()
+                            { $0.storeId == store?.objectID }
+                        completion(items: filteredItems)
+                    }
+                    else
+                    {
+                        completion(items: items)
+                    }
                 }
             }
-        })
+        }) { (error) in print("Error: \(error.localizedDescription)")}
 	}
 
 	func getAllFromCategory(type: StoreCategory, store: StoreEntity?, completion: ItemRepositoryComplectionBlock) {
@@ -96,45 +111,58 @@ class ItemRepository {
         let itemsRef = FIRDatabase.database().reference().child("items")
         if store != nil {
             itemsRef.queryOrderedByChild("store").queryEqualToValue(store?.objectID).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                if let items = ItemRepository.processItems((snapshot.value! as? [String: AnyObject])!)
-                {
-                    completion(items: items.filter() { $0.storeCategory == type })
+                if !snapshot.exists() {
+                    return
                 }
-            })
+                
+                if let snapvalue = snapshot.value as? [String: AnyObject]
+                {
+                    if let items = ItemRepository.processItems(snapvalue)
+                    {
+                        completion(items: items.filter() { $0.storeCategory == type })
+                    }
+                }
+            }) { (error) in print("Error: \(error.localizedDescription)")}
         }
         else {
             itemsRef.queryOrderedByChild("category").queryEqualToValue(type.rawValue).observeSingleEventOfType(.Value, withBlock: {(snapshot) in
-                if let items = ItemRepository.processItems((snapshot.value! as? [String: AnyObject])!)
-                {
-                    completion(items: items)
+                if !snapshot.exists() {
+                    return
                 }
-            })
+                
+                if let snapvalue = snapshot.value as? [String: AnyObject]
+                {
+                    if let items = ItemRepository.processItems(snapvalue)
+                    {
+                        completion(items: items)
+                    }
+                }
+            }) { (error) in print("Error: \(error.localizedDescription)")}
         }
 	}
 
 	func search(value: String, store: StoreEntity?, completion: ItemRepositoryComplectionBlock) {
-		let nameQuery = PFQuery(className: ParseClassNames.Item.rawValue)
-		nameQuery.whereKey("name", containsString: value)
-		let descriptionQuery = PFQuery(className: ParseClassNames.Item.rawValue)
-		descriptionQuery.whereKey("description", containsString: value)
-		let query = PFQuery.orQueryWithSubqueries([nameQuery, descriptionQuery])
-		if store != nil
-		{
-			guard let storeId = store?.objectID else { fatalError("StoreEntity with empty ObjectID") }
-			let storeParseObject = PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: storeId)
-			query.whereKey("Store", equalTo: storeParseObject)
-		}
-		query.limit = maxSearchCount
-
-		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-			if error != nil {
-				print("Error: \(error!) \(error!.userInfo)")
-			} else {
-				if let items = ItemRepository.processItems(objects) {
-					completion(items: items)
-				}
-			}
-		}
+		let itemRef = FIRDatabase.database().reference().child("items")
+        itemRef.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
+            if !snapshot.exists() {
+                return
+            }
+            
+            if let snapvalue = snapshot.value as? [String: AnyObject]
+            {
+                if let items = ItemRepository.processItems(snapvalue)
+                {
+                    var filteredItems = items.filter() {($0.name?.containsString(value))! || ($0.descr?.containsString(value))!}
+                
+                    if store != nil
+                    {
+                        guard let storeId = store?.objectID else { fatalError("StoreEntity with empty ObjectID") }
+                        filteredItems = filteredItems.filter() { $0.storeId == storeId }
+                    }
+                    completion(items: filteredItems)
+                }
+            }
+        }) { (error) in print("Error: \(error.localizedDescription)")}
 
 	}
 

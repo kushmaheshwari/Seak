@@ -31,7 +31,7 @@ class ReviewRepository {
 		review.review = reviewObject["text"] as? String
         if let revDate = reviewObject["timestamp"] as? Double
         {
-            review.createdAt = NSDate(timeIntervalSinceReferenceDate: revDate)
+            review.createdAt = NSDate(timeIntervalSinceReferenceDate: revDate/1000)
         }
         return review
 	}
@@ -39,27 +39,55 @@ class ReviewRepository {
 	func getAll(by itemId: String?, completion: ReviewsRepositoryComplectionBlock) {
 		guard let itemId = itemId else { fatalError("ItemEntity with empty objectID") }
         
-        let reviewRef = FIRDatabase.database().reference().child("reviews")
+        let reviewRef = FIRDatabase.database().reference().child("reviews").child(itemId).queryOrderedByChild("timestamp")
         reviewRef.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
-             let revItems = snapshot.value as? [String: AnyObject]
-             if let reviews = revItems![itemId]
-             {
-                if let items = self.processReviews(itemId, reviewObjects: reviews as! [String: AnyObject?])
+            if !snapshot.exists() {
+                return
+            }
+            
+            if let reviewsValue = snapshot.value as? [String: AnyObject]
+            {
+                if let items = self.processReviews(itemId, reviewObjects: reviewsValue)
                 {
-                    completion(reviews: items)
+                    completion(reviews: Array(items.reverse()))
                 }
-             }
+            }
             }) { (error) in print("Error: \(error.localizedDescription)")}
 	}
 
 	func saveReview(text: String, rating: Int, item: ItemEntity, saveCallback: (review: ReviewEntity) -> Void) {
-		let itemRef = FIRDatabase.database().reference().child("reviews").child(item.objectID!) // TODO check that item.objectID exists
-        let key = itemRef.childByAutoId()
+		let reviewsRef = FIRDatabase.database().reference().child("reviews")
         
-        let newItem = ["text": text,
-                       "rating": rating]
-        key.setValue(newItem)
-	}
+        reviewsRef.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
+            if !snapshot.exists() {
+                return
+            }
+            
+            if let snapvalue = snapshot.value as? [String: AnyObject?]
+            {
+                var key: FIRDatabaseReference
+                
+                if snapvalue.contains({(key, value) in key == item.objectID!})
+                {
+                    let itemRef = reviewsRef.child(item.objectID!)
+                    key = itemRef.childByAutoId()
+                }
+                else
+                {
+                    let createItem = item.objectID!
+                    reviewsRef.setValue(createItem)
+                    
+                    key = reviewsRef.child(item.objectID!)
+                }
+                
+                let newItem = ["text": text,
+                               "rating": rating,
+                               "timestamp": FIRServerValue.timestamp(),
+                               "user": FIRAuth.auth()?.currentUser?.uid ?? ""]
+                key.setValue(newItem)
+            }
+        })
+    }
 
 	func delete(review: ReviewEntity, callback: () -> Void) {
         let reviewRef = FIRDatabase.database().reference().child("reviews").child(review.itemId!).child(review.objectID!)

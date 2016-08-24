@@ -34,8 +34,9 @@ class ItemGroupView: UICollectionViewCell {
 			return
 		}
 		tapped = true
-		if let storeObject = item.store {
-			storeObject.fetchInBackgroundWithBlock({ (object, error) in
+		if let storeObject = item.storeId {
+            //TO-DO: make migration to Firebase
+			/*storeObject.fetchInBackgroundWithBlock({ (object, error) in
 				if error != nil {
 					fatalError("Error on parsing store for \(self.item)")
 				}
@@ -50,7 +51,7 @@ class ItemGroupView: UICollectionViewCell {
 					self.tapped = false
 				})
 
-			})
+			})*/
 		}
 	}
 }

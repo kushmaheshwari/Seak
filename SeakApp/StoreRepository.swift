@@ -53,9 +53,16 @@ class StoreRepository {
 	func getAll(completion: StoresRepositoryComplectionBlock) {
 		let storesRef = FIRDatabase.database().reference().child("stores")
         storesRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            if let items = StoreRepository.processStores((snapshot.value as? [String: AnyObject])!)
+            if !snapshot.exists() {
+                return
+            }
+            
+            if let snapvalue = snapshot.value as? [String: AnyObject]
             {
-                completion(items: items)
+                if let items = StoreRepository.processStores(snapvalue)
+                {
+                    completion(items: items)
+                }
             }
         }) { (error) in print("Error: \(error.localizedDescription)")}
 	}
