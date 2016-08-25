@@ -104,23 +104,25 @@ class FavoriteRepository {
 
 	// Items
 	func getLike(by item: ItemEntity, completion: (item: FavoriteItem?) -> Void) {
-		let query = PFQuery(className: ParseClassNames.FavoriteItems.rawValue)
-        if let currentUser = PFUser.currentUser() {
-            query.whereKey("user", equalTo: currentUser)
+		var favItemsRef = FIRDatabase.database().reference().child("favoriteItemsByUser")
+        let currentUser = FIRAuth.auth()?.currentUser
+        if currentUser != nil {
+            favItemsRef = favItemsRef.child(currentUser!.uid)
+        } else {
+            completion(item: nil)
+            return
         }
-		query.whereKey("item", equalTo: PFObject(outDataWithClassName: ParseClassNames.Item.rawValue, objectId: item.objectID!))
-		query.cachePolicy = .IgnoreCache
-
-		query.findObjectsInBackgroundWithBlock { (objects, error) in
-			if objects?.count > 0 {
-				if let object = objects?.first {
-					let item = FavoriteRepository.processFavoriteItem(object)
-					completion(item: item)
-				}
-			} else {
-				completion(item: nil)
-			}
-		}
+        
+        favItemsRef = favItemsRef.child(item.objectID!)
+		
+        favItemsRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if !snapshot.exists() {
+                return
+            }
+            
+            let item = FavoriteRepository.processFavoriteItem(currentUser!.uid, object: item.objectID!)
+            completion(item: item)
+        })
 	}
 
 	func dislike(item: FavoriteItem, successBlock: (success: Bool) -> Void) {
