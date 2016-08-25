@@ -10,9 +10,7 @@ import Foundation
 import Parse
 
 class FavoriteStore {
-	var objectID: String?
-	var user: PFUser?
-	var store: PFObject?
+	var userId: String? 
+	var storeId: String?
 	var storeEntity: StoreEntity?
-	var createdAt: NSDate?
 }

@@ -13,9 +13,9 @@ class FavoriteRepository {
 
 	static func processFavoriteStore(object: PFObject) -> FavoriteStore {
 		let result = FavoriteStore()
-		result.objectID = object.objectId
+		//result.objectID = object.objectId
 		result.user = object["user"] as? PFUser
-		result.createdAt = object.createdAt
+		//result.createdAt = object.createdAt
 		result.store = object["store"] as? PFObject
 		if let store = result.store {
 			do {
