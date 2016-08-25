@@ -11,6 +11,7 @@ import Parse
 import Firebase
 
 typealias ItemRepositoryComplectionBlock = (items: [ItemEntity]) -> Void
+typealias ItemRepositoryCompletionBlock = (item: ItemEntity) -> Void
 
 class ItemRepository {
 
@@ -165,6 +166,24 @@ class ItemRepository {
         }) { (error) in print("Error: \(error.localizedDescription)")}
 
 	}
+    
+    static func getById(itemId: String?, completion: ItemRepositoryCompletionBlock)
+    {
+        guard let itID = itemId else { fatalError("Store Id is empty") }
+        
+        let itemRef = FIRDatabase.database().reference().child("stores").child(itemId!)
+        itemRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if !snapshot.exists() {
+                return
+            }
+            
+            if let snapvalue = snapshot.value as? [String: AnyObject]
+            {
+                let item = processItem(itID, object: snapvalue)
+                completion(item: item)
+            }
+        })
+    }
 
 }
 
