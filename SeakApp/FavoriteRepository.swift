@@ -125,16 +125,18 @@ class FavoriteRepository {
         })
 	}
 
-	func dislike(item: FavoriteItem, successBlock: (success: Bool) -> Void) {
-		guard let _ = item.objectID else { fatalError("empty objectId for FavoriteItem") }
-		let parseObject = PFObject(outDataWithClassName: ParseClassNames.FavoriteItems.rawValue, objectId: item.objectID!)
-		parseObject.deleteInBackgroundWithBlock { (flag, error) in
-			if (error != nil) {
-				print(error)
-
-			}
-			successBlock(success: flag)
-		}
+    func dislike(itemId: String?, successBlock: (success: Bool) -> Void) {
+		if itemId == nil { fatalError("empty itemId for FavoriteItem") }
+		
+        let currentUser = FIRAuth.auth()?.currentUser
+        if currentUser == nil {
+            successBlock(success: false)
+            fatalError("No current user")
+        }
+        
+        let favItemRef = FIRDatabase.database().reference().child("favoriteItemsByUser").child(currentUser!.uid).child(itemId!)
+        favItemRef.removeValue()
+        successBlock(success: true)
 	}
 
 	func like(item: ItemEntity, completion: (favoriteItem: FavoriteItem) -> Void) {
