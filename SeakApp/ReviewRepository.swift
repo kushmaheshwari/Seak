@@ -56,6 +56,7 @@ class ReviewRepository {
 	}
 
 	func saveReview(text: String, rating: Int, item: ItemEntity, saveCallback: (review: ReviewEntity) -> Void) {
+        //TODO recalculate average raiting at Item
 		let reviewsRef = FIRDatabase.database().reference().child("reviews")
         
         reviewsRef.observeSingleEventOfType(.Value, withBlock: {(snapshot) in

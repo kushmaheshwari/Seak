@@ -8,16 +8,15 @@
 
 import Foundation
 import Parse
+import Firebase
 
 class FavoriteRepository {
 
-	static func processFavoriteStore(object: PFObject) -> FavoriteStore {
+    static func processFavoriteStore(userId: String, object: String) -> FavoriteStore {
 		let result = FavoriteStore()
-		//result.objectID = object.objectId
-		result.user = object["user"] as? PFUser
-		//result.createdAt = object.createdAt
-		result.store = object["store"] as? PFObject
-		if let store = result.store {
+		result.userId = userId
+		result.storeId = object
+		/*if let store = result.storeId {
 			do {
 				try store.fetch() }
 			catch {
@@ -25,75 +24,82 @@ class FavoriteRepository {
 			}
             /// TODO replace it
 //			result.storeEntity = StoreRepository.processStore(store.objectId, storeObject: store)
-		}
+		}*/
 		return result
 	}
 
-	static func processFavoriteStores(objects: [PFObject]) -> [FavoriteStore]? {
-		return objects.map({ (object) -> FavoriteStore in
-			return FavoriteRepository.processFavoriteStore(object)
+    static func processFavoriteStores(userId: String, objects: [String: AnyObject]) -> [FavoriteStore]? {
+		return objects.map({ (key, value) -> FavoriteStore in
+            return FavoriteRepository.processFavoriteStore(userId, object: key)
 		})
 	}
 
-	static func processFavoriteItem(object: PFObject) -> FavoriteItem {
+    static func processFavoriteItem(userId: String, object: String) -> FavoriteItem {
 		let result = FavoriteItem()
-		result.objectID = object.objectId
-		result.user = object["user"] as? PFUser
-		result.createdAt = object.createdAt
-		result.item = object["item"] as? PFObject
-		if let item = result.item {
+		result.userId = userId
+		result.itemId = object
+		/*if let item = result.item {
 			do {
 				try item.fetch() }
 			catch {
 				fatalError("can't fetch favorite item")
 			}
+            ////TODO replace it
 			//result.itemEntity = ItemRepository.processItem(item.objectId, object: item) TO-DO: make migration to Firebase
-		}
+		}*/
 		return result
 	}
 
-	static func processFavoriteItems(objects: [PFObject]) -> [FavoriteItem]? {
-		return objects.map({ (object) -> FavoriteItem in
-			return FavoriteRepository.processFavoriteItem(object)
+    static func processFavoriteItems(userId: String, objects: [String: AnyObject]) -> [FavoriteItem]? {
+		return objects.map({ (key, value) -> FavoriteItem in
+            return FavoriteRepository.processFavoriteItem(userId, object: key)
 		})
 	}
 
-	func getAllStores(by user: PFUser, completion: StoresRepositoryComplectionBlock) {
-		guard let _ = user.objectId else { fatalError ("user without objectId") }
-		let query = PFQuery(className: ParseClassNames.FavoriteStores.rawValue)
-		query.whereKey("user", equalTo: user)
-		query.cachePolicy = .CacheThenNetwork
-
-		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-			if error != nil {
-				print("Error: \(error!) \(error!.userInfo)")
-			} else {
-				if let items = FavoriteRepository.processFavoriteStores(objects!) {
-					completion(items: items.map({ (favoriteStore) -> StoreEntity in
-						return favoriteStore.storeEntity!
-						}))
-				}
-			}
-		}
+	func getAllStores(completion: StoresRepositoryComplectionBlock) {
+        guard let currentUser = FIRAuth.auth()?.currentUser else { fatalError("No current user") }
+        let storesRef = FIRDatabase.database().reference().child("favoriteStoresByUser").child(currentUser.uid)
+        storesRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if !snapshot.exists() {
+                return
+            }
+            
+            if let snapvalue = snapshot.value as? [String: AnyObject]
+            {
+                if let items = FavoriteRepository.processFavoriteStores(currentUser.uid, objects: snapvalue)
+                {
+                    //TODO make a decision what to do here
+                    
+                    /*completion(items: items.map({ (favoriteStore) -> StoreEntity in
+                        return favoriteStore.storeEntity!
+                    }))*/
+                }
+            }
+        }) { (error) in print("Error: \(error.localizedDescription)")}
+        
 	}
 
-	func getAllItems(by user: PFUser, completion: ItemRepositoryComplectionBlock) {
-		guard let _ = user.objectId else { fatalError ("user without objectId") }
-		let query = PFQuery(className: ParseClassNames.FavoriteItems.rawValue)
-		query.whereKey("user", equalTo: user)
-		query.cachePolicy = .CacheThenNetwork
+	func getAllItems(completion: ItemRepositoryComplectionBlock) {
+        guard let currentUser = FIRAuth.auth()?.currentUser else { fatalError("No current user") }
+        let itemsRef = FIRDatabase.database().reference().child("favoriteItemsByUser").child(currentUser.uid)
 
-		query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-			if error != nil {
-				print("Error: \(error!) \(error!.userInfo)")
-			} else {
-				if let items = FavoriteRepository.processFavoriteItems(objects!) {
-					completion(items: items.map({ (favoriteItem) -> ItemEntity in
-						return favoriteItem.itemEntity!
-						}))
-				}
-			}
-		}
+        itemsRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if !snapshot.exists() {
+                return
+            }
+            
+            if let snapvalue = snapshot.value as? [String: AnyObject]
+            {
+                if let items = FavoriteRepository.processFavoriteItems(currentUser.uid, objects: snapvalue)
+                {
+                    //TODO make a decision what to do here
+                    
+                    /*completion(items: items.map({ (favoriteItem) -> ItemEntity in
+                     return favoriteItem.itemEntity!
+                     }))*/
+                }
+            }
+        }) { (error) in print("Error: \(error.localizedDescription)")}
 	}
 
 	// Items
