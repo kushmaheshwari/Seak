@@ -52,7 +52,7 @@ class LikeItemView: UIView {
 
 			})
 		} else {
-			self.repository.dislike(self.favoriteItem!, successBlock: { (success) in
+			self.repository.dislike(self.favoriteItem!.itemId, successBlock: { (success) in
 				if (success) {
 					let dict: [NSObject: AnyObject]? = ["itemObjectID": self.item!.objectID!]
 					NSNotificationCenter.defaultCenter().postNotificationName(LikeItemView.dislikeItemNotification, object: nil, userInfo: dict)

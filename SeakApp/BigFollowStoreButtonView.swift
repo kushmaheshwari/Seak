@@ -51,7 +51,7 @@ class BigFollowStoreButtonView: UIView {
                 NSNotificationCenter.defaultCenter().postNotificationName(AddStoreView.addStoreNotification, object: nil, userInfo: dict)
             })
         } else {
-            self.repository.remove(self.favoriteStore!, successBlock: { (success) in
+            self.repository.remove(self.favoriteStore!.storeId, successBlock: { (success) in
                 if (success) {
                     let dict: [NSObject: AnyObject]? = ["storeObjectID": self.store!.objectID!]
                     NSNotificationCenter.defaultCenter().postNotificationName(AddStoreView.removeStoreNotification, object: nil, userInfo: dict)
