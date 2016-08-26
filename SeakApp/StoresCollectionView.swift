@@ -134,8 +134,7 @@ UICollectionViewDelegateFlowLayout{
 			}
 
 		case .Favorites:
-			guard let currentUser = PFUser.currentUser() else { fatalError("no current PFUser") }
-			self.favoritesRepository.getAllStores(by: currentUser, completion: { (items) in
+			self.favoritesRepository.getAllStores({ (items) in
 				self.storeArray = items
 				dispatch_async(dispatch_get_main_queue(), {
 					self.collectionView?.reloadData()
