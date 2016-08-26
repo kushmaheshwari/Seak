@@ -220,28 +220,43 @@ class FavoriteRepository {
 	}
 
 	func add(store: StoreEntity, completion: (favoriteStore: FavoriteStore) -> Void) {
-		let object = PFObject(className: ParseClassNames.FavoriteStores.rawValue)
-		object["user"] = PFUser.currentUser()
-		if let itemObjectId = store.objectID {
-			object["store"] = PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: itemObjectId)
-		}
+        if (store.objectID == nil) { fatalError("Empty storeId for FavoriteStore") }
+        
+        let currentUser = FIRAuth.auth()?.currentUser
+        if currentUser == nil { fatalError("No current user for FavoriteStore") }
+        
+        let favStoresRef = FIRDatabase.database().reference().child("favoriteStoresByUser")
+        favStoresRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if !snapshot.exists() {
+                return
+            }
+            
+            if let snapvalue = snapshot.value as? [String: AnyObject]
+            {
+                var key: FIRDatabaseReference
+                
+                if snapvalue.contains({(key, value) in key == currentUser!.uid}) {
+                    key = favStoresRef.child(currentUser!.uid)
+                }
+                else {
+                    favStoresRef.setValue(currentUser!.uid)
+                    key = favStoresRef.child(currentUser!.uid)
+                }
+                
+                let newStore = [store.objectID!: true]
+                key.setValue(newStore)
+                
+                let savedRef = favStoresRef.child(currentUser!.uid).child(store.objectID!)
+                savedRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                    if !snapshot.exists() {
+                        fatalError("Error on saving favorite item id: \(store.objectID!)")
+                    }
+                    
+                    let favoriteStore = FavoriteRepository.processFavoriteStore(currentUser!.uid, object: store.objectID!)
+                    completion(favoriteStore: favoriteStore)
+                })
+            }
+        } )
 
-		object.saveInBackgroundWithBlock { (success, error) in
-			if success {
-				object.fetchInBackgroundWithBlock({ (obj, error) in
-					if error != nil {
-						print(error)
-					}
-					else {
-						let favoriteStore = FavoriteRepository.processFavoriteStore(obj!)
-						completion(favoriteStore: favoriteStore)
-					}
-				})
-
-			}
-			else {
-				fatalError("Error on saving favorite store \(error)")
-			}
-		}
 	}
 }
