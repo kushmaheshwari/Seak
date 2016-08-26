@@ -9,6 +9,7 @@
 import Foundation
 import Parse
 import UIKit
+import Firebase
 
 class ItemsCollectionViewController: UICollectionViewController {
 
@@ -106,9 +107,10 @@ class ItemsCollectionViewController: UICollectionViewController {
 			})
 
 		case .Favorites:
-			guard let currentUser = PFUser.currentUser() else { fatalError("empty current user") }
+            if FIRAuth.auth()?.currentUser == nil { fatalError("empty current user") }
+			
 			dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
-				self.favoritesRepository.getAllItems(by: currentUser, completion: { (data) in
+				self.favoritesRepository.getAllItems({ (data) in
 					dispatch_async(dispatch_get_main_queue(), {
 						self.items = data
 						print("Successfully retrieved \(data.count) scores.")
