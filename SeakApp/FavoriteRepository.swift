@@ -140,29 +140,43 @@ class FavoriteRepository {
 	}
 
 	func like(item: ItemEntity, completion: (favoriteItem: FavoriteItem) -> Void) {
-		let object = PFObject(className: ParseClassNames.FavoriteItems.rawValue)
-		object["user"] = PFUser.currentUser()
-		if let itemObjectId = item.objectID {
-			object["item"] = PFObject(outDataWithClassName: ParseClassNames.Item.rawValue, objectId: itemObjectId)
-		}
-
-		object.saveInBackgroundWithBlock { (success, error) in
-			if success {
-				object.fetchInBackgroundWithBlock({ (obj, error) in
-					if error != nil {
-						print(error)
-					}
-					else {
-						let favoriteItem = FavoriteRepository.processFavoriteItem(obj!)
-						completion(favoriteItem: favoriteItem)
-					}
-				})
-
-			}
-			else {
-				fatalError("Error on saving favorite item \(error)")
-			}
-		}
+        if (item.objectID == nil) { fatalError("Empty itemId for FavoriteItem") }
+        
+        let currentUser = FIRAuth.auth()?.currentUser
+        if currentUser == nil { fatalError("No current user for FavoriteItem") }
+        
+        let favItemsRef = FIRDatabase.database().reference().child("favoriteItemsByUser")
+        favItemsRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if !snapshot.exists() {
+                return
+            }
+            
+            if let snapvalue = snapshot.value as? [String: AnyObject]
+            {
+                var key: FIRDatabaseReference
+                
+                if snapvalue.contains({(key, value) in key == currentUser!.uid}) {
+                    key = favItemsRef.child(currentUser!.uid)
+                }
+                else {
+                    favItemsRef.setValue(currentUser!.uid)
+                    key = favItemsRef.child(currentUser!.uid)
+                }
+                
+                let newItem = [item.objectID!: true]
+                key.setValue(newItem)
+                
+                let savedRef = favItemsRef.child(currentUser!.uid).child(item.objectID!)
+                savedRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                    if !snapshot.exists() {
+                        fatalError("Error on saving favorite item id: \(item.objectID!)")
+                    }
+                    
+                    let favoriteItem = FavoriteRepository.processFavoriteItem(currentUser!.uid, object: item.objectID!)
+                    completion(favoriteItem: favoriteItem)
+                })
+            }
+        } )
 	}
 
 	// Store
