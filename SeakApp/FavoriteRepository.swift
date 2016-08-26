@@ -117,6 +117,7 @@ class FavoriteRepository {
 		
         favItemsRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             if !snapshot.exists() {
+                completion(item: nil)
                 return
             }
             
@@ -181,23 +182,27 @@ class FavoriteRepository {
 
 	// Store
 	func getStatus(by store: StoreEntity, completion: (store: FavoriteStore?) -> Void) {
-		let query = PFQuery(className: ParseClassNames.FavoriteStores.rawValue)
-        if let currentuser = PFUser.currentUser() {
-            query.whereKey("user", equalTo: currentuser)
+        var favStoresRef = FIRDatabase.database().reference().child("favoriteStoresByUser")
+        let currentUser = FIRAuth.auth()?.currentUser
+        if currentUser != nil {
+            favStoresRef = favStoresRef.child(currentUser!.uid)
+        } else {
+            completion(store: nil)
+            return
         }
-		query.whereKey("store", equalTo: PFObject(outDataWithClassName: ParseClassNames.Store.rawValue, objectId: store.objectID!))
-		query.cachePolicy = .IgnoreCache
+        
+        favStoresRef = favStoresRef.child(store.objectID!)
+        
+        favStoresRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if !snapshot.exists() {
+                completion(store: nil)
+                return
+            }
+            
+            let item = FavoriteRepository.processFavoriteStore(currentUser!.uid, object: store.objectID!)
+            completion(store: item)
+        })
 
-		query.findObjectsInBackgroundWithBlock { (objects, error) in
-			if objects?.count > 0 {
-				if let object = objects?.first {
-					let item = FavoriteRepository.processFavoriteStore(object)
-					completion(store: item)
-				}
-			} else {
-				completion(store: nil)
-			}
-		}
 	}
 
 	func remove(store: FavoriteStore, successBlock: (success: Bool) -> Void) {
