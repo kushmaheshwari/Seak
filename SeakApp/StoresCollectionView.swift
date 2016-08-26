@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 import Parse
+import Firebase
 
 class StoresCollectionView: UICollectionViewController,
 UICollectionViewDelegateFlowLayout{
@@ -134,6 +135,8 @@ UICollectionViewDelegateFlowLayout{
 			}
 
 		case .Favorites:
+            if FIRAuth.auth()?.currentUser == nil { fatalError("empty current user") }
+            
 			self.favoritesRepository.getAllStores({ (items) in
 				self.storeArray = items
 				dispatch_async(dispatch_get_main_queue(), {
