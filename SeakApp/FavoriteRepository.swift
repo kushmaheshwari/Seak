@@ -205,16 +205,18 @@ class FavoriteRepository {
 
 	}
 
-	func remove(store: FavoriteStore, successBlock: (success: Bool) -> Void) {
-		guard let _ = store.objectID else { fatalError("empty objectId for FavoriteStore") }
-		let parseObject = PFObject(outDataWithClassName: ParseClassNames.FavoriteStores.rawValue, objectId: store.objectID!)
-		parseObject.deleteInBackgroundWithBlock { (flag, error) in
-			if (error != nil) {
-				print(error)
-
-			}
-			successBlock(success: flag)
-		}
+	func remove(storeId: String?, successBlock: (success: Bool) -> Void) {
+        if storeId == nil { fatalError("empty storeId for FavoriteStore") }
+        
+        let currentUser = FIRAuth.auth()?.currentUser
+        if currentUser == nil {
+            successBlock(success: false)
+            fatalError("No current user")
+        }
+        
+        let favStoreRef = FIRDatabase.database().reference().child("favoriteStoresByUser").child(currentUser!.uid).child(storeId!)
+        favStoreRef.removeValue()
+        successBlock(success: true)
 	}
 
 	func add(store: StoreEntity, completion: (favoriteStore: FavoriteStore) -> Void) {
