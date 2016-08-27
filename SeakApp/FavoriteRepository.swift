@@ -9,9 +9,12 @@
 import Foundation
 import Parse
 import Firebase
+import FirebaseAuth
 
 class FavoriteRepository {
 
+    //TODO check root path for favoriteStoresByUser and the same for items
+    
     static func processFavoriteStore(userId: String, object: String) -> FavoriteStore {
 		let result = FavoriteStore()
 		result.userId = userId
@@ -45,7 +48,8 @@ class FavoriteRepository {
 				fatalError("can't fetch favorite item")
 			}
             ////TODO replace it
-			//result.itemEntity = ItemRepository.processItem(item.objectId, object: item) TO-DO: make migration to Firebase
+            // TODO: make migration to Firebase
+			//result.itemEntity = ItemRepository.processItem(item.objectId, object: item)
 		}*/
 		return result
 	}
@@ -57,6 +61,7 @@ class FavoriteRepository {
 	}
 
 	func getAllStores(completion: StoresRepositoryComplectionBlock) {
+    
         guard let currentUser = FIRAuth.auth()?.currentUser else { fatalError("No current user") }
         let storesRef = FIRDatabase.database().reference().child("favoriteStoresByUser").child(currentUser.uid)
         storesRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in

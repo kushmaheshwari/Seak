@@ -70,10 +70,12 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 		if let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(self.collectionViewReusableIdentifier, forIndexPath: indexPath) as? ItemGroupView
 		{
 			cell.discountLabel.hidden = true
-			//cell.imgView.file = self.items[indexPath.row].picture TO-DO: make migration to Firebase
-			cell.imgView.loadInBackground()
-
+            if let url = self.items[indexPath.row].picture {
+                self.imageView?.downloadWithCache(url)
+            }
+			
 			cell.item = self.items[indexPath.row]
+            
 
 			cell.tapExecutionBlock = { (updatedItem) -> Void in
 				let storyboard = UIStoryboard(name: "Main", bundle: nil)

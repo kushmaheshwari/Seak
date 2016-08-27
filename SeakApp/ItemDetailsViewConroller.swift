@@ -16,7 +16,7 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 	var itemEntity: ItemEntity? = nil
 	private let reviewRepository = ReviewRepository()
 
-	@IBOutlet weak var itemImage: PFImageView!
+	@IBOutlet weak var itemImage: UIImageView!
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var priceLabel: UILabel!
 	@IBOutlet weak var reviewsTitle: UILabel!
@@ -30,8 +30,10 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 		super.viewDidLoad()
 
 		self.setTitle()
-		//self.itemImage.file = self.itemEntity?.picture TO-DO: make migration to Firebase
-		self.itemImage.loadInBackground()
+        if let url = self.itemEntity?.picture {
+            self.itemImage.downloadWithCache(url)
+        }
+        
 		self.titleLabel.text = self.itemEntity?.name
 		self.descriptionLabel.text = self.itemEntity?.descr
 		if let price = self.itemEntity?.price {

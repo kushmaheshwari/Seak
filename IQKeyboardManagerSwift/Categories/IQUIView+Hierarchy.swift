@@ -304,9 +304,6 @@ public extension UIView {
         return CGAffineTransformConcat(myTransform, CGAffineTransformInvert(viewTransform))
     }
     
-    ///-----------------
-    /// TODO: Hierarchy
-    ///-----------------
     
 //    /**
 //    Returns a string that represent the information about it's subview's hierarchy. You can use this method to debug the subview's positions.

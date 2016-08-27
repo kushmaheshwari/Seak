@@ -98,3 +98,25 @@ extension UIStackView {
 		}
 	}
 }
+
+extension UIImageView {
+    private static let cache = NSCache()
+    
+    func downloadWithCache(urlString: String) {
+        
+        if let imgData = UIImageView.cache.objectForKey(urlString) as? NSData {
+            self.image = UIImage(data: imgData)
+        }
+        else {
+            
+            NSOperationQueue().addOperationWithBlock({ 
+                if let url = NSURL(string: urlString) {
+                    guard let data = NSData(contentsOfURL: url) else { return }
+                    NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                        self.image = UIImage(data: data)
+                    })
+                }
+            })
+        }
+    }
+}

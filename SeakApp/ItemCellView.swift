@@ -12,7 +12,7 @@ import ParseUI
 
 class ItemCellView: UICollectionViewCell {
 
-	@IBOutlet weak var pictureImage: PFImageView!
+	@IBOutlet weak var pictureImage: UIImageView!
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var priceLabel: UILabel!
 	@IBOutlet weak var starsStackView: UIStackView!
@@ -51,13 +51,12 @@ class ItemCellView: UICollectionViewCell {
 		if let price = item.price {
 			self.priceLabel.text = String(format: "$%.1f", price)
 		}
-
-		//self.pictureImage.file = item.picture TO-DO: make migration to Firebase
-		self.pictureImage.loadInBackground({ (img, error) in
-			self.pictureImage.image = img
-			self.pictureImage.setNeedsDisplay()
-		})
-
+		
+        if let url = self.item.picture {
+            self.pictureImage.downloadWithCache(url)
+            self.pictureImage.setNeedsDisplay()
+        }
+        
 		let tap = UITapGestureRecognizer(target: self, action: #selector(ItemCellView.openDetails(_:)))
 
 		tap.numberOfTouchesRequired = 1
@@ -81,7 +80,7 @@ class ItemCellView: UICollectionViewCell {
 		tapped = true
 		if let storeObject = item.storeId {
             
-            //TO-DO make migration to Firebase
+            //TODO make migration to Firebase
 			
             /*storeObject.fetchInBackgroundWithBlock({ (object, error) in
 				if error != nil {

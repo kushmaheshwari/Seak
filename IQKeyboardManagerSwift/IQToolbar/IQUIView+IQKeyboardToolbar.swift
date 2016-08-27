@@ -150,11 +150,7 @@ public extension UIView {
             }
         }
     }
-    
-    ///-----------------------------------------
-    /// TODO: Customised Invocation Registration
-    ///-----------------------------------------
-    
+        
     /**
     Additional target & action to do get callback action. Note that setting custom `previous` selector doesn't affect native `previous` functionality, this is just used to notifiy user to do additional work according to need.
     

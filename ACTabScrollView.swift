@@ -5,14 +5,6 @@
 //  Created by AzureChen on 2015/8/19.
 //  Copyright (c) 2015 AzureChen. All rights reserved.
 //
-
-//  TODO:
-//   1. Performace improvement
-//   2. Test reloadData function
-//   3. Tabs in the bottom
-//   4. Bottom line or shadow
-//   5. Support Carthage
-
 import UIKit
 
 @IBDesignable

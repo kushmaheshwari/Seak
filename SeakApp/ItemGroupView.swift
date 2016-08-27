@@ -13,7 +13,7 @@ import ParseUI
 class ItemGroupView: UICollectionViewCell {
 	@IBOutlet weak var discountLabel: UILabel!
 
-	@IBOutlet weak var imgView: PFImageView!
+	@IBOutlet weak var imgView: UIImageView!
 
 	var item = ItemEntity()
 
@@ -35,7 +35,7 @@ class ItemGroupView: UICollectionViewCell {
 		}
 		tapped = true
 		if let storeObject = item.storeId {
-            //TO-DO: make migration to Firebase
+            //TODO: make migration to Firebase
 			/*storeObject.fetchInBackgroundWithBlock({ (object, error) in
 				if error != nil {
 					fatalError("Error on parsing store for \(self.item)")
