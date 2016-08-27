@@ -19,7 +19,7 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 	private var bottomConstrainInitValue: CGFloat = 0.0
 	var rating: Int = 0
 	var item: ItemEntity? = nil
-	var submitComletionBlock: (review: ReviewEntity) -> Void = { _ in }
+	var submitComletionBlock: () -> Void = { }
 
 	@IBOutlet weak var textViewBottomConstrain: NSLayoutConstraint!
 
@@ -109,7 +109,7 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 		}
 
 		repository.saveReview(text, rating: self.rating, item: self.item!) { (review) in
-			self.submitComletionBlock(review: review)
+			self.submitComletionBlock()
 			self.dismissViewControllerAnimated(true, completion: nil)
 		}
 	}

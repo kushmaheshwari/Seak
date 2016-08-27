@@ -55,7 +55,7 @@ class ReviewRepository {
             }) { (error) in print("Error: \(error.localizedDescription)")}
 	}
 
-	func saveReview(text: String, rating: Int, item: ItemEntity, saveCallback: (review: ReviewEntity) -> Void) {
+	func saveReview(text: String, rating: Int, item: ItemEntity, saveCallback: () -> Void) {
         //TODO recalculate average raiting at Item
 		let reviewsRef = FIRDatabase.database().reference().child("reviews")
         
@@ -64,7 +64,7 @@ class ReviewRepository {
                 return
             }
             
-            if let snapvalue = snapshot.value as? [String: AnyObject?]
+            if let snapvalue = snapshot.value as? [String: AnyObject]
             {
                 var key: FIRDatabaseReference
                 
@@ -75,10 +75,10 @@ class ReviewRepository {
                 }
                 else
                 {
-                    let createItem = item.objectID!
-                    reviewsRef.setValue(createItem)
+                    let createItem = [item.objectID!: true]
+                    reviewsRef.updateChildValues(createItem)
                     
-                    key = reviewsRef.child(item.objectID!)
+                    key = reviewsRef.child(item.objectID!).childByAutoId()
                 }
                 
                 let newItem = ["text": text,
@@ -86,6 +86,7 @@ class ReviewRepository {
                                "timestamp": FIRServerValue.timestamp(),
                                "user": FIRAuth.auth()?.currentUser?.uid ?? ""]
                 key.setValue(newItem)
+                saveCallback()
             }
         })
     }

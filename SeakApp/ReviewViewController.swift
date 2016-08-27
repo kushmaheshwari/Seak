@@ -113,10 +113,12 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 
 				vc.submitComletionBlock = { review in
 					if self.items.count == 0 {
-						self.items.append(review)
+						// TODO
+                        //self.items.append(review)
 					}
 					else {
-						self.items.insert(review, atIndex: 0)
+						//TODO
+                        //self.items.insert(review, atIndex: 0)
 					}
 
 					dispatch_async(dispatch_get_main_queue(), {
