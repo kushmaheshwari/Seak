@@ -166,12 +166,13 @@ class FavoriteRepository {
                     key = favItemsRef.child(currentUser!.uid)
                 }
                 else {
-                    favItemsRef.setValue(currentUser!.uid)
+                    let newUserItem = [currentUser!.uid: true]
+                    favItemsRef.updateChildValues(newUserItem)
                     key = favItemsRef.child(currentUser!.uid)
                 }
                 
                 let newItem = [item.objectID!: true]
-                key.setValue(newItem)
+                key.updateChildValues(newItem)
                 
                 let savedRef = favItemsRef.child(currentUser!.uid).child(item.objectID!)
                 savedRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
@@ -245,12 +246,13 @@ class FavoriteRepository {
                     key = favStoresRef.child(currentUser!.uid)
                 }
                 else {
-                    favStoresRef.setValue(currentUser!.uid)
+                    let newUserItem = [currentUser!.uid: true]
+                    favStoresRef.updateChildValues(newUserItem)
                     key = favStoresRef.child(currentUser!.uid)
                 }
                 
                 let newStore = [store.objectID!: true]
-                key.setValue(newStore)
+                key.updateChildValues(newStore)
                 
                 let savedRef = favStoresRef.child(currentUser!.uid).child(store.objectID!)
                 savedRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
