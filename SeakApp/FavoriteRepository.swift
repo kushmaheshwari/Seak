@@ -64,6 +64,7 @@ class FavoriteRepository {
     
         guard let currentUser = FIRAuth.auth()?.currentUser else { fatalError("No current user") }
         let storesRef = FIRDatabase.database().reference().child("favoriteStoresByUser").child(currentUser.uid)
+        
         storesRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             if !snapshot.exists() {
                 return

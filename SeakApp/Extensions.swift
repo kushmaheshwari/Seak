@@ -106,6 +106,7 @@ extension UIImageView {
         
         if let imgData = UIImageView.cache.objectForKey(urlString) as? NSData {
             self.image = UIImage(data: imgData)
+            UIImageView.cache.setObject(urlString, forKey: imgData)
         }
         else {
             
