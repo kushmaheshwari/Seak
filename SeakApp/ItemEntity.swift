@@ -19,7 +19,8 @@ class ItemEntity {
 	var descr: String?
 	var storeId: String?
 	var storeEntity: StoreEntity?
-	var reviewCount: Double?
+	var avgRating: Double?
+    var countReview: Int?
 	var storeCategory: StoreCategory?
 
 }

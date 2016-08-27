@@ -23,6 +23,7 @@ class ItemCellView: UICollectionViewCell {
 	private var item = ItemEntity()
 	private var tapped: Bool = false
 	private let reviewRepository = ReviewRepository()
+    private let storeRepository = StoreRepository()
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -57,20 +58,14 @@ class ItemCellView: UICollectionViewCell {
             self.pictureImage.setNeedsDisplay()
         }
         
+        self.starsStackView.setStars(Int(self.item.avgRating ?? 0))
+        
 		let tap = UITapGestureRecognizer(target: self, action: #selector(ItemCellView.openDetails(_:)))
-
 		tap.numberOfTouchesRequired = 1
 		self.addGestureRecognizer(tap)
 		self.layoutSubviews()
 		self.sizeToFit()
 
-		reviewRepository.getAll(by: self.item.objectID) { (reviews) in
-			let rating = (reviews.count > 0) ? reviews.reduce(0) { (sum, item) -> Int in
-				return sum + Int(item.rating!)
-			} / reviews.count: 0
-
-			self.starsStackView.setStars(rating)
-		}
 	}
 
 	func openDetails(gesture: UITapGestureRecognizer?) {
@@ -78,25 +73,14 @@ class ItemCellView: UICollectionViewCell {
 			return
 		}
 		tapped = true
-		if let storeObject = item.storeId {
-            
-            //TODO make migration to Firebase
-			
-            /*storeObject.fetchInBackgroundWithBlock({ (object, error) in
-				if error != nil {
-					fatalError("Error on parsing store for \(self.item)")
-				}
-                
-                // TODO add loading of store
-//				let store = StoreRepository.processStore(object!)
-//				self.item.storeEntity = store
-                
-				dispatch_async(dispatch_get_main_queue(), {
-					self.tapExecutionBlock(updatedItem: self.item)
-					self.tapped = false
-				})
-
-			})*/
+		if let storeId = item.storeId {
+            self.storeRepository.getById(storeId, completion: { (store) in
+                self.item.storeEntity = store
+                NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                    self.tapExecutionBlock(updatedItem: self.item)
+                    self.tapped = false
+                })
+            })
 		}
 
 	}

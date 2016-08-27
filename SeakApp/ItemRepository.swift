@@ -46,6 +46,9 @@ class ItemRepository {
 		if let storeCategory = object["storeCategory"] as? String {
 			item.storeCategory = StoreCategory(rawValue: storeCategory)
 		}
+        
+        item.avgRating = object["avgRating"] as? Double
+        item.countReview = object["countReview"] as? Int
 
 		return item
 	}

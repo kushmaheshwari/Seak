@@ -68,7 +68,7 @@ class StoreRepository {
         }) { (error) in print("Error: \(error.localizedDescription)")}
 	}
     
-    static func getById(storeId: String?, completion: StoreRepositoryCompletionBlock)
+    func getById(storeId: String?, completion: StoreRepositoryCompletionBlock)
     {
         guard let sID = storeId else { fatalError("Store Id is empty") }
         
@@ -80,7 +80,7 @@ class StoreRepository {
             
             if let snapvalue = snapshot.value as? [String: AnyObject]
             {
-                let item = processStore(sID, storeObject: snapvalue)
+                let item = StoreRepository.processStore(sID, storeObject: snapvalue)
                 completion(item: item)
             }
         })
