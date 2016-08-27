@@ -12,12 +12,11 @@ import ParseUI
 
 class ItemGroupView: UICollectionViewCell {
 	@IBOutlet weak var discountLabel: UILabel!
-
 	@IBOutlet weak var imgView: UIImageView!
 
 	var item = ItemEntity()
-
 	var tapExecutionBlock: (updatedItem: ItemEntity) -> Void = { _ in }
+    private let storeRepository = StoreRepository()
 
 	private var tapped: Bool = false
 
@@ -34,24 +33,14 @@ class ItemGroupView: UICollectionViewCell {
 			return
 		}
 		tapped = true
-		if let storeObject = item.storeId {
-            //TODO: make migration to Firebase
-			/*storeObject.fetchInBackgroundWithBlock({ (object, error) in
-				if error != nil {
-					fatalError("Error on parsing store for \(self.item)")
-				}
-                
-                // TODO add loading of store
-//				let store = StoreRepository.processStore(object!)
-//				self.item.storeEntity = store
-                
-                
-				dispatch_async(dispatch_get_main_queue(), {
-					self.tapExecutionBlock(updatedItem: self.item)
-					self.tapped = false
-				})
-
-			})*/
-		}
-	}
+        if let storeId = item.storeId {
+            self.storeRepository.getById(storeId, completion: { (store) in
+                self.item.storeEntity = store
+                NSOperationQueue.mainQueue().addOperationWithBlock({
+                    self.tapExecutionBlock(updatedItem: self.item)
+                    self.tapped = false
+                })
+            })
+        }
+    }
 }

@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 		FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
 
         FIRApp.configure()
-        FIRDatabase.database().persistenceEnabled = true
+//        FIRDatabase.database().persistenceEnabled = true
         
 		IQKeyboardManager.sharedManager().enable = true
 		IQKeyboardManager.sharedManager().enableAutoToolbar = true
