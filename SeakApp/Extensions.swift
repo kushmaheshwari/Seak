@@ -103,13 +103,11 @@ extension UIImageView {
     private static let cache = NSCache()
     
     func downloadWithCache(urlString: String) {
-        
         if let imgData = UIImageView.cache.objectForKey(urlString) as? NSData {
             self.image = UIImage(data: imgData)
-            UIImageView.cache.setObject(urlString, forKey: imgData)
+            UIImageView.cache.setObject(imgData, forKey: urlString)
         }
         else {
-            
             NSOperationQueue().addOperationWithBlock({ 
                 if let url = NSURL(string: urlString) {
                     guard let data = NSData(contentsOfURL: url) else { return }
