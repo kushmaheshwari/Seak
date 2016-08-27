@@ -13,21 +13,15 @@ import FirebaseAuth
 
 class FavoriteRepository {
 
+    private let storeRepository = StoreRepository()
+    private let itemRepository = ItemRepository()
+    
     //TODO check root path for favoriteStoresByUser and the same for items
     
     static func processFavoriteStore(userId: String, object: String) -> FavoriteStore {
 		let result = FavoriteStore()
 		result.userId = userId
 		result.storeId = object
-		/*if let store = result.storeId {
-			do {
-				try store.fetch() }
-			catch {
-				fatalError("can't fetch favorite store")
-			}
-            /// TODO replace it
-//			result.storeEntity = StoreRepository.processStore(store.objectId, storeObject: store)
-		}*/
 		return result
 	}
 
@@ -41,16 +35,6 @@ class FavoriteRepository {
 		let result = FavoriteItem()
 		result.userId = userId
 		result.itemId = object
-		/*if let item = result.item {
-			do {
-				try item.fetch() }
-			catch {
-				fatalError("can't fetch favorite item")
-			}
-            ////TODO replace it
-            // TODO: make migration to Firebase
-			//result.itemEntity = ItemRepository.processItem(item.objectId, object: item)
-		}*/
 		return result
 	}
 
@@ -60,7 +44,7 @@ class FavoriteRepository {
 		})
 	}
 
-	func getAllStores(completion: StoresRepositoryComplectionBlock) {
+    func getAllStores(completion: StoresRepositoryComplectionBlock) {
     
         guard let currentUser = FIRAuth.auth()?.currentUser else { fatalError("No current user") }
         let storesRef = FIRDatabase.database().reference().child("favoriteStoresByUser").child(currentUser.uid)
@@ -74,11 +58,19 @@ class FavoriteRepository {
             {
                 if let items = FavoriteRepository.processFavoriteStores(currentUser.uid, objects: snapvalue)
                 {
-                    //TODO make a decision what to do here
+                    let downloadGroup = dispatch_group_create()
+                    var stores = [StoreEntity]()
+                    for item in items {
+                        dispatch_group_enter(downloadGroup)
+                        self.storeRepository.getById(item.storeId!, completion: { (result) in
+                            stores.append(result)
+                            dispatch_group_leave(downloadGroup);
+                        })
+                    }
                     
-                    /*completion(items: items.map({ (favoriteStore) -> StoreEntity in
-                        return favoriteStore.storeEntity!
-                    }))*/
+                    dispatch_group_notify(downloadGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+                        completion(items: stores)
+                    })
                 }
             }
         }) { (error) in print("Error: \(error.localizedDescription)")}
@@ -98,11 +90,19 @@ class FavoriteRepository {
             {
                 if let items = FavoriteRepository.processFavoriteItems(currentUser.uid, objects: snapvalue)
                 {
-                    //TODO make a decision what to do here
+                    let downloadGroup = dispatch_group_create()
+                    var itemEntities = [ItemEntity]()
+                    for item in items {
+                        dispatch_group_enter(downloadGroup)
+                        self.itemRepository.getById(item.itemId, completion: { (result) in
+                            itemEntities.append(result)
+                            dispatch_group_leave(downloadGroup);
+                        })
+                    }
                     
-                    /*completion(items: items.map({ (favoriteItem) -> ItemEntity in
-                     return favoriteItem.itemEntity!
-                     }))*/
+                    dispatch_group_notify(downloadGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+                        completion(items: itemEntities)
+                    })
                 }
             }
         }) { (error) in print("Error: \(error.localizedDescription)")}

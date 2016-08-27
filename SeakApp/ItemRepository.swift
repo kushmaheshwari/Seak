@@ -170,11 +170,11 @@ class ItemRepository {
 
 	}
     
-    static func getById(itemId: String?, completion: ItemRepositoryCompletionBlock)
+    func getById(itemId: String?, completion: ItemRepositoryCompletionBlock)
     {
         guard let itID = itemId else { fatalError("Store Id is empty") }
         
-        let itemRef = FIRDatabase.database().reference().child("stores").child(itemId!)
+        let itemRef = FIRDatabase.database().reference().child("items").child(itemId!)
         itemRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             if !snapshot.exists() {
                 return
@@ -182,7 +182,7 @@ class ItemRepository {
             
             if let snapvalue = snapshot.value as? [String: AnyObject]
             {
-                let item = processItem(itID, object: snapvalue)
+                let item = ItemRepository.processItem(itID, object: snapvalue)
                 completion(item: item)
             }
         })

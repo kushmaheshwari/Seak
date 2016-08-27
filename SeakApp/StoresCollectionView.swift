@@ -21,8 +21,10 @@ UICollectionViewDelegateFlowLayout{
 	private var currentLocation: CLLocation? = nil
     private var locationRadius: Int? = nil
 
-	var storeArray: [StoreEntity] = []
-	var refreshControl: UIRefreshControl!
+	private var storeArray: [StoreEntity] = []
+    private var favoritesStoreArray: [FavoriteStore] = []
+    private let favoriteStoreCache = NSCache()
+	private var refreshControl: UIRefreshControl!
 	var dataSourceType: StoreCollectionViewSource = .None
 
 	override func awakeFromNib() {
@@ -102,7 +104,6 @@ UICollectionViewDelegateFlowLayout{
         }
     }
 
-
 	func refresh(sender: AnyObject)
 	{
 		loadCollectionViewDataCell()
@@ -128,20 +129,18 @@ UICollectionViewDelegateFlowLayout{
                 if let _ = self.currentLocation, let _ = self.locationRadius {
                     self.storeArray = self.filter(self.storeArray)
                 }
-				dispatch_async(dispatch_get_main_queue(), {
-					self.collectionView?.reloadData()
-				})
-
+                NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                    self.collectionView?.reloadData()
+                })
 			}
 
 		case .Favorites:
             if FIRAuth.auth()?.currentUser == nil { fatalError("empty current user") }
-            
 			self.favoritesRepository.getAllStores({ (items) in
 				self.storeArray = items
-				dispatch_async(dispatch_get_main_queue(), {
-					self.collectionView?.reloadData()
-				})
+                NSOperationQueue.mainQueue().addOperationWithBlock({
+                    self.collectionView?.reloadData()
+                })
 			})
 		default:
 			fatalError("unknown data source type")
@@ -150,7 +149,7 @@ UICollectionViewDelegateFlowLayout{
 	}
 
 	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return storeArray.count
+        return self.storeArray.count
 	}
 
 	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -158,13 +157,10 @@ UICollectionViewDelegateFlowLayout{
 		{
 			cell.addViewContainer.subviews.forEach({ $0.removeFromSuperview() })
 
-			let item = storeArray[indexPath.row]
-			if let name = item.name {
-				cell.titleLabel.text = name
-			}
-			if let description = item.descr {
-				cell.descriptionLabel.text = description
-			}
+            let item = storeArray[indexPath.row]
+            
+            cell.titleLabel.text = item.name ?? ""
+			cell.descriptionLabel.text = item.descr ?? ""
 
             cell.distanceLabel.hidden = true
             if let itemCoords = item.coordintaes {
