@@ -9,9 +9,10 @@
 import Foundation
 import Firebase
 
-//method parse
 //method by user id
 // save user
+
+typealias UserRepositoryCompletionBlock = (item: UserInfoItem) -> Void
 
 class UserRepository {
     
@@ -29,5 +30,23 @@ class UserRepository {
         }
         
         return userInfoEntity
+    }
+    
+    func getById(userId: String?, completion: UserRepositoryCompletionBlock) {
+        
+        guard let uId = userId else { fatalError("User Id is empty") }
+        
+        let userRef = FIRDatabase.database().reference().child("users").child(userId!)
+        userRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if !snapshot.exists() {
+                return
+            }
+            
+            if let snapvalue = snapshot.value as? [String: AnyObject]
+            {
+                let item = UserRepository.processUser(uId, userObject: snapvalue)
+                completion(item: item)
+            }
+        })
     }
 }
