@@ -40,7 +40,6 @@ class MenuViewController: UITableViewController {
 	func setFirebaseInfo() {
 		if let user = FIRAuth.auth()?.currentUser {
 			self.nameLabel.text = user.displayName ?? user.email
-            self.userRepository.saveUser(user.displayName ?? user.email, userPic: nil, saveCallback: {})
 		}
 	}
 

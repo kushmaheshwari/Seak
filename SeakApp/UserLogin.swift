@@ -26,6 +26,8 @@ class UserLogin {
                 let homeView = self.storyboard.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 appDelegate.window?.rootViewController = homeView
+                
+                UserRepository().saveUser(FIRAuth.auth()?.currentUser?.displayName, userPic: nil, saveCallback: {})
 			} else {
 				// problem
 				print(error);
