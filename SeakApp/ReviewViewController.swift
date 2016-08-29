@@ -77,14 +77,13 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 			fatalError("Empty ItemEntity")
 		}
         self.items.removeAll()
-        self.previewTableView.reloadData()
         
 		self.repository.getAll(by: self.itemEntity?.objectID) { (reviews) in
 			self.items = reviews
-			dispatch_async(dispatch_get_main_queue(), {
-				self.setAvgRating()
-				self.previewTableView.reloadData()
-			})
+            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                self.setAvgRating()
+                self.previewTableView.reloadData()
+            })
 		}
 	}
 

@@ -81,16 +81,45 @@ extension UIImageView {
             self.setNeedsDisplay()
         }
         else {
-            NSOperationQueue().addOperationWithBlock({ 
+            NSOperationQueue().addOperationWithBlock({[weak self] () in
                 if let url = NSURL(string: urlString) {
                     guard let data = NSData(contentsOfURL: url) else { return }
                     NSOperationQueue.mainQueue().addOperationWithBlock({ 
-                        self.image = UIImage(data: data)
+                        self?.image = UIImage(data: data)
                         UIImageView.cache.setObject(data, forKey: urlString)
-                        self.setNeedsDisplay()
+                        self?.setNeedsDisplay()
                     })
                 }
             })
         }
     }
+}
+
+extension NSDate {
+    func isGreaterThanDate(dateToCompare: NSDate) -> Bool {
+        //Declare Variables
+        var isGreater = false
+        
+        //Compare Values
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedDescending {
+            isGreater = true
+        }
+        
+        //Return Result
+        return isGreater
+    }
+    
+    func isLessThanDate(dateToCompare: NSDate) -> Bool {
+        //Declare Variables
+        var isLess = false
+        
+        //Compare Values
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedAscending {
+            isLess = true
+        }
+        
+        //Return Result
+        return isLess
+    }
+    
 }

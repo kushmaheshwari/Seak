@@ -37,7 +37,6 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func reset() {
         self.items.removeAll()
-        self.collectionView?.reloadData()
         self.loadItems()
     }
 
