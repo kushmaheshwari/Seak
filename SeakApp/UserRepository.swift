@@ -11,7 +11,7 @@ import Firebase
 
 // save user
 
-typealias UserRepositoryCompletionBlock = (item: UserInfoItem) -> Void
+typealias UserRepositoryCompletionBlock = (user: UserInfoItem) -> Void
 
 class UserRepository {
     
@@ -19,15 +19,8 @@ class UserRepository {
     {
         let userInfoEntity = UserInfoItem()
         userInfoEntity.userId = userId
-        
-        if let userEmail = userObject["userEmail"] as? String {
-            userInfoEntity.userEmail = userEmail
-        }
-        
-        if let userPic = userObject["picture"] as? String {
-            userInfoEntity.picutre = userPic
-        }
-        
+        userInfoEntity.userEmail = userObject["userEmail"] as? String
+        userInfoEntity.picutre = userObject["picture"] as? String
         return userInfoEntity
     }
     
@@ -43,8 +36,8 @@ class UserRepository {
             
             if let snapvalue = snapshot.value as? [String: AnyObject]
             {
-                let item = UserRepository.processUser(uId, userObject: snapvalue)
-                completion(item: item)
+                let user = UserRepository.processUser(uId, userObject: snapvalue)
+                completion(user: user)
             }
         })
     }
@@ -61,14 +54,10 @@ class UserRepository {
             if (snapshot.value as? [String: AnyObject]) != nil
             {
                 var key: FIRDatabaseReference
-                
                 key = usersRef.childByAutoId()
                 let newUser = ["picture": userPic ?? "",
                                "userEmail": userEmail ?? ""]
                 key.setValue(newUser)
-                
-                //TODO recalculate average raiting at Item
-                
                 saveCallback()
             }
         })
