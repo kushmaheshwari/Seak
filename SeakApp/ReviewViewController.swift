@@ -40,6 +40,7 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 	@IBOutlet weak var starsStackView: UIStackView!
 
 	private let repository = ReviewRepository()
+    private let itemRepository = ItemRepository()
 	private var items: [ReviewEntity] = []
 	var itemEntity: ItemEntity?
 
@@ -75,7 +76,9 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		if self.itemEntity == nil {
 			fatalError("Empty ItemEntity")
 		}
-
+        self.items.removeAll()
+        self.previewTableView.reloadData()
+        
 		self.repository.getAll(by: self.itemEntity?.objectID) { (reviews) in
 			self.items = reviews
 			dispatch_async(dispatch_get_main_queue(), {
@@ -107,24 +110,16 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 			segue.destinationViewController.modalPresentationStyle = .Custom
 			if let vc = segue.destinationViewController as? LeaveReviewViewController {
 				vc.item = self.itemEntity
-
-				vc.submitComletionBlock = { review in
-					if self.items.count == 0 {
-						// TODO
-                        //self.items.append(review)
-					}
-					else {
-						//TODO
-                        //self.items.insert(review, atIndex: 0)
-					}
-
-					dispatch_async(dispatch_get_main_queue(), {
-						self.setAvgRating()
-						self.previewTableView.reloadData()
-					})
-				}
+                vc.submitComletionBlock = { () in
+                    
+                    self.itemRepository.getById(self.itemEntity?.objectID!, completion: { (item) in
+                        self.itemEntity?.avgRating = item.avgRating
+                        self.itemEntity?.countReview = item.countReview
+                        
+                        self.loadReviews()
+                    })
+                }
 			} // end cast
-
 		}
 	}
 

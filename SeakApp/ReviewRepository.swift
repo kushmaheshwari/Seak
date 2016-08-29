@@ -56,7 +56,7 @@ class ReviewRepository {
 	}
 
 	func saveReview(text: String, rating: Int, item: ItemEntity, saveCallback: () -> Void) {
-        //TODO recalculate average raiting at Item
+        
 		let reviewsRef = FIRDatabase.database().reference().child("reviews")
         
         reviewsRef.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
@@ -86,6 +86,9 @@ class ReviewRepository {
                                "timestamp": FIRServerValue.timestamp(),
                                "user": FIRAuth.auth()?.currentUser?.uid ?? ""]
                 key.setValue(newItem)
+                
+                //TODO recalculate average raiting at Item
+                
                 saveCallback()
             }
         })

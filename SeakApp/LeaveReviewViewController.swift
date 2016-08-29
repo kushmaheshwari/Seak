@@ -15,11 +15,12 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 	@IBOutlet weak var reviewText: UITextView!
 
 	private let repository = ReviewRepository()
+    private let itemRepository = ItemRepository()
 	private var placeholderLabel: UILabel!
 	private var bottomConstrainInitValue: CGFloat = 0.0
 	var rating: Int = 0
 	var item: ItemEntity? = nil
-	var submitComletionBlock: () -> Void = { }
+	var submitComletionBlock: () -> Void = { fatalError("Unimplemented block") }
 
 	@IBOutlet weak var textViewBottomConstrain: NSLayoutConstraint!
 
@@ -30,6 +31,11 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 			fatalError ("Empty ItemEntity for LeaveReview view")
 		}
 
+        if self.item?.objectID == nil {
+            fatalError ("Empty ObjectID of ItemEntity for LeaveReview view")
+        }
+
+        
 		self.view.layer.cornerRadius = 5
 		self.view.layer.masksToBounds = true
 
@@ -106,9 +112,19 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 			return
 		}
 
-		repository.saveReview(text, rating: self.rating, item: self.item!) { (review) in
-			self.submitComletionBlock()
-			self.dismissViewControllerAnimated(true, completion: nil)
+		self.repository.saveReview(text, rating: self.rating, item: self.item!) { (review) in
+            
+            self.repository.getAll(by: self.item?.objectID, completion: { (reviews) in
+                let rating = (reviews.count > 0) ? reviews.reduce(0) { (sum, item) -> Double in
+                    return sum + item.rating!
+                    } / Double(reviews.count): Double(0)
+                
+                self.itemRepository.updateReviewScore(self.item!.objectID!,
+                    reviewCount: reviews.count, avgRating: rating, completion: {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    self.submitComletionBlock()
+                })
+            })
 		}
 	}
 

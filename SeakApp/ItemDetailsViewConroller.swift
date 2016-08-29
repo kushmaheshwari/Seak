@@ -71,10 +71,6 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 	}
 
 	func setAvgRating() {
-		if self.itemEntity == nil {
-			return
-		}
-        
         let rating = self.itemEntity?.avgRating ?? 0
         self.starsStackView.setStars(Int(rating))
         self.reviewsTitle.text = String(format: "%.1f/5 \((self.itemEntity?.countReview ?? 0)) reviews.", rating)

@@ -189,6 +189,20 @@ class ItemRepository {
             }
         })
     }
+    
+    func updateReviewScore(itemId: String, reviewCount: Int, avgRating:Double, completion: () -> Void) {
+        let itemRef = FIRDatabase.database().reference().child("items").child(itemId)
+        itemRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if !snapshot.exists() {
+                return
+            }
+
+            itemRef.updateChildValues(["avgRating": avgRating])
+            itemRef.updateChildValues(["countReview": reviewCount])
+            
+            completion()
+        })
+    }
 
 }
 
