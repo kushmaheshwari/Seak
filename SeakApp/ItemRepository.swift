@@ -155,7 +155,10 @@ class ItemRepository {
             {
                 if let items = ItemRepository.processItems(snapvalue)
                 {
-                    var filteredItems = items.filter() {($0.name?.containsString(value))! || ($0.descr?.containsString(value))!}
+                    var filteredItems = items.filter() {
+                        (($0.name ?? "" ).lowercaseString.containsString(value.lowercaseString) ||
+                        ($0.descr ?? "").lowercaseString.containsString(value.lowercaseString))
+                    }
                 
                     if store != nil
                     {

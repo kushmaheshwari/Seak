@@ -34,6 +34,12 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 			self.loadItems()
 		}
 	}
+    
+    func reset() {
+        self.items.removeAll()
+        self.collectionView?.reloadData()
+        self.loadItems()
+    }
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -69,9 +75,12 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
 		if let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(self.collectionViewReusableIdentifier, forIndexPath: indexPath) as? ItemGroupView
 		{
+            cell.imgView.image = nil
+            cell.tapExecutionBlock = { _ in }
+            
 			cell.discountLabel.hidden = true
             if let url = self.items[indexPath.row].picture {
-                self.imageView?.downloadWithCache(url)
+                cell.imgView.downloadWithCache(url)
             }
 			
 			cell.item = self.items[indexPath.row]
@@ -84,7 +93,9 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 					self.navigationController?.pushViewController(destination, animated: true)
 				}
 			}
-
+            
+            cell.setNeedsDisplay()
+            cell.setNeedsLayout()
 			return cell
 		}
 		return UICollectionViewCell()
@@ -126,9 +137,11 @@ class HomeItemsViewController: UIViewController, UITableViewDelegate, UITableVie
 		}
 
 		guard let cell = self.tableView.dequeueReusableCellWithIdentifier(GroupCell.reusableIdentifier) as? GroupCell else { fatalError("can't dequeue GroupCell") }
+        
 		cell.navigationController = self.navigationVC
 		cell.storeEntity = self.storeEntity
 		cell.status = items[indexPath.row - 1]
+        cell.reset()
 		return cell
 
 	}

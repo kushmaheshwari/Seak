@@ -78,6 +78,7 @@ extension UIImageView {
     func downloadWithCache(urlString: String) {
         if let imgData = UIImageView.cache.objectForKey(urlString) as? NSData {
             self.image = UIImage(data: imgData)
+            self.setNeedsDisplay()
         }
         else {
             NSOperationQueue().addOperationWithBlock({ 
@@ -86,6 +87,7 @@ extension UIImageView {
                     NSOperationQueue.mainQueue().addOperationWithBlock({ 
                         self.image = UIImage(data: data)
                         UIImageView.cache.setObject(data, forKey: urlString)
+                        self.setNeedsDisplay()
                     })
                 }
             })
