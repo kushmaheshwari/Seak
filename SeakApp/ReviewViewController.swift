@@ -146,6 +146,8 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		if let cell = previewTableView.dequeueReusableCellWithIdentifier(cellIdentifire) as? ReviewViewCellController
 		{
 			cell.previewNameLabel.text = ""
+            cell.previewAuthorImage.image = nil
+            
 			let item = self.items[indexPath.section]
 			let dateFormater = NSDateFormatter()
 			dateFormater.dateFormat = "MMMM dd, yyyy"
@@ -153,6 +155,7 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 
 			cell.previewAuthorImage.layer.cornerRadius = CGFloat(25)
 			cell.previewAuthorImage.clipsToBounds = true
+            
 
 			cell.previewMainLabel.text = item.review
 			cell.starsStackView.setStars(Int(item.rating!))
