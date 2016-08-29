@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Parse
 import Firebase
 import FirebaseAuth
 

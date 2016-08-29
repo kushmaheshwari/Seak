@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import ParseUI
 
 class ItemGroupView: UICollectionViewCell {
 	@IBOutlet weak var discountLabel: UILabel!

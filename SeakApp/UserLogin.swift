@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import Parse
-import ParseFacebookUtilsV4
 import UIKit
 import Firebase
+import FirebaseAuth
+import FBSDKLoginKit
 
 class UserLogin {
 

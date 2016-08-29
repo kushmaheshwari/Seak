@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import Parse
 import FBSDKCoreKit
-import ParseFacebookUtilsV4
+import CoreLocation
 import Firebase
 
 
@@ -24,10 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 		UINavigationBar.appearance().shadowImage = UIImage()
 		UINavigationBar.appearance().backgroundColor = UIColor.clearColor()
 
-		Parse.setApplicationId("8tHn7AQGhVswN2FeRewJZcXY0YjIK3Ly7IaEvvZx",
-			clientKey: "o7SW3QAsw3IVXKd5UdGBn7bNRyOILskA6NwGRhQy")
-		PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-		PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
 		FBSDKButton.classForCoder()
 		FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
 

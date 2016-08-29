@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 import FBSDKLoginKit
 
 class HomeViewController: UIViewController

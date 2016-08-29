@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
-import ParseFacebookUtilsV4
 import Firebase
+import FirebaseAuth
+import FBSDKLoginKit
 
 class StartAppViewController: UIViewController {
 	override func viewDidLoad() {

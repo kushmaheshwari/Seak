@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Parse
 import Firebase
 
 typealias ItemRepositoryComplectionBlock = (items: [ItemEntity]) -> Void

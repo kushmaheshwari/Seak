@@ -7,10 +7,8 @@
 //
 
 import UIKit
-import Parse
 import FBSDKLoginKit
 import FBSDKCoreKit
-import ParseFacebookUtilsV4
 import QuartzCore
 import Firebase
 

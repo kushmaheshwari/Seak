@@ -8,8 +8,6 @@
 
 import Foundation
 import UIKit
-import ParseUI
-import ParseFacebookUtilsV4
 
 class ReviewViewCellController: UITableViewCell
 {

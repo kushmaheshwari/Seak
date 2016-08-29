@@ -7,15 +7,12 @@
 //
 
 import Foundation
-import Parse
 import Firebase
 
 class ReviewEntity {
 	var objectID: String?
-	//var user: PFUser?
     var userId: String?
     var itemId: String?
-	//var itemEntity: ItemEntity?
 	var rating: Double?
 	var review: String?
 	var createdAt: NSDate?

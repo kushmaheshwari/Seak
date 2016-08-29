@@ -8,8 +8,6 @@
 
 import Foundation
 import UIKit
-import Parse
-import ParseFacebookUtilsV4
 
 extension UIViewController {
 	func hideKeyboardWhenTappedAround() {
@@ -55,31 +53,6 @@ extension UIColor {
 		NSScanner(string: bString).scanHexInt(&b)
 
 		return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
-	}
-}
-
-extension PFUser {
-	func getUserName() -> String? {
-		let firstName = self["firstName"] as? String
-		let lastName = self["lastName"] as? String
-
-		if (firstName == nil || lastName == nil) {
-			return self.email
-		}
-
-		return firstName! + " " + lastName!
-	}
-
-	func fetchInfo(completion: (firstName: String?, lastName: String?, profilePicture: PFFile?) -> Void) {
-		self.fetchInBackgroundWithBlock { (obj, error) in
-			if error != nil {
-				print (error)
-			} else {
-				completion(firstName: obj?["firstName"] as? String,
-					lastName: obj?["lastName"] as? String,
-					profilePicture: obj?["userPicture"] as? PFFile)
-			}
-		}
 	}
 }
 

@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import Parse
 import Firebase
+import CoreLocation
 
 typealias StoresRepositoryComplectionBlock = (items: [StoreEntity]) -> Void
 typealias StoreRepositoryCompletionBlock = (item: StoreEntity) -> Void

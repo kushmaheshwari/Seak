@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import ParseUI
 import MapKit
 
 class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {

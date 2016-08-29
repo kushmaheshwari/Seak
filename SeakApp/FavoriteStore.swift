@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Parse
 
 class FavoriteStore {
 	var userId: String? 

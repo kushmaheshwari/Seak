@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import MapKit
-import Parse
 import Firebase
 
 class StoresCollectionView: UICollectionViewController,

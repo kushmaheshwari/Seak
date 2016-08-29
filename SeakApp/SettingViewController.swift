@@ -8,9 +8,9 @@
 
 import Foundation
 import UIKit
-import Parse
-import ParseFacebookUtilsV4
 import Firebase
+import FBSDKLoginKit
+import FirebaseAuth
 
 class SettingViewController: UITableViewController
 {

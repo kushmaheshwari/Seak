@@ -8,9 +8,8 @@
 
 import Foundation
 import UIKit
-import Parse
-import ParseFacebookUtilsV4
-import Firebase
+import FirebaseAuth
+import FBSDKLoginKit
 
 class MenuViewController: UITableViewController {
 

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Parse
 import Firebase
 
 typealias ReviewsRepositoryComplectionBlock = (reviews: [ReviewEntity]) -> Void
