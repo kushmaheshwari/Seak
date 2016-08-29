@@ -13,6 +13,8 @@
 		229C17781D5261D100CBBC87 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C17771D5261D100CBBC87 /* MapViewController.swift */; };
 		229C177A1D5262F200CBBC87 /* RadiusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C17791D5262F200CBBC87 /* RadiusViewController.swift */; };
 		229C177C1D52634700CBBC87 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C177B1D52634700CBBC87 /* HelpViewController.swift */; };
+		22CD94191D745E7B004018A7 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CD94181D745E7B004018A7 /* UserRepository.swift */; };
+		22CD941B1D745E8F004018A7 /* UserInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CD941A1D745E8F004018A7 /* UserInfoEntity.swift */; };
 		5E05580B1D378F42009C5FDF /* FavoriteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05580A1D378F42009C5FDF /* FavoriteStore.swift */; };
 		5E05580D1D378F7E009C5FDF /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05580C1D378F7E009C5FDF /* FavoriteItem.swift */; };
 		5E05580F1D378FA8009C5FDF /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05580E1D378FA8009C5FDF /* FavoriteRepository.swift */; };
@@ -122,6 +124,8 @@
 		229C17771D5261D100CBBC87 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		229C17791D5262F200CBBC87 /* RadiusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiusViewController.swift; sourceTree = "<group>"; };
 		229C177B1D52634700CBBC87 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		22CD94181D745E7B004018A7 /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		22CD941A1D745E8F004018A7 /* UserInfoEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoEntity.swift; sourceTree = "<group>"; };
 		5E05580A1D378F42009C5FDF /* FavoriteStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
 		5E05580C1D378F7E009C5FDF /* FavoriteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		5E05580E1D378FA8009C5FDF /* FavoriteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteRepository.swift; sourceTree = "<group>"; };
@@ -273,6 +277,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22CD941C1D745EEC004018A7 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				22CD94181D745E7B004018A7 /* UserRepository.swift */,
+				22CD941A1D745E8F004018A7 /* UserInfoEntity.swift */,
+			);
+			name = UserInfo;
+			sourceTree = "<group>";
+		};
 		361A3F420624AE7E9283DEE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,6 +493,7 @@
 		5E9346271D00280E00CF4DC6 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				22CD941C1D745EEC004018A7 /* UserInfo */,
 				5E0558091D378F29009C5FDF /* Favorites */,
 				5E62FB581D2ACFB0007C0C0A /* Review */,
 				5E62FB571D2ACFA4007C0C0A /* Store */,
@@ -799,11 +813,13 @@
 				5E2A44F21D12C2C300BA866D /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				5E2A44EC1D12C2C300BA866D /* IQUIView+Hierarchy.swift in Sources */,
 				C9B9F01F1CFBE5E8002EA9BA /* RegisterController.swift in Sources */,
+				22CD94191D745E7B004018A7 /* UserRepository.swift in Sources */,
 				5EB6220B1D1E7BB60029F864 /* StoreEntity.swift in Sources */,
 				5E07CB6E1D05A10000F38D0B /* ItemsCollectionView.swift in Sources */,
 				5EB2E8B01D38FB32005552E9 /* AddStoreView.swift in Sources */,
 				5EEB13F31D2D1C7B008B3B03 /* DetailsNavigationTitleView.swift in Sources */,
 				5E2A44F71D12C2C300BA866D /* IQToolbar.swift in Sources */,
+				22CD941B1D745E8F004018A7 /* UserInfoEntity.swift in Sources */,
 				C9B9EFCF1CFBDDEA002EA9BA /* AppDelegate.swift in Sources */,
 				5E07CB721D05D69800F38D0B /* ItemCellView.swift in Sources */,
 				221402501D2AA48500E27659 /* ReviewViewController.swift in Sources */,
