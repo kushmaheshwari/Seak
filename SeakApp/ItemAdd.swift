@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Parse
+
 
 class ItemAdd: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -59,53 +59,37 @@ class ItemAdd: UIViewController, UITextViewDelegate, UIImagePickerControllerDele
     
     @IBAction func submitBtnAction(sender: AnyObject) {
         
-        let user = PFUser.currentUser()
-        if(user == nil){
-            print("NILL")
-        }
-        let userID = PFUser.currentUser()?.objectId ?? ""
-        print(userID)
-        
-        if ProductImage1.image == nil {
-            let alert = UIAlertController(title: "Error", message: "Please attach at least one Image", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-        }else {
-            let user = PFUser.currentUser()
-            let userID = user!["objectId"]
-            let newItem = PFObject(className: "Item")
-            newItem["name"] = ProductName.text
-            newItem["sellerID"] = userID
-            newItem["category"] = Category.text
-            newItem["Description"] = ProductDescription.text
-            let imageData = UIImagePNGRepresentation(self.ProductImage1.image!)
-            let imageFile = PFFile(name:"item", data:imageData!)
-            newItem["picture"] = imageFile
-            newItem.saveInBackgroundWithBlock({
-                (success: Bool, error: NSError?) ->Void in
-                if error == nil {
-                    print("SUCCESS")
-                } else {
-                    print("ERROR")
-                }
-            })
-            
-        }
+//        let user = PFUser.currentUser()
+//        if(user == nil){
+//            print("NILL")
+//        }
+//        let userID = PFUser.currentUser()?.objectId ?? ""
+//        print(userID)
+//        
+//        if ProductImage1.image == nil {
+//            let alert = UIAlertController(title: "Error", message: "Please attach at least one Image", preferredStyle: UIAlertControllerStyle.Alert)
+//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+//            self.presentViewController(alert, animated: true, completion: nil)
+//        }else {
+//            let user = PFUser.currentUser()
+//            let userID = user!["objectId"]
+//            let newItem = PFObject(className: "Item")
+//            newItem["name"] = ProductName.text
+//            newItem["sellerID"] = userID
+//            newItem["category"] = Category.text
+//            newItem["Description"] = ProductDescription.text
+//            let imageData = UIImagePNGRepresentation(self.ProductImage1.image!)
+//            let imageFile = PFFile(name:"item", data:imageData!)
+//            newItem["picture"] = imageFile
+//            newItem.saveInBackgroundWithBlock({
+//                (success: Bool, error: NSError?) ->Void in
+//                if error == nil {
+//                    print("SUCCESS")
+//                } else {
+//                    print("ERROR")
+//                }
+//            })
+//            
+//        }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
