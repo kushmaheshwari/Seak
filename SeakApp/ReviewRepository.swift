@@ -31,7 +31,7 @@ class ReviewRepository {
 		review.review = reviewObject["text"] as? String
         if let revDate = reviewObject["timestamp"] as? Double
         {
-            review.createdAt = NSDate(timeIntervalSinceReferenceDate: revDate/1000)
+            review.createdAt = NSDate(timeIntervalSince1970: NSTimeInterval(revDate / 1000))
         }
         return review
 	}
@@ -39,7 +39,7 @@ class ReviewRepository {
 	func getAll(by itemId: String?, completion: ReviewsRepositoryComplectionBlock) {
 		guard let itemId = itemId else { fatalError("ItemEntity with empty objectID") }
         
-        let reviewRef = FIRDatabase.database().reference().child("reviews").child(itemId).queryOrderedByChild("timestamp")
+        let reviewRef = FIRDatabase.database().reference().child("reviews").child(itemId)
         reviewRef.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
             if !snapshot.exists() {
                 return
@@ -49,7 +49,13 @@ class ReviewRepository {
             {
                 if let items = self.processReviews(itemId, reviewObjects: reviewsValue)
                 {
-                    completion(reviews: Array(items.reverse()))
+                    completion(reviews: items.sort({ (r1, r2) -> Bool in
+                        if let d1 = r1.createdAt, d2 = r2.createdAt {
+                            return d2.isLessThanDate(d1)
+                        }
+                        return true
+                    })
+                    )
                 }
             }
             }) { (error) in print("Error: \(error.localizedDescription)")}
