@@ -61,6 +61,8 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 
 		self.previewTableView.estimatedRowHeight = 135
 		self.previewTableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.setAvgRating()
 	}
 
 	override func viewWillAppear(animated: Bool) {
@@ -84,12 +86,9 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 	}
 
 	func setAvgRating() {
-		let rating = (self.items.count > 0) ? self.items.reduce(0) { (sum, item) -> Int in
-			return sum + Int(item.rating!)
-		} / self.items.count: 0
-
-		self.starsStackView.setStars(rating)
-		self.previewLabel.text = "\(self.items.count) Reviews"
+		let rating = self.itemEntity?.avgRating
+		self.starsStackView.setStars(Int(rating ?? 0))
+		self.previewLabel.text = "\((self.itemEntity?.countReview ?? 0)) Reviews"
 	}
 
 	@IBAction func closeView(sender: AnyObject) {

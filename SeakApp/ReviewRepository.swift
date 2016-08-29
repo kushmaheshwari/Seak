@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseAuth
 
 typealias ReviewsRepositoryComplectionBlock = (reviews: [ReviewEntity]) -> Void
 
