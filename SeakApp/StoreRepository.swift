@@ -36,8 +36,8 @@ class StoreRepository {
 			store.coordintaes = CLLocationCoordinate2D(latitude: addresslat!, longitude: addresslong!)
 		}
 
-		if let categories = storeObject["categories"] as? [String] { // TODO check this. MAybe it's not an array
-			store.categories = categories.map({ StoreCategory(rawValue: $0)! })
+        if let categories = storeObject["categories"] as? [String : AnyObject] {
+			store.categories = categories.map({ (key, _) in StoreCategory(rawValue: key)! })
 		}
 
 		return store

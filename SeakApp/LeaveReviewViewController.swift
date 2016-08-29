@@ -66,9 +66,7 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 	}
 
 	func keyboardWillHide(n: NSNotification) {
-//		if let height = (n.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().height {
 		self.textViewBottomConstrain.constant = self.bottomConstrainInitValue
-//		}
 	}
 
 	override func viewWillAppear(animated: Bool) {
