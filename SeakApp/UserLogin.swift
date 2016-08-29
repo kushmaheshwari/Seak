@@ -15,7 +15,7 @@ import FBSDKLoginKit
 class UserLogin {
 
 	private static let storyboard = UIStoryboard(name: StoryboardNames.MainStoryboard.rawValue, bundle: nil)
-
+    
 	static var loginType: UserLoginType = .None
 
 	static func logIn(username: String, password: String, view: UIViewController) {

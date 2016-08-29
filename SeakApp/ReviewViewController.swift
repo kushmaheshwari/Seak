@@ -41,6 +41,7 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 
 	private let repository = ReviewRepository()
     private let itemRepository = ItemRepository()
+    private let userReposirory = UserRepository()
 	private var items: [ReviewEntity] = []
 	var itemEntity: ItemEntity?
 
@@ -68,7 +69,6 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		self.items.removeAll()
 		self.loadReviews()
 	}
 
@@ -147,7 +147,14 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 			cell.previewNameLabel.text = ""
             cell.previewAuthorImage.image = nil
             
-			let item = self.items[indexPath.section]
+            let item = self.items[indexPath.section]
+            self.userReposirory.getById(item.userId, completion: { (user) in
+                cell.previewNameLabel.text = user.username
+                if let _ = user.picutre {
+                    cell.previewAuthorImage.downloadWithCache(user.picutre!)
+                }
+            })
+			
 			let dateFormater = NSDateFormatter()
 			dateFormater.dateFormat = "MMMM dd, yyyy"
 			cell.previewDateLabel.text = "Posted " + dateFormater.stringFromDate(item.createdAt!)

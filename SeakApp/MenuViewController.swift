@@ -13,6 +13,8 @@ import FBSDKLoginKit
 
 class MenuViewController: UITableViewController {
 
+    private let userRepository = UserRepository()
+    
 	@IBOutlet weak var logoImage: UIImageView!
 	@IBOutlet weak var nameLabel: UILabel!
 
@@ -38,18 +40,24 @@ class MenuViewController: UITableViewController {
 	func setFirebaseInfo() {
 		if let user = FIRAuth.auth()?.currentUser {
 			self.nameLabel.text = user.displayName ?? user.email
+            self.userRepository.saveUser(user.displayName ?? user.email, userPic: nil, saveCallback: {})
 		}
 	}
 
 	func setFacebookInfo() {
+        var name:String? = nil
+        var link:String? = nil
+        
 		if let userName = UserDataCache.getUserName() {
 			self.nameLabel.text = userName
+            name = userName
 		}
 		else {
 			let firstName = FBSDKProfile.currentProfile().firstName
 			let lastname = FBSDKProfile.currentProfile().lastName
 			let userName = firstName + " " + lastname
 			self.nameLabel.text = userName
+            name = userName
 			UserDataCache.saveUserName(userName)
 		}
 
@@ -62,9 +70,11 @@ class MenuViewController: UITableViewController {
 				self.logoImage.image = UIImage(data: data)
 				UserDataCache.saveUserPicture(data)
 			}
-
+            link = url.absoluteString
 			UserLogin.storeFacebookUserPictureBackend()
 		}
+        
+        self.userRepository.saveUser(name, userPic: link, saveCallback: {})
 	}
 
 	override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

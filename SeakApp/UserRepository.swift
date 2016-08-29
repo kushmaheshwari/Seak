@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseAuth
 
 // save user
 
@@ -19,7 +20,7 @@ class UserRepository {
     {
         let userInfoEntity = UserInfoItem()
         userInfoEntity.userId = userId
-        userInfoEntity.userEmail = userObject["userEmail"] as? String
+        userInfoEntity.username = userObject["username"] as? String
         userInfoEntity.picutre = userObject["picture"] as? String
         return userInfoEntity
     }
@@ -42,7 +43,7 @@ class UserRepository {
         })
     }
     
-    func saveUser(userEmail: String?, userPic: String?, saveCallback: () -> Void) {
+    func saveUser(username: String?, userPic: String?, saveCallback: () -> Void) {
         
         let usersRef = FIRDatabase.database().reference().child("users")
         
@@ -53,10 +54,10 @@ class UserRepository {
             
             if (snapshot.value as? [String: AnyObject]) != nil
             {
-                var key: FIRDatabaseReference
-                key = usersRef.childByAutoId()
+                guard let userId = FIRAuth.auth()?.currentUser?.uid else { return }
+                let key = usersRef.child(userId)
                 let newUser = ["picture": userPic ?? "",
-                               "userEmail": userEmail ?? ""]
+                               "username": username ?? ""]
                 key.setValue(newUser)
                 saveCallback()
             }
