@@ -29,10 +29,8 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 		super.viewDidLoad()
 
 		self.setTitle()
-        if let urlString = self.itemEntity?.picture {
-            if let url = NSURL(string: urlString) {
-                self.itemImage.hnk_setImageFromURL(url)
-            }
+        if let url = self.itemEntity?.picture {
+            self.itemImage.downloadWithCache(url)
         }
         
 		self.titleLabel.text = self.itemEntity?.name

@@ -52,11 +52,8 @@ class ItemCellView: UICollectionViewCell {
 			self.priceLabel.text = String(format: "$%.1f", price)
 		}
 		
-        if let urlString = self.item.picture {
-            if let url = NSURL(string: urlString) {
-                self.pictureImage.hnk_setImageFromURL(url)
-             }
-
+        if let url = self.item.picture {
+            self.pictureImage.downloadWithCache(url)
             self.pictureImage.setNeedsDisplay()
         }
         

@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Haneke
 
 class BannerCell: UITableViewCell {
 
@@ -79,10 +78,8 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
             cell.tapExecutionBlock = { _ in }
             
 			cell.discountLabel.hidden = true
-            if let urlString = self.items[indexPath.row].picture {
-                if let url = NSURL(string: urlString) {
-                    cell.imgView.hnk_setImageFromURL(url)
-                }
+            if let url = self.items[indexPath.row].picture {
+                cell.imgView.downloadWithCache(url)
             }
 			
 			cell.item = self.items[indexPath.row]
