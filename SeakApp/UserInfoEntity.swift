@@ -10,6 +10,6 @@ import Foundation
 
 class UserInfoItem {
     var userId: String?
-    var userEmail: String?
+    var username: String?
     var picutre: String?
 }

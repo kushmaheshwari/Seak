@@ -15,7 +15,7 @@ import FBSDKLoginKit
 class UserLogin {
 
 	fileprivate static let storyboard = UIStoryboard(name: StoryboardNames.MainStoryboard.rawValue, bundle: nil)
-
+    
 	static var loginType: UserLoginType = .none
 
 	static func logIn(_ username: String, password: String, view: UIViewController) {
@@ -26,6 +26,8 @@ class UserLogin {
                 let homeView = self.storyboard.instantiateViewController(withIdentifier: StoryboardNames.Main.rawValue)
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.window?.rootViewController = homeView
+                
+                UserRepository().saveUser(username: FIRAuth.auth()?.currentUser?.displayName, userPic: nil, saveCallback: {})
 			} else {
 				// problem
 				print(error);

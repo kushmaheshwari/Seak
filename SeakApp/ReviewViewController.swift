@@ -39,9 +39,11 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 	@IBOutlet weak var closeWindowButton: UIButton!
 	@IBOutlet weak var starsStackView: UIStackView!
 
-	fileprivate let repository = ReviewRepository()
-    fileprivate let itemRepository = ItemRepository()
-	fileprivate var items: [ReviewEntity] = []
+
+	private let repository = ReviewRepository()
+    private let itemRepository = ItemRepository()
+    private let userReposirory = UserRepository()
+	private var items: [ReviewEntity] = []
 	var itemEntity: ItemEntity?
 
 	override func viewDidLoad() {
@@ -68,7 +70,6 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		self.items.removeAll()
 		self.loadReviews()
 	}
 
@@ -147,8 +148,17 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 			cell.previewNameLabel.text = ""
             cell.previewAuthorImage.image = nil
             
-			let item = self.items[(indexPath as NSIndexPath).section]
+
+            let item = self.items[indexPath.section]
+            self.userReposirory.getById(userId: item.userId, completion: { (user) in
+                cell.previewNameLabel.text = user.username
+                if let _ = user.picutre {
+                    cell.previewAuthorImage.downloadWithCache(user.picutre!)
+                }
+            })
+			
 			let dateFormater = DateFormatter()
+
 			dateFormater.dateFormat = "MMMM dd, yyyy"
 			cell.previewDateLabel.text = "Posted " + dateFormater.string(from: item.createdAt! as Date)
 
