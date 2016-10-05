@@ -8,16 +8,17 @@
 
 import Foundation
 import UIKit
+import IQKeyboardManagerSwift
 
 class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 
 	@IBOutlet weak var starsStackView: UIStackView!
 	@IBOutlet weak var reviewText: UITextView!
 
-	private let repository = ReviewRepository()
-    private let itemRepository = ItemRepository()
-	private var placeholderLabel: UILabel!
-	private var bottomConstrainInitValue: CGFloat = 0.0
+	fileprivate let repository = ReviewRepository()
+    fileprivate let itemRepository = ItemRepository()
+	fileprivate var placeholderLabel: UILabel!
+	fileprivate var bottomConstrainInitValue: CGFloat = 0.0
 	var rating: Int = 0
 	var item: ItemEntity? = nil
 	var submitComletionBlock: () -> Void = { fatalError("Unimplemented block") }
@@ -45,7 +46,7 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 			if let v = starView as? UIImageView {
 				let tap = UITapGestureRecognizer(target: self, action: #selector(LeaveReviewViewController.tapStar(_:)))
 				tap.numberOfTapsRequired = 1
-				v.userInteractionEnabled = true
+				v.isUserInteractionEnabled = true
 				v.addGestureRecognizer(tap)
 			}
 		}
@@ -53,9 +54,9 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 		self.addPlaceholderLabelAtTextView()
 
 		// keyboard management
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LeaveReviewViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: self.view.window)
+		NotificationCenter.default.addObserver(self, selector: #selector(LeaveReviewViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
 
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LeaveReviewViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: self.view.window)
+		NotificationCenter.default.addObserver(self, selector: #selector(LeaveReviewViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
 
 		self.bottomConstrainInitValue = self.textViewBottomConstrain.constant
 	}
@@ -64,23 +65,23 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 		super.viewDidLayoutSubviews()
 	}
 
-	func keyboardWillShow(n: NSNotification) {
+	func keyboardWillShow(_ n: Notification) {
 		let bottomShift: CGFloat = 64
-		if let height = (n.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue().height {
+		if let height = ((n as NSNotification).userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
 			self.textViewBottomConstrain.constant = self.bottomConstrainInitValue + (height - bottomShift)
 		}
 	}
 
-	func keyboardWillHide(n: NSNotification) {
+	func keyboardWillHide(_ n: Notification) {
 		self.textViewBottomConstrain.constant = self.bottomConstrainInitValue
 	}
 
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		IQKeyboardManager.sharedManager().enable = false
 	}
 
-	override func viewWillDisappear(animated: Bool) {
+	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		IQKeyboardManager.sharedManager().enable = true
 	}
@@ -92,27 +93,27 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
 		self.placeholderLabel.font = self.reviewText.font
 		placeholderLabel.sizeToFit()
 		self.reviewText.addSubview(self.placeholderLabel)
-		placeholderLabel.frame.origin = CGPointMake(12, self.reviewText.font!.pointSize / 2)
+		placeholderLabel.frame.origin = CGPoint(x: 12, y: self.reviewText.font!.pointSize / 2)
 		placeholderLabel.textColor = UIColor(white: 0, alpha: 0.3)
-		placeholderLabel.hidden = !self.reviewText.text.isEmpty
+		placeholderLabel.isHidden = !self.reviewText.text.isEmpty
 	}
 
-	func textViewDidChange(textView: UITextView) {
-		self.placeholderLabel.hidden = !self.reviewText.text.isEmpty
+	func textViewDidChange(_ textView: UITextView) {
+		self.placeholderLabel.isHidden = !self.reviewText.text.isEmpty
 	}
 
-	func tapStar(sender: AnyObject) {
+	func tapStar(_ sender: AnyObject) {
 		self.rating = sender.view.tag
 		self.starsStackView.setStars(self.rating)
 	}
 
-	@IBAction func submit(sender: AnyObject) {
+	@IBAction func submit(_ sender: AnyObject) {
 		let text = reviewText.text
-		if text.characters.count == 0 {
+		if text?.characters.count == 0 {
 			return
 		}
 
-		self.repository.saveReview(text, rating: self.rating, item: self.item!) { (review) in
+		self.repository.saveReview(text!, rating: self.rating, item: self.item!) { (review) in
             
             self.repository.getAll(by: self.item?.objectID, completion: { (reviews) in
                 let rating = (reviews.count > 0) ? reviews.reduce(0) { (sum, item) -> Double in
@@ -121,14 +122,14 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
                 
                 self.itemRepository.updateReviewScore(self.item!.objectID!,
                     reviewCount: reviews.count, avgRating: rating, completion: {
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                     self.submitComletionBlock()
                 })
             })
 		}
 	}
 
-	@IBAction func closeView(sender: AnyObject) {
-		self.dismissViewControllerAnimated(true, completion: nil)
+	@IBAction func closeView(_ sender: AnyObject) {
+		self.dismiss(animated: true, completion: nil)
 	}
 }

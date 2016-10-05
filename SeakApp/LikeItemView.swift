@@ -12,18 +12,18 @@ import UIKit
 class LikeItemView: UIView {
 
 	@IBOutlet weak var likeImage: UIImageView!
-	private let repository = FavoriteRepository()
-	private var favoriteItem: FavoriteItem? = nil
-	private var tapped: Bool = false
+	fileprivate let repository = FavoriteRepository()
+	fileprivate var favoriteItem: FavoriteItem? = nil
+	fileprivate var tapped: Bool = false
 
 	var item: ItemEntity? = nil
 
-	static let likeItemNotification = String(self) + "_like"
-	static let dislikeItemNotification = String(self) + "_dislike"
+	static let likeItemNotification = String(describing: self) + "_like"
+	static let dislikeItemNotification = String(describing: self) + "_dislike"
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		self.likeImage.hidden = true
+		self.likeImage.isHidden = true
 		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(LikeItemView.tap(_:)))
 		self.addGestureRecognizer(tapRecognizer)
 	}
@@ -36,7 +36,7 @@ class LikeItemView: UIView {
 		}
 	}
 
-	func tap(sender: AnyObject?) {
+	func tap(_ sender: AnyObject?) {
 		if (self.tapped) {
 			return
 		}
@@ -47,15 +47,15 @@ class LikeItemView: UIView {
 				self.setImage()
 				self.tapped = false
 
-				let dict: [NSObject: AnyObject]? = ["itemObjectID": self.item!.objectID!]
-				NSNotificationCenter.defaultCenter().postNotificationName(LikeItemView.likeItemNotification, object: nil, userInfo: dict)
+				let dict: [AnyHashable: Any]? = ["itemObjectID": self.item!.objectID!]
+				NotificationCenter.default.post(name: Notification.Name(rawValue: LikeItemView.likeItemNotification), object: nil, userInfo: dict)
 
 			})
 		} else {
 			self.repository.dislike(self.favoriteItem!.itemId, successBlock: { (success) in
 				if (success) {
-					let dict: [NSObject: AnyObject]? = ["itemObjectID": self.item!.objectID!]
-					NSNotificationCenter.defaultCenter().postNotificationName(LikeItemView.dislikeItemNotification, object: nil, userInfo: dict)
+					let dict: [AnyHashable: Any]? = ["itemObjectID": self.item!.objectID!]
+					NotificationCenter.default.post(name: Notification.Name(rawValue: LikeItemView.dislikeItemNotification), object: nil, userInfo: dict)
 
 					self.favoriteItem = nil
 					self.setImage()
@@ -66,7 +66,7 @@ class LikeItemView: UIView {
 	}
 
 	func setImage() {
-		self.likeImage.hidden = false
+		self.likeImage.isHidden = false
 		if self.favoriteItem != nil {
 			self.likeImage.image = UIImage(named: "like")
 		} else {

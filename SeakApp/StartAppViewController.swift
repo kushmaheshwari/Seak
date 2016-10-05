@@ -15,16 +15,16 @@ import FBSDKLoginKit
 class StartAppViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Login.rawValue)
-		let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+		let loginVC = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.Login.rawValue)
+		let appDelegate = UIApplication.shared.delegate as? AppDelegate
 
-		if (FBSDKAccessToken.currentAccessToken() != nil) {
-            let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+		if (FBSDKAccessToken.current() != nil) {
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             
-            FIRAuth.auth()?.signInWithCredential(credential, completion: { (user, autherror) in
+            FIRAuth.auth()?.signIn(with: credential, completion: { (user, autherror) in
                 if user != nil {
-                    UserLogin.loginType = .Facebook
-                    let startView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
+                    UserLogin.loginType = .facebook
+                    let startView = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.Main.rawValue)
                     appDelegate?.window?.rootViewController = startView
                 } else {
                     print("Uh oh. There was an error logging in.")
@@ -35,8 +35,8 @@ class StartAppViewController: UIViewController {
 		}
 		else
 		if FIRAuth.auth()?.currentUser != nil {
-			UserLogin.loginType = .Firebase
-			let startView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Main.rawValue)
+			UserLogin.loginType = .firebase
+			let startView = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.Main.rawValue)
 			appDelegate?.window?.rootViewController = startView
 		}
 

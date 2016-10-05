@@ -19,9 +19,9 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
 	static let reusableIdentifier = "groupCellID"
 
-	private let repository = ItemRepository()
-	private var items: [ItemEntity] = []
-	private let collectionViewReusableIdentifier = "ItemGroupViewID"
+	fileprivate let repository = ItemRepository()
+	fileprivate var items: [ItemEntity] = []
+	fileprivate let collectionViewReusableIdentifier = "ItemGroupViewID"
 
 	var storeEntity: StoreEntity? = nil
 
@@ -46,7 +46,7 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 		self.collectionView.delegate = self
 
 		let nib = UINib(nibName: "ItemGroupView", bundle: nil)
-		self.collectionView?.registerNib(nib, forCellWithReuseIdentifier: self.collectionViewReusableIdentifier)
+		self.collectionView?.register(nib, forCellWithReuseIdentifier: self.collectionViewReusableIdentifier)
 	}
 
 	@IBOutlet weak var groupNameLabel: UILabel!
@@ -55,39 +55,39 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	func loadItems() {
 		repository.getByStatus(self.status, store: self.storeEntity) { (items) in
 			self.items = items
-			dispatch_async(dispatch_get_main_queue(), {
+			DispatchQueue.main.async(execute: {
 				self.collectionView.reloadData()
 			})
 		}
 	}
 
 	// collectionView
-	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
 		return 1
 	}
 
-	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return self.items.count
 	}
 
-	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-		if let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(self.collectionViewReusableIdentifier, forIndexPath: indexPath) as? ItemGroupView
+		if let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: self.collectionViewReusableIdentifier, for: indexPath) as? ItemGroupView
 		{
             cell.imgView.image = nil
             cell.tapExecutionBlock = { _ in }
             
-			cell.discountLabel.hidden = true
-            if let url = self.items[indexPath.row].picture {
+			cell.discountLabel.isHidden = true
+            if let url = self.items[(indexPath as NSIndexPath).row].picture {
                 cell.imgView.downloadWithCache(url)
             }
 			
-			cell.item = self.items[indexPath.row]
+			cell.item = self.items[(indexPath as NSIndexPath).row]
             
 
 			cell.tapExecutionBlock = { (updatedItem) -> Void in
 				let storyboard = UIStoryboard(name: "Main", bundle: nil)
-				if let destination = storyboard.instantiateViewControllerWithIdentifier(StoryboardNames.ItemDetailsView.rawValue) as? ItemDetailsViewConroller {
+				if let destination = storyboard.instantiateViewController(withIdentifier: StoryboardNames.ItemDetailsView.rawValue) as? ItemDetailsViewConroller {
 					destination.itemEntity = updatedItem
 					self.navigationController?.pushViewController(destination, animated: true)
 				}
@@ -100,7 +100,7 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 		return UICollectionViewCell()
 	}
 
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		let side = self.collectionView.contentSize.height
 		return CGSize(width: side, height: side)
 	}
@@ -108,8 +108,8 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
 class HomeItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-	private let bannerCellIdentifier = "imageCellID"
-	private let items = ItemStatus.values
+	fileprivate let bannerCellIdentifier = "imageCellID"
+	fileprivate let items = ItemStatus.values
 
 	var storeEntity: StoreEntity? = nil
 
@@ -125,21 +125,21 @@ class HomeItemsViewController: UIViewController, UITableViewDelegate, UITableVie
 	}
 
 	// tableView
-	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return items.count + 1
 	}
-	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-		if indexPath.row == 0 {
-			guard let cell = self.tableView.dequeueReusableCellWithIdentifier(self.bannerCellIdentifier) as? BannerCell else { fatalError("error on creating bannerCell") }
+		if (indexPath as NSIndexPath).row == 0 {
+			guard let cell = self.tableView.dequeueReusableCell(withIdentifier: self.bannerCellIdentifier) as? BannerCell else { fatalError("error on creating bannerCell") }
 			return cell
 		}
 
-		guard let cell = self.tableView.dequeueReusableCellWithIdentifier(GroupCell.reusableIdentifier) as? GroupCell else { fatalError("can't dequeue GroupCell") }
+		guard let cell = self.tableView.dequeueReusableCell(withIdentifier: GroupCell.reusableIdentifier) as? GroupCell else { fatalError("can't dequeue GroupCell") }
         
 		cell.navigationController = self.navigationVC
 		cell.storeEntity = self.storeEntity
-		cell.status = items[indexPath.row - 1]
+		cell.status = items[(indexPath as NSIndexPath).row - 1]
         cell.reset()
 		return cell
 

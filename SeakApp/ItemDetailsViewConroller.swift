@@ -13,7 +13,7 @@ import MapKit
 class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 
 	var itemEntity: ItemEntity? = nil
-	private let reviewRepository = ReviewRepository()
+	fileprivate let reviewRepository = ReviewRepository()
 
 	@IBOutlet weak var itemImage: UIImageView!
 	@IBOutlet weak var titleLabel: UILabel!
@@ -53,19 +53,19 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 		}
 
 		// add like viewcontroller
-		self.likeViewContainer.backgroundColor = UIColor.clearColor()
+		self.likeViewContainer.backgroundColor = UIColor.clear
 
-		if let v = NSBundle.mainBundle().loadNibNamed("LikeItemView", owner: self, options: nil)[0] as? LikeItemView {
+		if let v = Bundle.main.loadNibNamed("LikeItemView", owner: self, options: nil)?[0] as? LikeItemView {
 			v.item = self.itemEntity
 			self.likeViewContainer.addSubview(v)
-			self.likeViewContainer.bringSubviewToFront(v)
+			self.likeViewContainer.bringSubview(toFront: v)
 			v.load()
 		}
 
 		self.automaticallyAdjustsScrollViewInsets = false
 	}
 
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		self.setAvgRating()
 	}
@@ -77,7 +77,7 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 	}
 
 	func setTitle() {
-		guard let titleView = NSBundle.mainBundle().loadNibNamed("DetailsNavigationTitle", owner: nil, options: nil)[0] as? DetailsNavigationTitleView else { fatalError("Can't init DetailsNavigationTitleView") }
+		guard let titleView = Bundle.main.loadNibNamed("DetailsNavigationTitle", owner: nil, options: nil)?[0] as? DetailsNavigationTitleView else { fatalError("Can't init DetailsNavigationTitleView") }
 
 		titleView.titleView.text = self.itemEntity?.storeEntity?.name
 
@@ -85,9 +85,9 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 		self.navigationItem.titleView = titleView
 	}
 
-	func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 		let identifier = "pin"
-		var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+		var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
 		if pinView == nil {
 			pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
 
@@ -101,9 +101,9 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 		return pinView
 	}
 
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "goToReviewsSegue" {
-			if let destinationVC = segue.destinationViewController as? ReviewViewController {
+			if let destinationVC = segue.destination as? ReviewViewController {
 				destinationVC.itemEntity = self.itemEntity
 			}
 		}

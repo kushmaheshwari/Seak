@@ -9,21 +9,21 @@
 import Foundation
 
 class RecentSearches {
-	private static let prefs = NSUserDefaults.standardUserDefaults()
-	private static let keyID = "recentSearches"
-	private static let maxCount = 4
+	fileprivate static let prefs = UserDefaults.standard
+	fileprivate static let keyID = "recentSearches"
+	fileprivate static let maxCount = 4
 
 	static func getAll() -> [String] {
-		if let items = prefs.arrayForKey(keyID) as? [String] {
+		if let items = prefs.array(forKey: keyID) as? [String] {
 			return items
 		}
 
 		return [String]()
 	}
 
-	static func add(value: String) {
+	static func add(_ value: String) {
 		var items = getAll()
-		items.insert(value, atIndex: 0)
+		items.insert(value, at: 0)
 		while items.count > maxCount {
 			items.removeLast()
 		}

@@ -17,30 +17,30 @@ class ItemCellView: UICollectionViewCell {
 	@IBOutlet weak var starsStackView: UIStackView!
 	@IBOutlet weak var likeViewController: UIView!
 
-	var tapExecutionBlock: (updatedItem: ItemEntity) -> Void = { _ in }
+	var tapExecutionBlock: (_ updatedItem: ItemEntity) -> Void = { _ in }
 
-	private var item = ItemEntity()
-	private var tapped: Bool = false
-	private let reviewRepository = ReviewRepository()
-    private let storeRepository = StoreRepository()
+	fileprivate var item = ItemEntity()
+	fileprivate var tapped: Bool = false
+	fileprivate let reviewRepository = ReviewRepository()
+    fileprivate let storeRepository = StoreRepository()
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
 	}
 
-	func fillCell(item: ItemEntity) {
-		self.backgroundColor = UIColor.whiteColor()
-		self.pictureImage?.layer.backgroundColor = UIColor.whiteColor().CGColor
+	func fillCell(_ item: ItemEntity) {
+		self.backgroundColor = UIColor.white
+		self.pictureImage?.layer.backgroundColor = UIColor.white.cgColor
 
 		self.item = item
 
-		self.likeViewController.backgroundColor = UIColor.clearColor()
-		if let v = NSBundle.mainBundle().loadNibNamed("LikeItemView", owner: self, options: nil)[0] as? LikeItemView {
+		self.likeViewController.backgroundColor = UIColor.clear
+		if let v = Bundle.main.loadNibNamed("LikeItemView", owner: self, options: nil)?[0] as? LikeItemView {
 			v.item = self.item
 
 			self.likeViewController.addSubview(v)
-			self.bringSubviewToFront(self.likeViewController)
-			self.likeViewController.bringSubviewToFront(v)
+			self.bringSubview(toFront: self.likeViewController)
+			self.likeViewController.bringSubview(toFront: v)
 			v.load()
 		}
 
@@ -67,7 +67,7 @@ class ItemCellView: UICollectionViewCell {
 
 	}
 
-	func openDetails(gesture: UITapGestureRecognizer?) {
+	func openDetails(_ gesture: UITapGestureRecognizer?) {
 		if tapped {
 			return
 		}
@@ -75,8 +75,8 @@ class ItemCellView: UICollectionViewCell {
 		if let storeId = item.storeId {
             self.storeRepository.getById(storeId, completion: { (store) in
                 self.item.storeEntity = store
-                NSOperationQueue.mainQueue().addOperationWithBlock({ 
-                    self.tapExecutionBlock(updatedItem: self.item)
+                OperationQueue.main.addOperation({ 
+                    self.tapExecutionBlock(self.item)
                     self.tapped = false
                 })
             })

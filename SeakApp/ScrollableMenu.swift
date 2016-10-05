@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import ACTabScrollView
 
 class ScrollableMenu: ACTabScrollView {
 

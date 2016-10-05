@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreLocation
+import SlideMenuControllerSwift
 
 class StoresViewCellController: UICollectionViewCell
 {
@@ -33,7 +34,7 @@ class StoresViewCellController: UICollectionViewCell
 		self.addGestureRecognizer(tap)
 	}
 
-	func tap(gesture: UITapGestureRecognizer?) {
+	func tap(_ gesture: UITapGestureRecognizer?) {
 		openStoreBlock()
 	}
 }
@@ -42,11 +43,11 @@ class StoresViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+		self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
-		if let vc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.StoresCollection.rawValue) as? StoresCollectionView {
+		if let vc = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.StoresCollection.rawValue) as? StoresCollectionView {
 //			vc.navigationVC = self.navigationController
-			vc.dataSourceType = .All
+			vc.dataSourceType = .all
 			vc.loadCollectionViewDataCell()
 			self.addChildViewController(vc)
 			self.view.addSubview(vc.view)
@@ -56,17 +57,17 @@ class StoresViewController: UIViewController {
 	}
 
 	func setTitle() {
-		guard let titleView = NSBundle.mainBundle().loadNibNamed("StoresNavigationTitle", owner: nil, options: nil)[0] as? UIView else { fatalError("Can't init StoresNavigationTitleView") }
+		guard let titleView = Bundle.main.loadNibNamed("StoresNavigationTitle", owner: nil, options: nil)?[0] as? UIView else { fatalError("Can't init StoresNavigationTitleView") }
 
 		self.navigationItem.title = nil
 		self.navigationItem.titleView = titleView
 
 	}
 
-	@IBAction func menuIceonPressed(sender: AnyObject) {
+	@IBAction func menuIceonPressed(_ sender: AnyObject) {
 		self.slideMenuController()?.openLeft()
 	}
-	@IBAction func searchIconPressed(sender: AnyObject) {
+	@IBAction func searchIconPressed(_ sender: AnyObject) {
 	}
 
 }

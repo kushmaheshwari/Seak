@@ -29,35 +29,35 @@ class ItemAdd: UIViewController, UITextViewDelegate, UIImagePickerControllerDele
         self.hideKeyboardWhenTappedAround()
     }
     
-    @IBAction func takePhotoAction(sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+    @IBAction func takePhotoAction(_ sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera;
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
             imagePicker.allowsEditing = false
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            self.present(imagePicker, animated: true, completion: nil)
         }
     }
     
-    @IBAction func choosePhotoAction(sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
+    @IBAction func choosePhotoAction(_ sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
             imagePicker.allowsEditing = true
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            self.present(imagePicker, animated: true, completion: nil)
         }
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [AnyHashable: Any]!) {
         ProductImage1.image = image
-        ProductImage1.contentMode = UIViewContentMode.ScaleAspectFit
-        self.dismissViewControllerAnimated(true, completion: nil);
+        ProductImage1.contentMode = UIViewContentMode.scaleAspectFit
+        self.dismiss(animated: true, completion: nil);
     }
     
     
     
-    @IBAction func submitBtnAction(sender: AnyObject) {
+    @IBAction func submitBtnAction(_ sender: AnyObject) {
         
 //        let user = PFUser.currentUser()
 //        if(user == nil){

@@ -12,20 +12,20 @@ import UIKit
 class BigFollowStoreButtonView: UIView {
     @IBOutlet weak var addImg: UIImageView!
     
-    private let repository = FavoriteRepository()
-    private var favoriteStore: FavoriteStore? = nil
-    private var tapped: Bool = false
+    fileprivate let repository = FavoriteRepository()
+    fileprivate var favoriteStore: FavoriteStore? = nil
+    fileprivate var tapped: Bool = false
     
     weak var store: StoreEntity? = nil
-    static let addStoreNotification = String(AddStoreView) + "_add"
-    static let removeStoreNotification = String(AddStoreView) + "_remove"
+    static let addStoreNotification = String(describing: AddStoreView.self) + "_add"
+    static let removeStoreNotification = String(describing: AddStoreView.self) + "_remove"
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.addImg.hidden = true
+        self.addImg.isHidden = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddStoreView.tap(_:)))
         tapRecognizer.numberOfTapsRequired = 1
-        self.userInteractionEnabled = true
+        self.isUserInteractionEnabled = true
         self.addGestureRecognizer(tapRecognizer)
     }
     
@@ -37,7 +37,7 @@ class BigFollowStoreButtonView: UIView {
         }
     }
     
-    func tap(sender: AnyObject?) {
+    func tap(_ sender: AnyObject?) {
         if (self.tapped) {
             return
         }
@@ -47,14 +47,14 @@ class BigFollowStoreButtonView: UIView {
                 self.favoriteStore = favoriteStore
                 self.setImage()
                 self.tapped = false
-                let dict: [NSObject: AnyObject]? = ["storeObjectID": self.store!.objectID!]
-                NSNotificationCenter.defaultCenter().postNotificationName(AddStoreView.addStoreNotification, object: nil, userInfo: dict)
+                let dict: [AnyHashable: Any]? = ["storeObjectID": self.store!.objectID!]
+                NotificationCenter.default.post(name: Notification.Name(rawValue: AddStoreView.addStoreNotification), object: nil, userInfo: dict)
             })
         } else {
             self.repository.remove(self.favoriteStore!.storeId, successBlock: { (success) in
                 if (success) {
-                    let dict: [NSObject: AnyObject]? = ["storeObjectID": self.store!.objectID!]
-                    NSNotificationCenter.defaultCenter().postNotificationName(AddStoreView.removeStoreNotification, object: nil, userInfo: dict)
+                    let dict: [AnyHashable: Any]? = ["storeObjectID": self.store!.objectID!]
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: AddStoreView.removeStoreNotification), object: nil, userInfo: dict)
                     self.favoriteStore = nil
                     self.setImage()
                     self.tapped = false
@@ -64,7 +64,7 @@ class BigFollowStoreButtonView: UIView {
     }
     
     func setImage() {
-        self.addImg.hidden = false
+        self.addImg.isHidden = false
         if self.favoriteStore != nil {
             self.addImg.image = UIImage(named: "bigCheckmarkButton")
         } else {

@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-typealias RecentSearchesSelectedComplectionBlock = (text: String) -> Void
+typealias RecentSearchesSelectedComplectionBlock = (_ text: String) -> Void
 
 class RecentSearchesViewController: UITableViewController {
-	private let reusableIdentifier = "recentSearchCellID"
+	fileprivate let reusableIdentifier = "recentSearchCellID"
 
-	private var items: [String] = []
+	fileprivate var items: [String] = []
 
 	var selectionCompletionBlock: RecentSearchesSelectedComplectionBlock = { (_) in }
 
@@ -30,24 +30,24 @@ class RecentSearchesViewController: UITableViewController {
 		self.tableView.estimatedSectionHeaderHeight = 25
 	}
 
-	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		return "Recent"
 	}
 
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return items.count
 	}
 
-	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		if let cell = self.tableView.dequeueReusableCellWithIdentifier(reusableIdentifier) {
-			cell.textLabel?.text = items[indexPath.row]
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if let cell = self.tableView.dequeueReusableCell(withIdentifier: reusableIdentifier) {
+			cell.textLabel?.text = items[(indexPath as NSIndexPath).row]
 			return cell
 		}
 
 		return UITableViewCell()
 	}
 
-	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		self.selectionCompletionBlock(text: items[indexPath.row])
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		self.selectionCompletionBlock(items[(indexPath as NSIndexPath).row])
 	}
 }

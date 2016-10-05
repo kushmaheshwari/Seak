@@ -23,11 +23,11 @@ class LeaveReviewPresentationController: UIPresentationController {
 
 	var overlappingHeight: CGFloat = 0.0
 
-	override func frameOfPresentedViewInContainerView() -> CGRect {
+	override var frameOfPresentedViewInContainerView : CGRect {
 		let topSpacing: CGFloat = 4
 		let bottomSpacing: CGFloat = 4
 		let borderSpacing: CGFloat = 8
-		return CGRect(x: borderSpacing, y: UIScreen.mainScreen().bounds.size.height - self.overlappingHeight - bottomSpacing + topSpacing, width: UIScreen.mainScreen().bounds.size.width - borderSpacing * 2, height: self.overlappingHeight - topSpacing)
+		return CGRect(x: borderSpacing, y: UIScreen.main.bounds.size.height - self.overlappingHeight - bottomSpacing + topSpacing, width: UIScreen.main.bounds.size.width - borderSpacing * 2, height: self.overlappingHeight - topSpacing)
 	}
 }
 
@@ -39,9 +39,9 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 	@IBOutlet weak var closeWindowButton: UIButton!
 	@IBOutlet weak var starsStackView: UIStackView!
 
-	private let repository = ReviewRepository()
-    private let itemRepository = ItemRepository()
-	private var items: [ReviewEntity] = []
+	fileprivate let repository = ReviewRepository()
+    fileprivate let itemRepository = ItemRepository()
+	fileprivate var items: [ReviewEntity] = []
 	var itemEntity: ItemEntity?
 
 	override func viewDidLoad() {
@@ -49,8 +49,8 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 
 		let titleImage = UIImage(named: "navBarLogo")
 		let imgView = UIImageView(image: titleImage)
-		imgView.frame = CGRectMake(0, 0, 50, 25)
-		imgView.contentMode = .ScaleAspectFit
+		imgView.frame = CGRect(x: 0, y: 0, width: 50, height: 25)
+		imgView.contentMode = .scaleAspectFit
 		self.title = ""
 		self.previewLabel.text = ""
 		self.navigationItem.titleView = imgView
@@ -66,7 +66,7 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
         self.setAvgRating()
 	}
 
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		self.items.removeAll()
 		self.loadReviews()
@@ -80,7 +80,7 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
         
 		self.repository.getAll(by: self.itemEntity?.objectID) { (reviews) in
 			self.items = reviews
-            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+            OperationQueue.main.addOperation({ 
                 self.setAvgRating()
                 self.previewTableView.reloadData()
             })
@@ -93,21 +93,21 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		self.previewLabel.text = "\((self.itemEntity?.countReview ?? 0)) Reviews"
 	}
 
-	@IBAction func closeView(sender: AnyObject) {
-		self.dismissViewControllerAnimated(true, completion: nil)
+	@IBAction func closeView(_ sender: AnyObject) {
+		self.dismiss(animated: true, completion: nil)
 	}
 
-	func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-		let presenter = LeaveReviewPresentationController(presentedViewController: presented, presentingViewController: presentingViewController!)
+	func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+		let presenter = LeaveReviewPresentationController(presentedViewController: presented, presenting: presentingViewController!)
 		presenter.overlappingHeight = self.previewTableView.frame.size.height + 60
 		return presenter
 	}
 
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "goToAddReview" {
-			segue.destinationViewController.transitioningDelegate = self
-			segue.destinationViewController.modalPresentationStyle = .Custom
-			if let vc = segue.destinationViewController as? LeaveReviewViewController {
+			segue.destination.transitioningDelegate = self
+			segue.destination.modalPresentationStyle = .custom
+			if let vc = segue.destination as? LeaveReviewViewController {
 				vc.item = self.itemEntity
                 vc.submitComletionBlock = { () in
                     
@@ -122,35 +122,35 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
 		}
 	}
 
-	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return 1 // self.items.count
 	}
 
-	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	func numberOfSections(in tableView: UITableView) -> Int {
 		return self.items.count
 	}
 
-	func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+	func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
 		return 4
 	}
 
-	func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-		let headerView = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, 4))
-		headerView.backgroundColor = UIColor.clearColor()
+	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+		let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 4))
+		headerView.backgroundColor = UIColor.clear
 		return headerView
 	}
 
-	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cellIdentifire = "Cell"
-		if let cell = previewTableView.dequeueReusableCellWithIdentifier(cellIdentifire) as? ReviewViewCellController
+		if let cell = previewTableView.dequeueReusableCell(withIdentifier: cellIdentifire) as? ReviewViewCellController
 		{
 			cell.previewNameLabel.text = ""
             cell.previewAuthorImage.image = nil
             
-			let item = self.items[indexPath.section]
-			let dateFormater = NSDateFormatter()
+			let item = self.items[(indexPath as NSIndexPath).section]
+			let dateFormater = DateFormatter()
 			dateFormater.dateFormat = "MMMM dd, yyyy"
-			cell.previewDateLabel.text = "Posted " + dateFormater.stringFromDate(item.createdAt!)
+			cell.previewDateLabel.text = "Posted " + dateFormater.string(from: item.createdAt! as Date)
 
 			cell.previewAuthorImage.layer.cornerRadius = CGFloat(25)
 			cell.previewAuthorImage.clipsToBounds = true

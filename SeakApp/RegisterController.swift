@@ -18,11 +18,11 @@ class RegisterController: UIViewController { // here
 	@IBOutlet weak var ppBtn: UIButton!
 
 	var attrs = [
-		NSFontAttributeName: UIFont.systemFontOfSize(8.0),
-		NSForegroundColorAttributeName: UIColor.whiteColor(),
+		NSFontAttributeName: UIFont.systemFont(ofSize: 8.0),
+		NSForegroundColorAttributeName: UIColor.white,
 		NSUnderlineStyleAttributeName: 1
 
-	]
+	] as [String : Any]
 
 	var termsOfUseAttrString = NSMutableAttributedString(string: "")
 	var ppAttrString = NSMutableAttributedString(string: "")
@@ -30,41 +30,41 @@ class RegisterController: UIViewController { // here
 	override func viewDidLoad() { // again spacing and textfields
 		super.viewDidLoad()
 
-		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 
 		let imageView: UIView = UIView()
-		imageView.frame = CGRectMake(20, 0, 7, 26)
+		imageView.frame = CGRect(x: 20, y: 0, width: 7, height: 26)
 		FirstNameTF.leftView = imageView
-		FirstNameTF.leftViewMode = UITextFieldViewMode.Always
+		FirstNameTF.leftViewMode = UITextFieldViewMode.always
 
 		let imageView2: UIView = UIView()
-		imageView2.frame = CGRectMake(20, 0, 7, 26)
+		imageView2.frame = CGRect(x: 20, y: 0, width: 7, height: 26)
 		LastNameTF.leftView = imageView2
-		LastNameTF.leftViewMode = UITextFieldViewMode.Always
+		LastNameTF.leftViewMode = UITextFieldViewMode.always
 
 		let imageView3: UIView = UIView()
-		imageView3.frame = CGRectMake(20, 0, 7, 26)
+		imageView3.frame = CGRect(x: 20, y: 0, width: 7, height: 26)
 		EmailTF.leftView = imageView3
-		EmailTF.leftViewMode = UITextFieldViewMode.Always
+		EmailTF.leftViewMode = UITextFieldViewMode.always
 
 		let imageView4: UIView = UIView()
-		imageView4.frame = CGRectMake(20, 0, 7, 26)
+		imageView4.frame = CGRect(x: 20, y: 0, width: 7, height: 26)
 		PasswordTF.leftView = imageView4
-		PasswordTF.leftViewMode = UITextFieldViewMode.Always
+		PasswordTF.leftViewMode = UITextFieldViewMode.always
 
 		self.hideKeyboardWhenTappedAround()
-		self.navigationController?.navigationBarHidden = false
-		self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+		self.navigationController?.isNavigationBarHidden = false
+		self.navigationController?.navigationBar.tintColor = UIColor.white
 		self.navigationController?.navigationBar.shadowImage = UIImage()
 		// Do any additional setup after loading the view.
 
 		let termsOfUseTitleStr = NSMutableAttributedString(string: "TERMS OF USE", attributes: attrs)
-		termsOfUseAttrString.appendAttributedString(termsOfUseTitleStr)
-		termsOfUseBtn.setAttributedTitle(termsOfUseAttrString, forState: .Normal)
+		termsOfUseAttrString.append(termsOfUseTitleStr)
+		termsOfUseBtn.setAttributedTitle(termsOfUseAttrString, for: UIControlState())
 
 		let ppTitleString = NSMutableAttributedString(string: "PRIVACY POLICY", attributes: attrs)
-		ppAttrString.appendAttributedString(ppTitleString)
-		ppBtn.setAttributedTitle(ppTitleString, forState: .Normal)
+		ppAttrString.append(ppTitleString)
+		ppBtn.setAttributedTitle(ppTitleString, for: UIControlState())
 	}
 
 	override func viewDidLayoutSubviews() { // this code deals with all the newly formatted text fields
@@ -73,44 +73,44 @@ class RegisterController: UIViewController { // here
 		let border = CALayer()
 		let width = CGFloat(1.0)
 		border.borderWidth = width
-		border.borderColor = UIColor.whiteColor().CGColor
+		border.borderColor = UIColor.white.cgColor
 		border.frame = CGRect(x: 0, y: FirstNameTF.frame.size.height - width, width: FirstNameTF.frame.size.width, height: FirstNameTF.frame.size.height)
 		FirstNameTF.layer.addSublayer(border)
 		FirstNameTF.layer.masksToBounds = true
-		FirstNameTF.attributedPlaceholder = NSAttributedString(string: "First Name", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
-		FirstNameTF.textColor = UIColor.whiteColor()
+		FirstNameTF.attributedPlaceholder = NSAttributedString(string: "First Name", attributes: [NSForegroundColorAttributeName: UIColor.white])
+		FirstNameTF.textColor = UIColor.white
 
 		let LNborder = CALayer()
 		LNborder.borderWidth = width
-		LNborder.borderColor = UIColor.whiteColor().CGColor
+		LNborder.borderColor = UIColor.white.cgColor
 		LNborder.frame = CGRect(x: 0, y: LastNameTF.frame.size.height - width, width: LastNameTF.frame.size.width, height: LastNameTF.frame.size.height)
 		LastNameTF.layer.addSublayer(LNborder)
 		LastNameTF.layer.masksToBounds = true
-		LastNameTF.attributedPlaceholder = NSAttributedString(string: "Last Name", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
-		LastNameTF.textColor = UIColor.whiteColor()
+		LastNameTF.attributedPlaceholder = NSAttributedString(string: "Last Name", attributes: [NSForegroundColorAttributeName: UIColor.white])
+		LastNameTF.textColor = UIColor.white
 
 		let Eborder = CALayer()
 		Eborder.borderWidth = width
-		Eborder.borderColor = UIColor.whiteColor().CGColor
+		Eborder.borderColor = UIColor.white.cgColor
 		Eborder.frame = CGRect(x: 0, y: EmailTF.frame.size.height - width, width: EmailTF.frame.size.width, height: EmailTF.frame.size.height)
 		EmailTF.layer.addSublayer(Eborder)
 		EmailTF.layer.masksToBounds = true
-		EmailTF.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
-		EmailTF.textColor = UIColor.whiteColor()
+		EmailTF.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName: UIColor.white])
+		EmailTF.textColor = UIColor.white
 
 		let Pborder = CALayer()
 		Pborder.borderWidth = width
-		Pborder.borderColor = UIColor.whiteColor().CGColor
+		Pborder.borderColor = UIColor.white.cgColor
 		Pborder.frame = CGRect(x: 0, y: PasswordTF.frame.size.height - width, width: PasswordTF.frame.size.width, height: PasswordTF.frame.size.height)
 		PasswordTF.layer.addSublayer(Pborder)
 		PasswordTF.layer.masksToBounds = true
-		PasswordTF.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
-		PasswordTF.textColor = UIColor.whiteColor()
+		PasswordTF.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: UIColor.white])
+		PasswordTF.textColor = UIColor.white
 	}
 
-	@IBAction func RegisterBtnAction(sender: AnyObject) { // signs up user with Parse
-		if let username = EmailTF.text, password = PasswordTF.text,
-			firstname = FirstNameTF.text, lastname = LastNameTF.text {
+	@IBAction func RegisterBtnAction(_ sender: AnyObject) { // signs up user with Parse
+		if let username = EmailTF.text, let password = PasswordTF.text,
+			let firstname = FirstNameTF.text, let lastname = LastNameTF.text {
 				UserLogin.signUp(username, email: username, password: password, firstname: firstname, lastname: lastname, view: self)
 		}
 

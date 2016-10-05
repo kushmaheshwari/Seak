@@ -12,12 +12,12 @@ import Firebase
 
 class ItemsCollectionViewController: UICollectionViewController {
 
-	private let reuseIdentifier = "ItemCellIdentifier"
-	private let repository = ItemRepository()
-	private let favoritesRepository = FavoriteRepository()
-	private var category: StoreCategory = .None
+	fileprivate let reuseIdentifier = "ItemCellIdentifier"
+	fileprivate let repository = ItemRepository()
+	fileprivate let favoritesRepository = FavoriteRepository()
+	fileprivate var category: StoreCategory = .None
 
-	var dataSourceType: ItemsCollectionViewDataSource = .None
+	var dataSourceType: ItemsCollectionViewDataSource = .none
 	var storeEntity: StoreEntity? = nil
 
 	var items = [ItemEntity]()
@@ -32,13 +32,13 @@ class ItemsCollectionViewController: UICollectionViewController {
 		self.collectionView?.backgroundColor = UIColor.colorWithHexString("f5f5f5")
 
 		let nib = UINib(nibName: "ItemCellView", bundle: nil)
-		self.collectionView?.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
+		self.collectionView?.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
 
 		self.collectionView?.alwaysBounceVertical = true
 
 		self.refreshControl = UIRefreshControl() // adds refreshing
 		self.refreshControl.attributedTitle = NSAttributedString(string: "")
-		self.refreshControl.addTarget(self, action: #selector(ItemsCollectionViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+		self.refreshControl.addTarget(self, action: #selector(ItemsCollectionViewController.refresh(_:)), for: UIControlEvents.valueChanged)
 		self.collectionView?.addSubview(refreshControl)
 
 		self.loadCollectionViewData()
@@ -51,39 +51,39 @@ class ItemsCollectionViewController: UICollectionViewController {
 	}
 
 	func addObservers() {
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ItemsCollectionViewController.likeNotification(_:)), name: LikeItemView.likeItemNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(ItemsCollectionViewController.likeNotification(_:)), name: NSNotification.Name(rawValue: LikeItemView.likeItemNotification), object: nil)
 
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ItemsCollectionViewController.dislikeNotification(_:)), name: LikeItemView.dislikeItemNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(ItemsCollectionViewController.dislikeNotification(_:)), name: NSNotification.Name(rawValue: LikeItemView.dislikeItemNotification), object: nil)
 
 	}
 
 	func removeObserver() {
-		NSNotificationCenter.defaultCenter().removeObserver(self, name: LikeItemView.likeItemNotification, object: nil)
-		NSNotificationCenter.defaultCenter().removeObserver(self, name: LikeItemView.dislikeItemNotification, object: nil)
+		NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: LikeItemView.likeItemNotification), object: nil)
+		NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: LikeItemView.dislikeItemNotification), object: nil)
 	}
 
-	func likeNotification(notification: NSNotification) {
-		if self.dataSourceType != .Favorites {
+	func likeNotification(_ notification: Notification) {
+		if self.dataSourceType != .favorites {
 			return
 		}
 	}
 
-	func dislikeNotification(notification: NSNotification) {
-		if self.dataSourceType != .Favorites {
+	func dislikeNotification(_ notification: Notification) {
+		if self.dataSourceType != .favorites {
 			return
 		}
 
-		if let objectID = notification.userInfo?["itemObjectID"] as? String {
-			if let index = self.items.indexOf({ $0.objectID == objectID }) {
-				self.items.removeAtIndex(index)
+		if let objectID = (notification as NSNotification).userInfo?["itemObjectID"] as? String {
+			if let index = self.items.index(where: { $0.objectID == objectID }) {
+				self.items.remove(at: index)
 
-				let indexPath = NSIndexPath(forItem: index, inSection: 0)
-				self.collectionView?.deleteItemsAtIndexPaths([indexPath])
+				let indexPath = IndexPath(item: index, section: 0)
+				self.collectionView?.deleteItems(at: [indexPath])
 			}
 		}
 	}
 
-	func refresh(sender: AnyObject) {
+	func refresh(_ sender: AnyObject) {
 		loadCollectionViewData()
 		self.refreshControl.endRefreshing()
 	}
@@ -93,10 +93,10 @@ class ItemsCollectionViewController: UICollectionViewController {
 		self.collectionView?.reloadData()
 
 		switch self.dataSourceType {
-		case .Categories:
-			dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+		case .categories:
+			DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.background).async(execute: {
 				self.repository.getAllFromCategory(self.category, store: self.storeEntity) { (data) -> Void in
-					dispatch_async(dispatch_get_main_queue(), {
+					DispatchQueue.main.async(execute: {
 						self.items = data
 						print("Successfully retrieved \(data.count) scores.")
 						self.refreshControl.endRefreshing()
@@ -105,12 +105,12 @@ class ItemsCollectionViewController: UICollectionViewController {
 				}
 			})
 
-		case .Favorites:
+		case .favorites:
             if FIRAuth.auth()?.currentUser == nil { fatalError("empty current user") }
 			
-			dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+			DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.background).async(execute: {
 				self.favoritesRepository.getAllItems({ (data) in
-					dispatch_async(dispatch_get_main_queue(), {
+					DispatchQueue.main.async(execute: {
 						self.items = data
 						print("Successfully retrieved \(data.count) scores.")
 						self.refreshControl.endRefreshing()
@@ -124,27 +124,27 @@ class ItemsCollectionViewController: UICollectionViewController {
 
 	}
 
-	func setCategory(type: StoreCategory) {
+	func setCategory(_ type: StoreCategory) {
 		self.category = type
 	}
 
 	// MARK: UICollectionViewDataSource
-	override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+	override func numberOfSections(in collectionView: UICollectionView) -> Int {
 		return 1
 	}
 
-	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return items.count
 	}
 
-	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-		if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? ItemCellView {
-			let item = items[indexPath.row]
+		if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ItemCellView {
+			let item = items[(indexPath as NSIndexPath).row]
 			cell.fillCell(item)
 
 			cell.tapExecutionBlock = { (updatedItem) -> Void in
-				if let destination = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.ItemDetailsView.rawValue) as? ItemDetailsViewConroller {
+				if let destination = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.ItemDetailsView.rawValue) as? ItemDetailsViewConroller {
 					destination.itemEntity = updatedItem
 					self.navigationVC?.pushViewController(destination, animated: true)
 				}
@@ -158,26 +158,26 @@ class ItemsCollectionViewController: UICollectionViewController {
 }
 
 extension ItemsCollectionViewController: UICollectionViewDelegateFlowLayout {
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		let screenSize = self.view.bounds
 		let widthCell = (screenSize.width - 40) / 2
 		let coefficient = widthCell / 250
 		return CGSize(width: widthCell, height: 313 * coefficient)
 	}
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 		return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
 	}
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 		return CGFloat(8)
 	}
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
 		return CGFloat(8)
 	}
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-		return CGSizeZero
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+		return CGSize.zero
 	}
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-		return CGSizeZero
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+		return CGSize.zero
 	}
 
 }

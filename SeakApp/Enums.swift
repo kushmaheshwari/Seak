@@ -90,9 +90,9 @@ enum ItemStatus: String {
 }
 
 enum UserLoginType {
-	case None
-	case Firebase
-	case Facebook
+	case none
+	case firebase
+	case facebook
 }
 
 enum UserDataCacheProperties: String {
@@ -104,13 +104,13 @@ enum UserDataCacheProperties: String {
 }
 
 enum ItemsCollectionViewDataSource {
-	case None
-	case Categories
-	case Favorites
+	case none
+	case categories
+	case favorites
 }
 
 enum StoreCollectionViewSource {
-	case None
-	case All
-	case Favorites
+	case none
+	case all
+	case favorites
 }

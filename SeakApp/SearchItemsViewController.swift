@@ -14,14 +14,14 @@ UISearchBarDelegate, UISearchResultsUpdating,
 UICollectionViewDelegate, UICollectionViewDataSource
 {
 
-	private let repository = ItemRepository()
-	private var items: [ItemEntity] = []
-	private let reuseIdentifier = "ItemCellIdentifier"
+	fileprivate let repository = ItemRepository()
+	fileprivate var items: [ItemEntity] = []
+	fileprivate let reuseIdentifier = "ItemCellIdentifier"
     
     var storeObject: StoreEntity? = nil
 	var searchFromTyping = false
 	var searchController: UISearchController!
-	private var recentSearches: RecentSearchesViewController!
+	fileprivate var recentSearches: RecentSearchesViewController!
 
 	@IBOutlet weak var searchTitleTextLabel: UILabel!
 	@IBOutlet weak var containerView: UIView!
@@ -31,14 +31,14 @@ UICollectionViewDelegate, UICollectionViewDataSource
 		super.viewDidLoad()
 
 		self.navigationItem.hidesBackButton = false
-		self.edgesForExtendedLayout = .None
+		self.edgesForExtendedLayout = UIRectEdge()
 
-		self.recentSearches = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.RecentSearches.rawValue) as! RecentSearchesViewController
+		self.recentSearches = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.RecentSearches.rawValue) as! RecentSearchesViewController
 		addSearchbar()
 		self.searchItemsCollectionView.delegate = self
 		self.searchItemsCollectionView.dataSource = self
 		let nib = UINib(nibName: "ItemCellView", bundle: nil)
-		self.searchItemsCollectionView?.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
+		self.searchItemsCollectionView?.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
 		self.searchItemsCollectionView?.alwaysBounceVertical = true
 		self.searchItemsCollectionView.backgroundColor = UIColor.colorWithHexString("f5f5f5")
 
@@ -54,8 +54,8 @@ UICollectionViewDelegate, UICollectionViewDataSource
 		self.definesPresentationContext = true
 		self.navigationItem.titleView = self.searchController.searchBar
 		self.navigationItem.rightBarButtonItem = nil
-		self.searchTitleTextLabel.hidden = true
-		self.containerView.hidden = true
+		self.searchTitleTextLabel.isHidden = true
+		self.containerView.isHidden = true
 		// recent controller
 
 		self.recentSearches.selectionCompletionBlock = { (text) in
@@ -67,37 +67,37 @@ UICollectionViewDelegate, UICollectionViewDataSource
 
 		self.recentSearches.reload()
 		self.view.addSubview(self.recentSearches.view)
-		self.view.sendSubviewToBack(self.recentSearches.view)
+		self.view.sendSubview(toBack: self.recentSearches.view)
 
 	}
 
-	func addPlainHeader(searchTextValue: String) {
+	func addPlainHeader(_ searchTextValue: String) {
 		let titleImage = UIImage(named: "navBarLogo")
 		let imgView = UIImageView(image: titleImage)
-		imgView.frame = CGRectMake(0, 0, 50, 25)
-		imgView.contentMode = .ScaleAspectFit
+		imgView.frame = CGRect(x: 0, y: 0, width: 50, height: 25)
+		imgView.contentMode = .scaleAspectFit
 		self.title = ""
 		self.navigationItem.titleView = imgView
-		let rightBarButton = UIBarButtonItem(image: UIImage(named: "searchIcon"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SearchItemsViewController.searchIconTaped(_:)))
+		let rightBarButton = UIBarButtonItem(image: UIImage(named: "searchIcon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(SearchItemsViewController.searchIconTaped(_:)))
 		navigationItem.rightBarButtonItem = rightBarButton
 		self.searchTitleTextLabel.text = searchTextValue
-		self.searchTitleTextLabel.hidden = false
-		self.containerView.hidden = false
+		self.searchTitleTextLabel.isHidden = false
+		self.containerView.isHidden = false
 	}
 
-	func searchIconTaped(sender: UIButton!) {
+	func searchIconTaped(_ sender: UIButton!) {
 		self.addSearchbar()
 	}
 
 // MARK: SearchBarDelegate
-	func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
 
 	}
 
-	func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+	func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
 		self.searchFromTyping = true
 	}
-	func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+	func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
 		print("do search")
 		self.recentSearches.view.removeFromSuperview()
 		items.removeAll()
@@ -117,27 +117,27 @@ UICollectionViewDelegate, UICollectionViewDataSource
 			})
 		}
 	}
-	func updateSearchResultsForSearchController(searchController: UISearchController) {
+	func updateSearchResults(for searchController: UISearchController) {
 
 	}
 
 	// MARK: collectinview
-	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
 		return 1
 	}
 
-	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return items.count
 	}
 
-	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-		if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? ItemCellView {
-			let item = items[indexPath.row]
+		if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ItemCellView {
+			let item = items[(indexPath as NSIndexPath).row]
 			cell.fillCell(item)
 
 			cell.tapExecutionBlock = { (updatedItem) -> Void in
-				if let destination = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.ItemDetailsView.rawValue) as? ItemDetailsViewConroller {
+				if let destination = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.ItemDetailsView.rawValue) as? ItemDetailsViewConroller {
 					destination.itemEntity = updatedItem
 					self.navigationController?.pushViewController(destination, animated: true)
 				}
@@ -150,25 +150,25 @@ UICollectionViewDelegate, UICollectionViewDataSource
 }
 
 extension SearchItemsViewController: UICollectionViewDelegateFlowLayout {
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		let screenSize = self.searchItemsCollectionView.bounds
 		let width = screenSize.width - 40
 		return CGSize(width: width / 2, height: width / 2 / 0.8)
 	}
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 		return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
 	}
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 		return CGFloat(8)
 	}
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
 		return CGFloat(8)
 	}
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-		return CGSizeZero
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+		return CGSize.zero
 	}
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-		return CGSizeZero
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+		return CGSize.zero
 	}
 
 }

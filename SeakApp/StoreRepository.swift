@@ -10,14 +10,14 @@ import Foundation
 import Firebase
 import CoreLocation
 
-typealias StoresRepositoryComplectionBlock = (items: [StoreEntity]) -> Void
-typealias StoreRepositoryCompletionBlock = (item: StoreEntity) -> Void
+typealias StoresRepositoryComplectionBlock = (_ items: [StoreEntity]) -> Void
+typealias StoreRepositoryCompletionBlock = (_ item: StoreEntity) -> Void
 
 class StoreRepository {
 
-	let cacheAge: NSTimeInterval = 60 * 60 // 1 hour
+	let cacheAge: TimeInterval = 60 * 60 // 1 hour
 
-    static func processStore(storeId: String?, storeObject: [String: AnyObject]) -> StoreEntity {
+    static func processStore(_ storeId: String?, storeObject: [String: AnyObject]) -> StoreEntity {
 		let store = StoreEntity()
 		if let name = storeObject["name"] {
 			store.name = name as? String
@@ -43,7 +43,7 @@ class StoreRepository {
 		return store
 	}
 
-    static func processStores(data: [String: AnyObject]) -> [StoreEntity]? {
+    static func processStores(_ data: [String: AnyObject]) -> [StoreEntity]? {
         let resultArray = data.map { (key, value) -> StoreEntity in
             return processStore(key, storeObject: (value as? [String: AnyObject])!)
         }
@@ -51,9 +51,9 @@ class StoreRepository {
         return resultArray
 	}
 
-	func getAll(completion: StoresRepositoryComplectionBlock) {
+	func getAll(_ completion: @escaping StoresRepositoryComplectionBlock) {
 		let storesRef = FIRDatabase.database().reference().child("stores")
-        storesRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        storesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if !snapshot.exists() {
                 return
             }
@@ -62,18 +62,18 @@ class StoreRepository {
             {
                 if let items = StoreRepository.processStores(snapvalue)
                 {
-                    completion(items: items)
+                    completion(items)
                 }
             }
         }) { (error) in print("Error: \(error.localizedDescription)")}
 	}
     
-    func getById(storeId: String?, completion: StoreRepositoryCompletionBlock)
+    func getById(_ storeId: String?, completion: @escaping StoreRepositoryCompletionBlock)
     {
         guard let sID = storeId else { fatalError("Store Id is empty") }
         
         let storeRef = FIRDatabase.database().reference().child("stores").child(storeId!)
-        storeRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        storeRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if !snapshot.exists() {
                 return
             }
@@ -81,7 +81,7 @@ class StoreRepository {
             if let snapvalue = snapshot.value as? [String: AnyObject]
             {
                 let item = StoreRepository.processStore(sID, storeObject: snapvalue)
-                completion(item: item)
+                completion(item)
             }
         })
     }

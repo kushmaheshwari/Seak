@@ -11,39 +11,40 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 import FirebaseAuth
+import SlideMenuControllerSwift
 
 class SettingViewController: UITableViewController
 {
 
     @IBOutlet weak var logoutRow: UITableViewCell!
     
-    @IBAction func menuIconPressed(sender: AnyObject) {
+    @IBAction func menuIconPressed(_ sender: AnyObject) {
         self.slideMenuController()?.openLeft()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        self.view?.backgroundColor = UIColor.lightGrayColor()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.view?.backgroundColor = UIColor.lightGray
         
-        let emptyView = UIView(frame: CGRectZero)
+        let emptyView = UIView(frame: CGRect.zero)
         self.tableView.tableFooterView = emptyView
-        self.tableView.tableFooterView?.hidden = true
+        self.tableView.tableFooterView?.isHidden = true
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(logoutTap(_:)))
         tap.numberOfTouchesRequired = 1
         logoutRow.addGestureRecognizer(tap)
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
     
-    func logoutTap(gesture: UITapGestureRecognizer)
+    func logoutTap(_ gesture: UITapGestureRecognizer)
     {
         if (FIRAuth.auth()?.currentUser != nil) {
             do {
@@ -54,16 +55,16 @@ class SettingViewController: UITableViewController
             }
         }
         
-        if (FBSDKAccessToken.currentAccessToken() != nil)
+        if (FBSDKAccessToken.current() != nil)
         {
             FBSDKLoginManager().logOut()
         }
         
         UserDataCache.clearCache()
-        UserLogin.loginType = .None
+        UserLogin.loginType = .none
         
-        let loginview = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Login.rawValue)
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let loginview = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.Login.rawValue)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = loginview
     }
 }

@@ -11,11 +11,11 @@ import Firebase
 
 // save user
 
-typealias UserRepositoryCompletionBlock = (item: UserInfoItem) -> Void
+typealias UserRepositoryCompletionBlock = (_ item: UserInfoItem) -> Void
 
 class UserRepository {
     
-    static func processUser(userId: String?, userObject: [String: AnyObject]) -> UserInfoItem
+    static func processUser(_ userId: String?, userObject: [String: AnyObject]) -> UserInfoItem
     {
         let userInfoEntity = UserInfoItem()
         userInfoEntity.userId = userId
@@ -31,12 +31,12 @@ class UserRepository {
         return userInfoEntity
     }
     
-    func getById(userId: String?, completion: UserRepositoryCompletionBlock) {
+    func getById(_ userId: String?, completion: @escaping UserRepositoryCompletionBlock) {
         
         guard let uId = userId else { fatalError("User Id is empty") }
         
         let userRef = FIRDatabase.database().reference().child("users").child(userId!)
-        userRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if !snapshot.exists() {
                 return
             }
@@ -44,16 +44,16 @@ class UserRepository {
             if let snapvalue = snapshot.value as? [String: AnyObject]
             {
                 let item = UserRepository.processUser(uId, userObject: snapvalue)
-                completion(item: item)
+                completion(item)
             }
         })
     }
     
-    func saveUser(userEmail: String?, userPic: String?, saveCallback: () -> Void) {
+    func saveUser(_ userEmail: String?, userPic: String?, saveCallback: @escaping () -> Void) {
         
         let usersRef = FIRDatabase.database().reference().child("users")
         
-        usersRef.observeSingleEventOfType(.Value, withBlock: {(snapshot) in
+        usersRef.observeSingleEvent(of: .value, with: {(snapshot) in
             if !snapshot.exists() {
                 return
             }

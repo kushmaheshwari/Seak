@@ -8,16 +8,17 @@
 
 import Foundation
 import UIKit
+import SlideMenuControllerSwift
 
 class ContainerViewController: SlideMenuController {
 	override func awakeFromNib() {
-		if let controller = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.Navigation.rawValue) {
+		if let controller = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.Navigation.rawValue) {
 			self.mainViewController = controller
 		}
-		if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("LeftMenuID") {
+		if let controller = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuID") {
 			self.leftViewController = controller
 		}
-		SlideMenuOptions.leftViewWidth = UIScreen.mainScreen().bounds.width / 1.5
+		SlideMenuOptions.leftViewWidth = UIScreen.main.bounds.width / 1.5
 		SlideMenuOptions.contentViewScale = 1
 		super.awakeFromNib()
 	}

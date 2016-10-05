@@ -17,8 +17,8 @@ class FavViewController: UIViewController
 	let chosenTabColor = UIColor.colorWithHexString("318EC4")
 	let defaultTabColor = UIColor.colorWithHexString("266D96")
 
-	private var itemsCollectionView: ItemsCollectionViewController? = nil
-	private var storeCollectionView: StoresCollectionView? = nil
+	fileprivate var itemsCollectionView: ItemsCollectionViewController? = nil
+	fileprivate var storeCollectionView: StoresCollectionView? = nil
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -39,19 +39,19 @@ class FavViewController: UIViewController
 
 	func initCollectionViews() {
 		if self.itemsCollectionView == nil {
-			self.itemsCollectionView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.ItemsCollection.rawValue) as? ItemsCollectionViewController
+			self.itemsCollectionView = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.ItemsCollection.rawValue) as? ItemsCollectionViewController
 			if self.itemsCollectionView != nil {
 				self.addChildViewController(self.itemsCollectionView!)
-				self.itemsCollectionView?.dataSourceType = .Favorites
+				self.itemsCollectionView?.dataSourceType = .favorites
 			}
 		}
 
 		if self.storeCollectionView == nil {
-			self.storeCollectionView = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.StoresCollection.rawValue) as? StoresCollectionView
+			self.storeCollectionView = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.StoresCollection.rawValue) as? StoresCollectionView
 			if self.storeCollectionView != nil {
 				// vc.navigationVC = self.navigationController
 				self.addChildViewController(self.storeCollectionView!)
-				self.storeCollectionView?.dataSourceType = .Favorites
+				self.storeCollectionView?.dataSourceType = .favorites
 				self.storeCollectionView?.loadCollectionViewDataCell()
 			}
 		}
@@ -61,33 +61,33 @@ class FavViewController: UIViewController
 	func setTitle() {
 		let titleImage = UIImage(named: "navBarLogo")
 		let imgView = UIImageView(image: titleImage)
-		imgView.frame = CGRectMake(0, 0, 50, 25)
-		imgView.contentMode = .ScaleAspectFit
+		imgView.frame = CGRect(x: 0, y: 0, width: 50, height: 25)
+		imgView.contentMode = .scaleAspectFit
 		self.title = ""
 		self.navigationItem.titleView = imgView
 		self.navigationItem.title = nil
 	}
 
-	@IBAction func ItemsPressed(sender: AnyObject) {
+	@IBAction func ItemsPressed(_ sender: AnyObject) {
 		ItemsButton.backgroundColor = chosenTabColor
 		StoreButton.backgroundColor = defaultTabColor
 		setViewController(StoryboardNames.ItemsCollection.rawValue)
 	}
 
-	@IBAction func StorePressed(sender: AnyObject) {
+	@IBAction func StorePressed(_ sender: AnyObject) {
 		ItemsButton.backgroundColor = defaultTabColor
 		StoreButton.backgroundColor = chosenTabColor
 		setViewController(StoryboardNames.Store.rawValue)
 	}
 
-	@IBAction func menuIconPressed(sender: AnyObject) {
+	@IBAction func menuIconPressed(_ sender: AnyObject) {
 		self.slideMenuController()?.openLeft()
 	}
 
-	@IBAction func searchIconPressed(sender: AnyObject) {
+	@IBAction func searchIconPressed(_ sender: AnyObject) {
 	}
 
-	func setViewController(storyBoardName: String)
+	func setViewController(_ storyBoardName: String)
 	{
 		self.itemsCollectionView?.view.removeFromSuperview()
 //		self.storeCollectionView?.view.removeFromSuperview()
@@ -104,7 +104,7 @@ class FavViewController: UIViewController
 
 				if self.itemsCollectionView != nil {
 					self.commonView.addSubview(self.itemsCollectionView!.view)
-					self.commonView.bringSubviewToFront(self.itemsCollectionView!.view)
+					self.commonView.bringSubview(toFront: self.itemsCollectionView!.view)
 				}
 
 			}
@@ -119,7 +119,7 @@ class FavViewController: UIViewController
 
 				if self.storeCollectionView != nil {
 					self.commonView.addSubview(self.storeCollectionView!.view)
-					self.commonView.bringSubviewToFront(self.storeCollectionView!.view)
+					self.commonView.bringSubview(toFront: self.storeCollectionView!.view)
 				}
 
 			}

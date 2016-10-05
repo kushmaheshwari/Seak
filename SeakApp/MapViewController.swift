@@ -9,6 +9,26 @@
 import Foundation
 import UIKit
 import MapKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 
 
 class MapViewController: UIViewController,
@@ -19,17 +39,17 @@ class MapViewController: UIViewController,
                          UITableViewDataSource,
                          UITextFieldDelegate
 {
-    private var resultSearchController: UISearchController? = nil
+    fileprivate var resultSearchController: UISearchController? = nil
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResultTableView: UITableView!
-    private var searchResultCount: Int = 1
+    fileprivate var searchResultCount: Int = 1
     
     @IBOutlet weak var mapView: MKMapView!
-    private let locationManager = CLLocationManager()
-    private var currentLocation: CLLocationCoordinate2D? = nil
+    fileprivate let locationManager = CLLocationManager()
+    fileprivate var currentLocation: CLLocationCoordinate2D? = nil
     @IBOutlet weak var locationButton: UIButton!
-    private var mapSearchItems: [MKMapItem]? = []
-    private var searching: Bool = false
+    fileprivate var mapSearchItems: [MKMapItem]? = []
+    fileprivate var searching: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,10 +65,10 @@ class MapViewController: UIViewController,
         
         self.searchResultTableView.delegate = self
         self.searchResultTableView.dataSource = self
-        self.searchResultTableView.hidden = true
+        self.searchResultTableView.isHidden = true
         self.searchResultTableView.reloadData()
         self.searchBar.delegate = self
-        self.searchBar.searchBarStyle = .Prominent
+        self.searchBar.searchBarStyle = .prominent
         self.searchBar.backgroundImage = UIImage()
         
         for view: UIView in searchBar.subviews {
@@ -71,30 +91,30 @@ class MapViewController: UIViewController,
     
     func clearSearchInfo() {
         self.searchBar.resignFirstResponder()
-        self.searchResultTableView.hidden = true
+        self.searchResultTableView.isHidden = true
         self.searching = false
         self.mapSearchItems = []
         self.searchResultTableView.reloadData()
     }
     
-    func mapTap(sender: AnyObject?) {
+    func mapTap(_ sender: AnyObject?) {
         clearSearchInfo()
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = manager.location {
             self.currentLocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             self.locationManager.stopUpdatingLocation()
         }
     }
     
-    @IBAction func setToUserLocation(sender: AnyObject) {
+    @IBAction func setToUserLocation(_ sender: AnyObject) {
         if self.currentLocation == nil {
         
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.background).async(execute: {
                 
                 while (self.currentLocation == nil) { }
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     self.mapView.centerCoordinate = self.currentLocation!
                     self.mapView.region = MKCoordinateRegionMakeWithDistance(self.currentLocation!, 700, 700)
                 })
@@ -108,16 +128,16 @@ class MapViewController: UIViewController,
         clearSearchInfo()
     }
     
-    func textFieldShouldClear(textField: UITextField) -> Bool {
-        self.performSelector(#selector(self.searchBarCancelButtonClicked), withObject: self.searchBar, afterDelay: 0.1)
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        self.perform(#selector(self.searchBarCancelButtonClicked), with: self.searchBar, afterDelay: 0.1)
         return true
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         clearSearchInfo()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if mapSearchItems?.count >= 4
         {
             self.searchResultCount = 4
@@ -129,40 +149,40 @@ class MapViewController: UIViewController,
         return self.searchResultCount
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.searchResultTableView.dequeueReusableCellWithIdentifier("cellID")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.searchResultTableView.dequeueReusableCell(withIdentifier: "cellID")
         if mapSearchItems != nil
         {
-            cell?.textLabel?.text = mapSearchItems![indexPath.row].placemark.title
+            cell?.textLabel?.text = mapSearchItems![(indexPath as NSIndexPath).row].placemark.title
         }
         return cell!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedItem = mapSearchItems![indexPath.row]
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedItem = mapSearchItems![(indexPath as NSIndexPath).row]
         self.mapView.centerCoordinate = selectedItem.placemark.coordinate
-        searchResultTableView.hidden = true
+        searchResultTableView.isHidden = true
         self.searching = false
         self.mapSearchItems = []
-        searchBar.performSelector(#selector(self.resignFirstResponder), withObject: nil, afterDelay: 0.1)
+        searchBar.perform(#selector(self.resignFirstResponder), with: nil, afterDelay: 0.1)
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
     }
     
-    @IBAction func saveLocation(sender: AnyObject) {
+    @IBAction func saveLocation(_ sender: AnyObject) {
         UserDataCache.saveUserLocationLatt(currentLocation?.latitude)
         UserDataCache.saveUserLocationLong(currentLocation?.longitude)
         
-        let alert = UIAlertController(title: "", message: "Location is saved", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "", message: "Location is saved", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
 
     }
     
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.characters.count == 0 {
             clearSearchInfo()
             searchBar.resignFirstResponder()
@@ -174,7 +194,7 @@ class MapViewController: UIViewController,
         let localSearchRequest = MKLocalSearchRequest()
         localSearchRequest.naturalLanguageQuery = searchText
         let localSearch = MKLocalSearch(request: localSearchRequest)
-        localSearch.startWithCompletionHandler { (localSearchResponse, error) -> Void in
+        localSearch.start { (localSearchResponse, error) -> Void in
             
             if !self.searching {
                 return //return if user leaves searchbar
@@ -188,10 +208,10 @@ class MapViewController: UIViewController,
                 var tableHeight: CGFloat = 0.0
                 let len = (self.mapSearchItems!.count>=4) ? 4 : self.mapSearchItems!.count
                 for i in 0..<len {
-                    tableHeight += self.tableView(self.searchResultTableView, heightForRowAtIndexPath: NSIndexPath(forRow: i, inSection: 0))
+                    tableHeight += self.tableView(self.searchResultTableView, heightForRowAt: IndexPath(row: i, section: 0))
                 }
-                self.searchResultTableView.frame = CGRectMake(self.searchResultTableView.frame.origin.x, self.searchResultTableView.frame.origin.y, self.searchResultTableView.frame.size.width, tableHeight)
-                self.searchResultTableView.hidden = false
+                self.searchResultTableView.frame = CGRect(x: self.searchResultTableView.frame.origin.x, y: self.searchResultTableView.frame.origin.y, width: self.searchResultTableView.frame.size.width, height: tableHeight)
+                self.searchResultTableView.isHidden = false
             }
         }
 

@@ -21,7 +21,7 @@ extension UIViewController {
 
 	func getFirstResponder() -> UIView {
 		for v in self.view.subviews {
-			if v.isFirstResponder() {
+			if v.isFirstResponder {
 				return v
 			}
 		}
@@ -31,33 +31,33 @@ extension UIViewController {
 }
 
 extension UIColor {
-	static func colorWithHexString (hex: String) -> UIColor {
-		var cString: String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
+	static func colorWithHexString (_ hex: String) -> UIColor {
+		var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
 		if (cString.hasPrefix("#")) {
-			cString = cString.substringToIndex(cString.startIndex.advancedBy(1))
+			cString = cString.substring(to: cString.characters.index(cString.startIndex, offsetBy: 1))
 		}
 
 		if (cString.characters.count != 6) {
-			return UIColor.grayColor()
+			return UIColor.gray
 		}
 
-		let rString = cString.substringToIndex(cString.startIndex.advancedBy(2))
-		let gString = cString.substringFromIndex(cString.startIndex.advancedBy(2)).substringToIndex(cString.startIndex.advancedBy(2))
-		let bString = cString.substringFromIndex(cString.startIndex.advancedBy(4)).substringToIndex(cString.startIndex.advancedBy(2))
+		let rString = cString.substring(to: cString.characters.index(cString.startIndex, offsetBy: 2))
+		let gString = cString.substring(from: cString.characters.index(cString.startIndex, offsetBy: 2)).substring(to: cString.characters.index(cString.startIndex, offsetBy: 2))
+		let bString = cString.substring(from: cString.characters.index(cString.startIndex, offsetBy: 4)).substring(to: cString.characters.index(cString.startIndex, offsetBy: 2))
 
 		var r: CUnsignedInt = 0, g: CUnsignedInt = 0, b: CUnsignedInt = 0;
 
-		NSScanner(string: rString).scanHexInt(&r)
-		NSScanner(string: gString).scanHexInt(&g)
-		NSScanner(string: bString).scanHexInt(&b)
+		Scanner(string: rString).scanHexInt32(&r)
+		Scanner(string: gString).scanHexInt32(&g)
+		Scanner(string: bString).scanHexInt32(&b)
 
 		return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
 	}
 }
 
 extension UIStackView {
-	func setStars(count: Int) {
+	func setStars(_ count: Int) {
 		for starView in self.arrangedSubviews {
 			if let imgView = starView as? UIImageView {
 				imgView.image = UIImage(named: "blankStar")
@@ -73,20 +73,20 @@ extension UIStackView {
 }
 
 extension UIImageView {
-    private static let cache = NSCache()
+    fileprivate static let cache = NSCache<AnyObject, AnyObject>()
     
-    func downloadWithCache(urlString: String) {
-        if let imgData = UIImageView.cache.objectForKey(urlString) as? NSData {
+    func downloadWithCache(_ urlString: String) {
+        if let imgData = UIImageView.cache.object(forKey: urlString as AnyObject) as? Data {
             self.image = UIImage(data: imgData)
             self.setNeedsDisplay()
         }
         else {
-            NSOperationQueue().addOperationWithBlock({[weak self] () in
-                if let url = NSURL(string: urlString) {
-                    guard let data = NSData(contentsOfURL: url) else { return }
-                    NSOperationQueue.mainQueue().addOperationWithBlock({ 
+            OperationQueue().addOperation({[weak self] () in
+                if let url = URL(string: urlString) {
+                    guard let data = try? Data(contentsOf: url) else { return }
+                    OperationQueue.main.addOperation({ 
                         self?.image = UIImage(data: data)
-                        UIImageView.cache.setObject(data, forKey: urlString)
+                        UIImageView.cache.setObject(data as AnyObject, forKey: urlString as AnyObject)
                         self?.setNeedsDisplay()
                     })
                 }
@@ -95,13 +95,13 @@ extension UIImageView {
     }
 }
 
-extension NSDate {
-    func isGreaterThanDate(dateToCompare: NSDate) -> Bool {
+extension Date {
+    func isGreaterThanDate(_ dateToCompare: Date) -> Bool {
         //Declare Variables
         var isGreater = false
         
         //Compare Values
-        if self.compare(dateToCompare) == NSComparisonResult.OrderedDescending {
+        if self.compare(dateToCompare) == ComparisonResult.orderedDescending {
             isGreater = true
         }
         
@@ -109,12 +109,12 @@ extension NSDate {
         return isGreater
     }
     
-    func isLessThanDate(dateToCompare: NSDate) -> Bool {
+    func isLessThanDate(_ dateToCompare: Date) -> Bool {
         //Declare Variables
         var isLess = false
         
         //Compare Values
-        if self.compare(dateToCompare) == NSComparisonResult.OrderedAscending {
+        if self.compare(dateToCompare) == ComparisonResult.orderedAscending {
             isLess = true
         }
         

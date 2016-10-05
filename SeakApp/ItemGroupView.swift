@@ -14,10 +14,10 @@ class ItemGroupView: UICollectionViewCell {
 	@IBOutlet weak var imgView: UIImageView!
 
 	var item = ItemEntity()
-	var tapExecutionBlock: (updatedItem: ItemEntity) -> Void = { _ in }
-    private let storeRepository = StoreRepository()
+	var tapExecutionBlock: (_ updatedItem: ItemEntity) -> Void = { _ in }
+    fileprivate let storeRepository = StoreRepository()
 
-	private var tapped: Bool = false
+	fileprivate var tapped: Bool = false
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -27,7 +27,7 @@ class ItemGroupView: UICollectionViewCell {
 		self.addGestureRecognizer(tap)
 	}
 
-	func openDetails(gesture: UITapGestureRecognizer?) {
+	func openDetails(_ gesture: UITapGestureRecognizer?) {
 		if tapped {
 			return
 		}
@@ -35,8 +35,8 @@ class ItemGroupView: UICollectionViewCell {
         if let storeId = item.storeId {
             self.storeRepository.getById(storeId, completion: { (store) in
                 self.item.storeEntity = store
-                NSOperationQueue.mainQueue().addOperationWithBlock({
-                    self.tapExecutionBlock(updatedItem: self.item)
+                OperationQueue.main.addOperation({
+                    self.tapExecutionBlock(self.item)
                     self.tapped = false
                 })
             })

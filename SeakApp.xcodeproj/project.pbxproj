@@ -24,30 +24,10 @@
 		5E07CB6E1D05A10000F38D0B /* ItemsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB6D1D05A10000F38D0B /* ItemsCollectionView.swift */; };
 		5E07CB701D05D5DF00F38D0B /* ItemCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E07CB6F1D05D5DF00F38D0B /* ItemCellView.xib */; };
 		5E07CB721D05D69800F38D0B /* ItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB711D05D69800F38D0B /* ItemCellView.swift */; };
-		5E07CB741D05D78F00F38D0B /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB731D05D78F00F38D0B /* SlideMenuController.swift */; };
 		5E07CB761D05D7CD00F38D0B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB751D05D7CD00F38D0B /* ContainerViewController.swift */; };
-		5E07CB791D06C1A500F38D0B /* ACTabScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB771D06C1A500F38D0B /* ACTabScrollView.swift */; };
-		5E07CB7A1D06C1A500F38D0B /* ACTabScrollView+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E07CB781D06C1A500F38D0B /* ACTabScrollView+Protocol.swift */; };
 		5E15334A1D0A8ECB00C2E5E1 /* SearchItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1533491D0A8ECB00C2E5E1 /* SearchItemsViewController.swift */; };
 		5E1533521D0AE30600C2E5E1 /* RecentSearchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1533511D0AE30600C2E5E1 /* RecentSearchesViewController.swift */; };
 		5E1533541D0AE4CC00C2E5E1 /* RecentSearches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1533531D0AE4CC00C2E5E1 /* RecentSearches.swift */; };
-		5E2A44E91D12C2C300BA866D /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44D41D12C2C300BA866D /* IQNSArray+Sort.swift */; };
-		5E2A44EA1D12C2C300BA866D /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44D51D12C2C300BA866D /* IQUIScrollView+Additions.swift */; };
-		5E2A44EB1D12C2C300BA866D /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44D61D12C2C300BA866D /* IQUITextFieldView+Additions.swift */; };
-		5E2A44EC1D12C2C300BA866D /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44D71D12C2C300BA866D /* IQUIView+Hierarchy.swift */; };
-		5E2A44ED1D12C2C300BA866D /* IQUIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44D81D12C2C300BA866D /* IQUIViewController+Additions.swift */; };
-		5E2A44EE1D12C2C300BA866D /* IQUIWindow+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44D91D12C2C300BA866D /* IQUIWindow+Hierarchy.swift */; };
-		5E2A44EF1D12C2C300BA866D /* IQKeyboardManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44DB1D12C2C300BA866D /* IQKeyboardManagerConstants.swift */; };
-		5E2A44F01D12C2C300BA866D /* IQKeyboardManagerConstantsInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44DC1D12C2C300BA866D /* IQKeyboardManagerConstantsInternal.swift */; };
-		5E2A44F11D12C2C300BA866D /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44DD1D12C2C300BA866D /* IQKeyboardManager.swift */; };
-		5E2A44F21D12C2C300BA866D /* IQKeyboardReturnKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44DE1D12C2C300BA866D /* IQKeyboardReturnKeyHandler.swift */; };
-		5E2A44F31D12C2C300BA866D /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44E01D12C2C300BA866D /* IQTextView.swift */; };
-		5E2A44F41D12C2C300BA866D /* IQBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44E21D12C2C300BA866D /* IQBarButtonItem.swift */; };
-		5E2A44F51D12C2C300BA866D /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44E31D12C2C300BA866D /* IQPreviousNextView.swift */; };
-		5E2A44F61D12C2C300BA866D /* IQTitleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44E41D12C2C300BA866D /* IQTitleBarButtonItem.swift */; };
-		5E2A44F71D12C2C300BA866D /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44E51D12C2C300BA866D /* IQToolbar.swift */; };
-		5E2A44F81D12C2C300BA866D /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2A44E61D12C2C300BA866D /* IQUIView+IQKeyboardToolbar.swift */; };
-		5E2A44F91D12C2C300BA866D /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5E2A44E81D12C2C300BA866D /* IQKeyboardManager.bundle */; };
 		5E2F99C31D2651E3000D8B49 /* ItemDetailsViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2F99C21D2651E3000D8B49 /* ItemDetailsViewConroller.swift */; };
 		5E2F99C51D267FF0000D8B49 /* StoreViewItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E2F99C41D267FF0000D8B49 /* StoreViewItemCell.xib */; };
 		5E36C2981D3BA63D00033112 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E36C2971D3BA63D00033112 /* MainPageViewController.swift */; };
@@ -86,9 +66,6 @@
 		C9B9EFD91CFBDDEA002EA9BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9EFD71CFBDDEA002EA9BA /* LaunchScreen.storyboard */; };
 		C9B9F0011CFBE406002EA9BA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFE51CFBE406002EA9BA /* MapKit.framework */; };
 		C9B9F0031CFBE406002EA9BA /* FacebookSDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9B9EFE71CFBE406002EA9BA /* FacebookSDKStrings.bundle */; };
-		C9B9F0041CFBE406002EA9BA /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFE81CFBE406002EA9BA /* FBAudienceNetwork.framework */; };
-		C9B9F0051CFBE406002EA9BA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFE91CFBE406002EA9BA /* FBSDKCoreKit.framework */; };
-		C9B9F0061CFBE406002EA9BA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFEA1CFBE406002EA9BA /* FBSDKLoginKit.framework */; };
 		C9B9F0091CFBE406002EA9BA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFED1CFBE406002EA9BA /* libsqlite3.tbd */; };
 		C9B9F00A1CFBE406002EA9BA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFEE1CFBE406002EA9BA /* libz.tbd */; };
 		C9B9F00B1CFBE406002EA9BA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFEF1CFBE406002EA9BA /* SystemConfiguration.framework */; };
@@ -102,7 +79,6 @@
 		C9B9F0131CFBE406002EA9BA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFF71CFBE406002EA9BA /* AudioToolbox.framework */; };
 		C9B9F0141CFBE406002EA9BA /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFF81CFBE406002EA9BA /* Accounts.framework */; };
 		C9B9F0151CFBE406002EA9BA /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFF91CFBE406002EA9BA /* Accelerate.framework */; };
-		C9B9F01A1CFBE406002EA9BA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9EFFE1CFBE406002EA9BA /* Bolts.framework */; };
 		C9B9F01D1CFBE58C002EA9BA /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F01C1CFBE58C002EA9BA /* LoginController.swift */; };
 		C9B9F01F1CFBE5E8002EA9BA /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F01E1CFBE5E8002EA9BA /* RegisterController.swift */; };
 		C9B9F0231CFBE75A002EA9BA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9F0221CFBE75A002EA9BA /* HomeViewController.swift */; };
@@ -135,30 +111,10 @@
 		5E07CB6D1D05A10000F38D0B /* ItemsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsCollectionView.swift; sourceTree = "<group>"; };
 		5E07CB6F1D05D5DF00F38D0B /* ItemCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCellView.xib; sourceTree = "<group>"; };
 		5E07CB711D05D69800F38D0B /* ItemCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCellView.swift; sourceTree = "<group>"; };
-		5E07CB731D05D78F00F38D0B /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		5E07CB751D05D7CD00F38D0B /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
-		5E07CB771D06C1A500F38D0B /* ACTabScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACTabScrollView.swift; sourceTree = "<group>"; };
-		5E07CB781D06C1A500F38D0B /* ACTabScrollView+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ACTabScrollView+Protocol.swift"; sourceTree = "<group>"; };
 		5E1533491D0A8ECB00C2E5E1 /* SearchItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchItemsViewController.swift; sourceTree = "<group>"; };
 		5E1533511D0AE30600C2E5E1 /* RecentSearchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchesViewController.swift; sourceTree = "<group>"; };
 		5E1533531D0AE4CC00C2E5E1 /* RecentSearches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearches.swift; sourceTree = "<group>"; };
-		5E2A44D41D12C2C300BA866D /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQNSArray+Sort.swift"; sourceTree = "<group>"; };
-		5E2A44D51D12C2C300BA866D /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
-		5E2A44D61D12C2C300BA866D /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
-		5E2A44D71D12C2C300BA866D /* IQUIView+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+Hierarchy.swift"; sourceTree = "<group>"; };
-		5E2A44D81D12C2C300BA866D /* IQUIViewController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIViewController+Additions.swift"; sourceTree = "<group>"; };
-		5E2A44D91D12C2C300BA866D /* IQUIWindow+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIWindow+Hierarchy.swift"; sourceTree = "<group>"; };
-		5E2A44DB1D12C2C300BA866D /* IQKeyboardManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQKeyboardManagerConstants.swift; sourceTree = "<group>"; };
-		5E2A44DC1D12C2C300BA866D /* IQKeyboardManagerConstantsInternal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQKeyboardManagerConstantsInternal.swift; sourceTree = "<group>"; };
-		5E2A44DD1D12C2C300BA866D /* IQKeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQKeyboardManager.swift; sourceTree = "<group>"; };
-		5E2A44DE1D12C2C300BA866D /* IQKeyboardReturnKeyHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQKeyboardReturnKeyHandler.swift; sourceTree = "<group>"; };
-		5E2A44E01D12C2C300BA866D /* IQTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQTextView.swift; sourceTree = "<group>"; };
-		5E2A44E21D12C2C300BA866D /* IQBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQBarButtonItem.swift; sourceTree = "<group>"; };
-		5E2A44E31D12C2C300BA866D /* IQPreviousNextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQPreviousNextView.swift; sourceTree = "<group>"; };
-		5E2A44E41D12C2C300BA866D /* IQTitleBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQTitleBarButtonItem.swift; sourceTree = "<group>"; };
-		5E2A44E51D12C2C300BA866D /* IQToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQToolbar.swift; sourceTree = "<group>"; };
-		5E2A44E61D12C2C300BA866D /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
-		5E2A44E81D12C2C300BA866D /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		5E2F99C21D2651E3000D8B49 /* ItemDetailsViewConroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewConroller.swift; sourceTree = "<group>"; };
 		5E2F99C41D267FF0000D8B49 /* StoreViewItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreViewItemCell.xib; sourceTree = "<group>"; };
 		5E36C2971D3BA63D00033112 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
@@ -201,9 +157,6 @@
 		C9B9EFE21CFBE405002EA9BA /* SeakApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SeakApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		C9B9EFE51CFBE406002EA9BA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapKit.framework; sourceTree = "<group>"; };
 		C9B9EFE71CFBE406002EA9BA /* FacebookSDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKStrings.bundle; sourceTree = "<group>"; };
-		C9B9EFE81CFBE406002EA9BA /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
-		C9B9EFE91CFBE406002EA9BA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		C9B9EFEA1CFBE406002EA9BA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		C9B9EFED1CFBE406002EA9BA /* libsqlite3.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = libsqlite3.tbd; sourceTree = "<group>"; };
 		C9B9EFEE1CFBE406002EA9BA /* libz.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = libz.tbd; sourceTree = "<group>"; };
 		C9B9EFEF1CFBE406002EA9BA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SystemConfiguration.framework; sourceTree = "<group>"; };
@@ -217,7 +170,6 @@
 		C9B9EFF71CFBE406002EA9BA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioToolbox.framework; sourceTree = "<group>"; };
 		C9B9EFF81CFBE406002EA9BA /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Accounts.framework; sourceTree = "<group>"; };
 		C9B9EFF91CFBE406002EA9BA /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Accelerate.framework; sourceTree = "<group>"; };
-		C9B9EFFE1CFBE406002EA9BA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		C9B9F01C1CFBE58C002EA9BA /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		C9B9F01E1CFBE5E8002EA9BA /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		C9B9F0221CFBE75A002EA9BA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -252,15 +204,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9B9F01A1CFBE406002EA9BA /* Bolts.framework in Frameworks */,
-				C9B9F0041CFBE406002EA9BA /* FBAudienceNetwork.framework in Frameworks */,
-				C9B9F0051CFBE406002EA9BA /* FBSDKCoreKit.framework in Frameworks */,
 				C9B9F00F1CFBE406002EA9BA /* QuartzCore.framework in Frameworks */,
 				C9B9F0121CFBE406002EA9BA /* CFNetwork.framework in Frameworks */,
 				C9B9F0091CFBE406002EA9BA /* libsqlite3.tbd in Frameworks */,
 				C9B9F0131CFBE406002EA9BA /* AudioToolbox.framework in Frameworks */,
 				C9B9F00D1CFBE406002EA9BA /* Social.framework in Frameworks */,
-				C9B9F0061CFBE406002EA9BA /* FBSDKLoginKit.framework in Frameworks */,
 				C9B9F0101CFBE406002EA9BA /* CoreLocation.framework in Frameworks */,
 				C9B9F00E1CFBE406002EA9BA /* Security.framework in Frameworks */,
 				C9B9F0141CFBE406002EA9BA /* Accounts.framework in Frameworks */,
@@ -332,70 +280,6 @@
 				5EC0768C1D193B2100E84EE5 /* HomeItemsView.storyboard */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		5E2A44D21D12C2C300BA866D /* IQKeyboardManagerSwift */ = {
-			isa = PBXGroup;
-			children = (
-				5E2A44D31D12C2C300BA866D /* Categories */,
-				5E2A44DA1D12C2C300BA866D /* Constants */,
-				5E2A44DD1D12C2C300BA866D /* IQKeyboardManager.swift */,
-				5E2A44DE1D12C2C300BA866D /* IQKeyboardReturnKeyHandler.swift */,
-				5E2A44DF1D12C2C300BA866D /* IQTextView */,
-				5E2A44E11D12C2C300BA866D /* IQToolbar */,
-				5E2A44E71D12C2C300BA866D /* Resources */,
-			);
-			path = IQKeyboardManagerSwift;
-			sourceTree = "<group>";
-		};
-		5E2A44D31D12C2C300BA866D /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				5E2A44D41D12C2C300BA866D /* IQNSArray+Sort.swift */,
-				5E2A44D51D12C2C300BA866D /* IQUIScrollView+Additions.swift */,
-				5E2A44D61D12C2C300BA866D /* IQUITextFieldView+Additions.swift */,
-				5E2A44D71D12C2C300BA866D /* IQUIView+Hierarchy.swift */,
-				5E2A44D81D12C2C300BA866D /* IQUIViewController+Additions.swift */,
-				5E2A44D91D12C2C300BA866D /* IQUIWindow+Hierarchy.swift */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		5E2A44DA1D12C2C300BA866D /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-				5E2A44DB1D12C2C300BA866D /* IQKeyboardManagerConstants.swift */,
-				5E2A44DC1D12C2C300BA866D /* IQKeyboardManagerConstantsInternal.swift */,
-			);
-			path = Constants;
-			sourceTree = "<group>";
-		};
-		5E2A44DF1D12C2C300BA866D /* IQTextView */ = {
-			isa = PBXGroup;
-			children = (
-				5E2A44E01D12C2C300BA866D /* IQTextView.swift */,
-			);
-			path = IQTextView;
-			sourceTree = "<group>";
-		};
-		5E2A44E11D12C2C300BA866D /* IQToolbar */ = {
-			isa = PBXGroup;
-			children = (
-				5E2A44E21D12C2C300BA866D /* IQBarButtonItem.swift */,
-				5E2A44E31D12C2C300BA866D /* IQPreviousNextView.swift */,
-				5E2A44E41D12C2C300BA866D /* IQTitleBarButtonItem.swift */,
-				5E2A44E51D12C2C300BA866D /* IQToolbar.swift */,
-				5E2A44E61D12C2C300BA866D /* IQUIView+IQKeyboardToolbar.swift */,
-			);
-			path = IQToolbar;
-			sourceTree = "<group>";
-		};
-		5E2A44E71D12C2C300BA866D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				5E2A44E81D12C2C300BA866D /* IQKeyboardManager.bundle */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		5E36C2991D3BA8F700033112 /* Home */ = {
@@ -561,15 +445,8 @@
 		C9B9EFE11CFBE375002EA9BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5E2A44D21D12C2C300BA866D /* IQKeyboardManagerSwift */,
-				5E07CB771D06C1A500F38D0B /* ACTabScrollView.swift */,
-				5E07CB781D06C1A500F38D0B /* ACTabScrollView+Protocol.swift */,
-				5E07CB731D05D78F00F38D0B /* SlideMenuController.swift */,
 				C9B9EFE51CFBE406002EA9BA /* MapKit.framework */,
 				C9B9EFE71CFBE406002EA9BA /* FacebookSDKStrings.bundle */,
-				C9B9EFE81CFBE406002EA9BA /* FBAudienceNetwork.framework */,
-				C9B9EFE91CFBE406002EA9BA /* FBSDKCoreKit.framework */,
-				C9B9EFEA1CFBE406002EA9BA /* FBSDKLoginKit.framework */,
 				C9B9EFED1CFBE406002EA9BA /* libsqlite3.tbd */,
 				C9B9EFEE1CFBE406002EA9BA /* libz.tbd */,
 				C9B9EFEF1CFBE406002EA9BA /* SystemConfiguration.framework */,
@@ -583,7 +460,6 @@
 				C9B9EFF71CFBE406002EA9BA /* AudioToolbox.framework */,
 				C9B9EFF81CFBE406002EA9BA /* Accounts.framework */,
 				C9B9EFF91CFBE406002EA9BA /* Accelerate.framework */,
-				C9B9EFFE1CFBE406002EA9BA /* Bolts.framework */,
 				C9B9EFE21CFBE405002EA9BA /* SeakApp-Bridging-Header.h */,
 			);
 			name = Frameworks;
@@ -667,12 +543,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Kush Maheshwari";
 				TargetAttributes = {
 					C9B9EFCA1CFBDDEA002EA9BA = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 978L98WATL;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -713,7 +590,6 @@
 				C9B9F0321CFBEFA7002EA9BA /* hamburger@2x.png in Resources */,
 				C9B9F0381CFBEFA7002EA9BA /* Image.png in Resources */,
 				5EC0768D1D193B2100E84EE5 /* HomeItemsView.storyboard in Resources */,
-				5E2A44F91D12C2C300BA866D /* IQKeyboardManager.bundle in Resources */,
 				C9B9F0361CFBEFA7002EA9BA /* heart.png in Resources */,
 				5E0558121D37D02B009C5FDF /* LikeItemView.xib in Resources */,
 				C9B9EFD91CFBDDEA002EA9BA /* LaunchScreen.storyboard in Resources */,
@@ -803,22 +679,16 @@
 				5EC076851D1935B300E84EE5 /* StoresViewController.swift in Sources */,
 				229C17761D50C64800CBBC87 /* SettingViewController.swift in Sources */,
 				C9B9F0231CFBE75A002EA9BA /* HomeViewController.swift in Sources */,
-				5E2A44E91D12C2C300BA866D /* IQNSArray+Sort.swift in Sources */,
 				5E62FB5A1D2ACFCB007C0C0A /* ReviewRepository.swift in Sources */,
 				5E15334A1D0A8ECB00C2E5E1 /* SearchItemsViewController.swift in Sources */,
-				5E2A44F01D12C2C300BA866D /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				5E9346291D00282100CF4DC6 /* ItemEntity.swift in Sources */,
 				5EB6220D1D1E7E280029F864 /* StoreRepository.swift in Sources */,
-				5E2A44ED1D12C2C300BA866D /* IQUIViewController+Additions.swift in Sources */,
-				5E2A44F21D12C2C300BA866D /* IQKeyboardReturnKeyHandler.swift in Sources */,
-				5E2A44EC1D12C2C300BA866D /* IQUIView+Hierarchy.swift in Sources */,
 				C9B9F01F1CFBE5E8002EA9BA /* RegisterController.swift in Sources */,
 				22CD94191D745E7B004018A7 /* UserRepository.swift in Sources */,
 				5EB6220B1D1E7BB60029F864 /* StoreEntity.swift in Sources */,
 				5E07CB6E1D05A10000F38D0B /* ItemsCollectionView.swift in Sources */,
 				5EB2E8B01D38FB32005552E9 /* AddStoreView.swift in Sources */,
 				5EEB13F31D2D1C7B008B3B03 /* DetailsNavigationTitleView.swift in Sources */,
-				5E2A44F71D12C2C300BA866D /* IQToolbar.swift in Sources */,
 				22CD941B1D745E8F004018A7 /* UserInfoEntity.swift in Sources */,
 				C9B9EFCF1CFBDDEA002EA9BA /* AppDelegate.swift in Sources */,
 				5E07CB721D05D69800F38D0B /* ItemCellView.swift in Sources */,
@@ -827,22 +697,15 @@
 				5E36C2981D3BA63D00033112 /* MainPageViewController.swift in Sources */,
 				C9B9F01D1CFBE58C002EA9BA /* LoginController.swift in Sources */,
 				5E507A441D02CC8B00BCD0B6 /* UserLogin.swift in Sources */,
-				5E2A44F51D12C2C300BA866D /* IQPreviousNextView.swift in Sources */,
-				5E2A44EA1D12C2C300BA866D /* IQUIScrollView+Additions.swift in Sources */,
 				5E1533541D0AE4CC00C2E5E1 /* RecentSearches.swift in Sources */,
-				5E2A44EE1D12C2C300BA866D /* IQUIWindow+Hierarchy.swift in Sources */,
 				5E0558141D37D7A5009C5FDF /* LikeItemView.swift in Sources */,
 				5E07CB671D05481200F38D0B /* MenuViewController.swift in Sources */,
 				229C17781D5261D100CBBC87 /* MapViewController.swift in Sources */,
 				5E05580B1D378F42009C5FDF /* FavoriteStore.swift in Sources */,
 				5EB2E8B21D3931FD005552E9 /* StoresCollectionView.swift in Sources */,
-				5E2A44F11D12C2C300BA866D /* IQKeyboardManager.swift in Sources */,
-				5E2A44F31D12C2C300BA866D /* IQTextView.swift in Sources */,
 				C9B39B111D0E644E00F64D24 /* ItemAdd.swift in Sources */,
 				226F61071D365BCD003177A7 /* FavViewController.swift in Sources */,
-				5E2A44F61D12C2C300BA866D /* IQTitleBarButtonItem.swift in Sources */,
 				5E507A481D02DB7400BCD0B6 /* ScrollableMenu.swift in Sources */,
-				5E07CB7A1D06C1A500F38D0B /* ACTabScrollView+Protocol.swift in Sources */,
 				5E07CB761D05D7CD00F38D0B /* ContainerViewController.swift in Sources */,
 				5E93462B1D0029BF00CF4DC6 /* ItemRepository.swift in Sources */,
 				5E4FAFBD1D11808E000411D8 /* StartAppViewController.swift in Sources */,
@@ -850,7 +713,6 @@
 				5E1533521D0AE30600C2E5E1 /* RecentSearchesViewController.swift in Sources */,
 				5EC0768F1D193CF900E84EE5 /* HomeItemsViewController.swift in Sources */,
 				5E9346301D002C2F00CF4DC6 /* Enums.swift in Sources */,
-				5E2A44F41D12C2C300BA866D /* IQBarButtonItem.swift in Sources */,
 				5E62FB551D2ACF30007C0C0A /* ReviewEntity.swift in Sources */,
 				5E75D8111D59E79000BBA05D /* BigFollowStoreButtonView.swift in Sources */,
 				5E2F99C31D2651E3000D8B49 /* ItemDetailsViewConroller.swift in Sources */,
@@ -858,14 +720,9 @@
 				5E87402B1D1AE923003A9354 /* UserDataCache.swift in Sources */,
 				5E05580D1D378F7E009C5FDF /* FavoriteItem.swift in Sources */,
 				5E05580F1D378FA8009C5FDF /* FavoriteRepository.swift in Sources */,
-				5E2A44EB1D12C2C300BA866D /* IQUITextFieldView+Additions.swift in Sources */,
 				5EDA25D21D414F11000B4C3C /* StoreDetailsMainViewController.swift in Sources */,
-				5E07CB791D06C1A500F38D0B /* ACTabScrollView.swift in Sources */,
 				229C177C1D52634700CBBC87 /* HelpViewController.swift in Sources */,
 				5E507A461D02CE3200BCD0B6 /* Extensions.swift in Sources */,
-				5E2A44EF1D12C2C300BA866D /* IQKeyboardManagerConstants.swift in Sources */,
-				5E2A44F81D12C2C300BA866D /* IQUIView+IQKeyboardToolbar.swift in Sources */,
-				5E07CB741D05D78F00F38D0B /* SlideMenuController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -905,8 +762,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -950,8 +809,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -970,6 +831,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -978,10 +840,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F994DB1B792B740A9AA89B55 /* Pods-SeakApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 978L98WATL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -992,11 +856,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kushmaheshwari1.SeakApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kushmaheshwari.SeakApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SeakApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1005,10 +870,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 74313ACB4A5744D6005C38F4 /* Pods-SeakApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 978L98WATL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1019,10 +886,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kushmaheshwari1.SeakApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kushmaheshwari.SeakApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SeakApp-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -10,4 +10,11 @@ target 'SeakApp' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
+  pod 'IQKeyboardManagerSwift', '4.0.6'
+  pod 'FBAudienceNetwork'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'Bolts'
+  pod 'ACTabScrollView', :git => 'https://github.com/azurechen/ACTabScrollView.git'
+  pod 'SlideMenuControllerSwift'
 end

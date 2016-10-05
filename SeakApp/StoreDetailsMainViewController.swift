@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import ACTabScrollView
 
 class StoreDetailsMainViewController: UIViewController,
 ACTabScrollViewDelegate, ACTabScrollViewDataSource
@@ -18,7 +19,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 	weak var navigationVC: UINavigationController!
 	weak var storeEntity: StoreEntity? = nil
 
-	private var views: [UIViewController] = []
+	fileprivate var views: [UIViewController] = []
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -28,10 +29,10 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 		self.scrollableTabs.delegate = self
 		self.scrollableTabs.dataSource = self
         
-        self.followButtonPlaceHolder.backgroundColor = UIColor.clearColor()
-        if let followButon = NSBundle.mainBundle().loadNibNamed("BigFollowStoreButtonView", owner: nil, options: nil)[0] as? BigFollowStoreButtonView {
+        self.followButtonPlaceHolder.backgroundColor = UIColor.clear
+        if let followButon = Bundle.main.loadNibNamed("BigFollowStoreButtonView", owner: nil, options: nil)?[0] as? BigFollowStoreButtonView {
             self.followButtonPlaceHolder.addSubview(followButon)
-            self.followButtonPlaceHolder.bringSubviewToFront(followButon)
+            self.followButtonPlaceHolder.bringSubview(toFront: followButon)
             followButon.store = self.storeEntity
             followButon.load()
         }
@@ -40,15 +41,15 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 	func initTabs() {
 		// add Home view
 		let st = UIStoryboard(name: StoryboardNames.HomeItemsViewStoryboard.rawValue, bundle: nil)
-		if let vc = st.instantiateViewControllerWithIdentifier(StoryboardNames.HomeItemsView.rawValue) as? HomeItemsViewController {
+		if let vc = st.instantiateViewController(withIdentifier: StoryboardNames.HomeItemsView.rawValue) as? HomeItemsViewController {
 			vc.navigationVC = self.navigationVC
 			vc.storeEntity = self.storeEntity
 			views.append(vc)
 		}
 		// add rest views for each category
 		for item in self.storeEntity!.categories {
-			if let vc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.ItemsCollection.rawValue) as? ItemsCollectionViewController {
-				vc.dataSourceType = .Categories
+			if let vc = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.ItemsCollection.rawValue) as? ItemsCollectionViewController {
+				vc.dataSourceType = .categories
 				vc.setCategory(item)
 				vc.storeEntity = self.storeEntity
 				vc.navigationVC = self.navigationVC
@@ -57,8 +58,8 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 			}
 		}
         
-        self.view.bringSubviewToFront(self.followButtonPlaceHolder)
-        self.scrollableTabs.bringSubviewToFront(self.followButtonPlaceHolder)
+        self.view.bringSubview(toFront: self.followButtonPlaceHolder)
+        self.scrollableTabs.bringSubview(toFront: self.followButtonPlaceHolder)
 	}
 
 	deinit {
@@ -71,37 +72,37 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 	}
 
 	func setTitle() {
-		guard let titleView = NSBundle.mainBundle().loadNibNamed("StoresNavigationTitle", owner: nil, options: nil)[0] as? StoreNavigationTitleView else { fatalError("Can't init StoresNavigationTitle") }
+		guard let titleView = Bundle.main.loadNibNamed("StoresNavigationTitle", owner: nil, options: nil)?[0] as? StoreNavigationTitleView else { fatalError("Can't init StoresNavigationTitle") }
 
 		titleView.titleView.text = self.storeEntity?.name
 
 		self.navigationItem.title = nil
 		self.navigationItem.titleView = titleView
 
-		let rightBarButton = UIBarButtonItem(image: UIImage(named: "searchIcon"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(HomeViewController.addItem(_:)))
+		let rightBarButton = UIBarButtonItem(image: UIImage(named: "searchIcon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(HomeViewController.addItem(_:)))
 		navigationItem.rightBarButtonItem = rightBarButton
 		rightBarButton.action = #selector(StoreDetailsMainViewController.search(_:)) // adds search icon
-		self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+		self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
 	}
 
-	func search(sender: AnyObject?) {
-		if let svc = self.storyboard?.instantiateViewControllerWithIdentifier(StoryboardNames.SearchViewController.rawValue) as? SearchItemsViewController {
+	func search(_ sender: AnyObject?) {
+		if let svc = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.SearchViewController.rawValue) as? SearchItemsViewController {
 			svc.storeObject = self.storeEntity
 			self.navigationVC?.pushViewController(svc, animated: true)
 		}
 	}
 
 	// MARK: ACTabScrollViewDelegate
-	func tabScrollView(tabScrollView: ACTabScrollView, didChangePageTo index: Int) {
+	func tabScrollView(_ tabScrollView: ACTabScrollView, didChangePageTo index: Int) {
 		self.scrollableTabs.changePageToIndex(index, animated: true)
 	}
 
-	func tabScrollView(tabScrollView: ACTabScrollView, didScrollPageTo index: Int) {
+	func tabScrollView(_ tabScrollView: ACTabScrollView, didScrollPageTo index: Int) {
 	}
 
 	// MARK: ACTabScrollViewDataSource
-	func numberOfPagesInTabScrollView(tabScrollView: ACTabScrollView) -> Int {
+	func numberOfPagesInTabScrollView(_ tabScrollView: ACTabScrollView) -> Int {
 		if let count = self.storeEntity?.categories.count {
 			return count + 1 // plus home
 		}
@@ -109,23 +110,23 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 		return 1 // Home view by default
 	}
 
-	func tabScrollView(tabScrollView: ACTabScrollView, tabViewForPageAtIndex index: Int) -> UIView {
+	func tabScrollView(_ tabScrollView: ACTabScrollView, tabViewForPageAtIndex index: Int) -> UIView {
 		let stackView = UIStackView()
-		stackView.axis = .Horizontal
+		stackView.axis = .horizontal
 
 		// create a label
 		let label = UILabel()
 		label.text = (index == 0) ? StoreCategory.Home.rawValue : self.storeEntity?.categories[index - 1].rawValue
-		label.textAlignment = .Center
-		label.textColor = UIColor.whiteColor()
-		label.font = UIFont.systemFontOfSize(17, weight: UIFontWeightThin)
+		label.textAlignment = .center
+		label.textColor = UIColor.white
+		label.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightThin)
 
 		label.sizeToFit() // resize the label to the size of content
 		label.frame.size = CGSize(
 			width: label.frame.size.width + 40,
 			height: label.frame.size.height + 5) // add some paddings
 		let sep = UILabel()
-		sep.textColor = UIColor.whiteColor()
+		sep.textColor = UIColor.white
 		sep.text = "|"
 		sep.frame.size = CGSize(width: CGFloat(5), height: label.frame.height)
 
@@ -138,7 +139,7 @@ ACTabScrollViewDelegate, ACTabScrollViewDataSource
 		return stackView
 	}
 
-	func tabScrollView(tabScrollView: ACTabScrollView, contentViewForPageAtIndex index: Int) -> UIView {
+	func tabScrollView(_ tabScrollView: ACTabScrollView, contentViewForPageAtIndex index: Int) -> UIView {
 		return views[index].view
 	}
 
