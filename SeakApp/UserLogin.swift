@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 import FBSDKLoginKit
 
-class UserLogin {
+class UserLogin: UIViewController {
 
 	fileprivate static let storyboard = UIStoryboard(name: StoryboardNames.MainStoryboard.rawValue, bundle: nil)
     
@@ -82,7 +82,9 @@ class UserLogin {
 						})
 					}
 				} else {
-					print(error?.localizedDescription)
+                    //let alert = UIAlertController(title: "Register failed", message: error?.localizedDescription, preferredStyle: .alert)
+                    //alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.callAlert((error?.localizedDescription)!)
 				}
 			}
 

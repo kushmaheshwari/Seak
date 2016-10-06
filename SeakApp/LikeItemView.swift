@@ -18,8 +18,8 @@ class LikeItemView: UIView {
 
 	var item: ItemEntity? = nil
 
-	static let likeItemNotification = String(describing: self) + "_like"
-	static let dislikeItemNotification = String(describing: self) + "_dislike"
+	static let likeItemNotification = String(describing: LikeItemView.self) + "_like"
+	static let dislikeItemNotification = String(describing: LikeItemView.self) + "_dislike"
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
