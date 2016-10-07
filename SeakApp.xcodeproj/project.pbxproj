@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		221402501D2AA48500E27659 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214024F1D2AA48500E27659 /* ReviewViewController.swift */; };
+		222845A61DA6BC1F00A4CD2B /* EmptyStoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222845A51DA6BC1F00A4CD2B /* EmptyStoresViewController.swift */; };
+		222845A71DA77FF400A4CD2B /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F03C1CFBEFE7002EA9BA /* Roboto-Bold.ttf */; };
+		222845A81DA77FF400A4CD2B /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F03D1CFBEFE7002EA9BA /* Roboto-Bold.ttf */; };
+		222845A91DA77FF400A4CD2B /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F03E1CFBEFE7002EA9BA /* Roboto-BoldItalic.ttf */; };
+		222845AA1DA77FF400A4CD2B /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F03F1CFBEFE7002EA9BA /* Roboto-Italic.ttf */; };
+		222845AB1DA77FF400A4CD2B /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0401CFBEFE7002EA9BA /* Roboto-Light.ttf */; };
+		222845AC1DA77FF400A4CD2B /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0411CFBEFE7002EA9BA /* Roboto-LightItalic.ttf */; };
+		222845AD1DA77FF400A4CD2B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0421CFBEFE7002EA9BA /* Roboto-Regular.ttf */; };
+		222845AE1DA77FF400A4CD2B /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0431CFBEFE7002EA9BA /* Roboto-Thin.ttf */; };
+		222845AF1DA77FF400A4CD2B /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0441CFBEFE7002EA9BA /* Roboto-ThinItalic.ttf */; };
+		222845B01DA77FF400A4CD2B /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0451CFBEFE7002EA9BA /* RobotoCondensed-Bold.ttf */; };
+		222845B11DA77FF400A4CD2B /* RobotoCondensed-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0461CFBEFE7002EA9BA /* RobotoCondensed-BoldItalic.ttf */; };
+		222845B21DA77FF400A4CD2B /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0471CFBEFE7002EA9BA /* RobotoCondensed-Italic.ttf */; };
+		222845B31DA77FF400A4CD2B /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0481CFBEFE7002EA9BA /* RobotoCondensed-Regular.ttf */; };
 		226F61071D365BCD003177A7 /* FavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F61061D365BCD003177A7 /* FavViewController.swift */; };
 		229C17761D50C64800CBBC87 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C17751D50C64800CBBC87 /* SettingViewController.swift */; };
 		229C17781D5261D100CBBC87 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C17771D5261D100CBBC87 /* MapViewController.swift */; };
@@ -97,6 +111,7 @@
 		2200A3471DA5312A006A2C39 /* SeakApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeakApp.entitlements; sourceTree = "<group>"; };
 		2200A3481DA53297006A2C39 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideMenuControllerSwift.framework; path = "../../../Library/Developer/Xcode/DerivedData/SeakApp-cgcsrgpjpgtuczdopozleltlqstm/Build/Products/Debug-iphonesimulator/SlideMenuControllerSwift/SlideMenuControllerSwift.framework"; sourceTree = "<group>"; };
 		2214024F1D2AA48500E27659 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		222845A51DA6BC1F00A4CD2B /* EmptyStoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStoresViewController.swift; sourceTree = "<group>"; };
 		226F61061D365BCD003177A7 /* FavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavViewController.swift; sourceTree = "<group>"; };
 		229C17751D50C64800CBBC87 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		229C17771D5261D100CBBC87 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -327,6 +342,7 @@
 				C9B39B101D0E644E00F64D24 /* ItemAdd.swift */,
 				5E4FAFBC1D11808E000411D8 /* StartAppViewController.swift */,
 				5EC076841D1935B300E84EE5 /* StoresViewController.swift */,
+				222845A51DA6BC1F00A4CD2B /* EmptyStoresViewController.swift */,
 				2214024F1D2AA48500E27659 /* ReviewViewController.swift */,
 				229C17751D50C64800CBBC87 /* SettingViewController.swift */,
 				229C17771D5261D100CBBC87 /* MapViewController.swift */,
@@ -546,6 +562,9 @@
 		C9B9EFC31CFBDDE9002EA9BA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Kush Maheshwari";
@@ -588,6 +607,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222845A71DA77FF400A4CD2B /* Roboto-Bold.ttf in Resources */,
+				222845A81DA77FF400A4CD2B /* Roboto-Bold.ttf in Resources */,
+				222845A91DA77FF400A4CD2B /* Roboto-BoldItalic.ttf in Resources */,
+				222845AA1DA77FF400A4CD2B /* Roboto-Italic.ttf in Resources */,
+				222845AB1DA77FF400A4CD2B /* Roboto-Light.ttf in Resources */,
+				222845AC1DA77FF400A4CD2B /* Roboto-LightItalic.ttf in Resources */,
+				222845AD1DA77FF400A4CD2B /* Roboto-Regular.ttf in Resources */,
+				222845AE1DA77FF400A4CD2B /* Roboto-Thin.ttf in Resources */,
+				222845AF1DA77FF400A4CD2B /* Roboto-ThinItalic.ttf in Resources */,
+				222845B01DA77FF400A4CD2B /* RobotoCondensed-Bold.ttf in Resources */,
+				222845B11DA77FF400A4CD2B /* RobotoCondensed-BoldItalic.ttf in Resources */,
+				222845B21DA77FF400A4CD2B /* RobotoCondensed-Italic.ttf in Resources */,
+				222845B31DA77FF400A4CD2B /* RobotoCondensed-Regular.ttf in Resources */,
 				5EEB13F61D2D1E44008B3B03 /* StoresNavigationTitle.xib in Resources */,
 				C9B9F0351CFBEFA7002EA9BA /* camera.jpg in Resources */,
 				5EB2E8AE1D38FAB1005552E9 /* AddStoreView.xib in Resources */,
@@ -707,6 +739,7 @@
 				5E1533541D0AE4CC00C2E5E1 /* RecentSearches.swift in Sources */,
 				5E0558141D37D7A5009C5FDF /* LikeItemView.swift in Sources */,
 				5E07CB671D05481200F38D0B /* MenuViewController.swift in Sources */,
+				222845A61DA6BC1F00A4CD2B /* EmptyStoresViewController.swift in Sources */,
 				229C17781D5261D100CBBC87 /* MapViewController.swift in Sources */,
 				5E05580B1D378F42009C5FDF /* FavoriteStore.swift in Sources */,
 				5EB2E8B21D3931FD005552E9 /* StoresCollectionView.swift in Sources */,

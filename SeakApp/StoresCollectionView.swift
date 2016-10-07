@@ -128,8 +128,32 @@ UICollectionViewDelegateFlowLayout{
                 if let _ = self.currentLocation, let _ = self.locationRadius {
                     self.storeArray = self.filter(self.storeArray)
                 }
-                OperationQueue.main.addOperation({ 
-                    self.collectionView?.reloadData()
+                OperationQueue.main.addOperation({
+                    if self.storeArray.count != 0
+                    {
+                        self.collectionView?.reloadData()
+                    } else
+                    {
+                        let geoCoder = CLGeocoder()
+                        let location = CLLocation(latitude: UserDataCache.getUserLocationLatt()!, longitude: UserDataCache.getUserLocationLong()!)
+                        
+                        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+                            if let vc = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.EmptyStoresView.rawValue) as? EmptyStoresViewController
+                            {
+                                // Place details
+                                var placeMark: CLPlacemark!
+                                placeMark = placemarks?[0]
+                                
+                                // City
+                                if let city = placeMark.addressDictionary!["City"] as? NSString {
+                                    vc.cityName = city as String
+                                }
+                                
+                                self.addChildViewController(vc)
+                                self.view.addSubview(vc.view)
+                            }
+                            })
+                        }
                 })
 			}
 
