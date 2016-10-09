@@ -110,6 +110,11 @@ class MenuViewController: UITableViewController {
             self.slideMenuController()?.changeMainViewController(controller, close: true)
         }
         
+        if (indexPath as NSIndexPath).row == 4 {
+            guard let controller = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.NotificationsView.rawValue) else { return }
+            self.slideMenuController()?.changeMainViewController(controller, close: true)
+        }
+        
 		// Settings
 		if (indexPath as NSIndexPath).row == 5 {
             guard let controller = self.storyboard?.instantiateViewController(withIdentifier: StoryboardNames.SettingNavigation.rawValue) else { return }
