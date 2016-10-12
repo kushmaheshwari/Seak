@@ -53,7 +53,7 @@ class ItemCellView: UICollectionViewCell {
 		}
 		
         if let url = self.item.picture {
-            self.pictureImage.downloadWithCache(url)
+            self.pictureImage.downloadWithCache(urlString: url)
             self.pictureImage.setNeedsDisplay()
         }
         

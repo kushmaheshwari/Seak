@@ -153,7 +153,7 @@ UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegat
             self.userReposirory.getById(userId: item.userId, completion: { (user) in
                 cell.previewNameLabel.text = user.username
                 if let _ = user.picutre {
-                    cell.previewAuthorImage.downloadWithCache(user.picutre!)
+                    cell.previewAuthorImage.downloadWithCache(urlString: user.picutre!)
                 }
             })
 			

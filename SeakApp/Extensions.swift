@@ -73,24 +73,42 @@ extension UIStackView {
 }
 
 extension UIImageView {
-    fileprivate static let cache = NSCache<AnyObject, AnyObject>()
+    private static var cache: [String: Data] = [:]
+    private static let fileManager = FileManager.default
+    private static let diskPaths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
     
-    func downloadWithCache(_ urlString: String) {
-        if let imgData = UIImageView.cache.object(forKey: urlString as AnyObject) as? Data {
+    func downloadWithCache(urlString: String) {
+        
+        let cacheDirectory = UIImageView.diskPaths[0] as NSString
+        let diskPath = cacheDirectory.appendingPathComponent("\(urlString.hashValue)")
+        
+        self.image = nil
+        if let imgData = UIImageView.cache[urlString] {
             self.image = UIImage(data: imgData)
-            self.setNeedsDisplay()
         }
-        else {
-            OperationQueue().addOperation({[weak self] () in
-                if let url = URL(string: urlString) {
-                    guard let data = try? Data(contentsOf: url) else { return }
-                    OperationQueue.main.addOperation({ 
-                        self?.image = UIImage(data: data)
-                        UIImageView.cache.setObject(data as AnyObject, forKey: urlString as AnyObject)
-                        self?.setNeedsDisplay()
-                    })
-                }
-            })
+        else
+            if UIImageView.fileManager.fileExists(atPath: diskPath),
+                let image = UIImage(contentsOfFile: diskPath) {
+                
+                self.image = image
+                let data = UIImageJPEGRepresentation(image, 1.0)
+                UIImageView.cache[urlString] = data
+                
+            }
+            else
+            {
+                OperationQueue().addOperation({
+                    if let url = NSURL(string: urlString) {
+                        guard let data = NSData(contentsOf: url as URL) else { return }
+                        
+                        UIImageView.cache[urlString] = data as Data
+                        data.write(toFile: diskPath, atomically: true)
+                        OperationQueue.main.addOperation({
+                            self.image = UIImage(data: data as Data)
+                            self.setNeedsDisplay()
+                        })
+                    }
+                })
         }
     }
 }

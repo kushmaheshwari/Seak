@@ -30,7 +30,7 @@ class ItemDetailsViewConroller: UIViewController, MKMapViewDelegate {
 
 		self.setTitle()
         if let url = self.itemEntity?.picture {
-            self.itemImage.downloadWithCache(url)
+            self.itemImage.downloadWithCache(urlString: url)
         }
         
 		self.titleLabel.text = self.itemEntity?.name

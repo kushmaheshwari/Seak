@@ -110,7 +110,6 @@
 
 /* Begin PBXFileReference section */
 		2200A3471DA5312A006A2C39 /* SeakApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeakApp.entitlements; sourceTree = "<group>"; };
-		2200A3481DA53297006A2C39 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideMenuControllerSwift.framework; path = "../../../Library/Developer/Xcode/DerivedData/SeakApp-cgcsrgpjpgtuczdopozleltlqstm/Build/Products/Debug-iphonesimulator/SlideMenuControllerSwift/SlideMenuControllerSwift.framework"; sourceTree = "<group>"; };
 		2214024F1D2AA48500E27659 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		222845A51DA6BC1F00A4CD2B /* EmptyStoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStoresViewController.swift; sourceTree = "<group>"; };
 		222845B41DA7AF8200A4CD2B /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -256,7 +255,6 @@
 		361A3F420624AE7E9283DEE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2200A3481DA53297006A2C39 /* SlideMenuControllerSwift.framework */,
 				CA86731552144BC41BCA0369 /* Pods_SeakApp.framework */,
 			);
 			name = Frameworks;

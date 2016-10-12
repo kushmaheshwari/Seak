@@ -79,7 +79,7 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
             
 			cell.discountLabel.isHidden = true
             if let url = self.items[(indexPath as NSIndexPath).row].picture {
-                cell.imgView.downloadWithCache(url)
+                cell.imgView.downloadWithCache(urlString: url)
             }
 			
 			cell.item = self.items[(indexPath as NSIndexPath).row]
