@@ -117,7 +117,7 @@ class LeaveReviewViewController: UIViewController, UITextViewDelegate {
             
             self.repository.getAll(by: self.item?.objectID, completion: { (reviews) in
                 let rating = (reviews.count > 0) ? reviews.reduce(0) { (sum, item) -> Double in
-                    return sum + item.rating!
+                    return sum + (item.rating ?? 0)
                     } / Double(reviews.count): Double(0)
                 
                 self.itemRepository.updateReviewScore(self.item!.objectID!,

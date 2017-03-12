@@ -10,7 +10,6 @@
 		221402501D2AA48500E27659 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2214024F1D2AA48500E27659 /* ReviewViewController.swift */; };
 		222845A61DA6BC1F00A4CD2B /* EmptyStoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222845A51DA6BC1F00A4CD2B /* EmptyStoresViewController.swift */; };
 		222845A71DA77FF400A4CD2B /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F03C1CFBEFE7002EA9BA /* Roboto-Bold.ttf */; };
-		222845A81DA77FF400A4CD2B /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F03D1CFBEFE7002EA9BA /* Roboto-Bold.ttf */; };
 		222845A91DA77FF400A4CD2B /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F03E1CFBEFE7002EA9BA /* Roboto-BoldItalic.ttf */; };
 		222845AA1DA77FF400A4CD2B /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F03F1CFBEFE7002EA9BA /* Roboto-Italic.ttf */; };
 		222845AB1DA77FF400A4CD2B /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B9F0401CFBEFE7002EA9BA /* Roboto-Light.ttf */; };
@@ -567,7 +566,7 @@
 					New,
 				);
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Kush Maheshwari";
 				TargetAttributes = {
 					C9B9EFCA1CFBDDEA002EA9BA = {
@@ -609,7 +608,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				222845A71DA77FF400A4CD2B /* Roboto-Bold.ttf in Resources */,
-				222845A81DA77FF400A4CD2B /* Roboto-Bold.ttf in Resources */,
 				222845A91DA77FF400A4CD2B /* Roboto-BoldItalic.ttf in Resources */,
 				222845AA1DA77FF400A4CD2B /* Roboto-Italic.ttf in Resources */,
 				222845AB1DA77FF400A4CD2B /* Roboto-Light.ttf in Resources */,
@@ -691,7 +689,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		BCD40EA78F44A6175802A8B1 /* Embed Pods Frameworks */ = {
